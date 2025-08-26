@@ -1,7 +1,3 @@
-/**
-** @class explosion
-**/
-
 package GoF2;
 
 import AE.AEResourceManager;
@@ -38,7 +34,7 @@ public final class Explosion {
       }
 
       this.coreExplosion = AEResourceManager.getGeometryResource(9992);
-      this.coreExplosion.setAnimationSpeed(60); // Скорость анимации взрыва. Default: 100
+      this.coreExplosion.setAnimationSpeed(60);
       this.coreExplosion.setAnimationRangeInTime(1, 20);
       this.coreExplosion.setScale(8192, 8192, 8192);
       this.coreExplosion.setRenderLayer(2);
