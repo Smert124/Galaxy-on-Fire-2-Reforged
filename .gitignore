@@ -1,5 +1,7 @@
 bin/
 tmplib/
+classes/
+tmpclasses/
 *.xml
 *.ini
 *.pro
