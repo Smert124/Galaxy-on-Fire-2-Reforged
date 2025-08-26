@@ -1,0 +1,12 @@
+MIDlet-Jar-Size: 53180446
+MIDlet-1: Galaxy on Fire 2: Reforged, /Resource/interface/GF2i.png, Main.GF2
+MIDlet-Jar-URL: Galaxy on Fire 2 Reforged.jar
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-Version: 5.9.0
+MIDlet-Name: Galaxy on Fire 2: Reforged
+MIDlet-Vendor: Hard Condition
+MIDlet-Info-URL: http://t.me/HardCondition
+Nokia-MIDlet-App-Orientation: landscape
+MicroEdition-Profile: MIDP-2.1
+Nokia-MIDlet-On-Screen-Keypad: no
+KEmu-Platform: SonyEricssonK800

@@ -1,0 +1,8 @@
+MIDlet-1: Galaxy on Fire 2: Reforged, /Resource/interface/GF2i.png, Ma
+ in.GF2
+MIDlet-Info-URL: http://t.me/HardCondition
+MIDlet-Name: Galaxy on Fire 2: Reforged
+MIDlet-Vendor: Hard Condition
+MIDlet-Version: 5.9.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.1
