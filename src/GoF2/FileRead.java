@@ -9,272 +9,233 @@ import AE.AEResourceManager;
 import AE.GlobalStatus;
 
 public final class FileRead {
-
-   private static Class varClass;
-   private static InputStream input_stream;
-   private static byte[] byte_1;
-   private static StringBuffer string_buffer;
-   private static char char_1;
-   private static char char_2;
-   private static byte[] byte_2;
-   private static String string_1;
-
-   public final Station loadStation(int var1) {
-      return loadStationsBinary(new short[]{(short)var1})[0];
-   }
-   
-   private static void GET_TEXT_FILE(String var0) throws IOException {
-      if(string_1 != var0 || byte_1 == null) {
-         input_stream = (varClass == null?(varClass = getClassForName("java.lang.Class")):varClass).getResourceAsStream(var0);
-         byte_1 = new byte[input_stream.available()];
-         input_stream.read(byte_1, 0, input_stream.available());
-         input_stream.close();
-         string_1 = var0;
-      }
-   }
-   
-   public static void MASTER_CONFIG() {
-	   
-	   try {
-		   String all_text = AEResourceManager.getText(1);
-		   
-		   for(int i = 0; i < 7; ++i) {
-			   
-			   String[] data = split(all_text, ";");
-			   if(data.length < i) {
-				   data = null;
-			   }
-			   
-			   String[] parts = split(data[i], ",");
-			   if(parts.length == 0) {
-				   parts = null;
-			   }
-			   
-			   switch(i) {
-				   case 0:
-						GlobalStatus.max_stations = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 1:
-						GlobalStatus.max_systems = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 2:
-						GlobalStatus.max_ships = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 3:
-						GlobalStatus.max_items = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 4:
-						GlobalStatus.difficult = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 5:
-						GlobalStatus.shields = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
-				   case 6:
-						GlobalStatus.kaamo = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
-				   break;
+	
+	private static Class varClass;
+	private static InputStream input_stream;
+	private static byte[] byte_1;
+	private static StringBuffer string_buffer;
+	private static char char_1;
+	private static char char_2;
+	private static byte[] byte_2;
+	private static String string_1;
+	
+	public final Station loadStation(int var1) {
+		return loadStationsBinary(new short[]{(short)var1})[0];
+	}
+	
+	private static void GET_TEXT_FILE(String var0) throws IOException {
+		if(string_1 != var0 || byte_1 == null) {
+			input_stream = (varClass == null?(varClass = getClassForName("java.lang.Class")):varClass).getResourceAsStream(var0);
+			byte_1 = new byte[input_stream.available()];
+			input_stream.read(byte_1, 0, input_stream.available());
+			input_stream.close();
+			string_1 = var0;
+		}
+	}
+	
+	public static void MASTER_CONFIG() {
+		try {
+			String all_text = AEResourceManager.getText(1);
+			for(int i = 0; i < 7; ++i) {
+				String[] data = split(all_text, ";");
+				if(data.length < i) {
+					data = null;
 				}
 				
+				String[] parts = split(data[i], ",");
+				if(parts.length == 0) {
+					parts = null;
+				}
+				
+				switch(i) {
+					
+					case 0:
+						GlobalStatus.max_stations = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 1:
+						GlobalStatus.max_systems = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 2:
+						GlobalStatus.max_ships = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 3:
+						GlobalStatus.max_items = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 4:
+						GlobalStatus.difficult = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 5:
+						GlobalStatus.shields = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+					
+					
+					case 6:
+						GlobalStatus.kaamo = Integer.parseInt(parts[1].trim());
+						//System.out.println(parts[0] + ": " + parts[1]);
+					break;
+					
+				}
 				parts = null;
 				data = null;
+			}
+			all_text = null;
+			System.gc();
+		} catch(Exception ex) {
+			GlobalStatus.CATCHED_ERROR = "MASTER CONFIG ERROR: " + ex;
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+	}
+	
+	private static Station[] loadStationsBinary(short[] var0) {
+		Station[] var1 = null;
+		try {
+			String all_text = AEResourceManager.getText(10);
+			var1 = new Station[var0.length];
+			int var8 = 0;
+			for(int var9 = 0; var9 < GlobalStatus.max_stations; ++var9) {
+				String[] data = split(all_text, ";");
+				if(data.length < var9) {
+					data = null;
+				}
+				String[] parts = split(data[var9], ",");
+				if(parts.length == 0) {
+					parts = null;
+				}
 				
-		   }
-		   
-		   all_text = null;
-		   System.gc();
-		   
-	   } catch(Exception ex) {
-		   GlobalStatus.CATCHED_ERROR = "MASTER CONFIG ERROR: " + ex;
-		   System.out.println(GlobalStatus.CATCHED_ERROR);
-	   }
-	   
-   }
+				String var3 = parts[0].trim();
+				int var4 = Integer.parseInt(parts[1]);
+				int var5 = Integer.parseInt(parts[2]);
+				int var6 = Integer.parseInt(parts[3]);
+				int var7 = Integer.parseInt(parts[4]);
 				
-   private static Station[] loadStationsBinary(short[] var0) {
-      Station[] var1 = null;
-
-      try {
-		  
-         String all_text = AEResourceManager.getText(10);
-		 
-         var1 = new Station[var0.length];
-         int var8 = 0;
-         for(int var9 = 0; var9 < GlobalStatus.max_stations; ++var9) {		 
-			
+				for(int var10 = 0; var10 < var0.length; ++var10) {
+					if(var0[var10] == var9) {
+						var1[var8++] = new Station(var3, var4, var5, var6, var7);
+					}
+				}
+				parts = null;
+				data = null;
+				System.gc();
+			}
+			all_text = null;
+		} catch (Exception var11) {
+			GlobalStatus.CATCHED_ERROR = "loadStation ERROR: " + var11;
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+		return var1;
+	}
+	
+	public static int[] loadShipParts(int call_parameter) {
+		int[] shippart_parameter = null;
+		try {
+			String all_text = AEResourceManager.getText(5);
+			for(int i = 0; i < GlobalStatus.max_ships; ++i) {
+				String[] data = split(all_text, ";");
+				if(data.length < i) {
+					return null;
+				}
+				String[] parts = split(data[i], ",");
+				if(parts.length == 0) {
+					return null;
+				}
+				byte shippart_id = Byte.parseByte(parts[0].trim());
+				shippart_parameter = new int[Byte.parseByte(parts[1]) * 10];
+				
+				for(int var5 = 0; var5 < shippart_parameter.length; var5 += 10) {
+					shippart_parameter[var5] = Short.parseShort(parts[var5 + 2]); // модель
+					shippart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3]); // XYZ
+					shippart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4]); // XYZ
+					shippart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5]); // XYZ
+					shippart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6]); // XYZ1
+					shippart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7]);  // XYZ1
+					shippart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8]); // XYZ1
+					shippart_parameter[var5 + 7] = Short.parseShort(parts[var5 + 9]); // XYZ2
+					shippart_parameter[var5 + 8] = Short.parseShort(parts[var5 + 10]); // XYZ2
+					shippart_parameter[var5 + 9] = Short.parseShort(parts[var5 + 11]); // XYZ2
+				}
+				if(shippart_id == call_parameter) {
+					return shippart_parameter;
+				}
+				parts = null;
+				data = null;
+			}
+			all_text = null;
+		} catch (Exception var6) {
+			GlobalStatus.CATCHED_ERROR = "loadShipparts ERROR: " + var6;
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+		return shippart_parameter;
+	}
+	
+	public static short[] readWeaponProjectile(int value) {
+		short[] wepon_projectile = new short[GlobalStatus.max_items];
+		try {
+			String all_text = AEResourceManager.getText(4);
 			String[] data = split(all_text, ";");
-			if(data.length < var9) {
-				data = null;
+			for(int i = 0; i < wepon_projectile.length; ++i) {
+				if(data.length < i) {
+					data = null;
+				}
+				String[] parts = split(data[i], ",");
+				if(parts.length == 0) {
+					parts = null;
+				}
+				wepon_projectile[i] = Short.parseShort(parts[value].trim());
 			}
-			
-			String[] parts = split(data[var9], ",");
-			if(parts.length == 0) {
-				parts = null;
-			}
-			
-			String var3 = parts[0].trim();
-            int var4 = Integer.parseInt(parts[1]);
-            int var5 = Integer.parseInt(parts[2]);
-            int var6 = Integer.parseInt(parts[3]);
-            int var7 = Integer.parseInt(parts[4]);
-
-            for(int var10 = 0; var10 < var0.length; ++var10) {
-               if(var0[var10] == var9) {
-                  var1[var8++] = new Station(var3, var4, var5, var6, var7);
-				//  System.out.println(var3 + "," + var4 + "," + var5 + "," + var6 + "," + var7);
-               }
-            }
-			parts = null;
 			data = null;
 			System.gc();
-         }
-		 all_text = null;
-      } catch (Exception var11) {
-		  GlobalStatus.CATCHED_ERROR = "loadStation ERROR: " + var11;
-		  System.out.println(GlobalStatus.CATCHED_ERROR);
-      }
-      return var1;
-   }
-   
-   public static int[] loadShipParts(int call_parameter) {
-      int[] shippart_parameter = null;
-
-      try {
-		  
-		  String all_text = AEResourceManager.getText(5);
-		  
-		  for(int i = 0; i < GlobalStatus.max_ships; ++i) {
-			  
-			  String[] data = split(all_text, ";");
-			  if(data.length < i) {
-				  return null;
-			  }
-			  
-			  String[] parts = split(data[i], ",");
-			  
-			  if(parts.length == 0) {
-				  return null;
-			  }
-			  
-			  byte shippart_id = Byte.parseByte(parts[0].trim());
-			  shippart_parameter = new int[Byte.parseByte(parts[1]) * 10];
-			  
-			//  System.out.println("" + shippart_id);
-			  
-			  for(int var5 = 0; var5 < shippart_parameter.length; var5 += 10) {
-				  
-				  shippart_parameter[var5] = Short.parseShort(parts[var5 + 2]); // модель
-				  shippart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3]); // XYZ
-				  shippart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4]); // XYZ
-				  shippart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5]); // XYZ
-				  shippart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6]); // XYZ1
-				  shippart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7]);  // XYZ1
-				  shippart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8]); // XYZ1
-				  shippart_parameter[var5 + 7] = Short.parseShort(parts[var5 + 9]); // XYZ2
-				  shippart_parameter[var5 + 8] = Short.parseShort(parts[var5 + 10]); // XYZ2
-				  shippart_parameter[var5 + 9] = Short.parseShort(parts[var5 + 11]); // XYZ2
-				  
-				//  System.out.println("" + shippart_parameter.length + "," + shippart_parameter[var5] + "," + shippart_parameter[var5 + 1] + "," + shippart_parameter[var5 + 2] + "," + shippart_parameter[var5 + 3] + "," + shippart_parameter[var5 + 4] + "," + shippart_parameter[var5 + 5] + "," + shippart_parameter[var5 + 6] + "," + shippart_parameter[var5 + 7] + "," + shippart_parameter[var5 + 8] + "," + shippart_parameter[var5 + 9]);
-				  
-			  }
-			  
-			  if(shippart_id == call_parameter) {
-				  return shippart_parameter;
-			  }
-			  
-			  parts = null;
-			  data = null;
-			  
-		  }
-		  
-		  all_text = null;
-
-      } catch (Exception var6) {
-		  GlobalStatus.CATCHED_ERROR = "loadShipparts ERROR: " + var6;
-		  System.out.println(GlobalStatus.CATCHED_ERROR);
-      }
-
-      return shippart_parameter;
-   }
-   
-   public static short[] readWeaponProjectile(int value) {
-	   
-	   short[] wepon_projectile = new short[GlobalStatus.max_items];
-	   
-	   try {
-		   
-		   String all_text = AEResourceManager.getText(4);
-		   String[] data = split(all_text, ";");
-		   
-		   for(int i = 0; i < wepon_projectile.length; ++i) {
-			   
-			   if(data.length < i) {
-				   data = null;
-			   }
-			   
-			   String[] parts = split(data[i], ",");
-			   
-			   if(parts.length == 0) {
-				   parts = null;
-			   }
-			   
-			   wepon_projectile[i] = Short.parseShort(parts[value].trim());
-			   
-		   }
-		   
-		   data = null;
-		   System.gc();
-		   
-	   } catch (Exception ex) {
-		   GlobalStatus.CATCHED_ERROR = "readWeaponProjectile ERROR: " + ex;
-		   System.out.println(GlobalStatus.CATCHED_ERROR);
-	   }
-	   
-	   return wepon_projectile;
-	   
-   }
-   
-   public static short[] readShipViewportOffset(int value) {
-	   
-	   short[] viewport_offset = new short[GlobalStatus.max_ships];
-	   
-	   try {
-		   
-		   String all_text = AEResourceManager.getText(8);
-		   String[] data = split(all_text, ";");
-		   
-		   for(int i = 0; i < GlobalStatus.max_ships; ++i) {
-			   
-			   if(data.length < i) {
-				   data = null;
-			   }
-			   
-			   String[] parts = split(data[i], ",");
-			   
-			   if(parts.length == 0) {
-				   parts = null;
-			   }
-			   
-			   viewport_offset[i] = Short.parseShort(parts[value].trim());
-			   
-		   }
-		   
-		   data = null;
-		   System.gc();
-		   
-	   } catch (Exception ex) {
-		   GlobalStatus.CATCHED_ERROR = "readShipViewportOffset ERROR: " + ex;
-		   System.out.println(GlobalStatus.CATCHED_ERROR);
-	   }
-	   
-	   return viewport_offset;
-	   
-   }
+		} catch (Exception ex) {
+			GlobalStatus.CATCHED_ERROR = "readWeaponProjectile ERROR: " + ex;
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+		return wepon_projectile;
+	}
+	
+	public static short[] readShipViewportOffset(int value) {
+		short[] viewport_offset = new short[GlobalStatus.max_ships];
+		try {
+			String all_text = AEResourceManager.getText(8);
+			String[] data = split(all_text, ";");
+			for(int i = 0; i < GlobalStatus.max_ships; ++i) {
+				if(data.length < i) {
+					data = null;
+				}
+				String[] parts = split(data[i], ",");
+				if(parts.length == 0) {
+					parts = null;
+				}
+				viewport_offset[i] = Short.parseShort(parts[value].trim());
+			}
+			data = null;
+			System.gc();
+		} catch (Exception ex) {
+			GlobalStatus.CATCHED_ERROR = "readShipViewportOffset ERROR: " + ex;
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+		return viewport_offset;
+	}
 
    public static int[] loadStationParts(int var0, int var1) {
       int[] stationpart_parameter = null;
