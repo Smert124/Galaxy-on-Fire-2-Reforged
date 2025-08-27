@@ -17,8 +17,8 @@ import javax.microedition.m3g.VertexBuffer;
 import AE.PaintCanvas.AEGraphics3D;
 
 public final class AEMesh extends AbstractMesh {
-
-    private static float[] transformArray = new float[16];
+	
+	private static float[] transformArray = new float[16];
     private DataInputStream aemFile; //var_68
     public Node node; //var_89
     private Appearance appearance;
