@@ -15,8 +15,7 @@ public final class TractorBeam {
    private AEVector3D beamSrcPos_ = new AEVector3D();
    private AEVector3D toTargetDir = new AEVector3D();
    private KIPlayer target = null;
-   private static int[][] typeUV = new int[][]{{16, 13, 47, 19}, {16, 13, 47, 19}, {16, 13, 47, 19}, {17, 54, 30, 58}}; // текстура магнитного луча
-   // private static int[][] var_3bf = new int[][]{{16, 13, 47, 19}, {32, 235, 65, 242}, {17, 54, 30, 58}};
+   private static int[][] typeUV = new int[][]{{0, 8, 64, 16}, {0, 0, 64, 4}, {0, 48, 64, 48}, {0, 16, 64, 24}};
    private int width = 100;
    private int[] vertexPositions;
    private int[] vertexWorldPositions;
@@ -26,7 +25,7 @@ public final class TractorBeam {
 
 
    public TractorBeam(Group var1, int var2) {
-      this.beamMesh.setTexture(AEResourceManager.getTextureResource(1));
+      this.beamMesh.setTexture(AEResourceManager.getTextureResource(1095));
       this.beamMesh.setRenderLayer(2);
       this.vertexWorldPositions = new int[120];
       this.vertexPositions = new int[120];

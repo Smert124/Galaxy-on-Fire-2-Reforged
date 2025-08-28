@@ -272,6 +272,7 @@ public final class Globals {
    private static int skybox08 = 1092;
    private static int skybox09 = 1093;
    private static int skybox10 = 1094;
+   private static int tex_beams = 1095;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -1278,6 +1279,7 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_planet_24, "/Resource/textures/planets/planet_24");
 	   AEResourceManager.addTextureResource(tex_planet_25, "/Resource/textures/planets/planet_25");
 	   AEResourceManager.addTextureResource(tex_planet_26, "/Resource/textures/planets/planet_26");
+	   AEResourceManager.addTextureResource(tex_beams, "/Resource/textures/beams");
 	   
 	   if(GlobalStatus.texture_type[GlobalStatus.textures] == 256) {
 		   AEResourceManager.addTextureResource(tex_deepscience, PATH_TEXTURES + "low/v_tex_deepscience_low");

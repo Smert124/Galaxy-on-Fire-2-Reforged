@@ -1370,7 +1370,6 @@ public final class OptionsWindow {
    }
 
    public final void draw() {
-	   GlobalStatus.LANGUAGE_PACK();
 	   this.touchButtonsControl();
       if(this.var_8a1 == null) {
 		  if(this.subMenu == 0 && Status.getPlayingTime() <= 0L) {
@@ -1381,7 +1380,6 @@ public final class OptionsWindow {
 		  }
          switch(this.subMenu) {
          case 0:
-			// ���������� ������������� ����
 			if(Status.getPlayingTime() > 0L) {
 				
 				Layout.drawMenuWindow(GlobalStatus.gameText.getText(67), 0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
@@ -1429,7 +1427,7 @@ public final class OptionsWindow {
             }
             break;
          case 1:
-         case 2: // ��������� ����
+         case 2:
             int var1 = 12 * this.fontSpacingY;
             boolean var2;
             if(var2 = Status.getCurrentCampaignMission() >= 15) {

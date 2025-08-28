@@ -25,7 +25,7 @@ public final class LaserGun extends AbstractMesh implements AbstractGun {
    private static AEVector3D aimPoint;
    private static AEVector3D direction;
    private AEVector3D muzzlePos2;
-   private static int[][] BEAM_UVs = new int[][]{{16, 13, 47, 19}, {32, 235, 65, 242}, {17, 54, 30, 58}};
+   private static int[][] BEAM_UVs = new int[][]{{0, 0, 64, 4}, {0, 8, 64, 16}, {0, 16, 64, 24}, {0, 24, 64, 32}};
    private static int[] FLASH_KEYFRAMES = new int[]{0, 1, 9};
    private Level level;
    private boolean directionLocked;
@@ -45,7 +45,7 @@ public final class LaserGun extends AbstractMesh implements AbstractGun {
       this.flash.setAnimationMode((byte)1);
       this.flash.setScale(1024, 1024, 1024);
       this.beam = AbstractMesh.newPlaneStrip(0, 10, (byte)2);
-      this.beam.setTexture(AEResourceManager.getTextureResource(1));
+      this.beam.setTexture(AEResourceManager.getTextureResource(1095));
       this.beam.setRenderLayer(2);
       this.vertexWorldPositions = new int[120];
       this.vertexPositions = new int[120];

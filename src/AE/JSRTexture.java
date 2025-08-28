@@ -41,15 +41,19 @@ public final class JSRTexture extends ITexture {
 			   }
 			   if(GlobalStatus.texture_type[GlobalStatus.textures] == 512 || GlobalStatus.texture_type[GlobalStatus.textures] == 1024) {
 				texture_image = AEFile.loadImage(var1[var2] + ".png", false); // Crypt textures?
-			    Image tex = AEFile.resize_image(texture_image, GlobalStatus.texture_type[GlobalStatus.textures], GlobalStatus.texture_type[GlobalStatus.textures]);
-                Image2D var5 = new Image2D(100, tex);
+                Image2D var5 = new Image2D(100, texture_image);
 				this.textures[var2] = new Texture2D(var5);
 			   }
 			   if(GlobalStatus.texture_type[GlobalStatus.textures] == 2048) {
 				texture_image = AEFile.loadImage(var1[var2] + ".png", false); // Crypt textures?
-			    Image tex = AEFile.resize_image(texture_image, 1024, 1024);
-                Image2D var5 = new Image2D(100, tex);
-				this.textures[var2] = new Texture2D(var5);
+				if(texture_image.getWidth() > 1024 && texture_image.getHeight() > 1024) {
+					Image tex = AEFile.resize_image(texture_image, 1024, 1024);
+					Image2D var5 = new Image2D(100, tex);
+					this.textures[var2] = new Texture2D(var5);
+				} else {
+					Image2D var5 = new Image2D(100, texture_image);
+					this.textures[var2] = new Texture2D(var5);
+				}
 			   }
 			   this.textures[var2].setFiltering(Texture2D.FILTER_BASE_LEVEL, Texture2D.FILTER_LINEAR);
                this.textures[var2].setBlending(Texture2D.FUNC_MODULATE);
