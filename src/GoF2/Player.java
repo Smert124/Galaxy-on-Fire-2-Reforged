@@ -110,7 +110,7 @@ public final class Player {
    }
 
    public final void setPlayShootSound(boolean var1) {
-      this.playShootSound = true;
+      this.playShootSound = var1;
    }
 
    public final void sub_28a(int var1) {

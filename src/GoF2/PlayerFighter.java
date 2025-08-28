@@ -56,7 +56,7 @@ public final class PlayerFighter extends KIPlayer {
       this.initPos.set(var5, var6, var7);
       this.hasCargo = true;
       this.trail = new Trail(var2 != 9 && var2 != 8?0:1);
-      this.trail.setWidth(50);
+      this.trail.setWidth(80);
       this.trail.reset(this.initPos);
       this.canBoost = true;
       this.speed = this.defaultSpeed;
@@ -175,7 +175,7 @@ public final class PlayerFighter extends KIPlayer {
    }
 
    public final void setBoostProb(int var1) {
-      this.boostChance = 0;
+      this.boostChance = var1;
    }
 
    public final void removeTrail() {
@@ -184,7 +184,7 @@ public final class PlayerFighter extends KIPlayer {
 
    public final void setExhaustVisible(boolean var1) {
       for(GraphNode var2 = this.geometry.getEndNode(); var2 != null; var2 = var2.getParent()) {
-         if(var2.getID() == 13067 || var2.getID() == 13068 || var2.getID() == 13070 || var2.getID() == 13064 || var2.getID() == 13065 || var2.getID() == 13071 || var2.getID() == 14072 || var2.getID() >= 20000 && var2.getID() <= 20100 || var2.getID() >= 21000 && var2.getID() <= 21100) { // ���� � ������
+         if(var2.getID() == 13067 || var2.getID() == 13068 || var2.getID() == 13070 || var2.getID() == 13064 || var2.getID() == 13065 || var2.getID() == 13071 || var2.getID() == 14072 || var2.getID() >= 20000 && var2.getID() <= 20100 || var2.getID() >= 21000 && var2.getID() <= 21100) {
             var2.setDraw(var1);
          }
       }

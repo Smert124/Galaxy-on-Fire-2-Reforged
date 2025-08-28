@@ -9,8 +9,8 @@ import AE.ParticleSystemMesh;
 
 public final class Trail {
 
-   private static int[] UV = new int[]{80, 255, 95, 254, 32, 240, 63, 239};
-   private int width = 60;
+   private static int[] UV = new int[]{0, 56, 64, 64, 0, 56, 64, 64};
+   private int width = 250;
    private int[] vertices;
    private int[] tempVerts;
    private int[] uvs;
@@ -22,7 +22,7 @@ public final class Trail {
    public Trail(int var1) {
       int var2 = var1 == 0?16:13;
       this.mesh = AbstractMesh.newPlaneStrip(0, var2, (byte)2);
-      this.mesh.setTexture(AEResourceManager.getTextureResource(1));
+      this.mesh.setTexture(AEResourceManager.getTextureResource(1095));
       this.mesh.setRenderLayer(2);
       this.tempVerts = new int[var2 * 12];
       this.vertices = new int[var2 * 12];
@@ -40,13 +40,13 @@ public final class Trail {
          this.uvs[var2 + 5] = var5;
          this.uvs[var2 + 6] = UV[var3];
          this.uvs[var2 + 7] = var5;
-         if(var1 == 1) {
+         /* if(var1 == 1) {
             --var4;
             --var5;
          } else {
             var4 -= 2;
             var5 -= 2;
-         }
+         } */
       }
 
    }

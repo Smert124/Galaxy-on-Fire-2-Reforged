@@ -7,7 +7,7 @@ import AE.Math.Matrix;
 
 public final class Gun {
 
-   private static final short[][][] MUZZLE_POSITIONS = new short[][][]{{{(short)0, (short)0, (short)0}}, {{(short)270, (short)0, (short)100}, {(short)-270, (short)0, (short)100}}, {{(short)320, (short)0, (short)100}, {(short)0, (short)0, (short)100}, {(short)-320, (short)0, (short)100}}, {{(short)370, (short)0, (short)100}, {(short)170, (short)100, (short)150}, {(short)-170, (short)100, (short)150}, {(short)-370, (short)0, (short)100}}, {{(short)350, (short)100, (short)200}, {(short)270, (short)-100, (short)150}, {(short)0, (short)0, (short)100}, {(short)-270, (short)-100, (short)150}, {(short)-350, (short)100, (short)200}}, {{(short)500, (short)100, (short)150}, {(short)500, (short)-100, (short)150}, {(short)200, (short)0, (short)100}, {(short)-200, (short)0, (short)100}, {(short)-500, (short)-100, (short)150}, {(short)-500, (short)100, (short)150}}, {{(short)500, (short)-100, (short)150}, {(short)400, (short)100, (short)150}, {(short)200, (short)-50, (short)100}, {(short)0, (short)0, (short)150}, {(short)-200, (short)-50, (short)100}, {(short)-400, (short)100, (short)150}, {(short)-500, (short)-100, (short)150}}, {{(short)550, (short)-100, (short)100}, {(short)550, (short)100, (short)100}, {(short)300, (short)0, (short)100}, {(short)100, (short)0, (short)150}, {(short)-100, (short)0, (short)150}, {(short)-300, (short)0, (short)100}, {(short)-550, (short)100, (short)100}, {(short)-550, (short)-100, (short)100}}, {{(short)550, (short)-100, (short)100}, {(short)550, (short)100, (short)100}, {(short)300, (short)0, (short)100}, {(short)100, (short)100, (short)150}, {(short)0, (short)-100, (short)100}, {(short)-100, (short)100, (short)150}, {(short)-300, (short)0, (short)100}, {(short)-550, (short)100, (short)100}, {(short)-550, (short)-100, (short)100}}, {{(short)600, (short)-120, (short)100}, {(short)600, (short)120, (short)100}, {(short)400, (short)0, (short)100}, {(short)200, (short)100, (short)150}, {(short)200, (short)-100, (short)100}, {(short)-200, (short)-100, (short)100}, {(short)-200, (short)100, (short)150}, {(short)-400, (short)0, (short)100}, {(short)-600, (short)120, (short)100}, {(short)-600, (short)-120, (short)100}}};
+   private static final short[][][] MUZZLE_POSITIONS = new short[][][]{{{0, 0, 0}}, {{270, 0, 100}, {-270, 0, 100}}, {{320, 0, 100}, {0, 0, 100}, {-320, 0, 100}}, {{370, 0, 100}, {170, 100, 150}, {-170, 100, 150}, {-370, 0, 100}}, {{350, 100, 200}, {270, -100, 150}, {0, 0, 100}, {-270, -100, 150}, {-350, 100, 200}}, {{500, 100, 150}, {500, -100, 150}, {200, 0, 100}, {-200, 0, 100}, {-500, -100, 150}, {-500, 100, 150}}, {{500, -100, 150}, {400, 100, 150}, {200, -50, 100}, {0, 0, 150}, {-200, -50, 100}, {-400, 100, 150}, {-500, -100, 150}}, {{550, -100, 100}, {550, 100, 100}, {300, 0, 100}, {100, 0, 150}, {-100, 0, 150}, {-300, 0, 100}, {-550, 100, 100}, {-550, -100, 100}}, {{550, -100, 100}, {550, 100, 100}, {300, 0, 100}, {100, 100, 150}, {0, -100, 100}, {-100, 100, 150}, {-300, 0, 100}, {-550, 100, 100}, {-550, -100, 100}}, {{600, -120, 100}, {600, 120, 100}, {400, 0, 100}, {200, 100, 150}, {200, -100, 100}, {-200, -100, 100}, {-200, 100, 150}, {-400, 0, 100}, {-600, 120, 100}, {-600, -120, 100}}};
    private Level level;
    private Player[] targets;
    public AEVector3D[] projectilesPos;
@@ -74,11 +74,11 @@ public final class Gun {
    }
 
    public final void setSpread(int var1) {
-      this.spread = 1000;
+      this.spread = var1;
    }
 
    public final void setFriendGun(boolean var1) {
-      this.friendGun = true;
+      this.friendGun = var1;
    }
 
    public final void setMagnitude(int var1) {
