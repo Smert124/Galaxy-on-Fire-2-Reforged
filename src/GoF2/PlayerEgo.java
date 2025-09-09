@@ -372,50 +372,50 @@ public final class PlayerEgo {
          this.hasTurret = this.player.hasGunOfType(2);
          if(this.hasTurret) {
             Item[] var8 = Status.getShip().getEquipment(2);
-            short var9 = -1;
-            short var4 = -1;
+            short standMeshID = -1;
+            short gunMeshID = -1;
             byte var5 = -1;
             this.turretRotationSpeed = var8[0].getAttribute(15);
             this.hasAutoTurret = var8[0].getAttribute(21) == 1;
             switch(var8[0].getIndex()) {
             case 47:
-               var9 = 6770;
-               var4 = 6771;
+               standMeshID = 6770;
+               gunMeshID = 6771;
                var5 = 91;
                break;
             case 48:
-               var9 = 6772;
-               var4 = 6773;
+               standMeshID = 6772;
+               gunMeshID = 6773;
                var5 = 75;
                break;
             case 49:
-               var9 = 6774;
-               var4 = 6775;
+               standMeshID = 6774;
+               gunMeshID = 6775;
                var5 = 121;
 			   break;
-			case 180: // DLC turrets
-				var9 = 2509;
-				var4 = 2509;
+			case 180: // DLC turrets, no models. AEM crush game
+				standMeshID = 2509;
+				gunMeshID = 2509;
 				var5 = 91;
 				break;
 			case 181:
-				var9 = 2509;
-				var4 = 2509;
+				standMeshID = 2509;
+				gunMeshID = 2509;
 				var5 = 91;
 				break;
 			case 182:
-				var9 = 2509;
-				var4 = 2509;
+				standMeshID = 2509;
+				gunMeshID = 2509;
 				var5 = 91;
 				break;
 			case 224:
-				var9 = 2509;
-				var4 = 2509;
+				standMeshID = 2509;
+				gunMeshID = 2509;
 				var5 = 91;
             }
 
-            this.turretStand = AEResourceManager.getGeometryResource(var9);
-            this.turretGun = AEResourceManager.getGeometryResource(var4);
+            this.turretStand = AEResourceManager.getGeometryResource(standMeshID);
+            this.turretGun = AEResourceManager.getGeometryResource(gunMeshID);
             this.turretStand.setRenderLayer(2);
             this.turretGun.setRenderLayer(2);
             this.turretGun.setRotationOrder((short)2);
