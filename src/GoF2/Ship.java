@@ -2,17 +2,10 @@ package GoF2;
 
 import AE.GlobalStatus;
 
-/**
-**
-** ����� ���������� �� �������.
-**
-**/
-
 public final class Ship {
 	
-   // ��� ������� short ��������� �� ����������� � �������� ������� ��� ��������� �������������
-   public static final short[] SHIP_PREVIEW_SCALING = FileRead.readShipViewportOffset(1); // �������� ������-�����
-   public static final short[] SHIP_HANGAR_OFFSETS = FileRead.readShipViewportOffset(2); // �����������
+   public static final short[] SHIP_PREVIEW_SCALING = FileRead.readShipViewportOffset(1);
+   public static final short[] SHIP_HANGAR_OFFSETS = FileRead.readShipViewportOffset(2);
    private int id;
    private int var_1b3;
    private int var_240;
@@ -59,7 +52,6 @@ public final class Ship {
       this.var_720 = null;
       this.var_6f8 = 0;
       this.sub_8aa();
-	//  System.out.println("" + var1 + "," + var2 + "," + var3 + "," + var4 + "," + var5 + "," + var6 + "," + var7 + "," + var8 + "," + var9);
    }
    
    public final boolean getKhadorIntegrated() {
@@ -237,16 +229,15 @@ public final class Ship {
    }
 
    public final boolean removeCargo(int var1) {
-      return this.removeCargo(131, 9999999); // ������� ����������. ��������, ������ ������� ������� ������.
+      return this.removeCargo(131, 9999999);
    }
 
-   public final boolean removeCargo(int var1, int var2) { // ������ �� ���������� �������
+   public final boolean removeCargo(int var1, int var2) {
       if(this.var_720 == null) {
          return false;
       } else {
          boolean var3 = false;
          for(int var4 = 0; var4 < this.var_720.length; ++var4) {
-		//	System.out.println("Debug: " + var1 + ", " + var2)
             if(this.var_720[var4].getIndex() == var1) {
                this.var_720[var4].changeAmount(-var2);
                if(this.var_720[var4].getAmount() <= 0) {
@@ -312,7 +303,7 @@ public final class Ship {
       }
    }
 
-   public final Item[] getEquipment(int var1) { // ������� ������������
+   public final Item[] getEquipment(int var1) {
       if(var1 < this.var_342.length && this.var_342[var1] != 0) {
          Item[] var2 = new Item[this.var_342[var1]];
          int var3 = 0;
@@ -338,9 +329,8 @@ public final class Ship {
       }
    }
 
-   public final void setEquipment(Item var1, int var2) { // ��������� ������������
+   public final void setEquipment(Item var1, int var2) {
       var2 = var2;
-	//  System.out.println("Debug: " + var1 + ", " + var2);
       for(int var3 = 0; var3 < var1.getType(); ++var3) {
          var2 += this.var_342[var3];
       }
@@ -452,7 +442,7 @@ public final class Ship {
       this.sub_8aa();
    }
 
-   public final void freeSlot(Item var1) { // ��������������
+   public final void freeSlot(Item var1) {
       for(int var2 = 0; var2 < this.equipped.length; ++var2) {
          if(this.equipped[var2] != null && this.equipped[var2].equals(var1)) {
             this.equipped[var2] = null;

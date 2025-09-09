@@ -170,8 +170,17 @@ public final class PlayerEgo {
 
       this.shipGrandGroup_.uniqueAppend_(this.shipGroup);
       if(Status.getShip().getFirstEquipmentOfSort(13) != null) {
-         this.tractorBeam = new TractorBeam(this.shipGrandGroup_, Status.getShip().getFirstEquipmentOfSort(13).getIndex() - 68);
-      }
+		  int equipmentId = Status.getShip().getFirstEquipmentOfSort(13).getIndex();
+		  int safeIndex;
+		  if(equipmentId == 194) {
+			  safeIndex = 4; // AB-4 Octopus
+		  } else {
+			  safeIndex = equipmentId - 68; // other tractor beams
+		  }
+		  if(safeIndex < 0) safeIndex = 0;
+		  if(safeIndex >= 4) safeIndex = 3;
+		  this.tractorBeam = new TractorBeam(this.shipGrandGroup_, safeIndex);
+	  }
 
    }
 

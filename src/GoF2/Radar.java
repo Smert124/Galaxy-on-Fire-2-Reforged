@@ -66,6 +66,7 @@ public final class Radar {
    private boolean drillPresent;
    private boolean tractorBeamPresent;
    private boolean tractorBeamAutomatic;
+   private boolean tractorBeam360;
    private boolean pastIntro;
    private int tractorBeamScanTime;
    private int scanTime;
@@ -107,15 +108,15 @@ public final class Radar {
 			this.hud_meteor_class_sprite = new Sprite(Globals.hudMeteorClass, 11, 11);
 			this.hud_meteor_class_sprite.defineReferencePixel(11, 11);
 			
-			Item var10 = Status.getShip().getFirstEquipmentOfSort(19);
-			Item var8 = Status.getShip().getFirstEquipmentOfSort(17);
-			Item var3 = Status.getShip().getFirstEquipmentOfSort(13);
-			this.drillPresent = var10 != null;
-			if(var8 != null) {
+			Item drillItem = Status.getShip().getFirstEquipmentOfSort(19);
+			Item scannerItem = Status.getShip().getFirstEquipmentOfSort(17);
+			Item tractorBeamItem = Status.getShip().getFirstEquipmentOfSort(13);
+			this.drillPresent = drillItem != null;
+			if(scannerItem != null) {
 				this.scanerPresent = true;
-				this.showCargo = var8.getAttribute(29) == 1;
-				this.showAasteroids = var8.getAttribute(28) == 1;
-				this.scanTime = var8.getAttribute(27);
+				this.showCargo = scannerItem.getAttribute(29) == 1;
+				this.showAasteroids = scannerItem.getAttribute(28) == 1;
+				this.scanTime = scannerItem.getAttribute(27);
 			} else {
 				this.scanerPresent = false;
 				this.showCargo = false;
@@ -123,10 +124,12 @@ public final class Radar {
 				this.scanTime = 8000;
 			}
 			
-			if(var3 != null) {
+			if(tractorBeamItem != null) {
 				this.tractorBeamPresent = true;
-				this.tractorBeamAutomatic = var3.getAttribute(21) == 1;
-				this.tractorBeamScanTime = var3.getAttribute(22);
+				int tractorBeamMode = tractorBeamItem.getAttribute(21);
+				this.tractorBeamAutomatic = tractorBeamMode == 1;
+				this.tractorBeam360 = tractorBeamMode == 2;
+				this.tractorBeamScanTime = tractorBeamItem.getAttribute(22);
 			} else {
 				this.tractorBeamPresent = false;
 				this.tractorBeamScanTime = 0;
@@ -533,7 +536,7 @@ public final class Radar {
                         }
 
                         if(!this.level.getPlayer().isAutoPilot() && (!var25.junk || var14) && (!var29 || var25.stunned) && (var14 && var25.isDead() || !var14)) {
-                           if(var14 && this.tractorBeamTarget == null && this.tractorBeamAutomatic) {
+                           if(var14 && this.tractorBeamTarget == null && (this.tractorBeamAutomatic && !this.tractorBeam360)) {
                               this.tractorBeamTarget = var25;
                               var29 = true;
                               this.contextShip = var25;
@@ -557,6 +560,15 @@ public final class Radar {
                         var32 = var25.player.enemy?(var15?Globals.hudLockonEnemyFar:Globals.hudRadarIconEnemy):(var25.player.friend?(var15?Globals.hudLockonFriendFar:Globals.hudRadarIconFirend):(var15?Globals.hudLockonNeutralFar:Globals.hudRadarIconNeutral));
                         GlobalStatus.graphics.drawImage(var32, this.screenProjectionX, this.screenProjectionY, 3);
                      }
+					 
+					 if(!this.level.getPlayer().isAutoPilot() && (!var25.junk || var14) && (var14 && var25.isDead() || !var14)) {
+                           if(var14 && this.tractorBeamTarget == null && (this.tractorBeam360 && !tractorBeamAutomatic)) {
+                              this.tractorBeamTarget = var25;
+                              var29 = true;
+                              this.contextShip = var25;
+                           }
+					 }
+					 
                   }
                }
             }
@@ -640,7 +652,7 @@ public final class Radar {
                   var40 = var36.hasCargo && (var36.isDead() || var36.isDying());
                   if(this.inViewFrustum) {
                      if(!var9 && !var29 && !var8 && !var23 && ((PlayerAsteroid)var36).getMass_SizeCoef__() > 15 && !this.onPlanetCourse_) {
-                        if(var40 && this.tractorBeamTarget == null && this.tractorBeamAutomatic) {
+                        if(var40 && this.tractorBeamTarget == null && (this.tractorBeamAutomatic && !this.tractorBeam360)) {
                            this.tractorBeamTarget = var36;
                            var8 = true;
                            this.contextShip = var36;
@@ -667,6 +679,13 @@ public final class Radar {
                      GlobalStatus.graphics.drawImage(Globals.hudRadarIconNeutral, this.screenProjectionX, this.screenProjectionY, 3);
                      GlobalStatus.graphics.drawImage(Globals.hudAsteroid, this.screenProjectionX, this.screenProjectionY, 3);
                   }
+				  if(!this.level.getPlayer().isAutoPilot() && (!var36.junk || var40) && (var40 && var36.isDead() || !var40)) {
+                           if(var40 && this.tractorBeamTarget == null && (this.tractorBeam360 && this.tractorBeamAutomatic)) {
+                              this.tractorBeamTarget = var36;
+                              var29 = true;
+                              this.contextShip = var36;
+                           }
+					 }
                }
             }
 

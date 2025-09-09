@@ -126,7 +126,11 @@ public final class ListItemWindow {
                   var9 = "\n" + var9 + GlobalStatus.gameText.getText(GameText.LISTITEMWINDOW_KEY_TEXT_IDS[var12]);
                   if(var12 != 29 && var12 != 28) {
                      if(var12 == 21) {
-                        var10 = var10 + GlobalStatus.gameText.getText(var8 == 0?39:38);
+						if(var11.getAttribute(21) == 0 || var11.getAttribute(21) == 1) {
+							var10 = var10 + GlobalStatus.gameText.getText(var8 == 0?39:38);
+						} else if(var11.getAttribute(21) == 2) {
+							var10 = var10 + GlobalStatus.gameText.getText(549);
+						}
                      } else if(var12 == 2) {
                         var10 = var10 + GlobalStatus.gameText.getText(var8 + 98); // тип оружия
                      } else {
