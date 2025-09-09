@@ -28,7 +28,7 @@ public final class Radar {
    private int elipsoidCenterY;
    private int elipsoidWidth;
    private int elipsoidHeight;
-   private boolean inViewFrustum;
+   public boolean inViewFrustum;
    private KIPlayer[] enemies;
    private KIPlayer[] landmarks;
    private KIPlayer[] asteroids;
@@ -176,7 +176,7 @@ public final class Radar {
          float var6 = (float)(this.elipsoidCenterY + -10 - var3);
          float var8;
          if((var8 = var5 * var5 / (float)this.elipsoidWidth + var6 * var6 / (float)this.elipsoidHeight) >= 0.0F) {
-            float var7 = (float)AEMath.sqrt((long)(var8 * 4096.0F)) / 6144.0F; // 4096 default ������ ���������� ������, �� ������� ��������� �����
+            float var7 = (float)AEMath.sqrt((long)(var8 * 4096.0F)) / 6144.0F; // 4096 default
             var8 = (var8 - var7) / var8;
             if(0.0F <= var8 && var8 <= 1.0F) {
                var4.x = (int)((float)var9 + var5 * var8);

@@ -60,6 +60,7 @@ public final class PlayerEgo {
    private boolean asteroidFieldTarget_;
    private AEVector3D autoPilotDir;
    private boolean hasTurret;
+   private boolean hasAutoTurret;
    private TargetFollowCamera followingCamera_;
    private AECamera camera;
    private Group turretViewCamera__;
@@ -173,7 +174,7 @@ public final class PlayerEgo {
 		  int equipmentId = Status.getShip().getFirstEquipmentOfSort(13).getIndex();
 		  int safeIndex;
 		  if(equipmentId == 194) {
-			  safeIndex = 4; // AB-4 Octopus
+			  safeIndex = 4; // AB-4 "Octopus"
 		  } else {
 			  safeIndex = equipmentId - 68; // other tractor beams
 		  }
@@ -223,7 +224,7 @@ public final class PlayerEgo {
    }
 
    public final boolean setTurretMode(boolean var1) {
-      if(this.hasTurret && !this.isMining()) {
+      if(this.hasTurret && !this.isMining() && !this.hasAutoTurret) {
          this.turretMode = var1;
          if(var1) {
             if(this.camera == null) {
@@ -373,8 +374,9 @@ public final class PlayerEgo {
             Item[] var8 = Status.getShip().getEquipment(2);
             short var9 = -1;
             short var4 = -1;
-            byte var5 = -1; // ������ ������ ������
+            byte var5 = -1;
             this.turretRotationSpeed = var8[0].getAttribute(15);
+            this.hasAutoTurret = var8[0].getAttribute(21) == 1;
             switch(var8[0].getIndex()) {
             case 47:
                var9 = 6770;
@@ -390,6 +392,26 @@ public final class PlayerEgo {
                var9 = 6774;
                var4 = 6775;
                var5 = 121;
+			   break;
+			case 180: // DLC turrets
+				var9 = 2509;
+				var4 = 2509;
+				var5 = 91;
+				break;
+			case 181:
+				var9 = 2509;
+				var4 = 2509;
+				var5 = 91;
+				break;
+			case 182:
+				var9 = 2509;
+				var4 = 2509;
+				var5 = 91;
+				break;
+			case 224:
+				var9 = 2509;
+				var4 = 2509;
+				var5 = 91;
             }
 
             this.turretStand = AEResourceManager.getGeometryResource(var9);
@@ -1215,9 +1237,9 @@ public final class PlayerEgo {
          }
 
          if(this.cloakingScaleX >= 0) {
-            GlobalStatus.renderer.drawNodeInVF(this.shipGrandGroup_); // �������
+            GlobalStatus.renderer.drawNodeInVF(this.shipGrandGroup_);
             if(this.hasTurret) {
-               GlobalStatus.renderer.drawNodeInVF(this.turretGroup); // ������
+               GlobalStatus.renderer.drawNodeInVF(this.turretGroup);
             }
          } else {
             this.shipGrandGroup_.updateTransform(true);
