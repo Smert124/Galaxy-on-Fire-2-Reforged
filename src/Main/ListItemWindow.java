@@ -22,7 +22,7 @@ import GoF2.TextBox;
 public final class ListItemWindow {
 	
    private final short[] LISTITEMWINDOW_HIDDEN_ATTRIBUTES = new short[]{(short)0, (short)1, (short)4, (short)5, (short)6, (short)7, (short)8, (short)35, (short)36, (short)532};
-   private final String[] _LISTITEMWINDOW_UNITS = new String[]{null, null, null, null, null, null, null, null, null, null, null, "ms", "m", "km/h", "m", null, null, "ms", null, "%", "%", null, "ms", "%", "ms", "ms", "%", "ms", null, null, "%", "%", null, "ms", "ms", null, null};
+   private final String[] _LISTITEMWINDOW_UNITS = new String[]{null, null, null, null, null, null, null, null, null, null, null, " ms", " m", " km/h", " m", null, null, " ms", null, "%", "%", null, " ms", "%", " ms", " ms", "%", " ms", null, null, "%", "%", null, " ms", " ms", null, null};
    private ListItem contextItem;
    private Image items;
    private Image itemTypes;
@@ -119,11 +119,11 @@ public final class ListItemWindow {
 
                if(!var7 && (var8 = var11.getAttribute(var12)) != -979797979) {
                   if(!var9.equals("")) {
-                     var9 = var9 + "\n";
-                     var10 = "\n" + var10 + "\n";
+                     var9 += "\n";
+                        var10 += "\n";
                   }
 
-                  var9 = "\n" + var9 + GlobalStatus.gameText.getText(GameText.LISTITEMWINDOW_KEY_TEXT_IDS[var12]);
+                  var9 += GlobalStatus.gameText.getText(GameText.LISTITEMWINDOW_KEY_TEXT_IDS[var12]);
                   if(var12 != 29 && var12 != 28) {
                      if(var12 == 21) {
 						if(var11.getAttribute(21) == 0 || var11.getAttribute(21) == 1) {
