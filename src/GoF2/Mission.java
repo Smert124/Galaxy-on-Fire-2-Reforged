@@ -26,7 +26,7 @@ public final class Mission {
    private boolean visibleOnMap;
 
 
-   public Mission(int var1, String var2, byte[] var3, int var4, int var5, int var6, int var7) { // agents in space bar
+   public Mission(int var1, String var2, byte[] var3, int var4, int var5, int var6, int var7) {
       this.missionType = var1;
       this.clientName = var2;
       this.clientFace = var3;

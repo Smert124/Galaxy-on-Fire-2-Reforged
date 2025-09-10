@@ -23,7 +23,7 @@ public final class AEMesh extends AbstractMesh {
     public Node node; //var_89
     private Appearance appearance;
     private TriangleStripArray triangleStripArray;
-    public static Transform transform;
+    public Transform transform;
     private boolean isGlowing; //rendering switch
     private boolean isTransparent;
     private static PolygonMode opaquePMode;
@@ -241,28 +241,7 @@ public final class AEMesh extends AbstractMesh {
         return new AEMesh(this);
     }
 
-    public final void OnRelease() {
-        this.aemFile = null;
-        this.matrix = null;
-        this.group = null;
-        this.parent = null;
-        this.globalTransform = null;
-        this.tempTransform = null;
-        this.boundingSphere = null;
-        if (this.appearance != null) {
-            this.appearance.setCompositingMode((CompositingMode) null);
-            this.appearance.setMaterial((Material) null);
-            this.appearance.setPolygonMode((PolygonMode) null);
-            this.appearance.setTexture(0, (Texture2D) null);
-            this.appearance.setUserID(0);
-            this.appearance = null;
-        }
-
-        this.node = null;
-        this.appearance = null;
-        this.triangleStripArray = null;
-        this.transform = null;
-    }
+    public final void OnRelease() {}
 
     public final void render() { //render on false
         if (!this.isGlowing) {

@@ -391,21 +391,21 @@ public final class PlayerEgo {
             case 49:
                standMeshID = 6774;
                gunMeshID = 6775;
-               var5 = 121;
+               var5 = 75;
 			   break;
-			case 180: // DLC turrets, no models. AEM crush game
-				standMeshID = 2509;
-				gunMeshID = 2509;
+			case 180:
+				standMeshID = 5001;
+				gunMeshID = 5002;
 				var5 = 91;
 				break;
 			case 181:
-				standMeshID = 2509;
-				gunMeshID = 2509;
+				standMeshID = 5003;
+				gunMeshID = 5004;
 				var5 = 91;
 				break;
 			case 182:
-				standMeshID = 2509;
-				gunMeshID = 2509;
+				standMeshID = 5005;
+				gunMeshID = 5006;
 				var5 = 91;
 				break;
 			case 224:

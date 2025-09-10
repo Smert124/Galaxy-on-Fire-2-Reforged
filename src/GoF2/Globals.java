@@ -1238,7 +1238,7 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(skybox10, PATH_TEXTURES + "skybox/skybox10");
 	   
 	   AEResourceManager.addTextureResource(tex_station_midorian, PATH_TEXTURES + "tex_station_midorian_high");
-	   AEResourceManager.addTextureResource(tex_station_midorian, PATH_TEXTURES + "tex_player_station_add");
+	   AEResourceManager.addTextureResource(tex_station_player_add, PATH_TEXTURES + "tex_player_station_add");
 	   AEResourceManager.addTextureResource(tex_station_deescience, PATH_TEXTURES + "tex_station_deescience_high");
 	   AEResourceManager.addTextureResource(tex_station_deescience_add, PATH_TEXTURES + "tex_station_deescience_add");
 	   AEResourceManager.addTextureResource(tex_map_planets, PATH_TEXTURES + "map_planets");
@@ -1713,12 +1713,21 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6804, PATH_MESHES + "asteroid/asteroid_void.aem", 15000, tex_asteroid_void);
 		AEResourceManager.addGeometryResource(6807, PATH_MESHES + "asteroid/asteroid_ice.aem", 15000, tex_asteroid_ice);
 		AEResourceManager.addGeometryResource(6808, PATH_MESHES + "asteroid/asteroid_magma.m3g", 15000, tex_asteroid);
-		AEResourceManager.addGeometryResource(6770, PATH_MESHES + "turret_0_stand.m3g", 2000, tex_turrets);
-		AEResourceManager.addGeometryResource(6771, PATH_MESHES + "turret_0_gun.m3g", 2000, tex_turrets);
-		AEResourceManager.addGeometryResource(6772, PATH_MESHES + "turret_1_stand.m3g", 2000, tex_turrets);
-		AEResourceManager.addGeometryResource(6773, PATH_MESHES + "turret_1_gun.m3g", 2000, tex_turrets);
-		AEResourceManager.addGeometryResource(6774, PATH_MESHES + "turret_2_stand.m3g", 2000, tex_turrets);
-		AEResourceManager.addGeometryResource(6775, PATH_MESHES + "turret_2_gun.m3g", 2000, tex_turrets);
+		
+		AEResourceManager.addGeometryResource(6770, PATH_MESHES + "turrets/turret_47.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(6771, PATH_MESHES + "turrets/turret_47_gun.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(6772, PATH_MESHES + "turrets/turret_48.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(6773, PATH_MESHES + "turrets/turret_48_gun.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(6774, PATH_MESHES + "turrets/turret_49.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(6775, PATH_MESHES + "turrets/turret_49_gun.aem", 2000, tex_turrets);
+		
+		AEResourceManager.addGeometryResource(5001, PATH_MESHES + "turrets/autoturret_01.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(5002, PATH_MESHES + "turrets/autoturret_01_gun.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(5003, PATH_MESHES + "turrets/autoturret_02.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(5004, PATH_MESHES + "turrets/autoturret_02_gun.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(5005, PATH_MESHES + "turrets/autoturret_03.aem", 2000, tex_turrets);
+		AEResourceManager.addGeometryResource(5006, PATH_MESHES + "turrets/autoturret_03_gun.aem", 2000, tex_turrets);
+		
 		AEResourceManager.addGeometryResource(6779, PATH_MESHES + "orbit.m3g", 5000, 1);
 		AEResourceManager.addGeometryResource(6781, PATH_MESHES + "map_sun.m3g", 15000, 1);
 		AEResourceManager.addGeometryResource(6782, PATH_MESHES + "asteroid_explo.m3g", 5000, 0);
