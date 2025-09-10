@@ -181,7 +181,7 @@ public final class AEMesh extends AbstractMesh {
 
         if (transparentPMode == null) {
             (transparentPMode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK); //CULL_NONE
-            transparentPMode.setShading(PolygonMode.SHADE_SMOOTH); // SHADE_SMOOTH
+            transparentPMode.setShading(PolygonMode.SHADE_FLAT); // SHADE_SMOOTH
             transparentPMode.setPerspectiveCorrectionEnable(true);
         }
 

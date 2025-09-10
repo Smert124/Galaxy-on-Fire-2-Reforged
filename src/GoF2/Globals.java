@@ -273,6 +273,7 @@ public final class Globals {
    private static int skybox09 = 1093;
    private static int skybox10 = 1094;
    private static int tex_beams = 1095;
+   private static int tex_station_terran = 1096;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -1280,6 +1281,7 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_planet_25, "/Resource/textures/planets/planet_25");
 	   AEResourceManager.addTextureResource(tex_planet_26, "/Resource/textures/planets/planet_26");
 	   AEResourceManager.addTextureResource(tex_beams, "/Resource/textures/beams");
+	   AEResourceManager.addTextureResource(tex_station_terran, "/Resource/textures/tex_station_terran");
 	   
 	   if(GlobalStatus.texture_type[GlobalStatus.textures] == 256) {
 		   AEResourceManager.addTextureResource(tex_deepscience, PATH_TEXTURES + "low/v_tex_deepscience_low");
@@ -1370,10 +1372,10 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(10008, PATH_MESHES + "skybox/skybox08_add.aem", -1, skybox08);
 		AEResourceManager.addGeometryResource(10009, PATH_MESHES + "skybox/skybox09_add.aem", -1, skybox09);
 		AEResourceManager.addGeometryResource(10010, PATH_MESHES + "skybox/skybox10_add.aem", -1, skybox10);
-		AEResourceManager.addGeometryResource(18, PATH_MESHES + "nuke.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgate_terran.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(16, PATH_MESHES + "emp.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "box.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgate_terran.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(18, PATH_MESHES + "nuke.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 15000, 0);
