@@ -275,6 +275,73 @@ public final class FileRead {
 		return stationpart_parameter;
 	}
 	
+	public static int[] loadStationPartCollision(int var0, int var1) {
+		int[] collision_parameter = null;
+		try {
+			String all_text = AEResourceManager.getText(13);
+			String[] data = split(all_text, ";");
+			
+			for(int i = 0; i < data.length; ++i) {
+				if(data[i] == null || data[i].trim().length() == 0) {
+					continue;
+				}
+				
+				String[] parts = split(data[i].trim(), ",");
+				if(parts.length < 7) {
+					continue;
+				}
+				
+				int stationpart_id = Integer.parseInt(parts[0].trim());
+				int collisionBox_count = Integer.parseInt(parts[1].trim());
+				
+				int requiredLength = 2 + collisionBox_count * 6;
+				if(parts.length < requiredLength) {
+					System.out.println("Not enough data for collision boxes for ID: " + stationpart_id);
+					continue;
+				}
+				
+				collision_parameter = new int[collisionBox_count * 6];
+				
+				for(int boxIndex = 0; boxIndex < collisionBox_count; boxIndex++) {
+					int baseIndex = 2 + boxIndex * 6;
+					
+					collision_parameter[boxIndex * 6] = Integer.parseInt(parts[baseIndex].trim());     // X позиция
+					collision_parameter[boxIndex * 6 + 1] = Integer.parseInt(parts[baseIndex + 1].trim()); // Y позиция
+					collision_parameter[boxIndex * 6 + 2] = Integer.parseInt(parts[baseIndex + 2].trim()); // Z позиция
+					collision_parameter[boxIndex * 6 + 3] = Integer.parseInt(parts[baseIndex + 3].trim()); // X размер
+					collision_parameter[boxIndex * 6 + 4] = Integer.parseInt(parts[baseIndex + 4].trim()); // Y размер
+					collision_parameter[boxIndex * 6 + 5] = Integer.parseInt(parts[baseIndex + 5].trim()); // Z размер
+				}
+				
+				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE) {
+					if(stationpart_id == var0) {
+						System.out.println("Collision data for mesh ID: " + stationpart_id);
+						System.out.println("Number of collision boxes: " + collisionBox_count);
+						
+						for(int boxIndex = 0; boxIndex < collisionBox_count; boxIndex++) {
+							System.out.println("Box " + (boxIndex + 1) + ":");
+							
+							System.out.println("  Position relative to the mesh: (" + 
+								collision_parameter[boxIndex * 6] + ", " + 
+								collision_parameter[boxIndex * 6 + 1] + ", " + 
+								collision_parameter[boxIndex * 6 + 2] + ")");
+							
+							System.out.println("  Size: (" + 
+								collision_parameter[boxIndex * 6 + 3] + ", " + 
+								collision_parameter[boxIndex * 6 + 4] + ", " + 
+								collision_parameter[boxIndex * 6 + 5] + ")");
+						}
+						return collision_parameter;
+					}
+				}
+			}
+		} catch (Exception var7) {
+			GlobalStatus.CATCHED_ERROR = "loadStationPartCollision ERROR: " + var7.getMessage();
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+		}
+		return collision_parameter;
+	}
+	
 	public static Station[] loadStationsBinary(SolarSystem var0) {
 		Station[] var1 = null;
 		try {

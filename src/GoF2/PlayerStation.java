@@ -14,58 +14,12 @@ import AE.Math.Matrix;
 
 public final class PlayerStation extends PlayerStaticFar {
 	
-	private final int[] partsCollisions = {
- //offset==> x,      y,      z,   |  x,     y,     z,  <==dimension   
-			-10,    -791,   -1776,  2509,  3625,  22248,
-		    -18,    -786,   2466,   2499,  4681,  30734,
-		    -10,    -1851,  29,     7568,  13971, 7568,
-		    21,     -2629,  -6,     8627,  15527, 8627,
-		    21,     -9152,  -7,     20335, 28573, 20340,
-		    -192,   -1795,  0,      11008, 13859, 13952,
-		    0,      -2268,  -7,     19164, 14804, 19177,
-		    -1250,  -4456,  1261,   15033, 19181, 15027,
-		    -11,    3719,   -29,    2512,  12400, 25744,
-		    18,     -729,   0,      2499,  3502,  16384,
-		    18,     -729,   0,      2499,  3502,  8192,
-		    10,     13,     -4,     11307, 10240, 11305,
-		    0,      -7924,  0,      19284, 26417, 19284,
-		    10,     571,    -4,     26296, 10240, 26296,
-		    0,      -1179,  0,      12650, 11632, 12650,
-		    -20,    -648,   3,      21118, 12522, 11317,
-		    -1004,  -659,   3,      15913, 11559, 11389,
-		    -2,     -940,   7,      11358, 7008,  7610,
-		    11,     -1241,  -970,   11392, 8260,  9453,
-		    -839,   -3912,  2790,   13113, 12952, 13093,
-		    21,     1102,   28,     12370, 7866,  12443,
-		    -356,   3009,   455,    15605, 16258, 15792,
-		    -10,    135,    -2,     10652, 10483, 10652,
-		    -10,    3533,   -2,     11360, 17279, 11360,
-		    3,      1034,   -8,     16067, 12281, 16067,
-		    -30,    -1170,  1263,   17529, 15612, 20229,
-		    37,     -1069,  0,      33845, 11291, 33770,
-		    -10,    1016,   -2,     7641,  12244, 7631,
-		    1,      2565,   28,     11733, 15342, 7568,
-		    -10,    6381,   22,     7568,  22975, 7582,
-		    -1783,  7259,   22,     11115, 24731, 7582,
-		    1117,   6019,   22,     11364, 22251, 7582,
-		    18,     -459,   16,     2499,  4043,  16350,
-		    0,      0,      0,      1940,  1940,  1940,
-		    0,      0,      0,      1940,  1940,  1940,
-		    0,      -5143,  0,      55879, 69796, 55879,
-		    0,      -4444,  0,      22222, 55555, 22222,
-		    -9617,  8646,   -9617,  11781, 10784, 11781,
-		    0,      -15497, 0,      4866,  13737, 5263,
-		    0,      -4021,  0,      11493, 9778,  11493,
-		    0,      12391,  0,      16896, 10793, 16896,
-		    0,      3931,   0,      11240, 6126,  11240,
-		    -10361, 25852,  -11525, 25379, 16129, 23051,
-		    0,      0,      0,      0,     0,     0
-	};
 	private AbstractMesh[] stationParts;
 	private int[] partPositions;
 	private int collidingPart;
 	private int maxPartDeflection;
 	private AbstractMesh[] colBoxDebug;
+	private int[][] partsCollisions;
 	
 	public PlayerStation(Station station) {
 		super(-1, (AbstractMesh)null, 0, 0, 0);
@@ -91,34 +45,44 @@ public final class PlayerStation extends PlayerStaticFar {
 			}
 		} else {
 			this.stationParts = new AbstractMesh[arrayOfInt.length / 7];
+			this.partsCollisions = new int[this.stationParts.length][];
+			
 			if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE && this.colBoxDebug == null) {
 				this.colBoxDebug = new AbstractMesh[arrayOfInt.length / 7];
 			}
 			
 			for(int var7 = 0; var7 < this.stationParts.length; ++var7) {
 				var3 = var7 * 7;
-				this.stationParts[var7] = AEResourceManager.getGeometryResource(arrayOfInt[var3]);
+				int modelId = arrayOfInt[var3];
+				this.stationParts[var7] = AEResourceManager.getGeometryResource(modelId);
 				this.stationParts[var7].setRotationOrder((short)0);
 				this.stationParts[var7].moveTo(arrayOfInt[var3 + 1], arrayOfInt[var3 + 2], arrayOfInt[var3 + 3]);
 				this.stationParts[var7].setRotation(arrayOfInt[var3 + 4], arrayOfInt[var3 + 5], arrayOfInt[var3 + 6]);
 				this.stationParts[var7].setRenderLayer(2);
 				
-				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE && this.colBoxDebug != null) {
-					int collisionIndex = (arrayOfInt[var3] - 3301) * 6;
-					if(collisionIndex >= 0 && collisionIndex + 2 < partsCollisions.length) {
-						int offsetX = partsCollisions[collisionIndex];
-						int offsetY = partsCollisions[collisionIndex + 1];
-						int offsetZ = partsCollisions[collisionIndex + 2];
+				int[] collisionData = FileRead.loadStationPartCollision(modelId, 0);
+				this.partsCollisions[var7] = collisionData;
+				
+				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE && this.colBoxDebug != null && collisionData != null) {
+					int boxCount = collisionData.length / 6;
+					
+					if(boxCount > 0) {
+						int offsetX = collisionData[0];
+						int offsetY = collisionData[1];
+						int offsetZ = collisionData[2];
+						int sizeX = collisionData[3];
+						int sizeY = collisionData[4];
+						int sizeZ = collisionData[5];
 						
 						this.colBoxDebug[var7] = AEResourceManager.getGeometryResource(2510);
 						this.colBoxDebug[var7].setRotationOrder((short)0);
 						
-						this.colBoxDebug[var7].moveTo(arrayOfInt[var3 + 1] + offsetX, arrayOfInt[var3 + 2] + offsetY, arrayOfInt[var3 + 3] + offsetZ);
+						this.colBoxDebug[var7].moveTo(
+							arrayOfInt[var3 + 1] + offsetX, 
+							arrayOfInt[var3 + 2] + offsetY, 
+							arrayOfInt[var3 + 3] + offsetZ
+						);
 						this.colBoxDebug[var7].setRotation(arrayOfInt[var3 + 4], arrayOfInt[var3 + 5], arrayOfInt[var3 + 6]);
-						
-						int sizeX = partsCollisions[collisionIndex + 3];
-						int sizeY = partsCollisions[collisionIndex + 4];
-						int sizeZ = partsCollisions[collisionIndex + 5];
 						this.colBoxDebug[var7].setScale(sizeX, sizeY, sizeZ);
 						this.colBoxDebug[var7].setRenderLayer(2);
 					}
@@ -135,34 +99,47 @@ public final class PlayerStation extends PlayerStaticFar {
 		Matrix var8 = new Matrix();
 		
 		for(var3 = 0; var3 < this.stationParts.length; ++var3) {
-			int var9 = (this.stationParts[var3].getID() - 3301) * 6;
-			System.out.println("" + this.stationParts[var3].getID() + "," + this.partsCollisions[var9] + "," + this.partsCollisions[var9 + 1] + "," + this.partsCollisions[var9 + 2] + "," + this.partsCollisions[var9 + 3] + "," + this.partsCollisions[var9 + 4] + "," + this.partsCollisions[var9 + 5]);
-			this.tempVector_ = this.stationParts[var3].getPosition(this.tempVector_);
+			int modelId = this.stationParts[var3].getID();
+			int[] collisionData = this.partsCollisions != null ? this.partsCollisions[var3] : null;
 			
-			if(AEMath.abs(this.tempVector_.x) > this.maxPartDeflection) {
-				this.maxPartDeflection = AEMath.abs(this.tempVector_.x);
+			if(collisionData != null) {
+				int offsetX = collisionData[0];
+				int offsetY = collisionData[1];
+				int offsetZ = collisionData[2];
+				int sizeX = collisionData[3];
+				int sizeY = collisionData[4];
+				int sizeZ = collisionData[5];
+				
+				this.tempVector_ = this.stationParts[var3].getPosition(this.tempVector_);
+				
+				if(AEMath.abs(this.tempVector_.x) > this.maxPartDeflection) {
+					this.maxPartDeflection = AEMath.abs(this.tempVector_.x);
+				}
+				
+				if(AEMath.abs(this.tempVector_.y) > this.maxPartDeflection) {
+					this.maxPartDeflection = AEMath.abs(this.tempVector_.y);
+				}
+				
+				if(AEMath.abs(this.tempVector_.z) > this.maxPartDeflection) {
+					this.maxPartDeflection = AEMath.abs(this.tempVector_.z);
+				}
+				
+				int var4 = this.tempVector_.x;
+				int var5 = this.tempVector_.y;
+				int var6 = this.tempVector_.z;
+				
+				var8.setRotation(this.stationParts[var3].getEulerX(), this.stationParts[var3].getEulerY(), this.stationParts[var3].getEulerZ());
+				virtDistToCam_.set(offsetX, offsetY, offsetZ);
+				
+				this.position = var8.transformVectorNoScale(virtDistToCam_, this.position);
+				virtDistToCam_.set(sizeX + 5000, sizeY + 5000, sizeZ + 5000);
+				
+				this.tempVector_ = var8.transformVectorNoScale(virtDistToCam_, this.tempVector_);
+				this.boundingBoxes[var3] = new BoundingAAB(var4, var5, var6, this.position.x, this.position.y, this.position.z, this.tempVector_.x, this.tempVector_.y, this.tempVector_.z);
+			} else {
+				System.out.println("No collision data for model: " + modelId);
+				this.boundingBoxes[var3] = new BoundingAAB(0, 0, 0, 0, 0, 0, 2000, 2000, 2000);
 			}
-			
-			if(AEMath.abs(this.tempVector_.y) > this.maxPartDeflection) {
-				this.maxPartDeflection = AEMath.abs(this.tempVector_.y);
-			}
-			
-			if(AEMath.abs(this.tempVector_.z) > this.maxPartDeflection) {
-				this.maxPartDeflection = AEMath.abs(this.tempVector_.z);
-			}
-			
-			int var4 = this.tempVector_.x;
-			int var5 = this.tempVector_.y;
-			int var6 = this.tempVector_.z;
-			
-			var8.setRotation(this.stationParts[var3].getEulerX(), this.stationParts[var3].getEulerY(), this.stationParts[var3].getEulerZ());
-			virtDistToCam_.set(this.partsCollisions[var9], this.partsCollisions[var9 + 1], this.partsCollisions[var9 + 2]);
-			
-			this.position = var8.transformVectorNoScale(virtDistToCam_, this.position);
-			virtDistToCam_.set(this.partsCollisions[var9 + 3] + 5000, this.partsCollisions[var9 + 4] + 5000, this.partsCollisions[var9 + 5] + 5000);
-			
-			this.tempVector_ = var8.transformVectorNoScale(virtDistToCam_, this.tempVector_);
-			this.boundingBoxes[var3] = new BoundingAAB(var4, var5, var6, this.position.x, this.position.y, this.position.z, this.tempVector_.x, this.tempVector_.y, this.tempVector_.z);
 			
 			if(Status.getSystem() != null) {
 				arrayOfInt = Globals.getRaceUVkeyframeId_(Status.getSystem().getRace());
@@ -207,7 +184,7 @@ public final class PlayerStation extends PlayerStaticFar {
 		if(this.stationParts != null) {
 			for(int var1 = 0; var1 < this.stationParts.length; ++var1) {
 				GlobalStatus.renderer.drawNodeInVF(this.stationParts[var1]);
-				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE && this.colBoxDebug != null) {
+				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE && this.colBoxDebug != null && this.colBoxDebug[var1] != null) {
 					GlobalStatus.renderer.forceRenderModel(this.colBoxDebug[var1]);
 				}
 			}
@@ -255,5 +232,6 @@ public final class PlayerStation extends PlayerStaticFar {
 		
 		this.stationParts = null;
 		this.partPositions = null;
+		this.partsCollisions = null;
 	}
 }

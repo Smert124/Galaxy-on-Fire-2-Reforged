@@ -495,6 +495,7 @@ public final class Globals {
 	   AEResourceManager.setText(10, "/Configs/stations.txt");
 	   AEResourceManager.setText(11, "/Configs/systems.txt");
 	   AEResourceManager.setText(12, "/Configs/interface.txt");
+	   AEResourceManager.setText(13, "/Configs/collision.txt");
 	   AEResourceManager.setText(100, "/Configs/names_terran_0_m.txt");
 	   AEResourceManager.setText(101, "/Configs/names_terran_0_w.txt");
 	   AEResourceManager.setText(102, "/Configs/names_terran_1.txt");
@@ -1415,13 +1416,18 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 32000, 0);
 		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 32000, 0);
+		
+		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
+		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
 		
 		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 15000, tex_station_midorian);
 		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 15000, tex_station_midorian);
@@ -1626,10 +1632,6 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(21053, dlc_supernova + "ship_ghost_engine_glow_add.aem", 2000, tex_ghost);
 		AEResourceManager.addGeometryResource(21054, dlc_supernova + "ship_darkangel_engine_glow_add.aem", 2000, tex_darkangel);
 		AEResourceManager.addGeometryResource(21055, dlc_supernova + "ship_ntirrk_engine_glow_add.aem", 2000, tex_ntirrk);
-		
-		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
-		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
 		
 		AEResourceManager.addGeometryResource(13064, PATH_MESHES + "boost_red.m3g", 5000, 1);
 		AEResourceManager.addGeometryResource(13065, PATH_MESHES + "boost_violet.m3g", 5000, 1);
