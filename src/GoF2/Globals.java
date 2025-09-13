@@ -274,6 +274,7 @@ public final class Globals {
    private static int skybox10 = 1094;
    private static int tex_beams = 1095;
    private static int tex_station_terran = 1096;
+   private static int tex_col_test = 1097;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -452,7 +453,7 @@ public final class Globals {
             var5.disableAnimation();
          }
 
-         if(var5.getID() == 2509 || var5.getID() == 13261 || var5.getID() == 6755 || var5.getID() == 6756 || var5.getID() == 6760 || var5.getID() == 6761 || var5.getID() == 6762 || var5.getID() == 6763 || var5.getID() == 6764 || var5.getID() == 6765 || var5.getID() == 3334 || var5.getID() == 3335 || var5.getID() == 6788 || var5.getID() == 6789 || var5.getID() == 6790 || var5.getID() == 6791 || var5.getID() == 6792 || var5.getID() == 6793 || var5.getID() == 6794 || var5.getID() == 6795 || var5.getID() == 6796 || var5.getID() == 6797 || var5.getID() == 13067 || var5.getID() == 13068 || var5.getID() == 13070 || var5.getID() == 13064 || var5.getID() == 14072 || var5.getID() == 13065 || var5.getID() == 13071 || var5.getID() == 13061 || var5.getID() == 13063 || var0 == 14 || var0 == 13 || var0 == 15 || var5.getID() >= 13001 && var5.getID() <= 14000 || var5.getID() >= 20000 && var5.getID() <= 20100) {
+         if(var5.getID() == 2509 || var5.getID() == 13261 || var5.getID() == 6755 || var5.getID() == 6756 || var5.getID() == 6760 || var5.getID() == 6761 || var5.getID() == 6762 || var5.getID() == 6763 || var5.getID() == 6764 || var5.getID() == 6765 || var5.getID() == 3334 || var5.getID() == 3335 || var5.getID() == 6788 || var5.getID() == 6789 || var5.getID() == 6790 || var5.getID() == 6791 || var5.getID() == 6792 || var5.getID() == 6793 || var5.getID() == 6794 || var5.getID() == 6795 || var5.getID() == 6796 || var5.getID() == 6797 || var5.getID() == 13067 || var5.getID() == 13068 || var5.getID() == 13070 || var5.getID() == 13064 || var5.getID() == 14072 || var5.getID() == 13065 || var5.getID() == 13071 || var5.getID() == 13061 || var5.getID() == 13063 || var0 == 14 || var0 == 13 || var0 == 15 || var5.getID() >= 13001 && var5.getID() <= 14000 || var5.getID() >= 20000 && var5.getID() <= 20100 || var5.getID() == 2510 || var5.getID() == 2511) {
             var5.moveTo(var3[var4 + 1], var3[var4 + 2], var3[var4 + 3]);
             var5.setRotation(var3[var4 + 4], var3[var4 + 5], var3[var4 + 6]);
             var5.setScale(var3[var4 + 7], var3[var4 + 8], var3[var4 + 9]);
@@ -1252,6 +1253,7 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_sn_galaxymap_planets, PATH_TEXTURES + "sn_galaxymap_planets");
 	   AEResourceManager.addTextureResource(tex_sn_sun_011, PATH_TEXTURES + "sn_sun_011");
 	   AEResourceManager.addTextureResource(tex_gof1, PATH_TEXTURES + "tex_gof1");
+	   AEResourceManager.addTextureResource(tex_col_test, "/Resource/col_test");
 	   
 	   AEResourceManager.addTextureResource(tex_planet_0, "/Resource/textures/planets/planet_0");
 	   AEResourceManager.addTextureResource(tex_planet_1, "/Resource/textures/planets/planet_1");
@@ -1359,7 +1361,8 @@ public final class Globals {
 		
 		AEResourceManager.addGeometryResource(0, PATH_MESHES + "error.aem", 2000, 0);
 		AEResourceManager.addGeometryResource(2509, PATH_MESHES + "cross_xyz.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "col_box.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "col_box_add.aem", 500000, tex_col_test);
+		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "col_sphere.aem", 15000, tex_col_test);
 		AEResourceManager.addSkyboxResource(9991, PATH_MESHES + "skybox.m3g", 1);
 		AEResourceManager.addGeometryResource(10000, PATH_MESHES + "skybox/skybox00_add.aem", -1, skybox00);
 		AEResourceManager.addGeometryResource(10001, PATH_MESHES + "skybox/skybox01_add.aem", -1, skybox01);
@@ -1376,6 +1379,7 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(16, PATH_MESHES + "emp.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "box.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(18, PATH_MESHES + "nuke.m3g", 2000, 0);
+		
 		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 15000, 0);
@@ -1623,8 +1627,9 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(21054, dlc_supernova + "ship_darkangel_engine_glow_add.aem", 2000, tex_darkangel);
 		AEResourceManager.addGeometryResource(21055, dlc_supernova + "ship_ntirrk_engine_glow_add.aem", 2000, tex_ntirrk);
 		
-		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation_idle.m3g", 15000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
 		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
+		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
 		
 		AEResourceManager.addGeometryResource(13064, PATH_MESHES + "boost_red.m3g", 5000, 1);
 		AEResourceManager.addGeometryResource(13065, PATH_MESHES + "boost_violet.m3g", 5000, 1);

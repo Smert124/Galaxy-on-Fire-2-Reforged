@@ -469,8 +469,8 @@ public final class JSRMesh extends AbstractMesh {
             if(var3) {
                var8.setColor(Material.EMISSIVE, -1);
             } else {
-				var8.setColor(Material.AMBIENT, 0x161616);
-				var8.setColor(Material.DIFFUSE, 0xFF555555);
+				var8.setColor(Material.AMBIENT, GoF2.Level.skyNormalizedLight());
+				var8.setColor(Material.DIFFUSE, 0xFF444444);
 				var8.setColor(Material.EMISSIVE, 0);
 				var8.setColor(Material.SPECULAR, GoF2.Level.skyNormalizedLight());
 			}
