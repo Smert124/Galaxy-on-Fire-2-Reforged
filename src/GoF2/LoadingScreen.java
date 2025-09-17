@@ -61,6 +61,7 @@ public final class LoadingScreen implements Runnable {
 			 Font.drawString("STATIONS: " + GlobalStatus.max_stations, 5, 80, 6);
 			 Font.drawString("SHIPS: " + GlobalStatus.max_ships, 5, 100, 6);
 			 Font.drawString("ITEMS: " + GlobalStatus.max_items, 5, 120, 6);
+			 Font.drawString("COLLISION TEST: " + GlobalStatus.STATION_COLLISION_BOX_VISIBLE, 5, 140, 6);
 		 }
 		 Font.drawString("DEVELOPER: " + GlobalStatus.developer_mode, 5, 0, 6);
 		 Font.sub_14d_CENTER(GlobalStatus.CATCHED_ERROR, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 / 2, 4); // BLYAT

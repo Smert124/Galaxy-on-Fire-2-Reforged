@@ -51,49 +51,49 @@ public final class FileRead {
 					
 					case 0:
 						GlobalStatus.max_stations = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 1:
 						GlobalStatus.max_systems = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 2:
 						GlobalStatus.max_ships = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 3:
 						GlobalStatus.max_items = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 4:
-						GlobalStatus.difficult = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+						GlobalStatus.STATION_COLLISION_BOX_VISIBLE = Integer.parseInt(parts[1].trim()) == 1;
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 5:
 						GlobalStatus.shields = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 					
 					
 					case 6:
 						GlobalStatus.kaamo = Integer.parseInt(parts[1].trim());
-						//System.out.println(parts[0] + ": " + parts[1]);
+					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					
 				}
@@ -125,10 +125,10 @@ public final class FileRead {
 				}
 				
 				String var3 = parts[0].trim();
-				int var4 = Integer.parseInt(parts[1]);
-				int var5 = Integer.parseInt(parts[2]);
-				int var6 = Integer.parseInt(parts[3]);
-				int var7 = Integer.parseInt(parts[4]);
+				int var4 = Integer.parseInt(parts[1].trim());
+				int var5 = Integer.parseInt(parts[2].trim());
+				int var6 = Integer.parseInt(parts[3].trim());
+				int var7 = Integer.parseInt(parts[4].trim());
 				
 				for(int var10 = 0; var10 < var0.length; ++var10) {
 					if(var0[var10] == var9) {
@@ -161,19 +161,19 @@ public final class FileRead {
 					return null;
 				}
 				byte shippart_id = Byte.parseByte(parts[0].trim());
-				shippart_parameter = new int[Byte.parseByte(parts[1]) * 10];
+				shippart_parameter = new int[Byte.parseByte(parts[1].trim()) * 10];
 				
 				for(int var5 = 0; var5 < shippart_parameter.length; var5 += 10) {
-					shippart_parameter[var5] = Short.parseShort(parts[var5 + 2]); // модель
-					shippart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3]); // XYZ
-					shippart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4]); // XYZ
-					shippart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5]); // XYZ
-					shippart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6]); // XYZ1
-					shippart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7]);  // XYZ1
-					shippart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8]); // XYZ1
-					shippart_parameter[var5 + 7] = Short.parseShort(parts[var5 + 9]); // XYZ2
-					shippart_parameter[var5 + 8] = Short.parseShort(parts[var5 + 10]); // XYZ2
-					shippart_parameter[var5 + 9] = Short.parseShort(parts[var5 + 11]); // XYZ2
+					shippart_parameter[var5] = Short.parseShort(parts[var5 + 2].trim()); // модель
+					shippart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3].trim()); // XYZ
+					shippart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4].trim()); // XYZ
+					shippart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5].trim()); // XYZ
+					shippart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6].trim()); // XYZ1
+					shippart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7].trim());  // XYZ1
+					shippart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8].trim()); // XYZ1
+					shippart_parameter[var5 + 7] = Short.parseShort(parts[var5 + 9].trim()); // XYZ2
+					shippart_parameter[var5 + 8] = Short.parseShort(parts[var5 + 10].trim()); // XYZ2
+					shippart_parameter[var5 + 9] = Short.parseShort(parts[var5 + 11].trim()); // XYZ2
 				}
 				if(shippart_id == call_parameter) {
 					return shippart_parameter;
@@ -252,17 +252,17 @@ public final class FileRead {
 				}
 				
 				byte stationpart_id = Byte.parseByte(parts[0].trim());
-				short var6 = Short.parseShort(parts[2]);
-				stationpart_parameter = new int[Byte.parseByte(parts[1]) * 7];
+				short var6 = Short.parseShort(parts[2].trim());
+				stationpart_parameter = new int[Byte.parseByte(parts[1].trim()) * 7];
 				
 				for(int var5 = 0; var5 < stationpart_parameter.length; var5 += 7) {
-					stationpart_parameter[var5] = Short.parseShort(parts[var5 + 2]); // модель
-					stationpart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3]);
-					stationpart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4]);
-					stationpart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5]);
-					stationpart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6]);
-					stationpart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7]);
-					stationpart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8]);
+					stationpart_parameter[var5] = Short.parseShort(parts[var5 + 2].trim()); // модель
+					stationpart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3].trim());
+					stationpart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4].trim());
+					stationpart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5].trim());
+					stationpart_parameter[var5 + 4] = Short.parseShort(parts[var5 + 6].trim());
+					stationpart_parameter[var5 + 5] = Short.parseShort(parts[var5 + 7].trim());
+					stationpart_parameter[var5 + 6] = Short.parseShort(parts[var5 + 8].trim());
 				}
 				if(stationpart_id == var0) {
 					return stationpart_parameter;
@@ -360,10 +360,10 @@ public final class FileRead {
 				}
 				
 				String station_name = parts[0].trim();
-				int station_number = Integer.parseInt(parts[1]);
-				int system_number = Integer.parseInt(parts[2]);
-				int station_techlevel = Integer.parseInt(parts[3]);
-				int station_planet_image = Integer.parseInt(parts[4]);
+				int station_number = Integer.parseInt(parts[1].trim());
+				int system_number = Integer.parseInt(parts[2].trim());
+				int station_techlevel = Integer.parseInt(parts[3].trim());
+				int station_planet_image = Integer.parseInt(parts[4].trim());
 				
 				for(int var10 = 0; var10 < var12.length; ++var10) {
 					if(var12[var10] == var9) {
@@ -499,36 +499,36 @@ public final class FileRead {
 				if(data.length < system_number) {
 					data = null;
 				}
-				String[] parts = split(data[system_number], ",");
+				String[] parts = split(data[system_number].trim(), ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
 				
 				String system_name = parts[0].trim();
-				int system_safety = Integer.parseInt(parts[1]);
-				boolean system_visible = Integer.parseInt(parts[2]) == 1;
+				int system_safety = Integer.parseInt(parts[1].trim());
+				boolean system_visible = Integer.parseInt(parts[2].trim()) == 1;
 				boolean system_visible_debug = true;
-				int system_race = Integer.parseInt(parts[3]);
-				int system_x = Integer.parseInt(parts[4]);
-				int system_y = Integer.parseInt(parts[5]);
-				int system_z = Integer.parseInt(parts[6]);
-				int system_retranslator_installed = Integer.parseInt(parts[7]);
-				int sun_type = Integer.parseInt(parts[8]);
-				int system_color_RGB[] = {Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), Integer.parseInt(parts[11])};
-				int system_stations_id[] = new int[Integer.parseInt(parts[12])];
+				int system_race = Integer.parseInt(parts[3].trim());
+				int system_x = Integer.parseInt(parts[4].trim());
+				int system_y = Integer.parseInt(parts[5].trim());
+				int system_z = Integer.parseInt(parts[6].trim());
+				int system_retranslator_installed = Integer.parseInt(parts[7].trim());
+				int sun_type = Integer.parseInt(parts[8].trim());
+				int system_color_RGB[] = {Integer.parseInt(parts[9].trim()), Integer.parseInt(parts[10].trim()), Integer.parseInt(parts[11].trim())};
+				int system_stations_id[] = new int[Integer.parseInt(parts[12].trim())];
 				
 				int var14;
 				for(var14 = 0; var14 < system_stations_id.length; ++var14) {
-					system_stations_id[var14] = Integer.parseInt(parts[13 + var14]);
+					system_stations_id[var14] = Integer.parseInt(parts[13 + var14].trim());
 				}
 				
 				int[] systems_end_file = new int[0];
 				int[] systems_retranslator = new int[0];
-				var14 = Integer.parseInt(parts[13 + system_stations_id.length]);
+				var14 = Integer.parseInt(parts[13 + system_stations_id.length].trim());
 				if(var14 > 0) {
 					systems_retranslator = new int[var14];
 					for(var14 = 0; var14 < systems_retranslator.length; ++var14) {
-						systems_retranslator[var14] = Integer.parseInt(parts[14 + system_stations_id.length + var14]);
+						systems_retranslator[var14] = Integer.parseInt(parts[14 + system_stations_id.length + var14].trim());
 					}
 				}
 				

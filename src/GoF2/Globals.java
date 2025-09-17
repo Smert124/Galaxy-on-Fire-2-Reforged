@@ -1381,6 +1381,45 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "box.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(18, PATH_MESHES + "nuke.m3g", 2000, 0);
 		
+		
+		
+		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 15000, tex_station_midorian);
+		
+		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 15000, tex_station_midorian);
+		
+		
+		
+		
 		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 15000, 0);
@@ -1424,11 +1463,9 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 15000, 0);
-		
 		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
 		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
 		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
-		
 		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 15000, tex_station_midorian);
 		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 15000, tex_station_midorian);
 		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 15000, tex_station_midorian);

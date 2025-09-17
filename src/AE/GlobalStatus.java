@@ -156,7 +156,7 @@ public final class GlobalStatus {
    public static final int INTERFACE_IMAGE_1 = 54;
    public static final int INTERFACE_IMAGE_SHIP = 1;
    public static final int INTERFACE_IMAGE_ITEMS = 3;
-   public static final boolean STATION_COLLISION_BOX_VISIBLE = true;
+   public static boolean STATION_COLLISION_BOX_VISIBLE = false;
    
    public static void vibrate(int var0) {
       if(vibrationOn) {

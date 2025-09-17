@@ -138,7 +138,7 @@ public final class PlayerStation extends PlayerStaticFar {
 				this.boundingBoxes[var3] = new BoundingAAB(var4, var5, var6, this.position.x, this.position.y, this.position.z, this.tempVector_.x, this.tempVector_.y, this.tempVector_.z);
 			} else {
 				System.out.println("No collision data for model: " + modelId);
-				this.boundingBoxes[var3] = new BoundingAAB(0, 0, 0, 0, 0, 0, 2000, 2000, 2000);
+				this.boundingBoxes[var3] = new BoundingAAB(0, 0, 0, 0, 0, 0, 512, 512, 512);
 			}
 			
 			if(Status.getSystem() != null) {
