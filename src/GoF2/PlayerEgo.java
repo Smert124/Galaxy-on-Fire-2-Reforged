@@ -826,12 +826,19 @@ public final class PlayerEgo {
                      var4.subtract(this.vecUp);
                      var8 = var4.getLength();
                      var4.scale((int)((float)(this.frameTime >> 2) * (float)(var8 >> 7)));
-                     this.vecRight = this.vecUp.add(var4, this.vecRight);
+                     /* this.vecRight = this.vecUp.add(var4, this.vecRight);
                      this.vecRight.normalize();
                      this.shipGrandGroup_.getToParentTransform().setOrientation(this.vecRight);
                      this.shipGrandGroup_.moveForward((int)this.frameTime * this.speed);
-                     this.alignToHorizon((int)this.frameTime);
+                     this.alignToHorizon((int)this.frameTime); */
+					 
+					 int push = (int)this.frameTime;
+					 this.shipGrandGroup_.translate((var4.x * push) >> 8, (var4.y * push) >> 8, (var4.z * push) >> 8);
+					 this.shipGrandGroup_.moveForward((int)this.frameTime * this.speed * -1);
+					 
+					 
                      this.beingPushedAway = true;
+					 
                      if(var2 == 0) {
                         this.touchesStation = true;
                         return;

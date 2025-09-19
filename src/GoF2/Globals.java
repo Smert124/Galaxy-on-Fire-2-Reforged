@@ -1363,7 +1363,8 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(0, PATH_MESHES + "error.aem", 2000, 0);
 		AEResourceManager.addGeometryResource(2509, PATH_MESHES + "cross_xyz.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "col_box_add.aem", 500000, tex_col_test);
-		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "col_sphere.aem", 15000, tex_col_test);
+		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "col_sphere_add.aem", 15000, tex_col_test);
+		AEResourceManager.addGeometryResource(2512, PATH_MESHES + "submesh_test.aem", 15000, tex_station_deescience);
 		AEResourceManager.addSkyboxResource(9991, PATH_MESHES + "skybox.m3g", 1);
 		AEResourceManager.addGeometryResource(10000, PATH_MESHES + "skybox/skybox00_add.aem", -1, skybox00);
 		AEResourceManager.addGeometryResource(10001, PATH_MESHES + "skybox/skybox01_add.aem", -1, skybox01);

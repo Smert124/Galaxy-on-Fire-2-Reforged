@@ -46,16 +46,19 @@ public final class AEMesh extends AbstractMesh {
             } else {
                 This.aemFile = new DataInputStream(This.getClass().getResourceAsStream(path));
             }
-
+			
             byte[] magic = new byte[9];
             This.aemFile.read(magic, 0, 9); //(buffer, offset, length)
             int version = magic[1] - (byte) '0';
 
             int bufferSize, i, flags;
             flags = This.aemFile.readUnsignedByte();
+			
+			int submesh = This.aemFile.readUnsignedShort();
+			System.out.println("" + submesh);
 
             if (version == 4) {
-                This.aemFile.skip(14);
+                This.aemFile.skip(12);
             }
 
             if ((flags & 16) != 0) {
@@ -113,11 +116,10 @@ public final class AEMesh extends AbstractMesh {
                     for (i = 0; i < normalsBuffer.length; ++i) {
                         normalsBuffer[i] = intBitRevesedToFloat(This.aemFile.readInt());
                     }
-
-                    // Преобразование float нормалей в short перед передачей в VertexArray
+					
                     short[] shortNormalsBuffer = new short[normalsBuffer.length];
                     for (i = 0; i < normalsBuffer.length; ++i) {
-                        shortNormalsBuffer[i] = (short) (normalsBuffer[i] * 32767); // Масштабирование float значений до short
+                        shortNormalsBuffer[i] = (short) (normalsBuffer[i] * 32767);
                     }
 
                     normalArray = new VertexArray(shortNormalsBuffer.length / 3, 3, 2);
@@ -268,18 +270,14 @@ public final class AEMesh extends AbstractMesh {
 			Mesh mesh = (Mesh) node;
 			VertexBuffer vertexBuffer = mesh.getVertexBuffer();
 			
-			// Получите нормали из VertexBuffer
 			VertexArray normalArray = vertexBuffer.getNormals();
 			
-			// Проверьте, что нормали доступны
 			if(normalArray != null) {
 				System.out.println("Normals are available.");
 				
-				// Создайте буфер для хранения нормалей
 				short[] normalBuffer = new short[3];
 				
-				// Получите первую нормаль
-				normalArray.get(0, 1, normalBuffer); // 0 - индекс вершины, 1 - количество нормалей
+				normalArray.get(0, 1, normalBuffer);
 				short nx = normalBuffer[0];
 				short ny = normalBuffer[1];
 				short nz = normalBuffer[2];
@@ -290,7 +288,7 @@ public final class AEMesh extends AbstractMesh {
 		}
 	}
 
-    private static int swapBytes(int var0) { //sub_2a5
+    private static int swapBytes(int var0) {
         return (var0 & 255) << 8 | var0 >> 8 & 255;
     }
 
