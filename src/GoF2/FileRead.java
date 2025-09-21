@@ -615,16 +615,18 @@ public final class FileRead {
 		Ship[] var0 = null;
 		try {
 			String all_text = AEResourceManager.getText(6);
+			all_text = removeComments(all_text);
 			var0 = new Ship[GlobalStatus.max_ships];
 			String[] ship_name = new String[GlobalStatus.max_ships];
-			for(int i = 0; i < GlobalStatus.max_ships; ++i) {
-				String[] data = split(all_text, ";");
-				if(data.length < i) {
-					data = null;
+			String[] data = split(all_text, ";");
+			for(int i = 0; i < Math.min(data.length, GlobalStatus.max_ships); ++i) {
+				if(data[i] == null || data[i].trim().length() == 0) {
+					continue;
 				}
 				String[] parts = split(data[i].trim(), ",");
-				if(parts.length == 0) {
-					parts = null;
+				if(parts.length < 10) {
+					System.out.println("Invalid ship data at line " + i + ": " + data[i]);
+					continue;
 				}
 				
 				ship_name[i] = parts[0].trim();
@@ -637,19 +639,20 @@ public final class FileRead {
 				int ship_turret = Integer.parseInt(parts[7].trim());
 				int ship_equipment = Integer.parseInt(parts[8].trim());
 				int ship_control = Integer.parseInt(parts[9].trim());
+				
 				var0[i] = new Ship(ship_name, ship_id, ship_armor, ship_cargo, ship_price, ship_primary_wepon, ship_secondary_weapon, ship_turret, ship_equipment, (float)ship_control);
 				
-				parts = null;
-				data = null;
+			//	System.out.println(ship_name[i] + "," + ship_id + "," + ship_armor + "," + ship_cargo + "," + ship_price + "," + ship_primary_wepon + "," + ship_secondary_weapon + "," + ship_turret + "," + ship_equipment + "," + ship_control + ";");
 			}
 			all_text = null;
 			System.gc();
-		} catch(Exception ex) {
+        } catch(Exception ex) {
 			GlobalStatus.CATCHED_ERROR = "loadShip ERROR: " + ex;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var0;
 	}
+	
 	
 	public static String[] loadNamesBinary(int var0, boolean var1, boolean var2) {
 		String[] names = null;
@@ -835,5 +838,30 @@ public final class FileRead {
 		}
 		sb.append("]");
 		return sb.toString();
+	}
+	
+	private static String removeComments(String text) {
+		if(text == null) {
+			return "";
+		}
+		
+		StringBuffer result = new StringBuffer();
+		boolean inComment = false;
+		
+		for(int i = 0; i < text.length(); i++) {
+			char currentChar = text.charAt(i);
+			if(inComment) {
+				if(currentChar == '#' && i > 0 && text.charAt(i-1) != '\\') {
+					inComment = false;
+				}
+			} else {
+				if(currentChar == '#' && (i == 0 || text.charAt(i-1) != '\\')) {
+					inComment = true;
+				} else {
+					result.append(currentChar);
+				}
+			}
+		}
+		return result.toString();
 	}
 }

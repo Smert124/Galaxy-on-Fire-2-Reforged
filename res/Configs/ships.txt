@@ -1,65 +1,852 @@
-Betty,0,100,30,8500,1,1,0,4,115;
-Teneta,1,195,65,157900,2,4,1,8,110;
-Hiro,2,150,45,82400,2,2,0,4,165;
-Badger,3,125,70,89200,2,1,0,6,110;
-Dace,4,150,35,450700,4,3,0,5,140;
-Inflict,5,150,45,35500,2,2,0,4,125;
-Hector,6,110,40,102500,2,1,0,5,135;
-Anaan,7,250,300,300000,2,2,1,7,80;
-VoidX,8,3000,50,20000000,4,4,0,25,250;
-H'Soc,9,250,50,240000,2,2,0,7,170;
-Phantom,10,350,75,5500000,2,4,0,10,170;
-Hernstein,11,210,180,360000,2,2,1,8,75;
-Type 43,12,175,30,120000,2,2,0,7,130;
-K'sarr,13,5000,1500,75000000,0,0,1,3,25;
-Terran Cruiser,14,7500,650,150000000,10,4,1,5,20;
-Terran Freighter,15,3000,750,75000000,0,0,1,4,25;
-Kinzer,16,180,45,2000000,2,4,0,10,130;
-Ward,17,150,60,1500000,4,2,0,10,100;
-Hatsuyuki,18,115,30,190000,2,2,0,8,143;
-Nuyang II,19,225,105,1200000,4,2,0,9,90;
-Cicero,20,120,25,50000,2,2,0,6,130;
-Aegir,21,190,70,3200000,4,4,0,11,145;
-Groza,22,160,130,500000,3,3,0,8,125;
-Azov,23,145,55,65000,2,3,1,6,113;
-Velasco,24,142,75,800000,3,3,1,8,125;
-Tyrion,25,170,55,600000,1,2,0,8,135;
-Hera,26,152,64,180000,2,2,0,7,108;
-Taipan,27,161,50,178000,3,2,0,6,113;
-Veteran,28,250,150,7000000,3,4,1,15,110;
-Mantis,29,350,130,9500000,4,4,0,15,130;
-Berger CrossXT,30,156,53,150000,2,2,0,7,118;
-Salvehn,31,165,110,256000,2,2,1,6,95;
-Wasp,32,105,35,95000,2,2,0,6,165;
-Furious,33,175,100,79000,1,2,1,7,150;
-Razor 6,34,135,60,650000,4,2,0,5,130;
-Night Owl,35,125,40,26500,1,2,0,4,200;
-Cormorant,36,200,350,168900,0,4,1,8,45;
-Cronus,37,190,95,4500000,2,2,0,7,120;
-Typhon,38,175,40,1666667,4,0,0,12,145;
-S'Kanarr,39,315,150,7250000,4,2,1,11,70;
-Nemesis,40,235,105,3400000,4,1,0,14,95;
-K'Suukk,41,255,55,1300000,3,2,0,12,125;
-Vol Noor,42,165,75,84000,2,2,0,7,110;
-Wraith,43,180,65,1166667,4,2,0,9,140;
-Specter,44,800,65,12000000,4,2,0,16,138;
-Bloodstar,45,460,180,5400000,4,4,1,14,88;
-Blue Fyre,46,270,125,2571429,3,3,0,13,116;
-Gator Custom,47,335,320,2971429,4,2,0,12,95;
-Amboss,48,305,80,3400000,4,4,0,14,110;
-Scimitar,49,400,40,3314286,3,2,0,15,105;
-Rhino,50,1200,480,466667,0,2,1,9,30;
-Gryphon,51,220,90,1400000,4,2,0,10,130;
-Na'srrk,52,280,70,3085714,4,4,0,12,145;
-Groza Mk II,53,450,90,3565000,5,1,0,11,122;
-Berger Cross Special,54,410,55,3705000,4,4,0,14,130;
-Kinzer RS,55,420,65,4465000,4,4,0,15,125;
-Phantom XT,56,425,60,3715000,4,1,0,14,150;
-Teneta R.E.D.,57,545,70,3805000,4,2,1,13,118;
-Darkzov,58,420,70,3618000,4,1,1,14,130;
-Ghost,59,530,50,3333333,4,2,0,14,135;
-Dark Angel,60,350,85,3650000,4,2,1,14,125;
-N'Tirrk,61,280,80,200000,2,4,0,8,128;
-Hawk,62,180,45,29300,2,1,0,4,105;
-Icarus,63,135,10,25600,2,0,0,3,200;
-Draaken,64,330,60,320000,1,4,0,7,75;
+#------------------------------------------------------------------------------#
+#       Comments are enclosed in hash marks and are ignored by the parser.     #
+#          The end of a ship description is indicated by a semicolon.          #
+#                                SHIPS CONFIG                                  #
+#------------------------------------------------------------------------------#
+
+
+
+
+
+#       NAME       #                    Betty,
+#        ID        #                        0,
+#       ARMOR      #                      100,
+#       CARGO      #                       30,
+#       PRICE      #                     8500,
+#  PRIMARY WEAPON  #                        1,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                      115;
+
+
+
+#       NAME       #                   Teneta,
+#        ID        #                        1,
+#       ARMOR      #                      195,
+#       CARGO      #                       65,
+#       PRICE      #                   157900,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      110;
+
+
+
+#       NAME       #                     Hiro,
+#        ID        #                        2,
+#       ARMOR      #                      150,
+#       CARGO      #                       45,
+#       PRICE      #                    82400,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                      165;
+
+
+
+#       NAME       #                   Badger,
+#        ID        #                        3,
+#       ARMOR      #                      125,
+#       CARGO      #                       70,
+#       PRICE      #                    89200,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                      110;
+
+
+
+#       NAME       #                     Dace,
+#        ID        #                        4,
+#       ARMOR      #                      150,
+#       CARGO      #                       35,
+#       PRICE      #                   450700,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        3,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        5,
+#     HANDLING     #                      140;
+
+
+
+#       NAME       #                  Inflict,
+#        ID        #                        5,
+#       ARMOR      #                      150,
+#       CARGO      #                       45,
+#       PRICE      #                    35500,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #                   Hector,
+#        ID        #                        6,
+#       ARMOR      #                      110,
+#       CARGO      #                       40,
+#       PRICE      #                   102500,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        5,
+#     HANDLING     #                      135;
+
+
+
+#       NAME       #                    Anaan,
+#        ID        #                        7,
+#       ARMOR      #                      250,
+#       CARGO      #                      300,
+#       PRICE      #                   300000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                       80;
+
+
+
+#       NAME       #                    VoidX,
+#        ID        #                        8,
+#       ARMOR      #                     3000,
+#       CARGO      #                       50,
+#       PRICE      #                 20000000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       25,
+#     HANDLING     #                      250;
+
+
+
+#       NAME       #                    H'Soc,
+#        ID        #                        9,
+#       ARMOR      #                      250,
+#       CARGO      #                       50,
+#       PRICE      #                   240000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      170;
+
+
+
+#       NAME       #                  Phantom,
+#        ID        #                       10,
+#       ARMOR      #                      350,
+#       CARGO      #                       75,
+#       PRICE      #                  5500000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       10,
+#     HANDLING     #                      170;
+
+
+
+#       NAME       #                Hernstein,
+#        ID        #                       11,
+#       ARMOR      #                      210,
+#       CARGO      #                      180,
+#       PRICE      #                   360000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                       75;
+
+
+
+#       NAME       #                  Type 43,
+#        ID        #                       12,
+#       ARMOR      #                      175,
+#       CARGO      #                       30,
+#       PRICE      #                   120000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                   K'sarr,
+#        ID        #                       13,
+#       ARMOR      #                     5000,
+#       CARGO      #                     1500,
+#       PRICE      #                 75000000,
+#  PRIMARY WEAPON  #                        0,
+# SECONDARY WEAPON #                        0,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        3,
+#     HANDLING     #                       25;
+
+
+
+#       NAME       #           Terran Cruiser,
+#        ID        #                       14,
+#       ARMOR      #                     7500,
+#       CARGO      #                      650,
+#       PRICE      #                150000000,
+#  PRIMARY WEAPON  #                       10,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        5,
+#     HANDLING     #                       20;
+
+
+
+#       NAME       #         Terran Freighter,
+#        ID        #                       15,
+#       ARMOR      #                     3000,
+#       CARGO      #                      750,
+#       PRICE      #                 75000000,
+#  PRIMARY WEAPON  #                        0,
+# SECONDARY WEAPON #                        0,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                       25;
+
+
+
+#       NAME       #                   Kinzer,
+#        ID        #                       16,
+#       ARMOR      #                      180,
+#       CARGO      #                       45,
+#       PRICE      #                  2000000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       10,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                     Ward,
+#        ID        #                       17,
+#       ARMOR      #                      150,
+#       CARGO      #                       60,
+#       PRICE      #                  1500000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       10,
+#     HANDLING     #                      100;
+
+
+
+#       NAME       #                Hatsuyuki,
+#        ID        #                       18,
+#       ARMOR      #                      115,
+#       CARGO      #                       30,
+#       PRICE      #                   190000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      143;
+
+
+
+#       NAME       #                Nuyang II,
+#        ID        #                       19,
+#       ARMOR      #                      225,
+#       CARGO      #                      105,
+#       PRICE      #                  1200000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        9,
+#     HANDLING     #                       90;
+
+
+
+#       NAME       #                   Cicero,
+#        ID        #                       20,
+#       ARMOR      #                      120,
+#       CARGO      #                       25,
+#       PRICE      #                    50000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                    Aegir,
+#        ID        #                       21,
+#       ARMOR      #                      190,
+#       CARGO      #                       70,
+#       PRICE      #                  3200000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       11,
+#     HANDLING     #                      145;
+
+
+
+#       NAME       #                    Groza,
+#        ID        #                       22,
+#       ARMOR      #                      160,
+#       CARGO      #                      130,
+#       PRICE      #                   500000,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        3,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #                     Azov,
+#        ID        #                       23,
+#       ARMOR      #                      145,
+#       CARGO      #                       55,
+#       PRICE      #                    65000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        3,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                      113;
+
+
+
+#       NAME       #                  Velasco,
+#        ID        #                       24,
+#       ARMOR      #                      142,
+#       CARGO      #                       75,
+#       PRICE      #                   800000,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        3,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #                   Tyrion,
+#        ID        #                       25,
+#       ARMOR      #                      170,
+#       CARGO      #                       55,
+#       PRICE      #                   600000,
+#  PRIMARY WEAPON  #                        1,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      135;
+
+
+
+#       NAME       #                     Hera,
+#        ID        #                       26,
+#       ARMOR      #                      152,
+#       CARGO      #                       64,
+#       PRICE      #                   180000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      108;
+
+
+
+#       NAME       #                   Taipan,
+#        ID        #                       27,
+#       ARMOR      #                      161,
+#       CARGO      #                       50,
+#       PRICE      #                   178000,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                      113;
+
+
+
+#       NAME       #                  Veteran,
+#        ID        #                       28,
+#       ARMOR      #                      250,
+#       CARGO      #                      150,
+#       PRICE      #                  7000000,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       15,
+#     HANDLING     #                      110;
+
+
+
+#       NAME       #                   Mantis,
+#        ID        #                       29,
+#       ARMOR      #                      350,
+#       CARGO      #                      130,
+#       PRICE      #                  9500000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       15,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #           Berger CrossXT,
+#        ID        #                       30,
+#       ARMOR      #                      156,
+#       CARGO      #                       53,
+#       PRICE      #                   150000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      118;
+
+
+
+#       NAME       #                  Salvehn,
+#        ID        #                       31,
+#       ARMOR      #                      165,
+#       CARGO      #                      110,
+#       PRICE      #                   256000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                       95;
+
+
+
+#       NAME       #                     Wasp,
+#        ID        #                       32,
+#       ARMOR      #                      105,
+#       CARGO      #                       35,
+#       PRICE      #                    95000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        6,
+#     HANDLING     #                      165;
+
+
+
+#       NAME       #                  Furious,
+#        ID        #                       33,
+#       ARMOR      #                      175,
+#       CARGO      #                      100,
+#       PRICE      #                    79000,
+#  PRIMARY WEAPON  #                        1,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      150;
+
+
+
+#       NAME       #                  Razor 6,
+#        ID        #                       34,
+#       ARMOR      #                      135,
+#       CARGO      #                       60,
+#       PRICE      #                   650000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        5,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                Night Owl,
+#        ID        #                       35,
+#       ARMOR      #                      125,
+#       CARGO      #                       40,
+#       PRICE      #                    26500,
+#  PRIMARY WEAPON  #                        1,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                      200;
+
+
+
+#       NAME       #                Cormorant,
+#        ID        #                       36,
+#       ARMOR      #                      200,
+#       CARGO      #                      350,
+#       PRICE      #                   168900,
+#  PRIMARY WEAPON  #                        0,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                       45;
+
+
+
+#       NAME       #                   Cronus,
+#        ID        #                       37,
+#       ARMOR      #                      190,
+#       CARGO      #                       95,
+#       PRICE      #                  4500000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      120;
+
+
+
+#       NAME       #                   Typhon,
+#        ID        #                       38,
+#       ARMOR      #                      175,
+#       CARGO      #                       40,
+#       PRICE      #                  1666667,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        0,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       12,
+#     HANDLING     #                      145;
+
+
+
+#       NAME       #                 S'Kanarr,
+#        ID        #                       39,
+#       ARMOR      #                      315,
+#       CARGO      #                      150,
+#       PRICE      #                  7250000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       11,
+#     HANDLING     #                       70;
+
+
+
+#       NAME       #                  Nemesis,
+#        ID        #                       40,
+#       ARMOR      #                      235,
+#       CARGO      #                      105,
+#       PRICE      #                  3400000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                       95;
+
+
+
+#       NAME       #                  K'Suukk,
+#        ID        #                       41,
+#       ARMOR      #                      255,
+#       CARGO      #                       55,
+#       PRICE      #                  1300000,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       12,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #                 Vol Noor,
+#        ID        #                       42,
+#       ARMOR      #                      165,
+#       CARGO      #                       75,
+#       PRICE      #                    84000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                      110;
+
+
+
+#       NAME       #                   Wraith,
+#        ID        #                       43,
+#       ARMOR      #                      180,
+#       CARGO      #                       65,
+#       PRICE      #                  1166667,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        9,
+#     HANDLING     #                      140;
+
+
+
+#       NAME       #                  Specter,
+#        ID        #                       44,
+#       ARMOR      #                      800,
+#       CARGO      #                       65,
+#       PRICE      #                 12000000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       16,
+#     HANDLING     #                      138;
+
+
+
+#       NAME       #                Bloodstar,
+#        ID        #                       45,
+#       ARMOR      #                      460,
+#       CARGO      #                      180,
+#       PRICE      #                  5400000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                       88;
+
+
+
+#       NAME       #                Blue Fyre,
+#        ID        #                       46,
+#       ARMOR      #                      270,
+#       CARGO      #                      125,
+#       PRICE      #                  2571429,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        3,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       13,
+#     HANDLING     #                      116;
+
+
+
+#       NAME       #             Gator Custom,
+#        ID        #                       47,
+#       ARMOR      #                      335,
+#       CARGO      #                      320,
+#       PRICE      #                  2971429,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       12,
+#     HANDLING     #                       95;
+
+
+
+#       NAME       #                   Amboss,
+#        ID        #                       48,
+#       ARMOR      #                      305,
+#       CARGO      #                       80,
+#       PRICE      #                  3400000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      110;
+
+
+
+#       NAME       #                 Scimitar,
+#        ID        #                       49,
+#       ARMOR      #                      400,
+#       CARGO      #                       40,
+#       PRICE      #                  3314286,
+#  PRIMARY WEAPON  #                        3,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       15,
+#     HANDLING     #                      105;
+
+
+
+#       NAME       #                    Rhino,
+#        ID        #                       50,
+#       ARMOR      #                     1200,
+#       CARGO      #                      480,
+#       PRICE      #                   466667,
+#  PRIMARY WEAPON  #                        0,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                        9,
+#     HANDLING     #                       30;
+
+
+
+#       NAME       #                  Gryphon,
+#        ID        #                       51,
+#       ARMOR      #                      220,
+#       CARGO      #                       90,
+#       PRICE      #                  1400000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       10,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                  Na'srrk,
+#        ID        #                       52,
+#       ARMOR      #                      280,
+#       CARGO      #                       70,
+#       PRICE      #                  3085714,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       12,
+#     HANDLING     #                      145;
+
+
+
+#       NAME       #              Groza Mk II,
+#        ID        #                       53,
+#       ARMOR      #                      450,
+#       CARGO      #                       90,
+#       PRICE      #                  3565000,
+#  PRIMARY WEAPON  #                        5,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       11,
+#     HANDLING     #                      122;
+
+
+
+#       NAME       #     Berger Cross Special,
+#        ID        #                       54,
+#       ARMOR      #                      410,
+#       CARGO      #                       55,
+#       PRICE      #                  3705000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                Kinzer RS,
+#        ID        #                       55,
+#       ARMOR      #                      420,
+#       CARGO      #                       65,
+#       PRICE      #                  4465000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       15,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #               Phantom XT,
+#        ID        #                       56,
+#       ARMOR      #                      425,
+#       CARGO      #                       60,
+#       PRICE      #                  3715000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      150;
+
+
+
+#       NAME       #            Teneta R.E.D.,
+#        ID        #                       57,
+#       ARMOR      #                      545,
+#       CARGO      #                       70,
+#       PRICE      #                  3805000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       13,
+#     HANDLING     #                      118;
+
+
+
+#       NAME       #                  Darkzov,
+#        ID        #                       58,
+#       ARMOR      #                      420,
+#       CARGO      #                       70,
+#       PRICE      #                  3618000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      130;
+
+
+
+#       NAME       #                    Ghost,
+#        ID        #                       59,
+#       ARMOR      #                      530,
+#       CARGO      #                       50,
+#       PRICE      #                  3333333,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      135;
+
+
+
+#       NAME       #               Dark Angel,
+#        ID        #                       60,
+#       ARMOR      #                      350,
+#       CARGO      #                       85,
+#       PRICE      #                  3650000,
+#  PRIMARY WEAPON  #                        4,
+# SECONDARY WEAPON #                        2,
+#      TURRET      #                        1,
+#     EQUIPMENT    #                       14,
+#     HANDLING     #                      125;
+
+
+
+#       NAME       #                  N'Tirrk,
+#        ID        #                       61,
+#       ARMOR      #                      280,
+#       CARGO      #                       80,
+#       PRICE      #                   200000,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        8,
+#     HANDLING     #                      128;
+
+
+
+#       NAME       #                     Hawk,
+#        ID        #                       62,
+#       ARMOR      #                      180,
+#       CARGO      #                       45,
+#       PRICE      #                    29300,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        1,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        4,
+#     HANDLING     #                      105;
+
+
+
+#       NAME       #                   Icarus,
+#        ID        #                       63,
+#       ARMOR      #                      135,
+#       CARGO      #                       10,
+#       PRICE      #                    25600,
+#  PRIMARY WEAPON  #                        2,
+# SECONDARY WEAPON #                        0,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        3,
+#     HANDLING     #                      200;
+
+
+
+#       NAME       #                  Draaken,
+#        ID        #                       64,
+#       ARMOR      #                      330,
+#       CARGO      #                       60,
+#       PRICE      #                   320000,
+#  PRIMARY WEAPON  #                        1,
+# SECONDARY WEAPON #                        4,
+#      TURRET      #                        0,
+#     EQUIPMENT    #                        7,
+#     HANDLING     #                       75;
