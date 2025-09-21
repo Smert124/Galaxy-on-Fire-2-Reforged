@@ -11,7 +11,7 @@ public final class CameraTrack {
 
 
    public CameraTrack(int var1) {
-      this.camera = AECamera.create(GlobalStatus.var_e75, GlobalStatus.var_eb6, 800, 100, 31768);
+      this.camera = AECamera.create(GlobalStatus.var_e75, GlobalStatus.var_eb6, 700, 100, 32000);
       this.camera.setRotationOrder((short)2);
       this.time = 0;
       this.interpolator = new CameraTrackInterpolator(this.cameraTracks, var1, (long)this.cameraTracks[var1][this.cameraTracks[var1].length - 8]);

@@ -42,7 +42,7 @@ public final class FileRead {
 					data = null;
 				}
 				
-				String[] parts = split(data[i], ",");
+				String[] parts = split(data[i].trim(), ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -313,27 +313,23 @@ public final class FileRead {
 					collision_parameter[boxIndex * 6 + 5] = Integer.parseInt(parts[baseIndex + 5].trim()); // Z размер
 				}
 				
-				if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE) {
+				
 					if(stationpart_id == var0) {
-						System.out.println("Collision data for mesh ID: " + stationpart_id);
-						System.out.println("Number of collision boxes: " + collisionBox_count);
-						
-						for(int boxIndex = 0; boxIndex < collisionBox_count; boxIndex++) {
-							System.out.println("Box " + (boxIndex + 1) + ":");
+						if(GlobalStatus.STATION_COLLISION_BOX_VISIBLE) {
+							System.out.println("Collision data for mesh ID: " + stationpart_id);
+							System.out.println("Number of collision boxes: " + collisionBox_count);
 							
-							System.out.println("  Position relative to the mesh: (" + 
-								collision_parameter[boxIndex * 6] + ", " + 
-								collision_parameter[boxIndex * 6 + 1] + ", " + 
-								collision_parameter[boxIndex * 6 + 2] + ")");
-							
-							System.out.println("  Size: (" + 
-								collision_parameter[boxIndex * 6 + 3] + ", " + 
-								collision_parameter[boxIndex * 6 + 4] + ", " + 
-								collision_parameter[boxIndex * 6 + 5] + ")");
+							for(int boxIndex = 0; boxIndex < collisionBox_count; boxIndex++) {
+								System.out.println("Box " + (boxIndex + 1) + ":");
+								
+								System.out.println("  Position relative to the mesh: (" + collision_parameter[boxIndex * 6] + ", " + collision_parameter[boxIndex * 6 + 1] + ", " + collision_parameter[boxIndex * 6 + 2] + ")");
+								
+								System.out.println("  Size: (" + collision_parameter[boxIndex * 6 + 3] + ", " + collision_parameter[boxIndex * 6 + 4] + ", " + collision_parameter[boxIndex * 6 + 5] + ")");
+							}
 						}
 						return collision_parameter;
 					}
-				}
+				
 			}
 		} catch (Exception var7) {
 			GlobalStatus.CATCHED_ERROR = "loadStationPartCollision ERROR: " + var7.getMessage();

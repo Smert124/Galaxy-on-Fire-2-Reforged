@@ -33,7 +33,7 @@ public final class BackGroundMesh extends AbstractMesh {
 
       this.radius = 0;
       if(compositing == null) {
-         (compositing = new CompositingMode()).setBlending(65); // ALPHA ADD SKYBOX
+         (compositing = new CompositingMode()).setBlending(CompositingMode.ALPHA_ADD);
          compositing.setDepthTestEnable(true);
          compositing.setDepthWriteEnable(false);
       }

@@ -46,18 +46,17 @@ public final class AEMesh extends AbstractMesh {
             } else {
                 This.aemFile = new DataInputStream(This.getClass().getResourceAsStream(path));
             }
-			
+
             byte[] magic = new byte[9];
             This.aemFile.read(magic, 0, 9); //(buffer, offset, length)
             int version = magic[1] - (byte) '0';
 
             int bufferSize, i, flags;
             flags = This.aemFile.readUnsignedByte();
-			
-			int submesh = This.aemFile.readUnsignedShort();
-			System.out.println("" + submesh);
 
             if (version == 4) {
+				int submeshCount = swapBytes(This.aemFile.readUnsignedShort());
+			//	System.out.println("Submesh count for (" + var1 + "): " + submeshCount);
                 This.aemFile.skip(12);
             }
 

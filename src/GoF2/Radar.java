@@ -259,15 +259,15 @@ public final class Radar {
                         GlobalStatus.graphics.drawImage(Globals.bracketBox, this.screenProjectionX, this.screenProjectionY, 3);
                      }
 
-                     Font.drawString(this.stationaryPlayersNames[var11], var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 5, this.screenProjectionY - 5, 0);
+                     Font.drawString(this.stationaryPlayersNames[var11], var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 15, this.screenProjectionY - 15, 0);
                      if(var11 < 2) {
                         if(var11 == 0 && !var8) {
-                           Font.drawString(GlobalStatus.gameText.getText(37) + ": " + Status.getStation().getTecLevel(), var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 5, this.screenProjectionY + 10, 1);
+                           Font.drawString(GlobalStatus.gameText.getText(37) + ": " + Status.getStation().getTecLevel(), var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 15, this.screenProjectionY, 1);
                            this.closestStatPlayerDistanceVisible = this.calcDistance(this.landmarks[var11].var_4c6, this.landmarks[var11].var_4e6, this.landmarks[var11].var_521, var1);
-                           Font.drawString(this.closestStatPlayerDistanceVisible, var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 5, this.screenProjectionY + 25, 1);
+                           Font.drawString(this.closestStatPlayerDistanceVisible, var11 == 0?this.screenProjectionX + 35:this.screenProjectionX + 35, this.screenProjectionY + 15, 1);
                         } else {
                            this.closestStatPlayerDistanceVisible = this.calcDistance(this.landmarks[var11].var_4c6, this.landmarks[var11].var_4e6, this.landmarks[var11].var_521, var1);
-                           Font.drawString(this.closestStatPlayerDistanceVisible, var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 5, this.screenProjectionY + 10, 1);
+                           Font.drawString(this.closestStatPlayerDistanceVisible, var11 == 0?this.screenProjectionX + 35:this.screenProjectionX + 35, this.screenProjectionY + 5, 1);
                         }
                      }
                   } else if(var11 == 3) {

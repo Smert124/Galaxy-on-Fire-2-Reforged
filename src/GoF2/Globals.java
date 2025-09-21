@@ -1364,7 +1364,6 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(2509, PATH_MESHES + "cross_xyz.m3g", 15000, 0);
 		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "col_box_add.aem", 500000, tex_col_test);
 		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "col_sphere_add.aem", 15000, tex_col_test);
-		AEResourceManager.addGeometryResource(2512, PATH_MESHES + "submesh_test.aem", 15000, tex_station_deescience);
 		AEResourceManager.addSkyboxResource(9991, PATH_MESHES + "skybox.m3g", 1);
 		AEResourceManager.addGeometryResource(10000, PATH_MESHES + "skybox/skybox00_add.aem", -1, skybox00);
 		AEResourceManager.addGeometryResource(10001, PATH_MESHES + "skybox/skybox01_add.aem", -1, skybox01);
@@ -1384,98 +1383,98 @@ public final class Globals {
 		
 		
 		
-		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 32000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 15000, tex_station_midorian);
-		
-		
+		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 32000, tex_station_midorian);
 		
 		
-		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stat_bottom1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stat_bottom2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stat_bottom3.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stat_bottom4.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stat_bottom5.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stat_bridge0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stat_bridge1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stat_bridge2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stat_connector0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stat_hangar0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stat_hangar1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stat_hangar2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stat_hangar3.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stat_hangar4.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stat_middle0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stat_middle1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stat_middle2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stat_middle3.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stat_top0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stat_top1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stat_top10.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stat_top2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stat_top3.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stat_top4.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stat_top5.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stat_top6.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stat_top7.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stat_top8.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stat_top9.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 15000, 0);
+		
+		
+		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stat_bottom1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stat_bottom2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stat_bottom3.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stat_bottom4.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stat_bottom5.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stat_bridge0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stat_bridge1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stat_bridge2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stat_connector0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stat_hangar0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stat_hangar1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stat_hangar2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stat_hangar3.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stat_hangar4.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stat_middle0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stat_middle1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stat_middle2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stat_middle3.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stat_top0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stat_top1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stat_top10.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stat_top2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stat_top3.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stat_top4.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stat_top5.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stat_top6.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stat_top7.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stat_top8.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stat_top9.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 32000, 0);
 		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
-		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 15000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stat_player_add.aem", 15000, tex_station_player_add);
+		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 32000, 0);
+		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 32000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 32000, tex_fx);
+		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 32000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stat_player_add.aem", 32000, tex_station_player_add);
 		
-		AEResourceManager.addGeometryResource(4544, dlc_valkyrie + "station_deep_science.aem", 15000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4545, dlc_valkyrie + "station_deep_science_add.aem", 15000, tex_station_deescience_add);
-		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 15000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 15000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4544, dlc_valkyrie + "station_deep_science.aem", 32000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4545, dlc_valkyrie + "station_deep_science_add.aem", 32000, tex_station_deescience_add);
+		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 32000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 32000, tex_station_deescience);
 		
 		AEResourceManager.addGeometryResource(13001, PATH_MESHES + "ship_betty_body.aem", 2000, tex_midorian);
 		AEResourceManager.addGeometryResource(13101, PATH_MESHES + "ship_betty_light_add.aem", 2000, tex_fx);

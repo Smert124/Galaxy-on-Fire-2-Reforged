@@ -132,13 +132,13 @@ public final class PlayerStation extends PlayerStaticFar {
 				virtDistToCam_.set(offsetX, offsetY, offsetZ);
 				
 				this.position = var8.transformVectorNoScale(virtDistToCam_, this.position);
-				virtDistToCam_.set(sizeX + 4096, sizeY + 4096, sizeZ + 4096);
+				virtDistToCam_.set(sizeX + 5000, sizeY + 5000, sizeZ + 5000);
 				
 				this.tempVector_ = var8.transformVectorNoScale(virtDistToCam_, this.tempVector_);
 				this.boundingBoxes[var3] = new BoundingAAB(var4, var5, var6, this.position.x, this.position.y, this.position.z, sizeX, sizeY, sizeZ);
 			} else {
 				System.out.println("No collision data for model: " + modelId);
-				this.boundingBoxes[var3] = new BoundingAAB(0, 0, 0, 0, 0, 0, 4, 4, 4);
+				this.boundingBoxes[var3] = new BoundingAAB(0, 0, 0, 0, 0, 0, 512, 512, 512);
 			}
 			
 			if(Status.getSystem() != null) {
@@ -148,7 +148,7 @@ public final class PlayerStation extends PlayerStaticFar {
 			}
 		}
 		
-		this.maxPartDeflection += 4096;
+		this.maxPartDeflection += 5000;
 		
 		this.partPositions = new int[this.stationParts.length * 3];
 		for(var3 = 0; var3 < this.stationParts.length; ++var3) {
