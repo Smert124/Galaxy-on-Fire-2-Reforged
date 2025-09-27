@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="test.png" />
+  <img src="github/logo.png"/>
 </p>
 
 <b>Модификация Galaxy on Fire 2 для платформы J2ME, открывающий новые возможности для моддинга и ретро-гейминга.</b>
@@ -21,5 +21,7 @@
 <b>Технические улучшения:</b>
 <br>Оптимизированная загрузка ресурсов, исправление оригинальных багов, адаптация под современные эмуляторы и устройства.
 
-2011-2025 Hard Condition
-<br>2009 Fishlabs
+<i>2011-2025 Hard Condition</i>
+<br><br><i>© 2009 Designed and developed by FISHLABS Entertainment GmbH, powered by ABYSS® Game
+Engine. Galaxy on Fire 2™ and ABYSS® are registered trademarks of FISHLABS
+Entertainment GmbH. All rights reserved. Further information is available at www.fishlabs.net</i>
