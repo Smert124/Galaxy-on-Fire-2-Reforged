@@ -2,6 +2,8 @@
   <img src="github/logo.png"/>
 </p>
 
+[ENGLISH README](README_EN.md)
+
 <b>Модификация Galaxy on Fire 2 для платформы J2ME, открывающий новые возможности для моддинга и ретро-гейминга.</b>
 <br><br><b>Важное примечание для правообладателей:</b>
 <br>Этот проект является некоммерческим фанатским развитием, созданным из уважения и любви к оригинальной игре.
@@ -51,5 +53,5 @@ Entertainment GmbH. All rights reserved. Further information is available at www
  [Сообщество в Telegram](https://t.me/HardCondition)\
  [Старые версии Reforged, включая GF2<sup>3</sup> (до 2022)](https://drive.google.com/drive/folders/198TUt7ERvaK7kdShcHvn_otm48rbBnKV?usp=drive_link)
  <br><br><sup>1</sup> Полностью рабочий сенсорный интерфейс находится на стадии разработки.
- <br><sup>2</sup> Инструкции по работе с внутриигровыми файлами будут предоставлены позже. Предварительную версию инструкций вы можете посмотреть [тут](github/Engine_instructions_alpha.pdf).
+ <br><sup>2</sup> Инструкции по работе с внутриигровыми файлами будут предоставлены позже, перевод также будет предоставлен позже. Предварительную версию инструкций вы можете посмотреть [тут](github/Engine_instructions_alpha.pdf).
  <br><sup>3</sup> Galaxy Force 2 - старое и бессмысленное название мода в 2011-2015.
