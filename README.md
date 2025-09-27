@@ -45,6 +45,7 @@ Engine. Galaxy on Fire 2™ and ABYSS® are registered trademarks of FISHLABS
 Entertainment GmbH. All rights reserved. Further information is available at www.fishlabs.net</i>
 
 ---
+You can download the ready-made build on the [releases tab](https://github.com/Smert124/Galaxy-on-Fire-2-Reforged/releases).\
 More:\
 [DeepOpen Engine](https://github.com/BaalNetbek/DeepOpen)\
  [Col-E/Recaf](https://github.com/Col-E/Recaf)\
