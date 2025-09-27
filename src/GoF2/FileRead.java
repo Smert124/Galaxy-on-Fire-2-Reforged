@@ -141,7 +141,7 @@ public final class FileRead {
 			}
 			all_text = null;
 		} catch (Exception var11) {
-			GlobalStatus.CATCHED_ERROR = "loadStation ERROR: " + var11;
+			GlobalStatus.CATCHED_ERROR = "loadStationsBinary[] ERROR: " + var11;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var1;
@@ -374,7 +374,7 @@ public final class FileRead {
 			}
 			all_text = null;
 		} catch (Exception var11) {
-			GlobalStatus.CATCHED_ERROR = "loadStationForSystem ERROR: " + var11;
+			GlobalStatus.CATCHED_ERROR = "loadStationsBinary[] (SolarSystem) ERROR: " + var11;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var1;
@@ -427,7 +427,7 @@ public final class FileRead {
 			System.gc();
 			
 		} catch (Exception var13) {
-			GlobalStatus.CATCHED_ERROR = "loadAgent ERROR: " + var13;
+			GlobalStatus.CATCHED_ERROR = "loadAgents ERROR: " + var13;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var0;
@@ -540,7 +540,7 @@ public final class FileRead {
 			}
 			all_text = null;
 		} catch (Exception var17) {
-			GlobalStatus.CATCHED_ERROR = "loadSystem ERROR: " + var17;
+			GlobalStatus.CATCHED_ERROR = "loadSystemsBinary ERROR: " + var17;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var0;
@@ -605,7 +605,7 @@ public final class FileRead {
 			System.gc();
 			
 		} catch (Exception var8) {
-			GlobalStatus.CATCHED_ERROR = "loadItem ERROR: " + var8;
+			GlobalStatus.CATCHED_ERROR = "loadItemsBinary ERROR: " + var8;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var0;
@@ -625,7 +625,8 @@ public final class FileRead {
 				}
 				String[] parts = split(data[i].trim(), ",");
 				if(parts.length < 10) {
-					System.out.println("Invalid ship data at line " + i + ": " + data[i]);
+					GlobalStatus.CATCHED_ERROR = "Invalid ship data at line " + i + ": " + data[i];
+					System.out.println(GlobalStatus.CATCHED_ERROR);
 					continue;
 				}
 				
@@ -647,7 +648,7 @@ public final class FileRead {
 			all_text = null;
 			System.gc();
         } catch(Exception ex) {
-			GlobalStatus.CATCHED_ERROR = "loadShip ERROR: " + ex;
+			GlobalStatus.CATCHED_ERROR = "loadShipsBinary ERROR: " + ex;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return var0;
@@ -735,7 +736,7 @@ public final class FileRead {
 		try {
 			String all_text = AEResourceManager.getText(textId);
 			if(all_text == null) {
-				GlobalStatus.CATCHED_ERROR = "loadName ERROR: Text not found for ID " + textId;
+				GlobalStatus.CATCHED_ERROR = "loadNamesBinary ERROR: Text not found for ID " + textId;
 				System.out.println(GlobalStatus.CATCHED_ERROR);
 				return null;
 			}
@@ -746,7 +747,7 @@ public final class FileRead {
 				names[count] = data[count].trim();
 			}
 		} catch (Exception var5) {
-			GlobalStatus.CATCHED_ERROR = "loadName ERROR: " + var5;
+			GlobalStatus.CATCHED_ERROR = "loadNamesBinary ERROR: " + var5;
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return names;
