@@ -51,8 +51,6 @@ ___
 ## 📥 Download
 Get the latest build in the [**Releases**](https://github.com/Smert124/Galaxy-on-Fire-2-Reforged/releases) section.
 
-**Current version:** `5.9.0` *(September 27, 2025)*
-
 ---
 
 ## 🔗 Useful Links
