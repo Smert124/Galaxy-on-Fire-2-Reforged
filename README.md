@@ -4,7 +4,7 @@
 
 [RUSSIAN README](README_RU.md)
 
-<b>A modification for Galaxy on Fire 2 on the J2ME platform, opening up new possibilities for modding and retro-gaming..</b>
+<b>Galaxy on Fire 2: Reforged - a modification for Galaxy on Fire 2 on the J2ME platform, opening up new possibilities for modding and retro-gaming..</b>
 <br><br><b>Important note for rights holders:</b>
 <br>This project is a non-commercial fan development, created out of respect and love for the original game.
 <br>If you have any objections — we will find a solution.
