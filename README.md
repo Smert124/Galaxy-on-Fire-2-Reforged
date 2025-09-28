@@ -56,3 +56,5 @@ More:\
  <br><br><sup>1</sup> A fully functional touch interface is currently under development.
  <br><sup>2</sup> Instructions for working with the game data files will be provided later. You can view a preliminary version of the instructions [here](github/Engine_instructions_alpha.pdf).
  <br><sup>3</sup> Galaxy Force 2 is the old and meaningless name for the mod used from 2011 to 2015.
+
+ <meta name="google-site-verification" content="7u3XwDiX0RDlZHZEusRFY9bb3r1vz3HMmVc0EMBZFf0" />
