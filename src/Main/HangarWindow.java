@@ -1,7 +1,5 @@
 package Main;
 
-// магазин
-
 import AE.GlobalStatus;
 import GoF2.Globals;
 import GoF2.Item;

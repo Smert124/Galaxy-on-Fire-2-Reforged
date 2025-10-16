@@ -1,8 +1,3 @@
-/**
-** @class Fonts
-** �������� �������, ������ � ������ ���������.
-**/
-
 package Main;
 
 import java.util.Random;

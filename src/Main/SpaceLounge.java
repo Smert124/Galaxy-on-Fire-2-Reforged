@@ -1,7 +1,5 @@
 package Main;
 
-// бар
-
 import javax.microedition.lcdui.Image;
 import HardEngine.*;
 

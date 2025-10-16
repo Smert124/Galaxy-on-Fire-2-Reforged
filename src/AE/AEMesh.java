@@ -1,9 +1,8 @@
 package AE;
 
-import java.io.DataInputStream;
-import java.io.IOException;
 import javax.microedition.m3g.Appearance;
 import javax.microedition.m3g.CompositingMode;
+import javax.microedition.m3g.Group;
 import javax.microedition.m3g.Material;
 import javax.microedition.m3g.Mesh;
 import javax.microedition.m3g.Node;
@@ -17,293 +16,234 @@ import javax.microedition.m3g.VertexBuffer;
 import AE.PaintCanvas.AEGraphics3D;
 
 public final class AEMesh extends AbstractMesh {
-	
-	private static float[] transformArray = new float[16];
-    private DataInputStream aemFile; //var_68
-    public Node node; //var_89
-    private Appearance appearance;
-    private TriangleStripArray triangleStripArray;
-    public Transform transform;
-    private boolean isGlowing; //rendering switch
-    private boolean isTransparent;
-    private static PolygonMode opaquePMode;
-    private static PolygonMode transparentPMode;
-    private static CompositingMode transparetCompositing;
-    private static CompositingMode additiveCompositing;
-    private static CompositingMode opaqueCompositing;
-    private static Material specularMaterial;
-    private static Material emissivMaterial;
 
-    public AEMesh(int var1, String argPath, int var2) {
-        this.resourceId = var1;
-        setupMaterial();
-        String path = argPath;
-        AEMesh This = this;
+   private static Transform localToWorldTransform = new Transform();
+   private static float[] m_matrix = new float[16];
+   private Node[] opaqueNodes;
+   private Node[] transparentNodes;
+   private static PolygonMode opaquePmode;
+   private static PolygonMode transparentPmode;
+   private static CompositingMode additiveCompositing;
+   private static CompositingMode transparentCompositing;
+   private static CompositingMode opaqueCompositing;
+   private static Material specularMaterial;
+   private boolean needsUvFix = false;
+   private Texture2D texture = null;
 
-        try {
-            if (!path.endsWith(".aem")) {
-                This.aemFile = new DataInputStream(This.getClass().getResourceAsStream(path + ".aem"));
+   // Публичное поле для обратной совместимости
+   public Node node;
+
+
+   public AEMesh(int resourceId, String path, int radius) {
+      this.resourceId = resourceId;
+      initializeMaterials();
+
+      try {
+         AEMeshLoader.MeshData meshData = AEMeshLoader.loadAEMesh(path);
+         if (meshData != null) {
+            // Создаем меш из данных
+            Mesh mesh = new Mesh(meshData.vertexBuffer, meshData.triangleStripArray, null);
+            
+            // Для обратной совместимости
+            this.node = mesh;
+            
+            // Определяем тип материала на основе имени файла
+            boolean isGlowing = path.endsWith("_add.aem");
+            boolean isTransparent = path.endsWith("_alpha.aem") || isGlowing;
+            
+            // Настраиваем appearance
+            setupMeshAppearance(mesh, isGlowing, isTransparent);
+            
+            // Добавляем ноду в соответствующий массив
+            if (isTransparent) {
+               this.transparentNodes = new Node[]{mesh};
             } else {
-                This.aemFile = new DataInputStream(This.getClass().getResourceAsStream(path));
+               this.opaqueNodes = new Node[]{mesh};
             }
+         }
+      } catch (Exception e) {
+         System.out.println("ERROR | AEMesh(" + path + ") loading error!");
+         e.printStackTrace();
+         this.opaqueNodes = null;
+         this.transparentNodes = null;
+         this.node = null;
+      }
 
-            byte[] magic = new byte[9];
-            This.aemFile.read(magic, 0, 9); //(buffer, offset, length)
-            int version = magic[1] - (byte) '0';
+      this.radius = radius;
+   }
 
-            int bufferSize, i, flags;
-            flags = This.aemFile.readUnsignedByte();
+   private AEMesh(AEMesh source) {
+      super(source);
+      initializeMaterials();
+      this.radius = source.radius;
+      this.opaqueNodes = source.opaqueNodes;
+      this.transparentNodes = source.transparentNodes;
+      this.renderLayer = source.renderLayer;
+      this.draw = source.draw;
+      this.resourceId = source.resourceId;
+      this.needsUvFix = source.needsUvFix;
+      this.texture = source.texture;
+      this.node = source.node;
+   }
 
-            if (version == 4) {
-				int submeshCount = swapBytes(This.aemFile.readUnsignedShort());
-			//	System.out.println("Submesh count for (" + var1 + "): " + submeshCount);
-                This.aemFile.skip(12);
+   private static void initializeMaterials() {
+      if (opaquePmode == null) {
+         (opaquePmode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK);
+         opaquePmode.setShading(PolygonMode.SHADE_SMOOTH);
+         opaquePmode.setPerspectiveCorrectionEnable(true);
+         opaquePmode.setLocalCameraLightingEnable(true);
+         opaquePmode.setTwoSidedLightingEnable(true);
+         opaquePmode.setWinding(PolygonMode.WINDING_CCW);
+      }
+
+      if (transparentPmode == null) {
+         (transparentPmode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK);
+         transparentPmode.setShading(PolygonMode.SHADE_FLAT);
+         transparentPmode.setPerspectiveCorrectionEnable(true);
+      }
+
+      if (additiveCompositing == null) {
+         (additiveCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA_ADD);
+         additiveCompositing.setDepthTestEnable(true);
+         additiveCompositing.setDepthWriteEnable(false);
+      }
+      
+      if (transparentCompositing == null) {
+         (transparentCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
+         transparentCompositing.setDepthTestEnable(true);
+         transparentCompositing.setDepthWriteEnable(false);
+      }
+
+      if (opaqueCompositing == null) {
+         (opaqueCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
+         opaqueCompositing.setDepthTestEnable(true);
+         opaqueCompositing.setDepthWriteEnable(true);
+      }
+
+      if (specularMaterial == null) {
+         (specularMaterial = new Material()).setColor(Material.DIFFUSE, 0xFF444444);
+         specularMaterial.setColor(Material.SPECULAR, GoF2.Level.skyNormalizedLight());
+         specularMaterial.setVertexColorTrackingEnable(false);
+         specularMaterial.setShininess(127.0F);
+      }
+   }
+
+   private void setupMeshAppearance(Mesh mesh, boolean isGlowing, boolean isTransparent) {
+      for (int i = 0; i < mesh.getSubmeshCount(); i++) {
+         Appearance appearance = new Appearance();
+         
+         if (isGlowing) {
+            // ВАЖНО: для ADD-мешей не используем материал вообще
+            // чтобы они не реагировали на освещение
+            appearance.setCompositingMode(additiveCompositing);
+            appearance.setPolygonMode(transparentPmode);
+            // Явно устанавливаем материал в null
+            appearance.setMaterial(null);
+         } else if (isTransparent) {
+            appearance.setCompositingMode(transparentCompositing);
+            appearance.setPolygonMode(transparentPmode);
+            appearance.setMaterial(null);
+         } else {
+            appearance.setCompositingMode(opaqueCompositing);
+            appearance.setPolygonMode(opaquePmode);
+            appearance.setMaterial(specularMaterial);
+         }
+         
+         mesh.setAppearance(i, appearance);
+      }
+   }
+
+   public final void render() {
+      if (this.opaqueNodes != null) {
+         this.matrix.toFloatArray(m_matrix);
+         localToWorldTransform.set(m_matrix);
+         
+         for (int i = 0; i < this.opaqueNodes.length; i++) {
+            AEGraphics3D.graphics3D.render(this.opaqueNodes[i], localToWorldTransform);
+         }
+      }
+   }
+
+   public final void renderTransparent() {
+      if (this.transparentNodes != null) {
+         this.matrix.toFloatArray(m_matrix);
+         localToWorldTransform.set(m_matrix);
+         
+         for (int i = 0; i < this.transparentNodes.length; i++) {
+            AEGraphics3D.graphics3D.render(this.transparentNodes[i], localToWorldTransform);
+         }
+      }
+   }
+
+   public final GraphNode clone() {
+      return new AEMesh(this);
+   }
+
+   public final void OnRelease() {}
+
+   public final void setTexture(ITexture texture) {
+      Texture2D[] textures = ((JSRTexture) texture).getTexturesArray();
+      
+      if (textures == null || textures.length == 0) return;
+
+      if (this.opaqueNodes != null) {
+         for (int i = 0; i < this.opaqueNodes.length; i++) {
+            applyTextureToNode(this.opaqueNodes[i], textures[0], false);
+         }
+      }
+      
+      if (this.transparentNodes != null) {
+         for (int i = 0; i < this.transparentNodes.length; i++) {
+            applyTextureToNode(this.transparentNodes[i], textures[0], true);
+         }
+      }
+   }
+
+   private void applyTextureToNode(Node node, Texture2D texture, boolean isTransparent) {
+      if (node instanceof Mesh) {
+         Mesh mesh = (Mesh) node;
+         for (int i = 0; i < mesh.getSubmeshCount(); i++) {
+            Appearance appearance = mesh.getAppearance(i);
+            if (appearance != null) {
+               appearance.setTexture(0, texture);
+               if (isTransparent && texture != null && this.texture == null) {
+                  appearance.setMaterial(null);
+               }
             }
+         }
+      } else if (node instanceof Group) {
+         Group group = (Group) node;
+         for (int i = 0; i < group.getChildCount(); i++) {
+            applyTextureToNode(group.getChild(i), texture, isTransparent);
+         }
+      }
+   }
 
-            if ((flags & 16) != 0) {
-                bufferSize = swapBytes(This.aemFile.readUnsignedShort());
-                int[] indices = new int[bufferSize];
-                int[] stripLengths = new int[bufferSize / 3];
-                for (i = 0; i < bufferSize; ++i) {
-                    indices[i] = swapBytes(This.aemFile.readUnsignedShort());
-                    if (i % 3 == 0) {
-                        stripLengths[i / 3] = 3;
-                    }
-                }
+   public void update(long deltaTime) {
+      // AEMesh не поддерживает анимацию, но метод оставлен для совместимости
+   }
 
-                This.triangleStripArray = new TriangleStripArray(indices, stripLengths);
-                bufferSize = swapBytes(This.aemFile.readUnsignedShort());
-                short[] vertexCords = new short[bufferSize * 3];
-                if (version == 2) {
-                    short sign, cord;
-                    for (i = 0; i < bufferSize * 3; ++i) {
-                        cord = (short) swapBytes(This.aemFile.readShort());
-                        sign = (short) swapBytes(This.aemFile.readShort());
-                        if ((sign == -1 && cord >= 0) || (sign == 0 && cord < 0)) {
-                            cord *= -1;
-                        }
-                        vertexCords[i] = cord;
-                    }
-                } else if (version == 4) {
-                    for (i = 0; i < bufferSize * 3; ++i) {
-                        vertexCords[i] = (short) intBitRevesedToFloat(This.aemFile.readInt());
-                    }
-                }
-                VertexArray vertexArray = new VertexArray(vertexCords.length / 3, 3, 2);
-                vertexArray.set(0, vertexCords.length / 3, vertexCords);
-                VertexArray uvArray = null;
-                if ((flags & 2) != 0) {
-                    short[] uvBuffer = new short[vertexCords.length / 3 << 1];
-                    if (version == 2) {
-                        for (i = 0; i < uvBuffer.length; i += 2) {
-                            uvBuffer[i] = (short) swapBytes(This.aemFile.readShort());
-                            uvBuffer[i + 1] = (short) (4096 - (short) swapBytes(This.aemFile.readShort()));
-                        }
-                    } else if (version == 4) {
-                        for (i = 0; i < uvBuffer.length; i += 2) {
-                            uvBuffer[i] = (short) intBitRevesedToFloat(This.aemFile.readInt(), 4096);
-                            uvBuffer[i + 1] = (short) (4096 - (short) intBitRevesedToFloat(This.aemFile.readInt(), 4096));
-                        }
-                    }
+   public int getCurrentAnimFrame() {
+      return 0;
+   }
 
-                    (uvArray = new VertexArray(uvBuffer.length / 2, 2, 2)).set(0, uvBuffer.length / 2, uvBuffer);
-                }
-                VertexArray normalArray = null;
-                if ((flags & 4) != 0 && version == 4) {
-                    float[] normalsBuffer = new float[vertexCords.length];
+   public void setAnimationSpeed(int speed) {
+      // Не поддерживается
+   }
 
-                    for (i = 0; i < normalsBuffer.length; ++i) {
-                        normalsBuffer[i] = intBitRevesedToFloat(This.aemFile.readInt());
-                    }
-					
-                    short[] shortNormalsBuffer = new short[normalsBuffer.length];
-                    for (i = 0; i < normalsBuffer.length; ++i) {
-                        shortNormalsBuffer[i] = (short) (normalsBuffer[i] * 32767);
-                    }
+   public void setAnimationRangeInTime(int start, int end) {
+      // Не поддерживается
+   }
 
-                    normalArray = new VertexArray(shortNormalsBuffer.length / 3, 3, 2);
-                    normalArray.set(0, shortNormalsBuffer.length / 3, shortNormalsBuffer);
-                }
+   public void setAnimationMode(byte mode) {
+      // Не поддерживается
+   }
 
-                VertexBuffer vertexBuffer = new VertexBuffer();
-                vertexBuffer.setPositions(vertexArray, 1.0F, (float[]) null);
-                vertexBuffer.setNormals(normalArray);
-                if (uvArray != null) { // Проверка на null
-                    vertexBuffer.setTexCoords(0, uvArray, 0.000244140625F, (float[]) null);
-                }
+   public void disableAnimation() {
+      // Не поддерживается
+   }
 
-                // Создание Mesh и Node
-                Mesh mesh = new Mesh(vertexBuffer, This.triangleStripArray, null);
-                This.node = mesh;
-
-                This.isGlowing = false; //set material 1, 0
-                This.isTransparent = false;
-                if (path.endsWith("_add.aem")) {
-                    This.isGlowing = true;
-                }
-                if (path.endsWith("_alpha.aem")) {
-                    This.isTransparent = true;
-                }
-
-                This.transform = new Transform();
-                This.transform.setIdentity();
-                This.aemFile.close();
-            }
-        } catch (Exception var10) {
-            System.out.println("ERROR | AEMeshLoader(" + argPath + ") loading error! The file is not in a valid format/damaged/missing!");
-            var10.printStackTrace();
-        }
-
-        this.radius = var2;
-    }
-
-    private AEMesh(AEMesh loader) {
-        super(loader);
-        setupMaterial();
-        this.node = loader.node;
-        this.triangleStripArray = loader.triangleStripArray;
-        this.transform = loader.transform;
-        this.isGlowing = loader.isGlowing;
-        this.renderLayer = loader.renderLayer;
-        this.draw = loader.draw;
-        this.radius = loader.radius;
-        this.resourceId = loader.resourceId;
-    }
-
-    private static void setupMaterial() { //void sub_30
-        if (opaquePMode == null) {
-            (opaquePMode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK);// 	CULL_BACK
-            opaquePMode.setShading(PolygonMode.SHADE_SMOOTH);// SHADE_SMOOTH
-            opaquePMode.setPerspectiveCorrectionEnable(true);
-            opaquePMode.setLocalCameraLightingEnable(true);
-            opaquePMode.setTwoSidedLightingEnable(true);
-            opaquePMode.setWinding(PolygonMode.WINDING_CCW); //WINDING_CCW
-        }
-
-        if (transparentPMode == null) {
-            (transparentPMode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK); //CULL_NONE
-            transparentPMode.setShading(PolygonMode.SHADE_FLAT); // SHADE_SMOOTH
-            transparentPMode.setPerspectiveCorrectionEnable(true);
-        }
-
-        if (additiveCompositing == null) {
-            (additiveCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA_ADD);
-            additiveCompositing.setDepthTestEnable(true);
-            additiveCompositing.setDepthWriteEnable(false);
-        }
-        if (transparetCompositing == null) {
-            (transparetCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
-            transparetCompositing.setDepthTestEnable(true);
-            transparetCompositing.setDepthWriteEnable(false);
-        }
-
-        if (opaqueCompositing == null) {
-            (opaqueCompositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
-            opaqueCompositing.setDepthTestEnable(true);
-            opaqueCompositing.setDepthWriteEnable(true);
-        }
-
-        if(specularMaterial == null) {
-            (specularMaterial = new Material()).setColor(Material.DIFFUSE, 0xFF444444); //diffuse, ARGB
-            specularMaterial.setColor(Material.SPECULAR, GoF2.Level.skyNormalizedLight()); //specular, ARGB
-            specularMaterial.setVertexColorTrackingEnable(false);
-            specularMaterial.setShininess(127.0F); //1-127
-        }
-        if(emissivMaterial == null) {
-            (emissivMaterial = new Material()).setColor(Material.EMISSIVE, 0xFFFFFFFF); //EMISSIVE
-            emissivMaterial.setVertexColorTrackingEnable(true);
-        }
-    }
-
-    public final void setTexture(ITexture var1) {
-        Texture2D[] var2 = ((JSRTexture) var1).getTexturesArray();
-        if (this.node instanceof Mesh) {
-            Mesh mesh = (Mesh) this.node;
-            for (int i = 0; i < mesh.getSubmeshCount(); i++) {
-                Appearance appearance = new Appearance();
-                appearance.setTexture(0, var2[0]);
-                if(this.isGlowing) {
-                    appearance.setCompositingMode(additiveCompositing);
-                    appearance.setPolygonMode(transparentPMode);
-                } else if(this.isTransparent) {
-                    appearance.setCompositingMode(transparetCompositing);
-                    appearance.setPolygonMode(transparentPMode);
-                } else {
-                    appearance.setCompositingMode(opaqueCompositing);
-                    appearance.setPolygonMode(opaquePMode);
-                    appearance.setMaterial(specularMaterial);
-                }
-                mesh.setAppearance(i, appearance);
-            }
-        }
-    }
-
-    public final GraphNode clone() {
-        return new AEMesh(this);
-    }
-
-    public final void OnRelease() {}
-
-    public final void render() { //render on false
-        if (!this.isGlowing) {
-            this.matrix.toFloatArray(transformArray);
-            this.transform.set(transformArray);
-            if (this.node != null && AEGraphics3D.graphics3D != null) {
-                AEGraphics3D.graphics3D.render(this.node, this.transform);
-            }
-        }
-    }
-
-    public final void renderTransparent() { //render on true
-        if (this.isGlowing) {
-            this.matrix.toFloatArray(transformArray);
-            this.transform.set(transformArray);
-            if (this.node != null && AEGraphics3D.graphics3D != null) {
-                AEGraphics3D.graphics3D.render(this.node, this.transform);
-            }
-        }
-    }
-	
-	public void checkNormals() {
-		if(node instanceof Mesh) {
-			Mesh mesh = (Mesh) node;
-			VertexBuffer vertexBuffer = mesh.getVertexBuffer();
-			
-			VertexArray normalArray = vertexBuffer.getNormals();
-			
-			if(normalArray != null) {
-				System.out.println("Normals are available.");
-				
-				short[] normalBuffer = new short[3];
-				
-				normalArray.get(0, 1, normalBuffer);
-				short nx = normalBuffer[0];
-				short ny = normalBuffer[1];
-				short nz = normalBuffer[2];
-				System.out.println("First normal: (" + nx + ", " + ny + ", " + nz + ")");
-			} else {
-				System.out.println("Normals are not available.");
-			}
-		}
-	}
-
-    private static int swapBytes(int var0) {
-        return (var0 & 255) << 8 | var0 >> 8 & 255;
-    }
-
-    private static float intBitRevesedToFloat(int rawInt) throws IOException {
-        int swappedInt = ((rawInt & 0xff000000) >>> 24) |
-                ((rawInt & 0x00ff0000) >>> 8) |
-                ((rawInt & 0x0000ff00) << 8) |
-                ((rawInt & 0x000000ff) << 24);
-        return Float.intBitsToFloat(swappedInt);
-    }
-
-    private static float intBitRevesedToFloat(int rawInt, int scale) throws IOException {
-        int swappedInt = ((rawInt & 0xff000000) >>> 24) |
-                ((rawInt & 0x00ff0000) >>> 8) |
-                ((rawInt & 0x0000ff00) << 8) |
-                ((rawInt & 0x000000ff) << 24);
-        return Float.intBitsToFloat(swappedInt) * scale;
-    }
+   public boolean hasAnimation() {
+      return false;
+   }
 }

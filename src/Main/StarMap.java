@@ -1,9 +1,3 @@
-/**
-**		@class Galaxy_map
-**		Карта галактики и систем
-**
-**/
-
 package Main;
 
 import javax.microedition.lcdui.Image;

@@ -661,13 +661,13 @@ public final class PlayerEgo {
                this.vecUp.scale(512);
                this.turretGrandGroup_.translate(this.vecUp);
                this.relPitchSpeed = this.relYawSpeed = 0.0F;
-               this.alignToHorizon((int)this.frameTime);
+            //   this.alignToHorizon((int)this.frameTime);
             } else {
                this.shipGrandGroup_.pitch((int)(this.handling * (float)(this.relPitchSpeed * var1 / 3)));
                this.shipYaw = (int)(this.handling * (float)(this.relYawSpeed * var1 / 3));
                this.shipGrandGroup_.yaw(this.shipYaw);
                if(this.relPitchSpeed == 0 && this.relYawSpeed == 0) {
-                  this.alignToHorizon((int)this.frameTime);
+                //  this.alignToHorizon((int)this.frameTime);
                }
             }
 
@@ -1178,7 +1178,7 @@ public final class PlayerEgo {
       this.autoPilotDir.normalize();
       this.shipGrandGroup_.getToParentTransform().setOrientation(this.autoPilotDir);
       if(this.relPitchSpeed == 0 && this.relYawSpeed == 0) {
-         this.alignToHorizon((int)this.frameTime);
+        // this.alignToHorizon((int)this.frameTime);
       }
 
       this.shipGrandGroup_.moveForward((int)this.frameTime * this.speed);

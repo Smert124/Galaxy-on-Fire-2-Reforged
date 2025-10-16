@@ -1,5 +1,3 @@
-// class_medals
-
 package Main;
 
 import javax.microedition.lcdui.Image;

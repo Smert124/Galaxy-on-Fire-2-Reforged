@@ -92,7 +92,7 @@ public final class FileRead {
 					
 					
 					case 6:
-						GlobalStatus.kaamo = Integer.parseInt(parts[1].trim());
+						GlobalStatus.NEURAL_NPC = Integer.parseInt(parts[1].trim()) == 1;
 					//	System.out.println(parts[0] + ": " + parts[1]);
 					break;
 					

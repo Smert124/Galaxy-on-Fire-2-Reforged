@@ -207,15 +207,15 @@ public abstract class GraphNode {
       this.markDirty();
    }
 
-   public final int getEulerX() { // возможно getX()
+   public final int getEulerX() {
       return this.globalTransform.getEulerX();
    }
 
-   public final int getEulerY() { // возможно getY()
+   public final int getEulerY() {
       return this.globalTransform.getEulerY();
    }
 
-   public final int getEulerZ() { // возможно getZ()
+   public final int getEulerZ() {
       return this.globalTransform.getEulerZ();
    }
 
@@ -233,7 +233,7 @@ public abstract class GraphNode {
       return this.globalTransform.getScale();
    }
 
-   public final Matrix getToParentTransform() { // currentTransform
+   public final Matrix getToParentTransform() {
       return this.globalTransform;
    }
 

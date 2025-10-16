@@ -16,7 +16,6 @@ public final class Intro extends IApplicationModule {
 	private int soundSwitchCurrent;
 	public static AEButtonManager[] AEButton;
 	public static boolean touchFlag = false;
-  // public static AEButtonManager joystick_test;
    
    public final void OnInitialize() {
 	  AEButton = new AEButtonManager[2];
@@ -25,7 +24,6 @@ public final class Intro extends IApplicationModule {
 			  AEButton[countButton] = new AEButtonManager();
 		  }
 	  }
-	//  joystick_test = new AEButtonManager();
       this.timeResourceLoaded = System.currentTimeMillis();
       this.introState = 0;
       this.loaded = true;
@@ -96,14 +94,12 @@ public final class Intro extends IApplicationModule {
          if(this.introState == 1 && GlobalStatus.developer_mode == false) {
             GlobalStatus.graphics.drawImage(Globals.fishlabsImage, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 / 2, 3);
 		    touchFlag = false;
-			//IL.draw_HC();
             if(System.currentTimeMillis() - this.timeResourceLoaded > 2000L) {
                ++this.introState;
                return;
             }
          } else if(this.introState == 2 && GlobalStatus.developer_mode == false) {
             GlobalStatus.graphics.drawImage(Globals.abyssImage, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 / 2, 3);
-			//IL.draw_Abyss();
             if(System.currentTimeMillis() - this.timeResourceLoaded > 4000L) {
                ++this.introState;
                return;

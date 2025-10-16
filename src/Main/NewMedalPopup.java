@@ -1,5 +1,3 @@
-// окно с получением медали
-
 package Main;
 
 import javax.microedition.lcdui.game.Sprite;

@@ -110,6 +110,7 @@ public final class PlayerFixedObject extends KIPlayer {
    }
 
    public final void update(long var1) {
+	  setExhaustVisible(!this.stunned);
       this.frametime = var1;
       this.player.update(var1);
       this.player.enemy = this.race != 8 && this.race != 9?Status.getStanding().isEnemy(this.race):true;
@@ -361,4 +362,20 @@ public final class PlayerFixedObject extends KIPlayer {
 
       return false;
    }
+   
+   public final void setExhaustVisible(boolean var1) {
+        
+		for(GraphNode var2 = this.geometry.getEndNode(); var2 != null; var2 = var2.getParent()) {
+            
+			if(var2.getID() == 13067 || var2.getID() == 13068 || var2.getID() == 13070 || 
+               var2.getID() == 13064 || var2.getID() == 13065 || var2.getID() == 13071 || 
+               var2.getID() == 14072 || 
+               var2.getID() >= 20000 && var2.getID() <= 20100 || 
+               var2.getID() >= 21000 && var2.getID() <= 21100) {
+                var2.setDraw(var1);
+            }
+			
+		}
+		
+	}
 }

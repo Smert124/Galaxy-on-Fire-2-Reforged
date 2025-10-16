@@ -25,7 +25,6 @@ public final class BackGroundMesh extends AbstractMesh {
       try {
          AEMesh aeMeshLoader = new AEMesh(0, var2, 0);
          var5.mesh = aeMeshLoader.node;
-         //System.out.println("Node loaded: " + var5.node);
       } catch (Exception var4) {
          this.mesh = null;
          var4.printStackTrace();
@@ -88,7 +87,7 @@ public final class BackGroundMesh extends AbstractMesh {
             }
             var4.setMaterial((Material)null);
 			PolygonMode polygonMode = new PolygonMode();
-            polygonMode.setPerspectiveCorrectionEnable(true); // Ключевая строка!
+            polygonMode.setPerspectiveCorrectionEnable(true);
             var4.setPolygonMode(polygonMode);
             var4.setCompositingMode(compositing);
             if(var2 != null && var2.length > 0) {
