@@ -39,8 +39,6 @@ public abstract class GOF2Canvas extends GameCanvas {
    }
 
    private void sub_52() {
-      String var1 = "by Smert124";
-	  var1 = "Multitouch not released :(";
 	  GlobalStatus.width = getWidth();
 	  GlobalStatus.height = getHeight();
       this.var_13 = false;
@@ -186,6 +184,7 @@ public abstract class GOF2Canvas extends GameCanvas {
 	   Popup.dialogueMenuPointerPressed(x, y);
 	   ModStation.pointerPressed(x, y);
 	   Hud.pointerPressed(x, y);
+	   HangarList.hangarListPointerPressed(x, y);
 	   if(AutoPilotList.autopilotListButton != null) {
 		   AutoPilotList.pointerPressed(x, y);
 	   }
@@ -274,6 +273,7 @@ public abstract class GOF2Canvas extends GameCanvas {
 	   Popup.dialogueMenuPointerReleased(var1, var2);
 	   ModStation.pointerReleased(var1, var2);
 	   Hud.pointerReleased(var1, var2);
+	   HangarList.hangarListPointerReleased(var1, var2);
 	   if(AutoPilotList.autopilotListButton != null) {
 		   AutoPilotList.pointerReleased(var1, var2);
 	   }

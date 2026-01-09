@@ -1,5 +1,8 @@
 package Main;
 
+import javax.microedition.lcdui.Image;
+
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import GoF2.Globals;
 import GoF2.Item;
@@ -26,6 +29,8 @@ public final class HangarWindow {
    private int speedSellTick;
    private int speedBuyTick;
    private int openedBluePrint;
+   private Image itemTypesImage;
+   private Image shipsColorImage;
 
 
    public final void OnRelease() {
@@ -50,6 +55,10 @@ public final class HangarWindow {
       Item[] var1 = Item.combineItems(Status.getShip().getCargo(), Status.getStation().sub_360());
       this.list.initShopTab(var1);
       this.list.initBlueprintTab(Status.getBluePrints());
+	  
+	  this.itemTypesImage = AEResourceManager.getImage(135);
+	  this.shipsColorImage = AEResourceManager.getImage(136);
+	  
       if(var1 != null) {
          for(int var2 = 0; var2 < var1.length; ++var2) {
             Item var3;
@@ -192,7 +201,7 @@ public final class HangarWindow {
                this.state__ = 5;
             } else if(this.state__ == 0 && this.selectedItem != null) {
                if(this.selectedItem.isItem() || this.selectedItem.isShip() || this.selectedItem.isBluePrint() || this.selectedItem.isPendingProduct()) {
-                  this.itemInfo.setup((ListItem)((ListItem)this.list.getSelectedItem()), Globals.itemsImage, Globals.itemTypesImage, this.list.var_67, Globals.shipsColorImage, true);
+                  this.itemInfo.setup((ListItem)((ListItem)this.list.getSelectedItem()), Globals.itemsImage, this.itemTypesImage, this.list.var_67, this.shipsColorImage, true);
                   this.state__ = 1;
                }
 

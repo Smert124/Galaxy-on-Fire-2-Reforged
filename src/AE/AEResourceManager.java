@@ -30,7 +30,7 @@ public final class AEResourceManager {
 
 
     public static void addTextureResource(int material_id, String file_path) {
-        if (texturePaths == null) {
+        if(texturePaths == null) {
             (texturePaths = new String[1])[0] = file_path;
             textures = new ITexture[1];
             (textureIds = new int[1])[0] = material_id;
@@ -55,7 +55,7 @@ public final class AEResourceManager {
     }
 
     public static void addGeometryResource(int var0, String var1, int var2, int var3) {
-        if (meshPaths == null) {
+        if(meshPaths == null) {
             (meshPaths = new String[1])[0] = var1;
             (radii_ = new int[1])[0] = var2;
             meshes = new AbstractMesh[1];
@@ -94,12 +94,15 @@ public final class AEResourceManager {
     }
 
     public static ITexture getTextureResource(int var0) {
-        for (int var1 = 0; var1 < textureIds.length; ++var1) {
-            if (var0 == textureIds[var1]) {
+        for(int var1 = 0; var1 < textureIds.length; ++var1) {
+            
+			if(var0 == textureIds[var1]) {
                 loadedTextures[var1] = true;
-                if (textures[var1] == null) {
+                
+				if(textures[var1] == null) {
                     String[] var2 = new String[]{texturePaths[var1]};
-                    if (var0 == 1) {
+                    
+					if(var0 == 1) {
                         ITexture[] var10000 = textures;
                         ITexture var3 = getTextureResource(0);
                         return var10000[var1] = new JSRTexture((JSRTexture) var3);
@@ -116,14 +119,14 @@ public final class AEResourceManager {
     }
 
     public static AbstractMesh getGeometryResource(int var0) {
-        for (int var1 = 0; var1 < meshIds.length; ++var1) {
-            if (var0 == meshIds[var1]) {
+        for(int var1 = 0; var1 < meshIds.length; ++var1) {
+            if(var0 == meshIds[var1]) {
                 loadedMeshes[var1] = true;
-                if (meshes[var1] == null) {
+                if(meshes[var1] == null) {
                     int var10001;
                     AbstractMesh[] var10000;
                     Object var10002;
-                    if (radii_[var1] == -1) {
+                    if(radii_[var1] == -1) {
                         var10000 = meshes;
                         var10001 = var1;
                         String var4 = meshPaths[var1];
@@ -144,7 +147,7 @@ public final class AEResourceManager {
                     }
 
                     var10000[var10001] = (AbstractMesh) var10002;
-                    if (meshes[var1] != null && meshsTextureIds[var1] != Integer.MIN_VALUE) {
+                    if(meshes[var1] != null && meshsTextureIds[var1] != Integer.MIN_VALUE) {
                         meshes[var1].setTexture(getTextureResource(meshsTextureIds[var1]));
                     }
 
@@ -245,78 +248,83 @@ public final class AEResourceManager {
     }
 	
 	public static void setText(int textId, String filePath) {
-    if (textPaths == null) {
-        textPaths = new String[1];
-        textIds = new int[1];
-        texts = new String[1];
-        textPaths[0] = filePath;
-        textIds[0] = textId;
-    } else {
-        int length = textPaths.length;
-        String[] newTextPaths = new String[length + 1];
-        int[] newTextIds = new int[length + 1];
-        String[] newTexts = new String[length + 1];
-
-        System.arraycopy(textPaths, 0, newTextPaths, 0, length);
-        System.arraycopy(textIds, 0, newTextIds, 0, length);
-        System.arraycopy(texts, 0, newTexts, 0, length);
-
-        newTextPaths[length] = filePath;
-        newTextIds[length] = textId;
-
-        textPaths = newTextPaths;
-        textIds = newTextIds;
-        texts = newTexts;
-    }
-}
+		if(textPaths == null) {
+			textPaths = new String[1];
+			textIds = new int[1];
+			texts = new String[1];
+			textPaths[0] = filePath;
+			textIds[0] = textId;
+		} else {
+			int length = textPaths.length;
+			String[] newTextPaths = new String[length + 1];
+			int[] newTextIds = new int[length + 1];
+			String[] newTexts = new String[length + 1];
+			
+			System.arraycopy(textPaths, 0, newTextPaths, 0, length);
+			System.arraycopy(textIds, 0, newTextIds, 0, length);
+			System.arraycopy(texts, 0, newTexts, 0, length);
+			
+			newTextPaths[length] = filePath;
+			newTextIds[length] = textId;
+			
+			textPaths = newTextPaths;
+			textIds = newTextIds;
+			texts = newTexts;
+		}
+	}
 
 	
 	public static String getText(int textId) {
-    if (textIds == null || textPaths == null || texts == null) {
-		GlobalStatus.CATCHED_ERROR = "ERROR | AEResourceManager.getText(" + textId + ") not initialized!";
-        System.out.println(GlobalStatus.CATCHED_ERROR);
-        return null;
-    }
-
-    for (int i = 0; i < textIds.length; i++) {
-        if (textIds[i] == textId) {
-            if (texts[i] == null) {
-                texts[i] = loadText(textPaths[i]);
-            }
-            return texts[i];
-        }
-    }
-	GlobalStatus.CATCHED_ERROR = "ERROR | AEResourceManager.getText(" + textId + ") not found!";
-    System.out.println(GlobalStatus.CATCHED_ERROR);
-    return null;
-}
-
-
+		if(textIds == null || textPaths == null || texts == null) {
+			GlobalStatus.CATCHED_ERROR = "ERROR | AEResourceManager.getText(" + textId + ") not initialized!";
+			System.out.println(GlobalStatus.CATCHED_ERROR);
+			return null;
+		}
+		
+		for(int i = 0; i < textIds.length; i++) {
+			
+			if(textIds[i] == textId) {
+				
+				if(texts[i] == null) {
+					texts[i] = loadText(textPaths[i]);
+				}
+				
+				return texts[i];
+			}
+			
+		}
+		
+		GlobalStatus.CATCHED_ERROR = "ERROR | AEResourceManager.getText(" + textId + ") not found!";
+		System.out.println(GlobalStatus.CATCHED_ERROR);
+		return null;
+	}
 	
 	private static String loadText(String filePath) {
-    InputStream file = AEResourceManager.class.getResourceAsStream(filePath);
-    if (file == null) {
-		GlobalStatus.CATCHED_ERROR = "ERROR: File not found - " + filePath;
-        System.err.println(GlobalStatus.CATCHED_ERROR);
-        return null;
-    }
-    DataInputStream dis = new DataInputStream(file);
-    StringBuffer strBuff = new StringBuffer();
-    int ch = 0;
-    try {
-        while ((ch = dis.read()) != -1) {
-            strBuff.append((char) ((ch >= 0xc0 && ch <= 0xFF) ? (ch + 0x350) : ch));
-        }
-        dis.close();
-    } catch (Exception e) {
-		GlobalStatus.CATCHED_ERROR = "ERROR in loadText() " + e;
-        System.err.println(GlobalStatus.CATCHED_ERROR);
-    }
-    return strBuff.toString();
-}
-
-
-
-
-
+		InputStream file = AEResourceManager.class.getResourceAsStream(filePath);
+		
+		if(file == null) {
+			GlobalStatus.CATCHED_ERROR = "ERROR: File not found - " + filePath;
+			System.err.println(GlobalStatus.CATCHED_ERROR);
+			return null;
+		}
+		
+		DataInputStream dis = new DataInputStream(file);
+		StringBuffer strBuff = new StringBuffer();
+		int ch = 0;
+		
+		try {
+			
+			while((ch = dis.read()) != -1) {
+				strBuff.append((char) ((ch >= 0xc0 && ch <= 0xFF) ? (ch + 0x350) : ch));
+			}
+			
+			dis.close();
+			
+		} catch (Exception e) {
+			GlobalStatus.CATCHED_ERROR = "ERROR in loadText() " + e;
+			System.err.println(GlobalStatus.CATCHED_ERROR);
+		}
+		
+		return strBuff.toString();
+	}
 }

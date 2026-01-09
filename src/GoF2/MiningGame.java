@@ -1,4 +1,5 @@
 /**
+/**
 ** @class Miner
 ** Мини-игра "Шахтер".
 ** Отображает сенсорные клавиши при активации мини-игры "Шахтер".
@@ -6,6 +7,9 @@
 
 package GoF2;
 
+import javax.microedition.lcdui.Image;
+
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.Math.AEMath;
 import AE.PaintCanvas.Font;
@@ -39,14 +43,26 @@ public final class MiningGame {
    private int barsPadding;
    private boolean succeed;
    private int[] _LAYER_WITDTHS = new int[]{44, 39, 34, 29, 23, 18, 13};
+   
+   private Image miningBackground;
+   private Image miningCursor;
+   private Image miningGreenComplete;
+   private Image miningGreenEmpty;
+   private Image miningRedArea;
 
 
-   public MiningGame(int var1, int var2, Hud var3) {
-
+   public MiningGame(int var1, int var2, Hud var3) {	  
+	  
+	  this.miningBackground = AEResourceManager.getImage(120);
+	  this.miningCursor = AEResourceManager.getImage(121);
+	  this.miningGreenComplete = AEResourceManager.getImage(122);
+	  this.miningGreenEmpty = AEResourceManager.getImage(123);
+	  this.miningRedArea = AEResourceManager.getImage(124);
+	  
       this.hud = var3;
-      this.boardPosX = GlobalStatus.var_e75 / 2 - Globals.miningBackground.getWidth() / 2;
-      this.boardPosY = GlobalStatus.var_eb6 / 2 + Globals.miningBackground.getHeight() / 2;
-      this.failedBarPosX = Globals.miningBackground.getWidth();
+      this.boardPosX = GlobalStatus.var_e75 / 2 - this.miningBackground.getWidth() / 2;
+      this.boardPosY = GlobalStatus.var_eb6 / 2 + this.miningBackground.getHeight() / 2;
+      this.failedBarPosX = this.miningBackground.getWidth();
       this.barsPadding = 2;
       this.nextMinedThreshold = -1;
       this.driftSpeed = 1.0F;
@@ -140,31 +156,31 @@ public final class MiningGame {
    }
 
    public final void render2D() {
-      GlobalStatus.graphics.drawImage(Globals.miningBackground, this.boardPosX, this.boardPosY, 36);
+      GlobalStatus.graphics.drawImage(this.miningBackground, this.boardPosX, this.boardPosY, 36);
       int var1 = this.levels * 7;
       int var2 = (this.curLevel + 1) * 7;
       GlobalStatus.graphics.setClip(0, this.boardPosY - var1, GlobalStatus.var_e75, var1);
-      GlobalStatus.graphics.drawImage(Globals.miningGreenEmpty, this.boardPosX + 50, this.boardPosY, 36);
+      GlobalStatus.graphics.drawImage(this.miningGreenEmpty, this.boardPosX + 50, this.boardPosY, 36);
       if(this.curLevel > 0) {
          var1 = this.curLevel * 7;
          GlobalStatus.graphics.setClip(0, this.boardPosY - var1, GlobalStatus.var_e75, var1);
-         GlobalStatus.graphics.drawImage(Globals.miningGreenComplete, this.boardPosX + 50, this.boardPosY, 36);
+         GlobalStatus.graphics.drawImage(this.miningGreenComplete, this.boardPosX + 50, this.boardPosY, 36);
       }
       var1 = this._LAYER_WITDTHS[this.curLevel];
       int var3 = (int)((float)this.levelProgress / (float)this.nextLevelTreshold * (float)var1);
       GlobalStatus.graphics.setClip((GlobalStatus.var_e75 >> 1) - (var3 >> 1), this.boardPosY - var2, var3, 7);
-      GlobalStatus.graphics.drawImage(Globals.miningGreenComplete, this.boardPosX + 50, this.boardPosY, 36);
+      GlobalStatus.graphics.drawImage(this.miningGreenComplete, this.boardPosX + 50, this.boardPosY, 36);
       var2 = this.boardPosY - this.curLevel * 7;
       var3 = this.boardPosX + (this.failedBarPosX - 2 * this.barsPadding - var1 * 3) / 2;
       int var4 = (int)(this.failProgress / 2500.0F * (float)(var1 + 5));
       GlobalStatus.graphics.setClip(var3 + var1 - var4, var2 - 5, var4, 5);
-      GlobalStatus.graphics.drawImage(Globals.miningRedArea, this.boardPosX, this.boardPosY, 36);
+      GlobalStatus.graphics.drawImage(this.miningRedArea, this.boardPosX, this.boardPosY, 36);
       GlobalStatus.graphics.setClip(var3 + var1 * 2 + 2 * this.barsPadding, var2 - 5, var4, 5);
-      GlobalStatus.graphics.drawImage(Globals.miningRedArea, this.boardPosX, this.boardPosY, 36);
+      GlobalStatus.graphics.drawImage(this.miningRedArea, this.boardPosX, this.boardPosY, 36);
       GlobalStatus.graphics.setClip(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
       var1 = (GlobalStatus.var_e75 >> 1) + (int)this.cursorPos;
-      GlobalStatus.graphics.drawImage(Globals.miningCursor, var1, var2 + 2, 33);
-      var1 = this.boardPosY - Globals.miningBackground.getHeight();
+      GlobalStatus.graphics.drawImage(this.miningCursor, var1, var2 + 2, 33);
+      var1 = this.boardPosY - this.miningBackground.getHeight();
       if(this.levels == 7) {
          ImageFactory.drawItemFrameless(this.minedItemId - 154 + 165, Globals.itemsImage, (GlobalStatus.var_e75 >> 1) - 1, var1 + 10, 3);
       }

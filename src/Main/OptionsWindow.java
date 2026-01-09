@@ -4,6 +4,7 @@ import javax.microedition.lcdui.Image;
 import HardEngine.*;
 import javax.microedition.io.ConnectionNotFoundException;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.PaintCanvas.Font;
 import AE.SoundManager;
@@ -74,6 +75,7 @@ public final class OptionsWindow {
    private static boolean effects_state = false;
    
    private static AEButtonManager AETelegramButton;
+   private Image flaggen;
 
 
    public OptionsWindow() {
@@ -98,6 +100,8 @@ public final class OptionsWindow {
       this.controls = new TextBox(posX / 2 + 8, this.optionsListPosY, windowWidth + posX - 16, GlobalStatus.var_eb6 - headerHeight - 48, GlobalStatus.gameText.getText(22));
       this.hidden__ = new TextBox(posX + 8, this.optionsListPosY, windowWidth - 16, GlobalStatus.var_eb6 - headerHeight - 48, "");
       String[] var1 = new String[GameText.helpFull.length];
+	  
+	  this.flaggen = AEResourceManager.getImage(106);
 	  
 	  
 	  skipSceneButton = new AEButtonManager();
@@ -1515,7 +1519,7 @@ public final class OptionsWindow {
 			
 			AEButtonSettings[5].drawStandartButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, AEButtonCheckBoxSettings[5].switchableButtonX + AEButtonCheckBoxSettings[5].switchableButtonWidth + 2, AEButtonCheckBoxSettings[5].switchableButtonY);
 			Layout.drawTextItem(GlobalStatus.gameText.getText(12) + ": ", AEButtonSettings[5].standartButtonX, AEButtonSettings[5].standartButtonY, windowWidth, this.selectedRow == 12); // language
-			GlobalStatus.graphics.drawRegion(Globals.flaggen, GlobalStatus.language_flag_x, GlobalStatus.language_flag_y, 16, 11, 0, AEButtonSettings[5].standartButtonX + 50, AEButtonSettings[5].standartButtonY - 2, 3);
+			GlobalStatus.graphics.drawRegion(this.flaggen, GlobalStatus.language_flag_x, GlobalStatus.language_flag_y, 16, 11, 0, AEButtonSettings[5].standartButtonX + 50, AEButtonSettings[5].standartButtonY - 2, 3);
 			
 			AEButtonCheckBoxSettings[7].drawswitchableButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, Globals.rectRoundedButtonInactive, AEButtonCheckBoxSettings[5].switchableButtonX, AEButtonCheckBoxSettings[5].switchableButtonY + AEButtonCheckBoxSettings[5].switchableButtonHeight + 2, effects_state);
             Layout.drawTextItem(GlobalStatus.gameText.getText(7) + " " + GlobalStatus.gameText.getText(GameText.soundLevels[this.soundLevel]), AEButtonCheckBoxSettings[7].switchableButtonX, AEButtonCheckBoxSettings[7].switchableButtonY, windowWidth, this.selectedRow == 13); // sound

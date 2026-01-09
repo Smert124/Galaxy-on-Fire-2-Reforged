@@ -13,6 +13,8 @@ public final class Globals {
 
    private static String PATH_MESHES = "/Resource/Mesh/";
    private static String PATH_TEXTURES = "/Resource/textures/";
+   private static String PATH_INTERFACE = "/Resource/interface/";
+   private static String PATH_CONFIG = "/Configs/";
    private static String dlc_valkyrie = "/Resource/Mesh/Valkyrie/";
    private static String dlc_supernova = "/Resource/Mesh/Supernova/";
    public static final short[] BAR_MESHES = new short[]{14025, 14029, 14027, 14329}; // bar
@@ -24,85 +26,7 @@ public final class Globals {
    
    public static Image interfaceImage;
    public static Image shipInterfaceImage;
-   public static Image panelInfoUpper;
-   public static Image hudLockonNeutral;
-   public static Image hudRadarIconNeutral;
-   public static Image hudLockonNeutralFar;
-   public static Image hudLockonEnemy;
-   public static Image hudRadarIconEnemy;
-   public static Image hudLockonEnemyFar;
-   public static Image hudLockonFriend;
-   public static Image hudRadarIconFirend;
-   public static Image hudLockonFriendFar;
-   public static Image hudWaypoint;
-   public static Image hudLockonWaypoint;
-   public static Image hudBars;
-   public static Image logosSmall;
-   public static Image bracketBox;
-   public static Image hudCrate;
-   public static Image hudSpacejunk;
-   public static Image hudAsteroid;
-   public static Image hudCrateVoid;
-   public static Image hudVortex;
-   public static Image menuMapJumpgate;
-   public static Image hudScanprocessAnim;
-   public static Image hudMeteorClass;
-   public static Image menuMapSidemission;
-   public static Image menuMapMainmission;
-   public static Image menuMapBlueprint;
-   public static Image menuMapVisited;
-   public static Image menuMapDirection;
-   public static Image mapSunGlow;
-   public static Image medalsOn;
-   public static Image medals;
-   public static Image flaggen;
    public static Image itemsImage;
-   public static Image hudHullBarFull;
-   public static Image hudArmorFull;
-   public static Image hudHullBarEmpty;
-   public static Image hudStatusPanel;
-   public static Image hudShieldNormalIcon;
-   public static Image hudShieldBarEmpty;
-   public static Image hudShieldBarFull;
-   public static Image hudShipNormalIcon;
-   public static Image panelInfoLower;
-   public static Image quickmenuCrosshair;
-   public static Image quickmenuIcons;
-   public static Image hudCrosshair;
-   public static Image lockImage;
-   public static Image miningBackground;
-   public static Image miningCursor;
-   public static Image miningGreenComplete;
-   public static Image miningGreenEmpty;
-   public static Image miningRedArea;
-   public static Image menuSkipImage;
-   public static Image menuBackgroundImage;
-   public static Image menuMainCornerImage;
-   public static Image menuMainPanelUpperImage;
-   public static Image menuMainPanelLowerImage;
-   public static Image menuPanelCornerLeftImage;
-   public static Image menuLowerPanelSolidImage;
-   public static Image fishlabsImage;
-   public static Image abyssImage;
-   public static Image gof2LogoImage;
-   public static Image itemTypesImage;
-   public static Image shipsColorImage;
-   public static Image itemTypesSelImage;
-   public static Image cargoPanelImage;
-   public static Image hudBarYellowEmpty;
-   public static Image hudBarYellowFull;
-   public static Image hudBarRedEmpty;
-   public static Image hudBarRedFull;
-   public static Image hudBarBlueEmpty;
-   public static Image hudBarWhiteFull;
-   public static Image hudBarGreenEmpty;
-   public static Image hudBarGreenFull;
-   public static Image hudBarBlueFull;
-   public static Image hudBarWhiteEmpty;
-   public static Image hudBarOrangeFull;
-   public static Image menuBackgroundTextBox;
-   public static Image menuMapPlayerHome;
-   public static Image radarRingImage;
    
    /** BUTTONS **/
    public static Image rectRoundedButtonNormal;
@@ -148,6 +72,9 @@ public final class Globals {
    
    public static Image triangleButtonNormal;
    public static Image trianlgeButtonPressed;
+   
+   public static Image beveledButtonNormal;
+   public static Image beveledButtonPressed;
    /** BUTTONS **/
    
    public static final byte[] CHAR_KEITH;
@@ -483,738 +410,246 @@ public final class Globals {
    
    public static void loadScripts() {
 	   
-	   AEResourceManager.setText(1, "/Configs/master_config.txt");
-	   AEResourceManager.setText(2, "/Configs/agents.txt");
-	   AEResourceManager.setText(3, "/Configs/items.txt");
-	   AEResourceManager.setText(4, "/Configs/projectiles.txt");
-	   AEResourceManager.setText(5, "/Configs/shipparts.txt");
-	   AEResourceManager.setText(6, "/Configs/ships.txt");
-	   AEResourceManager.setText(7, "/Configs/ships_turrets.txt");
-	   AEResourceManager.setText(8, "/Configs/ships_viewport.txt");
-	   AEResourceManager.setText(9, "/Configs/stationparts.txt");
-	   AEResourceManager.setText(10, "/Configs/stations.txt");
-	   AEResourceManager.setText(11, "/Configs/systems.txt");
-	   AEResourceManager.setText(12, "/Configs/interface.txt");
-	   AEResourceManager.setText(13, "/Configs/collision.txt");
-	   AEResourceManager.setText(100, "/Configs/names_terran_0_m.txt");
-	   AEResourceManager.setText(101, "/Configs/names_terran_0_w.txt");
-	   AEResourceManager.setText(102, "/Configs/names_terran_1.txt");
-	   AEResourceManager.setText(103, "/Configs/names_vossk_0.txt");
-	   AEResourceManager.setText(104, "/Configs/names_vossk_1.txt");
-	   AEResourceManager.setText(105, "/Configs/names_nivelian_0.txt");
-	   AEResourceManager.setText(106, "/Configs/names_nivelian_1.txt");
-	   AEResourceManager.setText(107, "/Configs/names_multipod_0.txt");
-	   AEResourceManager.setText(108, "/Configs/names_multipod_1.txt");
-	   AEResourceManager.setText(109, "/Configs/names_cyborg_0.txt");
-	   AEResourceManager.setText(110, "/Configs/names_bobolan_0.txt");
-	   AEResourceManager.setText(111, "/Configs/names_bobolan_1.txt");
-	   AEResourceManager.setText(112, "/Configs/names_grey_0.txt");
+	   AEResourceManager.setText(1, PATH_CONFIG + "master_config.txt");
+	   AEResourceManager.setText(2, PATH_CONFIG + "agents.txt");
+	   AEResourceManager.setText(3, PATH_CONFIG + "items.txt");
+	   AEResourceManager.setText(4, PATH_CONFIG + "projectiles.txt");
+	   AEResourceManager.setText(5, PATH_CONFIG + "shipparts.txt");
+	   AEResourceManager.setText(6, PATH_CONFIG + "ships.txt");
+	   AEResourceManager.setText(7, PATH_CONFIG + "ships_turrets.txt");
+	   AEResourceManager.setText(8, PATH_CONFIG + "ships_viewport.txt");
+	   AEResourceManager.setText(9, PATH_CONFIG + "stationparts.txt");
+	   AEResourceManager.setText(10, PATH_CONFIG + "stations.txt");
+	   AEResourceManager.setText(11, PATH_CONFIG + "systems.txt");
+	   AEResourceManager.setText(13, PATH_CONFIG + "collision.txt");
+	   AEResourceManager.setText(100, PATH_CONFIG + "names_terran_0_m.txt");
+	   AEResourceManager.setText(101, PATH_CONFIG + "names_terran_0_w.txt");
+	   AEResourceManager.setText(102, PATH_CONFIG + "names_terran_1.txt");
+	   AEResourceManager.setText(103, PATH_CONFIG + "names_vossk_0.txt");
+	   AEResourceManager.setText(104, PATH_CONFIG + "names_vossk_1.txt");
+	   AEResourceManager.setText(105, PATH_CONFIG + "names_nivelian_0.txt");
+	   AEResourceManager.setText(106, PATH_CONFIG + "names_nivelian_1.txt");
+	   AEResourceManager.setText(107, PATH_CONFIG + "names_multipod_0.txt");
+	   AEResourceManager.setText(108, PATH_CONFIG + "names_multipod_1.txt");
+	   AEResourceManager.setText(109, PATH_CONFIG + "names_cyborg_0.txt");
+	   AEResourceManager.setText(110, PATH_CONFIG + "names_bobolan_0.txt");
+	   AEResourceManager.setText(111, PATH_CONFIG + "names_bobolan_1.txt");
+	   AEResourceManager.setText(112, PATH_CONFIG + "names_grey_0.txt");
 
    }
    
    public static void loadImages() {
 	   
-	   AEResourceManager.setImage(0, "/Resource/interface/empty.png");
-	   AEResourceManager.setImage(1, "/Resource/interface/ship_interface.png");
+	   AEResourceManager.setImage(0, PATH_INTERFACE + "empty.png");
 	   
-	   AEResourceManager.setImage(3, "/Resource/interface/items.png");
-	   AEResourceManager.setImage(14, "/Resource/interface/logo_0.png");
-	   AEResourceManager.setImage(15, "/Resource/interface/logo_1.png");
-	   AEResourceManager.setImage(16, "/Resource/interface/logo_2.png");
-	   AEResourceManager.setImage(17, "/Resource/interface/logo_3.png");
-	   AEResourceManager.setImage(18, "/Resource/interface/logo_4.png");
-	   AEResourceManager.setImage(19, "/Resource/interface/logo_5.png");
-	   AEResourceManager.setImage(20, "/Resource/interface/logo_6.png");
-	   AEResourceManager.setImage(21, "/Resource/interface/logo_7.png");
-	   AEResourceManager.setImage(22, "/Resource/interface/logo_8.png");
-	   AEResourceManager.setImage(23, "/Resource/interface/logo_9.png");
+	   AEResourceManager.setImage(3, PATH_INTERFACE + "items.png");
+	   AEResourceManager.setImage(14, PATH_INTERFACE + "logo_0.png");
+	   AEResourceManager.setImage(15, PATH_INTERFACE + "logo_1.png");
+	   AEResourceManager.setImage(16, PATH_INTERFACE + "logo_2.png");
+	   AEResourceManager.setImage(17, PATH_INTERFACE + "logo_3.png");
+	   AEResourceManager.setImage(18, PATH_INTERFACE + "logo_4.png");
+	   AEResourceManager.setImage(19, PATH_INTERFACE + "logo_5.png");
+	   AEResourceManager.setImage(20, PATH_INTERFACE + "logo_6.png");
+	   AEResourceManager.setImage(21, PATH_INTERFACE + "logo_7.png");
+	   AEResourceManager.setImage(22, PATH_INTERFACE + "logo_8.png");
+	   AEResourceManager.setImage(23, PATH_INTERFACE + "logo_9.png");
 	   
-	   AEResourceManager.setImage(54, "/Resource/interface/interface.png");
+	   AEResourceManager.setImage(60, PATH_TEXTURES + "fog_galaxy_low.png");
+	   AEResourceManager.setImage(61, PATH_TEXTURES + "fog_galaxy_high.png");
 	   
-	   AEResourceManager.setImage(60, "/Resource/textures/fog_galaxy_low.png");
-	   AEResourceManager.setImage(61, "/Resource/textures/fog_galaxy_high.png");
+	   AEResourceManager.setImage(68, PATH_INTERFACE + "standing_small_0.png");
+	   AEResourceManager.setImage(69, PATH_INTERFACE + "standing_0.png");
+	   AEResourceManager.setImage(70, PATH_INTERFACE + "standing_small_1.png");
+	   AEResourceManager.setImage(71, PATH_INTERFACE + "standing_1.png");
+	   AEResourceManager.setImage(72, PATH_INTERFACE + "standing_small_2.png");
+	   AEResourceManager.setImage(73, PATH_INTERFACE + "standing_2.png");
+	   AEResourceManager.setImage(74, PATH_INTERFACE + "faces/Brille_golden.png");
+	   AEResourceManager.setImage(75, PATH_INTERFACE + "faces/Brille_schwarz.png");
 	   
-	   AEResourceManager.setImage(68, "/Resource/interface/standing_small_0.png");
-	   AEResourceManager.setImage(69, "/Resource/interface/standing_0.png");
-	   AEResourceManager.setImage(70, "/Resource/interface/standing_small_1.png");
-	   AEResourceManager.setImage(71, "/Resource/interface/standing_1.png");
-	   AEResourceManager.setImage(72, "/Resource/interface/standing_small_2.png");
-	   AEResourceManager.setImage(73, "/Resource/interface/standing_2.png");
-	   AEResourceManager.setImage(74, "/Resource/interface/faces/Brille_golden.png");
-	   AEResourceManager.setImage(75, "/Resource/interface/faces/Brille_schwarz.png");
+	   AEResourceManager.setImage(76, PATH_INTERFACE + "panel_info_upper.png");
+	   AEResourceManager.setImage(77, PATH_INTERFACE + "hud_lockon_neutral.png");
+	   AEResourceManager.setImage(78, PATH_INTERFACE + "hud_lockon_neutral_far.png");
+	   AEResourceManager.setImage(79, PATH_INTERFACE + "hud_radaricon_neutral.png");
+	   AEResourceManager.setImage(80, PATH_INTERFACE + "hud_lockon_enemy.png");
+	   AEResourceManager.setImage(81, PATH_INTERFACE + "hud_lockon_enemy_far.png");
+	   AEResourceManager.setImage(82, PATH_INTERFACE + "hud_radaricon_enemy.png");
+	   AEResourceManager.setImage(83, PATH_INTERFACE + "hud_lockon_friend.png");
+	   AEResourceManager.setImage(84, PATH_INTERFACE + "hud_lockon_friend_far.png");
+	   AEResourceManager.setImage(85, PATH_INTERFACE + "hud_radaricon_friend.png");
+	   AEResourceManager.setImage(86, PATH_INTERFACE + "hud_radaricon_waypoint.png");
+	   AEResourceManager.setImage(87, PATH_INTERFACE + "hud_lockon_waypoint.png");
+	   AEResourceManager.setImage(88, PATH_INTERFACE + "logos_small.png");
+	   AEResourceManager.setImage(89, PATH_INTERFACE + "bracket_box.png");
+	   AEResourceManager.setImage(90, PATH_INTERFACE + "hud_crate.png");
+	   AEResourceManager.setImage(91, PATH_INTERFACE + "hud_spacejunk.png");
+	   AEResourceManager.setImage(92, PATH_INTERFACE + "hud_asteroid.png");
+	   AEResourceManager.setImage(93, PATH_INTERFACE + "hud_crate_void.png");
+	   AEResourceManager.setImage(94, PATH_INTERFACE + "hud_vortex.png");
+	   AEResourceManager.setImage(95, PATH_INTERFACE + "menu_map_jumpgate.png");
+	   AEResourceManager.setImage(96, PATH_INTERFACE + "hud_scanprocess_anim.png");
+	   AEResourceManager.setImage(97, PATH_INTERFACE + "hud_meteor_class.png");
+	   AEResourceManager.setImage(98, PATH_INTERFACE + "menu_map_sidemission.png");
+	   AEResourceManager.setImage(99, PATH_INTERFACE + "menu_map_mainmission.png");
+	   AEResourceManager.setImage(100, PATH_INTERFACE + "menu_map_blueprint.png");
+	   AEResourceManager.setImage(101, PATH_INTERFACE + "menu_map_visited.png");
+	   AEResourceManager.setImage(102, PATH_INTERFACE + "menu_map_direction.png");
+	   AEResourceManager.setImage(103, PATH_INTERFACE + "map_sun_glow.png");
+	   AEResourceManager.setImage(104, PATH_INTERFACE + "medals_on.png");
+	   AEResourceManager.setImage(105, PATH_INTERFACE + "medals.png");
+	   AEResourceManager.setImage(106, PATH_INTERFACE + "flaggen.png");
+	   AEResourceManager.setImage(107, PATH_INTERFACE + "hud_hull_bar_full.png");
+	   AEResourceManager.setImage(108, PATH_INTERFACE + "hud_armor_full.png");
+	   AEResourceManager.setImage(109, PATH_INTERFACE + "hud_hull_bar_empty.png");
+	   AEResourceManager.setImage(110, PATH_INTERFACE + "hud_status_panel.png");
+	   AEResourceManager.setImage(111, PATH_INTERFACE + "hud_shield_normal_icon.png");
+	   AEResourceManager.setImage(112, PATH_INTERFACE + "hud_shield_bar_empty.png");
+	   AEResourceManager.setImage(113, PATH_INTERFACE + "hud_shield_bar_full.png");
+	   AEResourceManager.setImage(114, PATH_INTERFACE + "hud_ship_normal_icon.png");
+	   AEResourceManager.setImage(115, PATH_INTERFACE + "panel_info_lower.png");
+	   AEResourceManager.setImage(116, PATH_INTERFACE + "quickmenu_crosshair_anim.png");
+	   AEResourceManager.setImage(117, PATH_INTERFACE + "quickmenu_icons.png");
+	   AEResourceManager.setImage(118, PATH_INTERFACE + "hud_crosshair.png");
+	   AEResourceManager.setImage(119, PATH_INTERFACE + "lock.png");
+	   AEResourceManager.setImage(120, PATH_INTERFACE + "mining_background.png");
+	   AEResourceManager.setImage(121, PATH_INTERFACE + "mining_cursor.png");
+	   AEResourceManager.setImage(122, PATH_INTERFACE + "mining_green_complete.png");
+	   AEResourceManager.setImage(123, PATH_INTERFACE + "mining_green_empty.png");
+	   AEResourceManager.setImage(124, PATH_INTERFACE + "mining_red_area.png");
+	   AEResourceManager.setImage(125, PATH_INTERFACE + "skip.png");
+	   AEResourceManager.setImage(126, PATH_INTERFACE + "menu_background.png");
+	   AEResourceManager.setImage(127, PATH_INTERFACE + "menu_main_corner.png");
+	   AEResourceManager.setImage(128, PATH_INTERFACE + "menu_main_panel_upper.png");
+	   AEResourceManager.setImage(129, PATH_INTERFACE + "menu_main_panel_lower.png");
+	   AEResourceManager.setImage(130, PATH_INTERFACE + "menu_panel_corner_left.png");
+	   AEResourceManager.setImage(131, PATH_INTERFACE + "menu_lower_panel_solid.png");
+	   AEResourceManager.setImage(132, PATH_INTERFACE + "fishlabs_logo.png");
+	   AEResourceManager.setImage(133, PATH_INTERFACE + "abyss_logo.png");
+	   AEResourceManager.setImage(134, PATH_INTERFACE + "gof2_logo.png");
+	   AEResourceManager.setImage(135, PATH_INTERFACE + "item_types.png");
+	   AEResourceManager.setImage(136, PATH_INTERFACE + "ships_color.png");
+	   AEResourceManager.setImage(137, PATH_INTERFACE + "item_types_sel.png");
+	   AEResourceManager.setImage(138, PATH_INTERFACE + "cargo_panel.png");
+	   AEResourceManager.setImage(139, PATH_INTERFACE + "hud_bar_yellow_empty.png");
+	   AEResourceManager.setImage(140, PATH_INTERFACE + "hud_bar_yellow_full.png");
+	   AEResourceManager.setImage(141, PATH_INTERFACE + "hud_bar_red_empty.png");
+	   AEResourceManager.setImage(142, PATH_INTERFACE + "hud_bar_red_full.png");
+	   AEResourceManager.setImage(143, PATH_INTERFACE + "hud_bar_blue_empty.png");
+	   AEResourceManager.setImage(144, PATH_INTERFACE + "hud_bar_white_full.png");
+	   AEResourceManager.setImage(145, PATH_INTERFACE + "hud_bar_green_empty.png");
+	   AEResourceManager.setImage(146, PATH_INTERFACE + "hud_bar_green_full.png");
+	   AEResourceManager.setImage(147, PATH_INTERFACE + "hud_bar_blue_full.png");
+	   AEResourceManager.setImage(148, PATH_INTERFACE + "hud_bar_white_empty.png");
+	   AEResourceManager.setImage(149, PATH_INTERFACE + "hud_bar_orange_full.png");
+	   AEResourceManager.setImage(150, PATH_INTERFACE + "menu_background_textbox.png");
+	   AEResourceManager.setImage(151, PATH_INTERFACE + "menu_map_player_home.png");
 	   
+	   AEResourceManager.setImage(152, PATH_INTERFACE + "buttons/rect_rounded_button_normal.png");
+	   AEResourceManager.setImage(153, PATH_INTERFACE + "buttons/rect_rounded_button_pressed.png");
+	   AEResourceManager.setImage(154, PATH_INTERFACE + "buttons/rect_rounded_button_inactive.png");
+	   
+	   AEResourceManager.setImage(155, PATH_INTERFACE + "buttons/rect_rounded_small_button_normal.png");
+	   AEResourceManager.setImage(156, PATH_INTERFACE + "buttons/rect_rounded_small_button_pressed.png");
+	   
+	   AEResourceManager.setImage(157, PATH_INTERFACE + "buttons/rect_wide_button_normal.png");
+	   AEResourceManager.setImage(158, PATH_INTERFACE + "buttons/rect_wide_button_pressed.png");
+	   
+	   AEResourceManager.setImage(159, PATH_INTERFACE + "buttons/depart_button_normal.png");
+	   AEResourceManager.setImage(160, PATH_INTERFACE + "buttons/depart_button_pressed.png");
+	   
+	   AEResourceManager.setImage(161, PATH_INTERFACE + "buttons/joystick_background.png");
+	   AEResourceManager.setImage(162, PATH_INTERFACE + "buttons/joystick_normal.png");
+	   AEResourceManager.setImage(163, PATH_INTERFACE + "buttons/joystick_pressed.png");
+	   
+	   AEResourceManager.setImage(164, PATH_INTERFACE + "buttons/autopilot_normal.png");
+	   AEResourceManager.setImage(165, PATH_INTERFACE + "buttons/autopilot_pressed.png");
+	   
+	   AEResourceManager.setImage(166, PATH_INTERFACE + "buttons/booster_normal.png");
+	   AEResourceManager.setImage(167, PATH_INTERFACE + "buttons/booster_pressed.png");
+	   AEResourceManager.setImage(168, PATH_INTERFACE + "buttons/booster_inactive.png");
+	   
+	   AEResourceManager.setImage(169, PATH_INTERFACE + "buttons/right_panel_background.png");
+	   
+	   AEResourceManager.setImage(170, PATH_INTERFACE + "buttons/fire_button_normal.png");
+	   AEResourceManager.setImage(171, PATH_INTERFACE + "buttons/fire_button_pressed.png");
+	   
+	   AEResourceManager.setImage(172, PATH_INTERFACE + "buttons/rocket_button_normal.png");
+	   AEResourceManager.setImage(173, PATH_INTERFACE + "buttons/rocket_button_pressed.png");
+	   
+	   AEResourceManager.setImage(174, PATH_INTERFACE + "buttons/camera_button_normal.png");
+	   AEResourceManager.setImage(175, PATH_INTERFACE + "buttons/camera_button_pressed.png");
+	   
+	   AEResourceManager.setImage(176, PATH_INTERFACE + "buttons/quickmenu_button_normal.png");
+	   AEResourceManager.setImage(177, PATH_INTERFACE + "buttons/quickmenu_button_pressed.png");
+	   
+	   AEResourceManager.setImage(178, PATH_INTERFACE + "buttons/pause_button_normal.png");
+	   AEResourceManager.setImage(179, PATH_INTERFACE + "buttons/pause_button_pressed.png");
+	   
+	   AEResourceManager.setImage(180, PATH_INTERFACE + "buttons/triangle_button_normal.png");
+	   AEResourceManager.setImage(181, PATH_INTERFACE + "buttons/triangle_button_pressed.png");
+	   
+	   AEResourceManager.setImage(182, PATH_INTERFACE + "buttons/beveled_button_normal.png");
+	   AEResourceManager.setImage(183, PATH_INTERFACE + "buttons/beveled_button_pressed.png");
+	   
+	   itemsImage = AEResourceManager.getImage(3);
+	   
+	   rectRoundedButtonNormal = AEResourceManager.getImage(152);
+	   rectRoundedButtonPressed = AEResourceManager.getImage(153);
+	   rectRoundedButtonInactive = AEResourceManager.getImage(154);
+	   
+	   rectRoundedSmallButtonNormal = AEResourceManager.getImage(155);
+	   rectRoundedSmallButtonPressed = AEResourceManager.getImage(156);
+	   
+	   rectWideButtonNormal = AEResourceManager.getImage(157);
+	   rectWideButtonPressed = AEResourceManager.getImage(158);
+	   
+	   departButtonNormal = AEResourceManager.getImage(159);
+	   departButtonPressed = AEResourceManager.getImage(160);
+	   
+	   joystickBackground = AEResourceManager.getImage(161);
+	   joystickNormal = AEResourceManager.getImage(162);
+	   joystickPressed = AEResourceManager.getImage(163);
+	   
+	   autopilotNormal = AEResourceManager.getImage(164);
+	   autopilotPressed = AEResourceManager.getImage(165);
+	   
+	   boosterNormal = AEResourceManager.getImage(166);
+	   boosterPressed = AEResourceManager.getImage(167);
+	   boosterInactive = AEResourceManager.getImage(168);
+	   
+	   rightPanelBackgroundImage = AEResourceManager.getImage(169);
+	   
+	   fireButtonNormal = AEResourceManager.getImage(170);
+	   fireButtonPressed = AEResourceManager.getImage(171);
+	   
+	   rocketButtonNormal = AEResourceManager.getImage(172);
+	   rocketButtonPressed = AEResourceManager.getImage(173);
+	   
+	   cameraButtonNormal = AEResourceManager.getImage(174);
+	   cameraButtonPressed = AEResourceManager.getImage(175);
+	   
+	   quickmenuButtonNormal = AEResourceManager.getImage(176);
+	   quickmenuButtonPressed = AEResourceManager.getImage(177);
+	   
+	   pauseButtonNormal = AEResourceManager.getImage(178);
+	   pauseButtonPressed = AEResourceManager.getImage(179);
+	   
+	   triangleButtonNormal = AEResourceManager.getImage(180);
+	   trianlgeButtonPressed = AEResourceManager.getImage(181);
+	   
+	   beveledButtonNormal = AEResourceManager.getImage(182);
+	   beveledButtonPressed = AEResourceManager.getImage(183);
 	   
 	   for(int ships = 0; ships < GlobalStatus.max_ships; ++ships) {
-		   AEResourceManager.setImage(9000 + ships, "/Resource/interface/ships/ship_" + ships + ".png");
+		   AEResourceManager.setImage(9000 + ships, PATH_INTERFACE + "ships/ship_" + ships + ".png");
 	   }
 	   
 	   for(int lens = 0; lens < 4; ++lens) {
-		   AEResourceManager.setImage(9200 + lens, "/Resource/interface/lens" + lens + ".png");
+		   AEResourceManager.setImage(9200 + lens, PATH_INTERFACE + "lens" + lens + ".png");
 	   }
 	   
 	   for(int suns = 0; suns < 12; ++suns) {
-		   AEResourceManager.setImage(9400 + suns, "/Resource/textures/sun/sun_" + suns + ".png");
+		   AEResourceManager.setImage(9400 + suns, PATH_TEXTURES + "sun/sun_" + suns + ".png");
 	   }
-	   
-	   int RECT_ROUNDED_BUTTON_NORMAL_START_X = FileRead.loadInterface(0, 1);
-	   int RECT_ROUNDED_BUTTON_NORMAL_START_Y = FileRead.loadInterface(0, 2);
-	   int RECT_ROUNDED_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(0, 3);
-	   int RECT_ROUNDED_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(0, 4);
-	   
-	   int RECT_ROUNDED_BUTTON_PRESSED_START_X = FileRead.loadInterface(1, 1);
-	   int RECT_ROUNDED_BUTTON_PRESSED_START_Y = FileRead.loadInterface(1, 2);
-	   int RECT_ROUNDED_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(1, 3);
-	   int RECT_ROUNDED_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(1, 4);
-	   
-	   int RECT_ROUNDED_SMALL_BUTTON_NORMAL_START_X = FileRead.loadInterface(2, 1); 
-	   int RECT_ROUNDED_SMALL_BUTTON_NORMAL_START_y = FileRead.loadInterface(2, 2);
-	   int RECT_ROUNDED_SMALL_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(2, 3);
-	   int RECT_ROUNDED_SMALL_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(2, 4);
-	   
-	   int RECT_ROUNDED_SMALL_BUTTON_PRESSED_START_X = FileRead.loadInterface(3, 1);
-	   int RECT_ROUNDED_SMALL_BUTTON_PRESSED_START_Y = FileRead.loadInterface(3, 2);
-	   int RECT_ROUNDED_SMALL_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(3, 3);
-	   int RECT_ROUNDED_SMALL_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(3, 4);
-	   
-	   int RECT_WIDE_BUTTON_NORMAL_START_X = FileRead.loadInterface(4, 1);
-	   int RECT_WIDE_BUTTON_NORMAL_START_Y = FileRead.loadInterface(4, 2);
-	   int RECT_WIDE_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(4, 3);
-	   int RECT_WIDE_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(4, 4);
-	   
-	   int RECT_WIDE_BUTTON_PRESSED_START_X = FileRead.loadInterface(5, 1);
-	   int RECT_WIDE_BUTTON_PRESSED_START_Y = FileRead.loadInterface(5, 2);
-	   int RECT_WIDE_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(5, 3);
-	   int RECT_WIDE_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(5, 4);
-	   
-	   int RECT_ROUNDED_BUTTON_INACTIVE_START_X = FileRead.loadInterface(6, 1);
-	   int RECT_ROUNDED_BUTTON_INACTIVE_START_Y = FileRead.loadInterface(6, 2);
-	   int RECT_ROUNDED_BUTTON_INACTIVE_WIDTH = FileRead.loadInterface(6, 3);
-	   int RECT_ROUNDED_BUTTON_INACTIVE_HEIGHT = FileRead.loadInterface(6, 4);
-	   
-	   int DEPART_BUTTON_NORMAL_START_X = FileRead.loadInterface(7, 1);
-	   int DEPART_BUTTON_NORMAL_START_Y = FileRead.loadInterface(7, 2);
-	   int DEPART_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(7, 3);
-	   int DEPART_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(7, 4);
-	   
-	   int DEPART_BUTTON_PRESSED_START_X = FileRead.loadInterface(8, 1);
-	   int DEPART_BUTTON_PRESSED_START_Y = FileRead.loadInterface(8, 2);
-	   int DEPART_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(8, 3);
-	   int DEPART_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(8, 4);
-	   
-	   int JOYSTICK_BACKGROUND_START_X = FileRead.loadInterface(9, 1);
-	   int JOYSTICK_BACKGROUND_START_Y = FileRead.loadInterface(9, 2);
-	   int JOYSTICK_BACKGROUND_WIDTH = FileRead.loadInterface(9, 3);
-	   int JOYSTICK_BACKGROUND_HEIGHT = FileRead.loadInterface(9, 4);
-	   
-	   int JOYSTICK_NORMAL_START_X = FileRead.loadInterface(10, 1);
-	   int JOYSTICK_NORMAL_START_Y = FileRead.loadInterface(10, 2);
-	   int JOYSTICK_NORMAL_WIDTH = FileRead.loadInterface(10, 3);
-	   int JOYSTICK_NORMAL_HEIGHT = FileRead.loadInterface(10, 4);
-	   
-	   int JOYSTICK_PRESSED_START_X = FileRead.loadInterface(11, 1);
-	   int JOYSTICK_PRESSED_START_Y = FileRead.loadInterface(11, 2);
-	   int JOYSTICK_PRESSED_WIDTH = FileRead.loadInterface(11, 3);
-	   int JOYSTICK_PRESSED_HEIGHT = FileRead.loadInterface(11, 4);
-	   
-	   int PANEL_INFO_UPPER_START_X = FileRead.loadInterface(12, 1);
-	   int PANEL_INFO_UPPER_START_Y = FileRead.loadInterface(12, 2);
-	   int PANEL_INFO_UPPER_WIDTH = FileRead.loadInterface(12, 3);
-	   int PANEL_INFO_UPPER_HEIGHT = FileRead.loadInterface(12, 4);
-	   
-	   int HUD_LOCKON_NEUTRAL_START_X = FileRead.loadInterface(13, 1);
-	   int HUD_LOCKON_NEUTRAL_START_Y = FileRead.loadInterface(13, 2);
-	   int HUD_LOCKON_NEUTRAL_WIDTH = FileRead.loadInterface(13, 3);
-	   int HUD_LOCKON_NEUTRAL_HEIGHT = FileRead.loadInterface(13, 4);
-	   
-	   int HUD_RADARICON_NEUTRAL_START_X = FileRead.loadInterface(14, 1);
-	   int HUD_RADARICON_NEUTRAL_START_Y = FileRead.loadInterface(14, 2);
-	   int HUD_RADARICON_NEUTRAL_WIDTH = FileRead.loadInterface(14, 3);
-	   int HUD_RADARICON_NEUTRAL_HEIGHT = FileRead.loadInterface(14, 4);
-	   
-	   int HUD_LOCKON_NEUTRAL_FAR_START_X = FileRead.loadInterface(15, 1);
-	   int HUD_LOCKON_NEUTRAL_FAR_START_Y = FileRead.loadInterface(15, 2);
-	   int HUD_LOCKON_NEUTRAL_FAR_WIDTH = FileRead.loadInterface(15, 3);
-	   int HUD_LOCKON_NEUTRAL_FAR_HEIGHT = FileRead.loadInterface(15, 4);
-	   
-	   int HUD_LOCKON_ENEMY_START_X = FileRead.loadInterface(16, 1);
-	   int HUD_LOCKON_ENEMY_START_Y = FileRead.loadInterface(16, 2);
-	   int HUD_LOCKON_ENEMY_WIDTH = FileRead.loadInterface(16, 3);
-	   int HUD_LOCKON_ENEMY_HEIGHT = FileRead.loadInterface(16, 4);
-	   
-	   int HUD_RADARICON_ENEMY_START_X = FileRead.loadInterface(17, 1);
-	   int HUD_RADARICON_ENEMY_START_Y = FileRead.loadInterface(17, 2);
-	   int HUD_RADARICON_ENEMY_WIDTH = FileRead.loadInterface(17, 3);
-	   int HUD_RADARICON_ENEMY_HEIGHT = FileRead.loadInterface(17, 4);
-	   
-	   int HUD_LOCKON_ENEMY_FAR_START_X = FileRead.loadInterface(18, 1);
-	   int HUD_LOCKON_ENEMY_FAR_START_Y = FileRead.loadInterface(18, 2);
-	   int HUD_LOCKON_ENEMY_FAR_WIDTH = FileRead.loadInterface(18, 3);
-	   int HUD_LOCKON_ENEMY_FAR_HEIGHT = FileRead.loadInterface(18, 4);
-	   
-	   int HUD_LOCKON_FRIEND_START_X = FileRead.loadInterface(19, 1);
-	   int HUD_LOCKON_FRIEND_START_Y = FileRead.loadInterface(19, 2);
-	   int HUD_LOCKON_FRIEND_WIDTH = FileRead.loadInterface(19, 3);
-	   int HUD_LOCKON_FRIEND_HEIGHT = FileRead.loadInterface(19, 4);
-	   
-	   int HUD_RADARICON_FRIEND_START_X = FileRead.loadInterface(20, 1);
-	   int HUD_RADARICON_FRIEND_START_Y = FileRead.loadInterface(20, 2);
-	   int HUD_RADARICON_FRIEND_WIDTH = FileRead.loadInterface(20, 3);
-	   int HUD_RADARICON_FRIEND_HEIGHT = FileRead.loadInterface(20, 4);
-	   
-	   int HUD_LOCKON_FRIEND_FAR_START_X = FileRead.loadInterface(21, 1);
-	   int HUD_LOCKON_FRIEND_FAR_START_Y = FileRead.loadInterface(21, 2);
-	   int HUD_LOCKON_FRIEND_FAR_WIDTH = FileRead.loadInterface(21, 3);
-	   int HUD_LOCKON_FRIEND_FAR_HEIGHT = FileRead.loadInterface(21, 4);
-	   
-	   int HUD_RADARICON_WAYPOINT_START_X = FileRead.loadInterface(22, 1);
-	   int HUD_RADARICON_WAYPOINT_START_Y = FileRead.loadInterface(22, 2);
-	   int HUD_RADARICON_WAYPOINT_WIDTH = FileRead.loadInterface(22, 3);
-	   int HUD_RADARICON_WAYPOINT_HEIGHT = FileRead.loadInterface(22, 4);
-	   
-	   int HUD_LOCKON_WAYPOINT_START_X = FileRead.loadInterface(23, 1);
-	   int HUD_LOCKON_WAYPOINT_START_Y = FileRead.loadInterface(23, 2);
-	   int HUD_LOCKON_WAYPOINT_WIDTH = FileRead.loadInterface(23, 3);
-	   int HUD_LOCKON_WAYPOINT_HEIGHT = FileRead.loadInterface(23, 4);
-	   
-	   int HUD_BARS_START_X = FileRead.loadInterface(24, 1);
-	   int HUD_BARS_START_Y = FileRead.loadInterface(24, 2);
-	   int HUD_BARS_WIDTH = FileRead.loadInterface(24, 3);
-	   int HUD_BARS_HEIGHT = FileRead.loadInterface(24, 4);
-	   
-	   int LOGOS_SMALL_START_X = FileRead.loadInterface(25, 1);
-	   int LOGOS_SMALL_START_Y = FileRead.loadInterface(25, 2);
-	   int LOGOS_SMALL_WIDTH = FileRead.loadInterface(25, 3);
-	   int LOGOS_SMALL_HEIGHT = FileRead.loadInterface(25, 4);
-	   
-	   int BRACKET_BOX_START_X = FileRead.loadInterface(26, 1);
-	   int BRACKET_BOX_START_Y = FileRead.loadInterface(26, 2);
-	   int BRACKET_BOX_WIDTH = FileRead.loadInterface(26, 3);
-	   int BRACKET_BOX_HEIGHT = FileRead.loadInterface(26, 4);
-	   
-	   int HUD_CRATE_START_X = FileRead.loadInterface(27, 1);
-	   int HUD_CRATE_START_Y = FileRead.loadInterface(27, 2);
-	   int HUD_CRATE_WIDTH = FileRead.loadInterface(27, 3);
-	   int HUD_CRATE_HEIGHT = FileRead.loadInterface(27, 4);
-	   
-	   int HUD_SPACEJUNK_START_X = FileRead.loadInterface(28, 1);
-	   int HUD_SPACEJUNK_START_Y = FileRead.loadInterface(28, 2);
-	   int HUD_SPACEJUNK_WIDTH = FileRead.loadInterface(28, 3);
-	   int HUD_SPACEJUNK_HEIGHT = FileRead.loadInterface(28, 4);
-	   
-	   int HUD_ASTEROID_START_X = FileRead.loadInterface(29, 1);
-	   int HUD_ASTEROID_START_Y = FileRead.loadInterface(29, 2);
-	   int HUD_ASTEROID_WIDTH = FileRead.loadInterface(29, 3);
-	   int HUD_ASTEROID_HEIGHT = FileRead.loadInterface(29, 4);
-	   
-	   int HUD_CRATE_VOID_START_X = FileRead.loadInterface(30, 1);
-	   int HUD_CRATE_VOID_START_Y = FileRead.loadInterface(30, 2);
-	   int HUD_CRATE_VOID_WIDTH = FileRead.loadInterface(30, 3);
-	   int HUD_CRATE_VOID_HEIGHT = FileRead.loadInterface(30, 4);
-	   
-	   int HUD_VORTEX_START_X = FileRead.loadInterface(31, 1);
-	   int HUD_VORTEX_START_Y = FileRead.loadInterface(31, 2);
-	   int HUD_VORTEX_WIDTH = FileRead.loadInterface(31, 3);
-	   int HUD_VORTEX_HEIGHT = FileRead.loadInterface(31, 4);
-	   
-	   int MENU_MAP_JUMPGATE_START_X = FileRead.loadInterface(32, 1);
-	   int MENU_MAP_JUMPGATE_START_Y = FileRead.loadInterface(32, 2);
-	   int MENU_MAP_JUMPGATE_WIDTH = FileRead.loadInterface(32, 3);
-	   int MENU_MAP_JUMPGATE_HEIGHT = FileRead.loadInterface(32, 4);
-	   
-	   int HUD_SCANPROCESS_ANIM_START_X = FileRead.loadInterface(33, 1);
-	   int HUD_SCANPROCESS_ANIM_START_Y = FileRead.loadInterface(33, 2);
-	   int HUD_SCANPROCESS_ANIM_WIDTH = FileRead.loadInterface(33, 3);
-	   int HUD_SCANPROCESS_ANIM_HEIGHT = FileRead.loadInterface(33, 4);
-	   
-	   int HUD_METEOR_CLASS_START_X = FileRead.loadInterface(34, 1);
-	   int HUD_METEOR_CLASS_START_Y = FileRead.loadInterface(34, 2);
-	   int HUD_METEOR_CLASS_WIDTH = FileRead.loadInterface(34, 3);
-	   int HUD_METEOR_CLASS_HEIGHT = FileRead.loadInterface(34, 4);
-	   
-	   int MENU_MAP_SIDEMISSION_START_X = FileRead.loadInterface(35, 1);
-	   int MENU_MAP_SIDEMISSION_START_Y = FileRead.loadInterface(35, 2);
-	   int MENU_MAP_SIDEMISSION_WIDTH = FileRead.loadInterface(35, 3);
-	   int MENU_MAP_SIDEMISSION_HEIGHT = FileRead.loadInterface(35, 4);
-	   
-	   int MENU_MAP_MAINMISSION_START_X = FileRead.loadInterface(36, 1);
-	   int MENU_MAP_MAINMISSION_START_Y = FileRead.loadInterface(36, 2);
-	   int MENU_MAP_MAINMISSION_WIDTH = FileRead.loadInterface(36, 3);
-	   int MENU_MAP_MAINMISSION_HEIGHT = FileRead.loadInterface(36, 4);
-	   
-	   int MENU_MAP_BLUEPRINT_START_X = FileRead.loadInterface(37, 1);
-	   int MENU_MAP_BLUEPRINT_START_Y = FileRead.loadInterface(37, 2);
-	   int MENU_MAP_BLUEPRINT_WIDTH = FileRead.loadInterface(37, 3);
-	   int MENU_MAP_BLUEPRINT_HEIGHT = FileRead.loadInterface(37, 4);
-	   
-	   int MENU_MAP_VISITED_START_X = FileRead.loadInterface(38, 1);
-	   int MENU_MAP_VISITED_START_Y = FileRead.loadInterface(38, 2);
-	   int MENU_MAP_VISITED_WIDTH = FileRead.loadInterface(38, 3);
-	   int MENU_MAP_VISITED_HEIGHT = FileRead.loadInterface(38, 4);
-	   
-	   int MENU_MAP_DIRECTION_START_X = FileRead.loadInterface(39, 1);
-	   int MENU_MAP_DIRECTION_START_Y = FileRead.loadInterface(39, 2);
-	   int MENU_MAP_DIRECTION_WIDTH = FileRead.loadInterface(39, 3);
-	   int MENU_MAP_DIRECTION_HEIGHT = FileRead.loadInterface(39, 4);
-	   
-	   int MAP_SUN_GLOW_START_X = FileRead.loadInterface(40, 1);
-	   int MAP_SUN_GLOW_START_Y = FileRead.loadInterface(40, 2);
-	   int MAP_SUN_GLOW_WIDTH = FileRead.loadInterface(40, 3);
-	   int MAP_SUN_GLOW_HEIGHT = FileRead.loadInterface(40, 4);
-	   
-	   int MEDALS_ON_START_X = FileRead.loadInterface(41, 1);
-	   int MEDALS_ON_START_Y = FileRead.loadInterface(41, 2);
-	   int MEDALS_ON_WIDTH = FileRead.loadInterface(41, 3);
-	   int MEDALS_ON_HEIGHT = FileRead.loadInterface(41, 4);
-	   
-	   int MEDALS_START_X = FileRead.loadInterface(42, 1);
-	   int MEDALS_START_Y = FileRead.loadInterface(42, 2);
-	   int MEDALS_WIDTH = FileRead.loadInterface(42, 3);
-	   int MEDALS_HEIGHT = FileRead.loadInterface(42, 4);
-	   
-	   int FLAGGEN_START_X = FileRead.loadInterface(43, 1);
-	   int FLAGGEN_START_Y = FileRead.loadInterface(43, 2);
-	   int FLAGGEN_WIDTH = FileRead.loadInterface(43, 3);
-	   int FLAGGEN_HEIGHT = FileRead.loadInterface(43, 4);
-	   
-	   interfaceImage = AEResourceManager.getImage(54);
-	   shipInterfaceImage = AEResourceManager.getImage(1);
-	   itemsImage = AEResourceManager.getImage(3);
-	   
-	   rectRoundedButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_ROUNDED_BUTTON_NORMAL_START_X, RECT_ROUNDED_BUTTON_NORMAL_START_Y, RECT_ROUNDED_BUTTON_NORMAL_WIDTH, RECT_ROUNDED_BUTTON_NORMAL_HEIGHT), RECT_ROUNDED_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RECT_ROUNDED_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   rectRoundedButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_ROUNDED_BUTTON_PRESSED_START_X, RECT_ROUNDED_BUTTON_PRESSED_START_Y, RECT_ROUNDED_BUTTON_PRESSED_WIDTH, RECT_ROUNDED_BUTTON_PRESSED_HEIGHT), RECT_ROUNDED_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RECT_ROUNDED_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   rectRoundedSmallButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_ROUNDED_SMALL_BUTTON_NORMAL_START_X, RECT_ROUNDED_SMALL_BUTTON_NORMAL_START_y, RECT_ROUNDED_SMALL_BUTTON_NORMAL_WIDTH, RECT_ROUNDED_SMALL_BUTTON_NORMAL_HEIGHT), RECT_ROUNDED_SMALL_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RECT_ROUNDED_SMALL_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   rectRoundedSmallButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_ROUNDED_SMALL_BUTTON_PRESSED_START_X, RECT_ROUNDED_SMALL_BUTTON_PRESSED_START_Y, RECT_ROUNDED_SMALL_BUTTON_PRESSED_WIDTH, RECT_ROUNDED_SMALL_BUTTON_PRESSED_HEIGHT), RECT_ROUNDED_SMALL_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RECT_ROUNDED_SMALL_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   rectWideButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_WIDE_BUTTON_NORMAL_START_X, RECT_WIDE_BUTTON_NORMAL_START_Y, RECT_WIDE_BUTTON_NORMAL_WIDTH, RECT_WIDE_BUTTON_NORMAL_HEIGHT), GlobalStatus.var_e75, RECT_WIDE_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   rectWideButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_WIDE_BUTTON_PRESSED_START_X, RECT_WIDE_BUTTON_PRESSED_START_Y, RECT_WIDE_BUTTON_PRESSED_WIDTH, RECT_WIDE_BUTTON_PRESSED_HEIGHT), GlobalStatus.var_e75, RECT_WIDE_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   rectRoundedButtonInactive = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, RECT_ROUNDED_BUTTON_INACTIVE_START_X, RECT_ROUNDED_BUTTON_INACTIVE_START_Y, RECT_ROUNDED_BUTTON_INACTIVE_WIDTH, RECT_ROUNDED_BUTTON_INACTIVE_HEIGHT), RECT_ROUNDED_BUTTON_INACTIVE_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RECT_ROUNDED_BUTTON_INACTIVE_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   departButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, DEPART_BUTTON_NORMAL_START_X, DEPART_BUTTON_NORMAL_START_Y, DEPART_BUTTON_NORMAL_WIDTH, DEPART_BUTTON_NORMAL_HEIGHT), DEPART_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, DEPART_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   departButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, DEPART_BUTTON_PRESSED_START_X, DEPART_BUTTON_PRESSED_START_Y, DEPART_BUTTON_PRESSED_WIDTH, DEPART_BUTTON_PRESSED_HEIGHT), DEPART_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, DEPART_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   joystickBackground = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, JOYSTICK_BACKGROUND_START_X, JOYSTICK_BACKGROUND_START_Y, JOYSTICK_BACKGROUND_WIDTH, JOYSTICK_BACKGROUND_HEIGHT), JOYSTICK_BACKGROUND_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, JOYSTICK_BACKGROUND_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   joystickNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, JOYSTICK_NORMAL_START_X, JOYSTICK_NORMAL_START_Y, JOYSTICK_NORMAL_WIDTH, JOYSTICK_NORMAL_HEIGHT), JOYSTICK_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, JOYSTICK_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   joystickPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, JOYSTICK_PRESSED_START_X, JOYSTICK_PRESSED_START_Y, JOYSTICK_PRESSED_WIDTH, JOYSTICK_PRESSED_HEIGHT), JOYSTICK_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, JOYSTICK_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   panelInfoUpper = AEFile.cutImageRegion(shipInterfaceImage, PANEL_INFO_UPPER_START_X, PANEL_INFO_UPPER_START_Y, PANEL_INFO_UPPER_WIDTH, PANEL_INFO_UPPER_HEIGHT);
-	   hudLockonNeutral = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_NEUTRAL_START_X, HUD_LOCKON_NEUTRAL_START_Y, HUD_LOCKON_NEUTRAL_WIDTH, HUD_LOCKON_NEUTRAL_HEIGHT);
-	   hudRadarIconNeutral = AEFile.cutImageRegion(shipInterfaceImage, HUD_RADARICON_NEUTRAL_START_X, HUD_RADARICON_NEUTRAL_START_Y, HUD_RADARICON_NEUTRAL_WIDTH, HUD_RADARICON_NEUTRAL_HEIGHT);
-	   hudLockonNeutralFar = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_NEUTRAL_FAR_START_X, HUD_LOCKON_NEUTRAL_FAR_START_Y, HUD_LOCKON_NEUTRAL_FAR_WIDTH, HUD_LOCKON_NEUTRAL_FAR_HEIGHT);
-	   hudLockonEnemy = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_ENEMY_START_X, HUD_LOCKON_ENEMY_START_Y, HUD_LOCKON_ENEMY_WIDTH, HUD_LOCKON_ENEMY_HEIGHT);
-	   hudRadarIconEnemy = AEFile.cutImageRegion(shipInterfaceImage, HUD_RADARICON_ENEMY_START_X, HUD_RADARICON_ENEMY_START_Y, HUD_RADARICON_ENEMY_WIDTH, HUD_RADARICON_ENEMY_HEIGHT);
-	   hudLockonEnemyFar = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_ENEMY_FAR_START_X, HUD_LOCKON_ENEMY_FAR_START_Y, HUD_LOCKON_ENEMY_FAR_WIDTH, HUD_LOCKON_ENEMY_FAR_HEIGHT);
-	   hudLockonFriend = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_FRIEND_START_X, HUD_LOCKON_FRIEND_START_Y, HUD_LOCKON_FRIEND_WIDTH, HUD_LOCKON_FRIEND_HEIGHT);
-	   hudRadarIconFirend = AEFile.cutImageRegion(shipInterfaceImage, HUD_RADARICON_FRIEND_START_X, HUD_RADARICON_FRIEND_START_Y, HUD_RADARICON_FRIEND_WIDTH, HUD_RADARICON_FRIEND_HEIGHT);
-	   hudLockonFriendFar = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_FRIEND_FAR_START_X, HUD_LOCKON_FRIEND_FAR_START_Y, HUD_LOCKON_FRIEND_FAR_WIDTH, HUD_LOCKON_FRIEND_FAR_HEIGHT);
-	   hudWaypoint = AEFile.cutImageRegion(shipInterfaceImage, HUD_RADARICON_WAYPOINT_START_X, HUD_RADARICON_WAYPOINT_START_Y, HUD_RADARICON_WAYPOINT_WIDTH, HUD_RADARICON_WAYPOINT_HEIGHT);
-	   hudLockonWaypoint = AEFile.cutImageRegion(shipInterfaceImage, HUD_LOCKON_WAYPOINT_START_X, HUD_LOCKON_WAYPOINT_START_Y, HUD_LOCKON_WAYPOINT_WIDTH, HUD_LOCKON_WAYPOINT_HEIGHT);
-	   hudBars = AEFile.cutImageRegion(shipInterfaceImage, HUD_BARS_START_X, HUD_BARS_START_Y, HUD_BARS_WIDTH, HUD_BARS_HEIGHT);
-	   logosSmall = AEFile.cutImageRegion(shipInterfaceImage, LOGOS_SMALL_START_X, LOGOS_SMALL_START_Y, LOGOS_SMALL_WIDTH, LOGOS_SMALL_HEIGHT);
-	   bracketBox = AEFile.cutImageRegion(shipInterfaceImage, BRACKET_BOX_START_X, BRACKET_BOX_START_Y, BRACKET_BOX_WIDTH, BRACKET_BOX_HEIGHT);
-	   hudCrate = AEFile.cutImageRegion(shipInterfaceImage, HUD_CRATE_START_X, HUD_CRATE_START_Y, HUD_CRATE_WIDTH, HUD_CRATE_HEIGHT);
-	   hudSpacejunk = AEFile.cutImageRegion(shipInterfaceImage, HUD_SPACEJUNK_START_X, HUD_SPACEJUNK_START_Y, HUD_SPACEJUNK_WIDTH, HUD_SPACEJUNK_HEIGHT);
-	   hudAsteroid = AEFile.cutImageRegion(shipInterfaceImage, HUD_ASTEROID_START_X, HUD_ASTEROID_START_Y, HUD_ASTEROID_WIDTH, HUD_ASTEROID_HEIGHT);
-	   hudCrateVoid = AEFile.cutImageRegion(shipInterfaceImage, HUD_CRATE_VOID_START_X, HUD_CRATE_VOID_START_Y, HUD_CRATE_VOID_WIDTH, HUD_CRATE_VOID_HEIGHT);
-	   hudVortex = AEFile.cutImageRegion(shipInterfaceImage, HUD_VORTEX_START_X, HUD_VORTEX_START_Y, HUD_VORTEX_WIDTH, HUD_VORTEX_HEIGHT);
-	   menuMapJumpgate = AEFile.cutImageRegion(shipInterfaceImage, MENU_MAP_JUMPGATE_START_X, MENU_MAP_JUMPGATE_START_Y, MENU_MAP_JUMPGATE_WIDTH, MENU_MAP_JUMPGATE_HEIGHT);
-	   hudScanprocessAnim = AEFile.cutImageRegion(shipInterfaceImage, HUD_SCANPROCESS_ANIM_START_X, HUD_SCANPROCESS_ANIM_START_Y, HUD_SCANPROCESS_ANIM_WIDTH, HUD_SCANPROCESS_ANIM_HEIGHT);
-	   hudMeteorClass = AEFile.cutImageRegion(shipInterfaceImage, HUD_METEOR_CLASS_START_X, HUD_METEOR_CLASS_START_Y, HUD_METEOR_CLASS_WIDTH, HUD_METEOR_CLASS_HEIGHT);
-	   menuMapSidemission = AEFile.cutImageRegion(shipInterfaceImage, MENU_MAP_SIDEMISSION_START_X, MENU_MAP_SIDEMISSION_START_Y, MENU_MAP_SIDEMISSION_WIDTH, MENU_MAP_SIDEMISSION_HEIGHT);
-	   menuMapMainmission = AEFile.cutImageRegion(shipInterfaceImage, MENU_MAP_MAINMISSION_START_X, MENU_MAP_MAINMISSION_START_Y, MENU_MAP_MAINMISSION_WIDTH, MENU_MAP_MAINMISSION_HEIGHT);
-	   menuMapBlueprint = AEFile.cutImageRegion(shipInterfaceImage, MENU_MAP_BLUEPRINT_START_X, MENU_MAP_BLUEPRINT_START_Y, MENU_MAP_BLUEPRINT_WIDTH, MENU_MAP_BLUEPRINT_HEIGHT);
-	   menuMapVisited = AEFile.cutImageRegion(shipInterfaceImage, MENU_MAP_VISITED_START_X, MENU_MAP_VISITED_START_Y, MENU_MAP_VISITED_WIDTH, MENU_MAP_VISITED_HEIGHT);
-	   menuMapDirection = AEFile.cutImageRegion(interfaceImage, MENU_MAP_DIRECTION_START_X, MENU_MAP_DIRECTION_START_Y, MENU_MAP_DIRECTION_WIDTH, MENU_MAP_DIRECTION_HEIGHT);
-	   mapSunGlow = AEFile.cutImageRegion(interfaceImage, MAP_SUN_GLOW_START_X, MAP_SUN_GLOW_START_Y, MAP_SUN_GLOW_WIDTH, MAP_SUN_GLOW_HEIGHT);
-	   medalsOn = AEFile.cutImageRegion(interfaceImage, MEDALS_ON_START_X, MEDALS_ON_START_Y, MEDALS_ON_WIDTH, MEDALS_ON_HEIGHT);
-	   medals = AEFile.cutImageRegion(interfaceImage, MEDALS_START_X, MEDALS_START_Y, MEDALS_WIDTH, MEDALS_HEIGHT);
-	   flaggen = AEFile.cutImageRegion(interfaceImage, FLAGGEN_START_X, FLAGGEN_START_Y, FLAGGEN_WIDTH, FLAGGEN_HEIGHT);
-	   
-	   int HUD_HULL_BAR_FULL_START_X = FileRead.loadInterface(44, 1);
-	   int HUD_HULL_BAR_FULL_START_Y = FileRead.loadInterface(44, 2);
-	   int HUD_HULL_BAR_FULL_WIDTH = FileRead.loadInterface(44, 3);
-	   int HUD_HULL_BAR_FULL_HEIGHT = FileRead.loadInterface(44, 4);
-	   hudHullBarFull = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_HULL_BAR_FULL_START_X, HUD_HULL_BAR_FULL_START_Y, HUD_HULL_BAR_FULL_WIDTH, HUD_HULL_BAR_FULL_HEIGHT), HUD_HULL_BAR_FULL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_HULL_BAR_FULL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_ARMOR_FULL_START_X = FileRead.loadInterface(45, 1);
-	   int HUD_ARMOR_FULL_START_Y = FileRead.loadInterface(45, 2);
-	   int HUD_ARMOR_FULL_WIDTH = FileRead.loadInterface(45, 3);
-	   int HUD_ARMOR_FULL_HEIGHT = FileRead.loadInterface(45, 4);
-	   hudArmorFull = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_ARMOR_FULL_START_X, HUD_ARMOR_FULL_START_Y, HUD_ARMOR_FULL_WIDTH, HUD_ARMOR_FULL_HEIGHT), HUD_ARMOR_FULL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_ARMOR_FULL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_HULL_BAR_EMPTY_START_X = FileRead.loadInterface(46, 1);
-	   int HUD_HULL_BAR_EMPTY_START_Y = FileRead.loadInterface(46, 2);
-	   int HUD_HULL_BAR_EMPTY_WIDTH = FileRead.loadInterface(46, 3);
-	   int HUD_HULL_BAR_EMPTY_HEIGHT = FileRead.loadInterface(46, 4);
-	   hudHullBarEmpty = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_HULL_BAR_EMPTY_START_X, HUD_HULL_BAR_EMPTY_START_Y, HUD_HULL_BAR_EMPTY_WIDTH, HUD_HULL_BAR_EMPTY_HEIGHT), HUD_HULL_BAR_EMPTY_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_HULL_BAR_EMPTY_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_STATUS_PANEL_START_X = FileRead.loadInterface(47, 1);
-	   int HUD_STATUS_PANEL_START_Y = FileRead.loadInterface(47, 2);
-	   int HUD_STATUS_PANEL_WIDTH = FileRead.loadInterface(47, 3);
-	   int HUD_STATUS_PANEL_HEIGHT = FileRead.loadInterface(47, 4);
-	   hudStatusPanel = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_STATUS_PANEL_START_X, HUD_STATUS_PANEL_START_Y, HUD_STATUS_PANEL_WIDTH, HUD_STATUS_PANEL_HEIGHT), HUD_STATUS_PANEL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_STATUS_PANEL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_SHIELD_NORMAL_ICON_START_X = FileRead.loadInterface(48, 1);
-	   int HUD_SHIELD_NORMAL_ICON_START_Y = FileRead.loadInterface(48, 2);
-	   int HUD_SHIELD_NORMAL_ICON_WIDTH = FileRead.loadInterface(48, 3);
-	   int HUD_SHIELD_NORMAL_ICON_HEIGHT = FileRead.loadInterface(48, 4);
-	   hudShieldNormalIcon = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_SHIELD_NORMAL_ICON_START_X, HUD_SHIELD_NORMAL_ICON_START_Y, HUD_SHIELD_NORMAL_ICON_WIDTH, HUD_SHIELD_NORMAL_ICON_HEIGHT), HUD_SHIELD_NORMAL_ICON_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_SHIELD_NORMAL_ICON_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_SHIELD_BAR_EMPTY_START_X = FileRead.loadInterface(49, 1);
-	   int HUD_SHIELD_BAR_EMPTY_START_Y = FileRead.loadInterface(49, 2);
-	   int HUD_SHIELD_BAR_EMPTY_WIDTH = FileRead.loadInterface(49, 3);
-	   int HUD_SHIELD_BAR_EMPTY_HEIGHT = FileRead.loadInterface(49, 4);
-	   hudShieldBarEmpty = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_SHIELD_BAR_EMPTY_START_X, HUD_SHIELD_BAR_EMPTY_START_Y, HUD_SHIELD_BAR_EMPTY_WIDTH, HUD_SHIELD_BAR_EMPTY_HEIGHT), HUD_SHIELD_BAR_EMPTY_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_SHIELD_BAR_EMPTY_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_SHIELD_BAR_FULL_START_X = FileRead.loadInterface(50, 1);
-	   int HUD_SHIELD_BAR_FULL_START_Y = FileRead.loadInterface(50, 2);
-	   int HUD_SHIELD_BAR_FULL_WIDTH = FileRead.loadInterface(50, 3);
-	   int HUD_SHIELD_BAR_FULL_HEIGHT = FileRead.loadInterface(50, 4);
-	   hudShieldBarFull = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_SHIELD_BAR_FULL_START_X, HUD_SHIELD_BAR_FULL_START_Y, HUD_SHIELD_BAR_FULL_WIDTH, HUD_SHIELD_BAR_FULL_HEIGHT), HUD_SHIELD_BAR_FULL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_SHIELD_BAR_FULL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_SHIP_NORMAL_ICON_START_X = FileRead.loadInterface(51, 1);
-	   int HUD_SHIP_NORMAL_ICON_START_Y = FileRead.loadInterface(51, 2);
-	   int HUD_SHIP_NORMAL_ICON_WIDTH = FileRead.loadInterface(51, 3);
-	   int HUD_SHIP_NORMAL_ICON_HEIGHT = FileRead.loadInterface(51, 4);
-	   hudShipNormalIcon = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, HUD_SHIP_NORMAL_ICON_START_X, HUD_SHIP_NORMAL_ICON_START_Y, HUD_SHIP_NORMAL_ICON_WIDTH, HUD_SHIP_NORMAL_ICON_HEIGHT), HUD_SHIP_NORMAL_ICON_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, HUD_SHIP_NORMAL_ICON_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int PANEL_INFO_LOWER_START_X = FileRead.loadInterface(52, 1);
-	   int PANEL_INFO_LOWER_START_Y = FileRead.loadInterface(52, 2);
-	   int PANEL_INFO_LOWER_WIDTH = FileRead.loadInterface(52, 3);
-	   int PANEL_INFO_LOWER_HEIGHT = FileRead.loadInterface(52, 4);
-	   panelInfoLower = AEFile.cutImageRegion(shipInterfaceImage, PANEL_INFO_LOWER_START_X, PANEL_INFO_LOWER_START_Y, PANEL_INFO_LOWER_WIDTH, PANEL_INFO_LOWER_HEIGHT);
-	   
-	   int AUTOPILOT_NORMAL_START_X = FileRead.loadInterface(53, 1);
-	   int AUTOPILOT_NORMAL_START_Y = FileRead.loadInterface(53, 2);
-	   int AUTOPILOT_NORMAL_WIDTH = FileRead.loadInterface(53, 3);
-	   int AUTOPILOT_NORMAL_HEIGHT = FileRead.loadInterface(53, 4);
-	   autopilotNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, AUTOPILOT_NORMAL_START_X, AUTOPILOT_NORMAL_START_Y, AUTOPILOT_NORMAL_WIDTH, AUTOPILOT_NORMAL_HEIGHT), AUTOPILOT_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, AUTOPILOT_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int AUTOPILOT_PRESSED_START_X = FileRead.loadInterface(54, 1);
-	   int AUTOPILOT_PRESSED_START_Y = FileRead.loadInterface(54, 2);
-	   int AUTOPILOT_PRESSED_WIDTH = FileRead.loadInterface(54, 3);
-	   int AUTOPILOT_PRESSED_HEIGHT = FileRead.loadInterface(54, 4);
-	   autopilotPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, AUTOPILOT_PRESSED_START_X, AUTOPILOT_PRESSED_START_Y, AUTOPILOT_PRESSED_WIDTH, AUTOPILOT_PRESSED_HEIGHT), AUTOPILOT_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, AUTOPILOT_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int BOOSTER_NORMAL_START_X = FileRead.loadInterface(55, 1);
-	   int BOOSTER_NORMAL_START_Y = FileRead.loadInterface(55, 2);
-	   int BOOSTER_NORMAL_WIDTH = FileRead.loadInterface(55, 3);
-	   int BOOSTER_NORMAL_HEIGHT = FileRead.loadInterface(55, 4);
-	   boosterNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, BOOSTER_NORMAL_START_X, BOOSTER_NORMAL_START_Y, BOOSTER_NORMAL_WIDTH, BOOSTER_NORMAL_HEIGHT), BOOSTER_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, BOOSTER_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int BOOSTER_PRESSED_START_X = FileRead.loadInterface(56, 1);
-	   int BOOSTER_PRESSED_START_Y = FileRead.loadInterface(56, 2);
-	   int BOOSTER_PRESSED_WIDTH = FileRead.loadInterface(56, 3);
-	   int BOOSTER_PRESSED_HEIGHT = FileRead.loadInterface(56, 4);
-	   boosterPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, BOOSTER_PRESSED_START_X, BOOSTER_PRESSED_START_Y, BOOSTER_PRESSED_WIDTH, BOOSTER_PRESSED_HEIGHT), BOOSTER_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, BOOSTER_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int BOOSTER_INACTIVE_START_X = FileRead.loadInterface(57, 1);
-	   int BOOSTER_INACTIVE_START_Y = FileRead.loadInterface(57, 2);
-	   int BOOSTER_INACTIVE_WIDTH = FileRead.loadInterface(57, 3);
-	   int BOOSTER_INACTIVE_HEIGHT = FileRead.loadInterface(57, 4);
-	   boosterInactive = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, BOOSTER_INACTIVE_START_X, BOOSTER_INACTIVE_START_Y, BOOSTER_INACTIVE_WIDTH, BOOSTER_INACTIVE_HEIGHT), BOOSTER_INACTIVE_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, BOOSTER_INACTIVE_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int QUICKMENU_CROSSHAIR_START_X = FileRead.loadInterface(58, 1);
-	   int QUICKMENU_CROSSHAIR_START_Y = FileRead.loadInterface(58, 2);
-	   int QUICKMENU_CROSSHAIR_WIDTH = FileRead.loadInterface(58, 3);
-	   int QUICKMENU_CROSSHAIR_HEIGHT = FileRead.loadInterface(58, 4);
-	   quickmenuCrosshair = AEFile.cutImageRegion(shipInterfaceImage, QUICKMENU_CROSSHAIR_START_X, QUICKMENU_CROSSHAIR_START_Y, QUICKMENU_CROSSHAIR_WIDTH, QUICKMENU_CROSSHAIR_HEIGHT);
-	   
-	   int QUICKMENU_ICONS_START_X = FileRead.loadInterface(59, 1);
-	   int QUICKMENU_ICONS_START_Y = FileRead.loadInterface(59, 2);
-	   int QUICKMENU_ICONS_WIDTH = FileRead.loadInterface(59, 3);
-	   int QUICKMENU_ICONS_HEIGHT = FileRead.loadInterface(59, 4);
-	   quickmenuIcons = AEFile.cutImageRegion(shipInterfaceImage, QUICKMENU_ICONS_START_X, QUICKMENU_ICONS_START_Y, QUICKMENU_ICONS_WIDTH, QUICKMENU_ICONS_HEIGHT);
-	   
-	   int HUD_CROSSHAIR_START_X = FileRead.loadInterface(60, 1);
-	   int HUD_CROSSHAIR_START_Y = FileRead.loadInterface(60, 2);
-	   int HUD_CROSSHAIR_WIDTH = FileRead.loadInterface(60, 3);
-	   int HUD_CROSSHAIR_HEIGHT = FileRead.loadInterface(60, 4);
-	   hudCrosshair = AEFile.cutImageRegion(shipInterfaceImage, HUD_CROSSHAIR_START_X, HUD_CROSSHAIR_START_Y, HUD_CROSSHAIR_WIDTH, HUD_CROSSHAIR_HEIGHT);
-	   
-	   int LOCK_START_X = FileRead.loadInterface(61, 1);
-	   int LOCK_START_Y = FileRead.loadInterface(61, 2);
-	   int LOCK_WIDTH = FileRead.loadInterface(61, 3);
-	   int LOCK_HEIGHT = FileRead.loadInterface(61, 4);
-	   lockImage = AEFile.cutImageRegion(shipInterfaceImage, LOCK_START_X, LOCK_START_Y, LOCK_WIDTH, LOCK_HEIGHT);
-	   
-	   int MINING_BACKGROUND_START_X = FileRead.loadInterface(62, 1);
-	   int MINING_BACKGROUND_START_Y = FileRead.loadInterface(62, 2);
-	   int MINING_BACKGROUND_WIDTH = FileRead.loadInterface(62, 3);
-	   int MINING_BACKGROUND_HEIGHT = FileRead.loadInterface(62, 4);
-	   miningBackground = AEFile.cutImageRegion(shipInterfaceImage, MINING_BACKGROUND_START_X, MINING_BACKGROUND_START_Y, MINING_BACKGROUND_WIDTH, MINING_BACKGROUND_HEIGHT);
-	   
-	   int MINING_CURSOR_START_X = FileRead.loadInterface(63, 1);
-	   int MINING_CURSOR_START_Y = FileRead.loadInterface(63, 2);
-	   int MINING_CURSOR_WIDTH = FileRead.loadInterface(63, 3);
-	   int MINING_CURSOR_HEIGHT = FileRead.loadInterface(63, 4);
-	   miningCursor = AEFile.cutImageRegion(shipInterfaceImage, MINING_CURSOR_START_X, MINING_CURSOR_START_Y, MINING_CURSOR_WIDTH, MINING_CURSOR_HEIGHT);
-	   
-	   int MINING_GREEN_COMPLETE_START_X = FileRead.loadInterface(64, 1);
-	   int MINING_GREEN_COMPLETE_START_Y = FileRead.loadInterface(64, 2);
-	   int MINING_GREEN_COMPLETE_WIDTH = FileRead.loadInterface(64, 3);
-	   int MINING_GREEN_COMPLETE_HEIGHT = FileRead.loadInterface(64, 4);
-	   miningGreenComplete = AEFile.cutImageRegion(shipInterfaceImage, MINING_GREEN_COMPLETE_START_X, MINING_GREEN_COMPLETE_START_Y, MINING_GREEN_COMPLETE_WIDTH, MINING_GREEN_COMPLETE_HEIGHT);
-	   
-	   int MINING_GREEN_EMPTY_START_X = FileRead.loadInterface(65, 1);
-	   int MINING_GREEN_EMPTY_START_Y = FileRead.loadInterface(65, 2);
-	   int MINING_GREEN_EMPTY_WIDTH = FileRead.loadInterface(65, 3);
-	   int MINING_GREEN_EMPTY_HEIGHT = FileRead.loadInterface(65, 4);
-	   miningGreenEmpty = AEFile.cutImageRegion(shipInterfaceImage, MINING_GREEN_EMPTY_START_X, MINING_GREEN_EMPTY_START_Y, MINING_GREEN_EMPTY_WIDTH, MINING_GREEN_EMPTY_HEIGHT);
-	   
-	   int MINING_REDAREA_START_X = FileRead.loadInterface(66, 1);
-	   int MINING_REDAREA_START_Y = FileRead.loadInterface(66, 2);
-	   int MINING_REDAREA_WIDTH = FileRead.loadInterface(66, 3);
-	   int MINING_REDAREA_HEIGHT = FileRead.loadInterface(66, 4);
-	   miningRedArea = AEFile.cutImageRegion(shipInterfaceImage, MINING_REDAREA_START_X, MINING_REDAREA_START_Y, MINING_REDAREA_WIDTH, MINING_REDAREA_HEIGHT);
-	   
-	   int SKIP_START_X = FileRead.loadInterface(67, 1);
-	   int SKIP_START_Y = FileRead.loadInterface(67, 2);
-	   int SKIP_WIDTH = FileRead.loadInterface(67, 3);
-	   int SKIP_HEIGHT = FileRead.loadInterface(67, 4);
-	   menuSkipImage = AEFile.cutImageRegion(interfaceImage, SKIP_START_X, SKIP_START_Y, SKIP_WIDTH, SKIP_HEIGHT);
-	   
-	   int MENU_BACKGROUND_START_X = FileRead.loadInterface(68, 1);
-	   int MENU_BACKGROUND_START_Y = FileRead.loadInterface(68, 2);
-	   int MENU_BACKGROUND_WIDTH = FileRead.loadInterface(68, 3);
-	   int MENU_BACKGROUND_HEIGHT = FileRead.loadInterface(68, 4);
-	   menuBackgroundImage = AEFile.cutImageRegion(interfaceImage, MENU_BACKGROUND_START_X, MENU_BACKGROUND_START_Y, MENU_BACKGROUND_WIDTH, MENU_BACKGROUND_HEIGHT);
-	   
-	   int MENU_MAIN_CORNER_START_X = FileRead.loadInterface(69, 1);
-	   int MENU_MAIN_CORNER_START_Y = FileRead.loadInterface(69, 2);
-	   int MENU_MAIN_CORNER_WIDTH = FileRead.loadInterface(69, 3);
-	   int MENU_MAIN_CORNER_HEIGHT = FileRead.loadInterface(69, 4);
-	   menuMainCornerImage = AEFile.cutImageRegion(interfaceImage, MENU_MAIN_CORNER_START_X, MENU_MAIN_CORNER_START_Y, MENU_MAIN_CORNER_WIDTH, MENU_MAIN_CORNER_HEIGHT);
-	   
-	   int MENU_MAIN_PANEL_UPPER_START_X = FileRead.loadInterface(70, 1);
-	   int MENU_MAIN_PANEL_UPPER_START_Y = FileRead.loadInterface(70, 2);
-	   int MENU_MAIN_PANEL_UPPER_WIDTH = FileRead.loadInterface(70, 3);
-	   int MENU_MAIN_PANEL_UPPER_HEIGHT = FileRead.loadInterface(70, 4);
-	   menuMainPanelUpperImage = AEFile.cutImageRegion(interfaceImage, MENU_MAIN_PANEL_UPPER_START_X, MENU_MAIN_PANEL_UPPER_START_Y, MENU_MAIN_PANEL_UPPER_WIDTH, MENU_MAIN_PANEL_UPPER_HEIGHT);
-	   
-	   int MENU_PANEL_LOWER_START_X = FileRead.loadInterface(71, 1);
-	   int MENU_PANEL_LOWER_START_Y = FileRead.loadInterface(71, 2);
-	   int MENU_PANEL_LOWER_WIDTH = FileRead.loadInterface(71, 3);
-	   int MENU_PANEL_LOWER_HEIGHT = FileRead.loadInterface(71, 4);
-	   menuMainPanelLowerImage = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, MENU_PANEL_LOWER_START_X, MENU_PANEL_LOWER_START_Y, MENU_PANEL_LOWER_WIDTH, MENU_PANEL_LOWER_HEIGHT), MENU_PANEL_LOWER_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, MENU_PANEL_LOWER_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int MENU_PANEL_CORNER_LEFT_START_X = FileRead.loadInterface(72, 1);
-	   int MENU_PANEL_CORNER_LEFT_START_Y = FileRead.loadInterface(72, 2);
-	   int MENU_PANEL_CORNER_LEFT_WIDTH = FileRead.loadInterface(72, 3);
-	   int MENU_PANEL_CORNER_LEFT_HEIGHT = FileRead.loadInterface(72, 4);
-	   menuPanelCornerLeftImage = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, MENU_PANEL_CORNER_LEFT_START_X, MENU_PANEL_CORNER_LEFT_START_Y, MENU_PANEL_CORNER_LEFT_WIDTH, MENU_PANEL_CORNER_LEFT_HEIGHT), MENU_PANEL_CORNER_LEFT_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, MENU_PANEL_CORNER_LEFT_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int MENU_LOWER_PANEL_SOLID_START_X = FileRead.loadInterface(73, 1);
-	   int MENU_LOWER_PANEL_SOLID_START_Y = FileRead.loadInterface(73, 2);
-	   int MENU_LOWER_PANEL_SOLID_WIDTH = FileRead.loadInterface(73, 3);
-	   int MENU_LOWER_PANEL_SOLID_HEIGHT = FileRead.loadInterface(73, 4);
-	   menuLowerPanelSolidImage = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, MENU_LOWER_PANEL_SOLID_START_X, MENU_LOWER_PANEL_SOLID_START_Y, MENU_LOWER_PANEL_SOLID_WIDTH, MENU_LOWER_PANEL_SOLID_HEIGHT), MENU_LOWER_PANEL_SOLID_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, MENU_LOWER_PANEL_SOLID_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int FISHLABS_START_X = FileRead.loadInterface(74, 1);
-	   int FISHLABS_START_Y = FileRead.loadInterface(74, 2);
-	   int FISHLABS_WIDTH = FileRead.loadInterface(74, 3);
-	   int FISHLABS_HEIGHT = FileRead.loadInterface(74, 4);
-	   fishlabsImage = AEFile.cutImageRegion(interfaceImage, FISHLABS_START_X, FISHLABS_START_Y, FISHLABS_WIDTH, FISHLABS_HEIGHT);
-	   
-	   int ABYSS_START_X = FileRead.loadInterface(75, 1);
-	   int ABYSS_START_Y = FileRead.loadInterface(75, 2);
-	   int ABYSS_WIDTH = FileRead.loadInterface(75, 3);
-	   int ABYSS_HEIGHT = FileRead.loadInterface(75, 4);
-	   abyssImage = AEFile.cutImageRegion(interfaceImage, ABYSS_START_X, ABYSS_START_Y, ABYSS_WIDTH, ABYSS_HEIGHT);
-	   
-	   int GOF2_LOGO_START_X = FileRead.loadInterface(76, 1);
-	   int GOF2_LOGO_START_Y = FileRead.loadInterface(76, 2);
-	   int GOF2_LOGO_WIDTH = FileRead.loadInterface(76, 3);
-	   int GOF2_LOGO_HEIGHT = FileRead.loadInterface(76, 4);
-	   gof2LogoImage = AEFile.cutImageRegion(interfaceImage, GOF2_LOGO_START_X, GOF2_LOGO_START_Y, GOF2_LOGO_WIDTH, GOF2_LOGO_HEIGHT);
-	   
-	   int ITEM_TYPES_START_X = FileRead.loadInterface(77, 1);
-	   int ITEM_TYPES_START_Y = FileRead.loadInterface(77, 2);
-	   int ITEM_TYPES_WIDTH = FileRead.loadInterface(77, 3);
-	   int ITEM_TYPES_HEIGHT = FileRead.loadInterface(77, 4);
-	   itemTypesImage = AEFile.cutImageRegion(interfaceImage, ITEM_TYPES_START_X, ITEM_TYPES_START_Y, ITEM_TYPES_WIDTH, ITEM_TYPES_HEIGHT);
-	   
-	   int ITEM_TYPES_SEL_START_X = FileRead.loadInterface(78, 1);
-	   int ITEM_TYPES_SEL_START_Y = FileRead.loadInterface(78, 2);
-	   int ITEM_TYPES_SEL_WIDTH = FileRead.loadInterface(78, 3);
-	   int ITEM_TYPES_SEL_HEIGHT = FileRead.loadInterface(78, 4);
-	   itemTypesSelImage = AEFile.cutImageRegion(interfaceImage, ITEM_TYPES_SEL_START_X, ITEM_TYPES_SEL_START_Y, ITEM_TYPES_SEL_WIDTH, ITEM_TYPES_SEL_HEIGHT);
-	   
-	   int SHIPS_COLOR_START_X = FileRead.loadInterface(79, 1);
-	   int SHIPS_COLOR_START_Y = FileRead.loadInterface(79, 2);
-	   int SHIPS_COLOR_WIDTH = FileRead.loadInterface(79, 3);
-	   int SHIPS_COLOR_HEIGHT = FileRead.loadInterface(79, 4);
-	   shipsColorImage = AEFile.cutImageRegion(interfaceImage, SHIPS_COLOR_START_X, SHIPS_COLOR_START_Y, SHIPS_COLOR_WIDTH, SHIPS_COLOR_HEIGHT);
-	   
-	   int RIGHT_HUD_BACKGROUND_START_X = FileRead.loadInterface(80, 1);
-	   int RIGHT_HUD_BACKGROUND_START_Y = FileRead.loadInterface(80, 2);
-	   int RIGHT_HUD_BACKGROUND_WIDTH = FileRead.loadInterface(80, 3);
-	   int RIGHT_HUD_BACKGROUND_HEIGHT = FileRead.loadInterface(80, 4);
-	   rightPanelBackgroundImage = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, RIGHT_HUD_BACKGROUND_START_X, RIGHT_HUD_BACKGROUND_START_Y, RIGHT_HUD_BACKGROUND_WIDTH, RIGHT_HUD_BACKGROUND_HEIGHT), RIGHT_HUD_BACKGROUND_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, RIGHT_HUD_BACKGROUND_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int FIRE_BUTTON_NORMAL_START_X = FileRead.loadInterface(81, 1);
-	   int FIRE_BUTTON_NORMAL_START_Y = FileRead.loadInterface(81, 2);
-	   int FIRE_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(81, 3);
-	   int FIRE_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(81, 4);
-	   fireButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, FIRE_BUTTON_NORMAL_START_X, FIRE_BUTTON_NORMAL_START_Y, FIRE_BUTTON_NORMAL_WIDTH, FIRE_BUTTON_NORMAL_HEIGHT), FIRE_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, FIRE_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int FIRE_BUTTON_PRESSED_START_X = FileRead.loadInterface(82, 1);
-	   int FIRE_BUTTON_PRESSED_START_Y = FileRead.loadInterface(82, 2);
-	   int FIRE_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(82, 3);
-	   int FIRE_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(82, 4);
-	   fireButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, FIRE_BUTTON_PRESSED_START_X, FIRE_BUTTON_PRESSED_START_Y, FIRE_BUTTON_PRESSED_WIDTH, FIRE_BUTTON_PRESSED_HEIGHT), FIRE_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, FIRE_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int ROCKET_BUTTON_NORMAL_START_X = FileRead.loadInterface(83, 1);
-	   int ROCKET_BUTTON_NORMAL_START_Y = FileRead.loadInterface(83, 2);
-	   int ROCKET_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(83, 3);
-	   int ROCKET_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(83, 4);
-	   rocketButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, ROCKET_BUTTON_NORMAL_START_X, ROCKET_BUTTON_NORMAL_START_Y, ROCKET_BUTTON_NORMAL_WIDTH, ROCKET_BUTTON_NORMAL_HEIGHT), ROCKET_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, ROCKET_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int ROCKET_BUTTON_PRESSED_START_X = FileRead.loadInterface(84, 1);
-	   int ROCKET_BUTTON_PRESSED_START_Y = FileRead.loadInterface(84, 2);
-	   int ROCKET_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(84, 3);
-	   int ROCKET_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(84, 4);
-	   rocketButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, ROCKET_BUTTON_PRESSED_START_X, ROCKET_BUTTON_PRESSED_START_Y, ROCKET_BUTTON_PRESSED_WIDTH, ROCKET_BUTTON_PRESSED_HEIGHT), ROCKET_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, ROCKET_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int CAMERA_BUTTON_NORMAL_START_X = FileRead.loadInterface(85, 1);
-	   int CAMERA_BUTTON_NORMAL_START_Y = FileRead.loadInterface(85, 2);
-	   int CAMERA_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(85, 3);
-	   int CAMERA_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(85, 4);
-	   cameraButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, CAMERA_BUTTON_NORMAL_START_X, CAMERA_BUTTON_NORMAL_START_Y, CAMERA_BUTTON_NORMAL_WIDTH, CAMERA_BUTTON_NORMAL_HEIGHT), CAMERA_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, CAMERA_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int CAMERA_BUTTON_PRESSED_START_X = FileRead.loadInterface(86, 1);
-	   int CAMERA_BUTTON_PRESSED_START_Y = FileRead.loadInterface(86, 2);
-	   int CAMERA_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(86, 3);
-	   int CAMERA_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(86, 4);
-	   cameraButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, CAMERA_BUTTON_PRESSED_START_X, CAMERA_BUTTON_PRESSED_START_Y, CAMERA_BUTTON_PRESSED_WIDTH, CAMERA_BUTTON_PRESSED_HEIGHT), CAMERA_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, CAMERA_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int QUICKMENU_BUTTON_NORMAL_START_X = FileRead.loadInterface(87, 1);
-	   int QUICKMENU_BUTTON_NORMAL_START_Y = FileRead.loadInterface(87, 2);
-	   int QUICKMENU_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(87, 3);
-	   int QUICKMENU_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(87, 4);
-	   quickmenuButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, QUICKMENU_BUTTON_NORMAL_START_X, QUICKMENU_BUTTON_NORMAL_START_Y, QUICKMENU_BUTTON_NORMAL_WIDTH, QUICKMENU_BUTTON_NORMAL_HEIGHT), QUICKMENU_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, QUICKMENU_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int QUICKMENU_BUTTON_PRESSED_START_X = FileRead.loadInterface(88, 1);
-	   int QUICKMENU_BUTTON_PRESSED_START_Y = FileRead.loadInterface(88, 2);
-	   int QUICKMENU_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(88, 3);
-	   int QUICKMENU_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(88, 4);
-	   quickmenuButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, QUICKMENU_BUTTON_PRESSED_START_X, QUICKMENU_BUTTON_PRESSED_START_Y, QUICKMENU_BUTTON_PRESSED_WIDTH, QUICKMENU_BUTTON_PRESSED_HEIGHT), QUICKMENU_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, QUICKMENU_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int CARGO_PANEL_START_X = FileRead.loadInterface(89, 1);
-	   int CARGO_PANEL_START_Y = FileRead.loadInterface(89, 2);
-	   int CARGO_PANEL_WIDTH = FileRead.loadInterface(89, 3);
-	   int CARGO_PANEL_HEIGHT = FileRead.loadInterface(89, 4);
-	   cargoPanelImage = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, CARGO_PANEL_START_X, CARGO_PANEL_START_Y, CARGO_PANEL_WIDTH, CARGO_PANEL_HEIGHT), CARGO_PANEL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, CARGO_PANEL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int PAUSE_BUTTON_NORMAL_START_X = FileRead.loadInterface(90, 1);
-	   int PAUSE_BUTTON_NORMAL_START_Y = FileRead.loadInterface(90, 2);
-	   int PAUSE_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(90, 3);
-	   int PAUSE_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(90, 4);
-	   pauseButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, PAUSE_BUTTON_NORMAL_START_X, PAUSE_BUTTON_NORMAL_START_Y, PAUSE_BUTTON_NORMAL_WIDTH, PAUSE_BUTTON_NORMAL_HEIGHT), PAUSE_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, PAUSE_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int PAUSE_BUTTON_PRESSED_START_X = FileRead.loadInterface(91, 1);
-	   int PAUSE_BUTTON_PRESSED_START_Y = FileRead.loadInterface(91, 2);
-	   int PAUSE_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(91, 3);
-	   int PAUSE_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(91, 4);
-	   pauseButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, PAUSE_BUTTON_PRESSED_START_X, PAUSE_BUTTON_PRESSED_START_Y, PAUSE_BUTTON_PRESSED_WIDTH, PAUSE_BUTTON_PRESSED_HEIGHT), PAUSE_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, PAUSE_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int HUD_BAR_YELLOW_EMPTY_START_X = FileRead.loadInterface(92, 1);
-	   int HUD_BAR_YELLOW_EMPTY_START_Y = FileRead.loadInterface(92, 2);
-	   int HUD_BAR_YELLOW_EMPTY_WIDTH = FileRead.loadInterface(92, 3);
-	   int HUD_BAR_YELLOW_EMPTY_HEIGHT = FileRead.loadInterface(92, 4);
-	   hudBarYellowEmpty = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_YELLOW_EMPTY_START_X, HUD_BAR_YELLOW_EMPTY_START_Y, HUD_BAR_YELLOW_EMPTY_WIDTH, HUD_BAR_YELLOW_EMPTY_HEIGHT);
-	   
-	   int HUD_BAR_YELLOW_FULL_START_X = FileRead.loadInterface(93, 1);
-	   int HUD_BAR_YELLOW_FULL_START_Y = FileRead.loadInterface(93, 2);
-	   int HUD_BAR_YELLOW_FULL_WIDTH = FileRead.loadInterface(93, 3);
-	   int HUD_BAR_YELLOW_FULL_HEIGHT = FileRead.loadInterface(93, 4);
-	   hudBarYellowFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_YELLOW_FULL_START_X, HUD_BAR_YELLOW_FULL_START_Y, HUD_BAR_YELLOW_FULL_WIDTH, HUD_BAR_YELLOW_FULL_HEIGHT);
-	   
-	   int HUD_BAR_RED_EMPTY_START_X = FileRead.loadInterface(94, 1);
-	   int HUD_BAR_RED_EMPTY_START_Y = FileRead.loadInterface(94, 2);
-	   int HUD_BAR_RED_EMPTY_WIDTH = FileRead.loadInterface(94, 3);
-	   int HUD_BAR_RED_EMPTY_HEIGHT = FileRead.loadInterface(94, 4);
-	   hudBarRedEmpty = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_RED_EMPTY_START_X, HUD_BAR_RED_EMPTY_START_Y, HUD_BAR_RED_EMPTY_WIDTH, HUD_BAR_RED_EMPTY_HEIGHT);
-	   
-	   int HUD_BAR_RED_FULL_START_X = FileRead.loadInterface(95, 1);
-	   int HUD_BAR_RED_FULL_START_Y = FileRead.loadInterface(95, 2);
-	   int HUD_BAR_RED_FULL_WIDTH = FileRead.loadInterface(95, 3);
-	   int HUD_BAR_RED_FULL_HEIGHT = FileRead.loadInterface(95, 4);
-	   hudBarRedFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_RED_FULL_START_X, HUD_BAR_RED_FULL_START_Y, HUD_BAR_RED_FULL_WIDTH, HUD_BAR_RED_FULL_HEIGHT);
-	   
-	   int HUD_BAR_BLUE_EMPTY_START_X = FileRead.loadInterface(96, 1);
-	   int HUD_BAR_BLUE_EMPTY_START_Y = FileRead.loadInterface(96, 2);
-	   int HUD_BAR_BLUE_EMPTY_WIDTH = FileRead.loadInterface(96, 3);
-	   int HUD_BAR_BLUE_EMPTY_HEIGHT = FileRead.loadInterface(96, 4);
-	   hudBarBlueEmpty = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_BLUE_EMPTY_START_X, HUD_BAR_BLUE_EMPTY_START_Y, HUD_BAR_BLUE_EMPTY_WIDTH, HUD_BAR_BLUE_EMPTY_HEIGHT);
-	   
-	   int HUD_BAR_WHITE_FULL_START_X = FileRead.loadInterface(97, 1);
-	   int HUD_BAR_WHITE_FULL_START_Y = FileRead.loadInterface(97, 2);
-	   int HUD_BAR_WHITE_FULL_WIDTH = FileRead.loadInterface(97, 3);
-	   int HUD_BAR_WHITE_FULL_HEIGHT = FileRead.loadInterface(97, 4);
-	   hudBarWhiteFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_WHITE_FULL_START_X, HUD_BAR_WHITE_FULL_START_Y, HUD_BAR_WHITE_FULL_WIDTH, HUD_BAR_WHITE_FULL_HEIGHT);
-	   
-	   int HUD_BAR_GREEN_EMPTY_START_X = FileRead.loadInterface(98, 1);
-	   int HUD_BAR_GREEN_EMPTY_START_Y = FileRead.loadInterface(98, 2);
-	   int HUD_BAR_GREEN_EMPTY_WIDTH = FileRead.loadInterface(98, 3);
-	   int HUD_BAR_GREEN_EMPTY_HEIGHT = FileRead.loadInterface(98, 4);
-	   hudBarGreenEmpty = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_GREEN_EMPTY_START_X, HUD_BAR_GREEN_EMPTY_START_Y, HUD_BAR_GREEN_EMPTY_WIDTH, HUD_BAR_GREEN_EMPTY_HEIGHT);
-	   
-	   int HUD_BAR_GREEN_FULL_START_X = FileRead.loadInterface(99, 1);
-	   int HUD_BAR_GREEN_FULL_START_Y = FileRead.loadInterface(99, 2);
-	   int HUD_BAR_GREEN_FULL_WIDTH = FileRead.loadInterface(99, 3);
-	   int HUD_BAR_GREEN_FULL_HEIGHT = FileRead.loadInterface(99, 4);
-	   hudBarGreenFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_GREEN_FULL_START_X, HUD_BAR_GREEN_FULL_START_Y, HUD_BAR_GREEN_FULL_WIDTH, HUD_BAR_GREEN_FULL_HEIGHT);
-	   
-	   int HUD_BAR_BLUE_FULL_START_X = FileRead.loadInterface(100, 1);
-	   int HUD_BAR_BLUE_FULL_START_Y = FileRead.loadInterface(100, 2);
-	   int HUD_BAR_BLUE_FULL_WIDTH = FileRead.loadInterface(100, 3);
-	   int HUD_BAR_BLUE_FULL_HEIGHT = FileRead.loadInterface(100, 4);
-	   hudBarBlueFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_BLUE_FULL_START_X, HUD_BAR_BLUE_FULL_START_Y, HUD_BAR_BLUE_FULL_WIDTH, HUD_BAR_BLUE_FULL_HEIGHT);
-	   
-	   int HUD_BAR_WHITE_EMPTY_START_X = FileRead.loadInterface(101, 1);
-	   int HUD_BAR_WHITE_EMPTY_START_Y = FileRead.loadInterface(101, 2);
-	   int HUD_BAR_WHITE_EMPTY_WIDTH = FileRead.loadInterface(101, 3);
-	   int HUD_BAR_WHITE_EMPTY_HEIGHT = FileRead.loadInterface(101, 4);
-	   hudBarWhiteEmpty = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_WHITE_EMPTY_START_X, HUD_BAR_WHITE_EMPTY_START_Y, HUD_BAR_WHITE_EMPTY_WIDTH, HUD_BAR_WHITE_EMPTY_HEIGHT);
-	   
-	   int HUD_BAR_ORANGE_FULL_START_X = FileRead.loadInterface(102, 1);
-	   int HUD_BAR_ORANGE_FULL_START_Y = FileRead.loadInterface(102, 2);
-	   int HUD_BAR_ORANGE_FULL_WIDTH = FileRead.loadInterface(102, 3);
-	   int HUD_BAR_ORANGE_FULL_HEIGHT = FileRead.loadInterface(102, 4);
-	   hudBarOrangeFull = AEFile.cutImageRegion(shipInterfaceImage, HUD_BAR_ORANGE_FULL_START_X, HUD_BAR_ORANGE_FULL_START_Y, HUD_BAR_ORANGE_FULL_WIDTH, HUD_BAR_ORANGE_FULL_HEIGHT);
-	   
-	   int MENU_BACKGROUND_TEXTBOX_START_X = FileRead.loadInterface(103, 1);
-	   int MENU_BACKGROUND_TEXTBOX_START_Y = FileRead.loadInterface(103, 2);
-	   int MENU_BACKGROUND_TEXTBOX_WIDTH = FileRead.loadInterface(103, 3);
-	   int MENU_BACKGROUND_TEXTBOX_HEIGHT = FileRead.loadInterface(103, 4);
-	   menuBackgroundTextBox = AEFile.cutImageRegion(interfaceImage, MENU_BACKGROUND_TEXTBOX_START_X, MENU_BACKGROUND_TEXTBOX_START_Y, MENU_BACKGROUND_TEXTBOX_WIDTH, MENU_BACKGROUND_TEXTBOX_HEIGHT);
-	   
-	   int TRIANGLE_BUTTON_NORMAL_START_X = FileRead.loadInterface(104, 1);
-	   int TRIANGLE_BUTTON_NORMAL_START_Y = FileRead.loadInterface(104, 2);
-	   int TRIANGLE_BUTTON_NORMAL_WIDTH = FileRead.loadInterface(104, 3);
-	   int TRIANGLE_BUTTON_NORMAL_HEIGHT = FileRead.loadInterface(104, 4);
-	   triangleButtonNormal = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, TRIANGLE_BUTTON_NORMAL_START_X, TRIANGLE_BUTTON_NORMAL_START_Y, TRIANGLE_BUTTON_NORMAL_WIDTH, TRIANGLE_BUTTON_NORMAL_HEIGHT), TRIANGLE_BUTTON_NORMAL_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, TRIANGLE_BUTTON_NORMAL_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int TRIANGLE_BUTTON_PRESSED_START_X = FileRead.loadInterface(105, 1);
-	   int TRIANGLE_BUTTON_PRESSED_START_Y = FileRead.loadInterface(105, 2);
-	   int TRIANGLE_BUTTON_PRESSED_WIDTH = FileRead.loadInterface(105, 3);
-	   int TRIANGLE_BUTTON_PRESSED_HEIGHT = FileRead.loadInterface(105, 4);
-	   trianlgeButtonPressed = AEFile.resize_image(AEFile.cutImageRegion(interfaceImage, TRIANGLE_BUTTON_PRESSED_START_X, TRIANGLE_BUTTON_PRESSED_START_Y, TRIANGLE_BUTTON_PRESSED_WIDTH, TRIANGLE_BUTTON_PRESSED_HEIGHT), TRIANGLE_BUTTON_PRESSED_WIDTH * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, TRIANGLE_BUTTON_PRESSED_HEIGHT * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
-	   int PLAYER_HOME_START_X = FileRead.loadInterface(106, 1);
-	   int PLAYER_HOME_START_Y = FileRead.loadInterface(106, 2);
-	   int PLAYER_HOME_WIDTH = FileRead.loadInterface(106, 3);
-	   int PLAYER_HOME_HEIGHT = FileRead.loadInterface(106, 4);
-	   menuMapPlayerHome = AEFile.cutImageRegion(interfaceImage, PLAYER_HOME_START_X, PLAYER_HOME_START_Y, PLAYER_HOME_WIDTH, PLAYER_HOME_HEIGHT);
-	   
-	   int RADAR_RING_START_X = FileRead.loadInterface(107, 1);
-	   int RADAR_RING_START_Y = FileRead.loadInterface(107, 2);
-	   int RADAR_RING_WIDTH = FileRead.loadInterface(107, 3);
-	   int RADAR_RING_HEIGHT = FileRead.loadInterface(107, 4);
-	   radarRingImage = AEFile.resize_image(AEFile.cutImageRegion(shipInterfaceImage, RADAR_RING_START_X, RADAR_RING_START_Y, RADAR_RING_WIDTH, RADAR_RING_HEIGHT), (RADAR_RING_WIDTH * 2) * GlobalStatus.INTERFACE_SCALE_MULTIPLIER, (RADAR_RING_HEIGHT * 2) * GlobalStatus.INTERFACE_SCALE_MULTIPLIER);
-	   
    }
 
 
@@ -1383,98 +818,98 @@ public final class Globals {
 		
 		
 		
-		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 32000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 15000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 32000, tex_station_midorian);
-		
-		
+		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 15000, tex_station_midorian);
 		
 		
-		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stat_bottom1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stat_bottom2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stat_bottom3.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stat_bottom4.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stat_bottom5.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stat_bridge0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stat_bridge1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stat_bridge2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stat_connector0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stat_hangar0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stat_hangar1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stat_hangar2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stat_hangar3.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stat_hangar4.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stat_middle0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stat_middle1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stat_middle2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stat_middle3.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stat_top0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stat_top1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stat_top10.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stat_top2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stat_top3.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stat_top4.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stat_top5.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stat_top6.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stat_top7.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stat_top8.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stat_top9.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 32000, 0);
-		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 32000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 32000, tex_fx);
-		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 32000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 32000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stat_player_add.aem", 32000, tex_station_player_add);
 		
-		AEResourceManager.addGeometryResource(4544, dlc_valkyrie + "station_deep_science.aem", 32000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4545, dlc_valkyrie + "station_deep_science_add.aem", 32000, tex_station_deescience_add);
-		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 32000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 32000, tex_station_deescience);
+		
+		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stat_bottom1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stat_bottom2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stat_bottom3.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stat_bottom4.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stat_bottom5.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stat_bridge0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stat_bridge1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stat_bridge2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stat_connector0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stat_hangar0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stat_hangar1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stat_hangar2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stat_hangar3.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stat_hangar4.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stat_middle0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stat_middle1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stat_middle2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stat_middle3.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stat_top0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stat_top1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stat_top10.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stat_top2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stat_top3.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stat_top4.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stat_top5.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stat_top6.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stat_top7.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stat_top8.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stat_top9.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 15000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 15000, tex_fx);
+		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 15000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 15000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stat_player_add.aem", 15000, tex_station_player_add);
+		
+		AEResourceManager.addGeometryResource(4544, dlc_valkyrie + "station_deep_science.aem", 15000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4545, dlc_valkyrie + "station_deep_science_add.aem", 15000, tex_station_deescience_add);
+		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 15000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 15000, tex_station_deescience);
 		
 		AEResourceManager.addGeometryResource(13001, PATH_MESHES + "ship_betty_body.aem", 2000, tex_midorian);
 		AEResourceManager.addGeometryResource(13101, PATH_MESHES + "ship_betty_light_add.aem", 2000, tex_fx);
@@ -1678,35 +1113,35 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(13071, PATH_MESHES + "boost_yellow_add.aem", 5000, tex_gof1);
 		AEResourceManager.addGeometryResource(14072, PATH_MESHES + "boost_blue.m3g", 5000, 1);
 		
-		AEResourceManager.addGeometryResource(13072, PATH_MESHES + "ship_vt_00.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13073, PATH_MESHES + "ship_vt_01.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13074, PATH_MESHES + "ship_vt_02.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13075, PATH_MESHES + "ship_vt_03.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13076, PATH_MESHES + "ship_vt_04.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13077, PATH_MESHES + "ship_vt_05.aem", 500000, 0);
+		AEResourceManager.addGeometryResource(13072, PATH_MESHES + "ship_vt_00.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13073, PATH_MESHES + "ship_vt_01.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13074, PATH_MESHES + "ship_vt_02.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13075, PATH_MESHES + "ship_vt_03.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13076, PATH_MESHES + "ship_vt_04.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13077, PATH_MESHES + "ship_vt_05.aem", 15000, 0);
 		
-		AEResourceManager.addGeometryResource(13078, PATH_MESHES + "ship_tb_00.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13079, PATH_MESHES + "ship_tb_01.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13080, PATH_MESHES + "ship_tb_02.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13081, PATH_MESHES + "ship_tb_03.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13082, PATH_MESHES + "ship_tb_04.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13083, PATH_MESHES + "ship_tb_05.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13084, PATH_MESHES + "ship_tb_06.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13085, PATH_MESHES + "ship_tb_07.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13086, PATH_MESHES + "ship_tb_08.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13087, PATH_MESHES + "ship_tb_09.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13088, PATH_MESHES + "ship_tb_10.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13089, PATH_MESHES + "ship_tb_11.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13090, PATH_MESHES + "ship_tb_12.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13091, PATH_MESHES + "ship_tb_13.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13092, PATH_MESHES + "ship_tb_14.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13093, PATH_MESHES + "ship_tb_15.aem", 50000, 0);
-		AEResourceManager.addGeometryResource(13094, PATH_MESHES + "ship_tb_16.aem", 50000, 0);
+		AEResourceManager.addGeometryResource(13078, PATH_MESHES + "ship_tb_00.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13079, PATH_MESHES + "ship_tb_01.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13080, PATH_MESHES + "ship_tb_02.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13081, PATH_MESHES + "ship_tb_03.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13082, PATH_MESHES + "ship_tb_04.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13083, PATH_MESHES + "ship_tb_05.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13084, PATH_MESHES + "ship_tb_06.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13085, PATH_MESHES + "ship_tb_07.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13086, PATH_MESHES + "ship_tb_08.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13087, PATH_MESHES + "ship_tb_09.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13088, PATH_MESHES + "ship_tb_10.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13089, PATH_MESHES + "ship_tb_11.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13090, PATH_MESHES + "ship_tb_12.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13091, PATH_MESHES + "ship_tb_13.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13092, PATH_MESHES + "ship_tb_14.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13093, PATH_MESHES + "ship_tb_15.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13094, PATH_MESHES + "ship_tb_16.aem", 15000, 0);
 		
-		AEResourceManager.addGeometryResource(13095, PATH_MESHES + "ship_tt_00.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13096, PATH_MESHES + "ship_tt_01.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13097, PATH_MESHES + "ship_tt_02.aem", 500000, 0);
-		AEResourceManager.addGeometryResource(13098, PATH_MESHES + "ship_tt_03.aem", 500000, 0);
+		AEResourceManager.addGeometryResource(13095, PATH_MESHES + "ship_tt_00.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13096, PATH_MESHES + "ship_tt_01.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13097, PATH_MESHES + "ship_tt_02.aem", 15000, 0);
+		AEResourceManager.addGeometryResource(13098, PATH_MESHES + "ship_tt_03.aem", 15000, 0);
 		
 		AEResourceManager.addGeometryResource(13999, PATH_MESHES + "arrow.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(14007, PATH_MESHES + "null.m3g", 15000, 0); // h1s1_
@@ -1825,36 +1260,37 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(3110, PATH_MESHES + "galaxymap/map_sun_010_add.aem", 2000, tex_suns);
 		AEResourceManager.addGeometryResource(3111, PATH_MESHES + "galaxymap/sd_sn_map_sun_011_add.aem", 2000, tex_sn_galaxymap_planets);
 		
-		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_0);
-		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_1);
-		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_2);
-		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_3);
-		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_4);
-		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_5);
-		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_6);
-		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_7);
-		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_8);
-		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_9);
-		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_10);
-		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_11);
-		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_12);
-		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_13);
-		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_14);
-		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_15);
-		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_16);
-		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_17);
-		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_18);
-		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_19);
-		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_20);
-		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_21);
-		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_22);
-		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_23);
-		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_24);
-		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_25);
-		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_26);
-		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_27);
-		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_28);
-		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "plane_alpha.aem", 500000, tex_planet_29);
+		int planetBoundingSphere = 15000;
+		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_0);
+		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_1);
+		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_2);
+		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_3);
+		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_4);
+		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_5);
+		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_6);
+		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_7);
+		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_8);
+		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_9);
+		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_10);
+		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_11);
+		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_12);
+		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_13);
+		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_14);
+		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_15);
+		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_16);
+		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_17);
+		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_18);
+		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_19);
+		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_20);
+		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_21);
+		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_22);
+		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_23);
+		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_24);
+		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_25);
+		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_26);
+		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_27);
+		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_28);
+		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_29);
 		
 		AEResourceManager.addGeometryResource(6754, PATH_MESHES + "projectiles/laser_orange_add.aem", 5000, tex_fx);
 		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "projectiles/laser_yellow_add.aem", 5000, tex_fx);

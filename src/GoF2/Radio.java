@@ -60,7 +60,7 @@ public final class Radio {
 	  
 	  // Вычисляем начальные координаты
 	  int startX = padding; // Начало по X
-	  int startY = Globals.panelInfoUpper.getHeight() * 2; // Центрируем по Y
+	  int startY = Radar.panelInfoUpper.getHeight() * 2; // Центрируем по Y
 	  
       if(this.currentMessage == null) {
          this.msgCheckTick += var3;
@@ -101,8 +101,8 @@ public final class Radio {
             var10.printStackTrace();
          }
 
-         ImageFactory.drawChar(this.faceImages, startX + 7, startY + Globals.menuMainCornerImage.getHeight() + 7, 0);
-         Font.drawLinesWithIndent(this.rows, startX + 7, startY + Globals.menuMainCornerImage.getHeight() + 7, this.font, ImageFactory.faceWidth + 3, ImageFactory.faceHeight + 3);
+         ImageFactory.drawChar(this.faceImages, startX + 7, startY + Layout.menuMainCornerImage.getHeight() + 7, 0);
+         Font.drawLinesWithIndent(this.rows, startX + 7, startY + Layout.menuMainCornerImage.getHeight() + 7, this.font, ImageFactory.faceWidth + 3, ImageFactory.faceHeight + 3);
 		 
          if(var1 > this.msgStartTime + 2000L + (long)this.msgTime) {
             this.msgStartTime = 0L;

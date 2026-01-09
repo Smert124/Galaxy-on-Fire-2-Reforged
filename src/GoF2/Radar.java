@@ -5,6 +5,7 @@ import javax.microedition.lcdui.game.Sprite;
 
 import AE.AbstractMesh;
 import AE.AECamera;
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.Math.AEMath;
 import AE.Math.AEVector3D;
@@ -21,7 +22,6 @@ public final class Radar {
    private Sprite logos_small_sprite;
    private Sprite scanprocessSprite;
    private Sprite hud_meteor_class_sprite;
-   private Sprite hudBarsSprite;
    private int screenProjectionX;
    private int screenProjectionY;
    private int elipsoidCenterX;
@@ -73,6 +73,42 @@ public final class Radar {
    private int activeEnemyEnemiesCount;
    private String hud_shipname_scan = "";
    
+   public static Image panelInfoUpper;
+   private Image hudLockonNeutral;
+   private Image hudLockonNeutralFar;
+   private Image hudRadarIconNeutral;
+   private Image hudLockonEnemy;
+   private Image hudLockonEnemyFar;
+   private Image hudRadarIconEnemy;
+   private Image hudLockonFriend;
+   private Image hudLockonFriendFar;
+   private Image hudRadarIconFirend;
+   private Image hudWaypoint;
+   private Image hudLockonWaypoint;
+   private Image logosSmall;
+   private Image bracketBox;
+   private Image hudCrate;
+   private Image hudSpacejunk;
+   private Image hudAsteroid;
+   private Image hudCrateVoid;
+   private Image hudVortex;
+   private Image menuMapJumpgate;
+   private Image hudScanprocessAnim;
+   private Image hudMeteorClass;
+   private Image menuMapSidemission;
+   private Image menuMapMainmission;
+   private Image hudBarYellowEmpty;
+   private Image hudBarYellowFull;
+   private Image hudBarRedEmpty;
+   private Image hudBarRedFull;
+   private Image hudBarBlueEmpty;
+   private Image hudBarWhiteFull;
+   private Image hudBarGreenEmpty;
+   private Image hudBarGreenFull;
+   private Image hudBarBlueFull;
+   private Image hudBarWhiteEmpty;
+   private Image hudBarOrangeFull;
+   
     public Radar(Level var1) {
 		this.level = var1;
 		this.elipsoidCenterX = GlobalStatus.var_e75 / 2;
@@ -100,12 +136,47 @@ public final class Radar {
 		
 		try {
 			
-			this.hudBarsSprite = new Sprite(Globals.hudBars, Globals.hudBars.getWidth() / 8, Globals.hudBars.getHeight());
-			this.logos_small_sprite = new Sprite(Globals.logosSmall, Globals.logosSmall.getHeight(), Globals.logosSmall.getHeight());
-			this.logos_small_sprite.defineReferencePixel(Globals.logosSmall.getHeight(), Globals.logosSmall.getHeight());
-			this.scanprocessSprite = new Sprite(Globals.hudScanprocessAnim, Globals.hudScanprocessAnim.getHeight(), Globals.hudScanprocessAnim.getHeight());
-			this.scanprocessSprite.defineReferencePixel(Globals.hudScanprocessAnim.getHeight() / 2, Globals.hudScanprocessAnim.getHeight() / 2);
-			this.hud_meteor_class_sprite = new Sprite(Globals.hudMeteorClass, 11, 11);
+			this.panelInfoUpper = AEResourceManager.getImage(76);
+			this.hudLockonNeutral = AEResourceManager.getImage(77);
+			this.hudLockonNeutralFar = AEResourceManager.getImage(78);
+			this.hudRadarIconNeutral = AEResourceManager.getImage(79);
+			this.hudLockonEnemy = AEResourceManager.getImage(80);
+			this.hudLockonEnemyFar = AEResourceManager.getImage(81);
+			this.hudRadarIconEnemy = AEResourceManager.getImage(82);
+			this.hudLockonFriend = AEResourceManager.getImage(83);
+			this.hudLockonFriendFar = AEResourceManager.getImage(84);
+			this.hudRadarIconFirend = AEResourceManager.getImage(85);
+			this.hudWaypoint = AEResourceManager.getImage(86);
+			this.hudLockonWaypoint = AEResourceManager.getImage(87);
+			this.logosSmall = AEResourceManager.getImage(88);
+			this.bracketBox = AEResourceManager.getImage(89);
+			this.hudCrate = AEResourceManager.getImage(90);
+			this.hudSpacejunk = AEResourceManager.getImage(91);
+			this.hudAsteroid = AEResourceManager.getImage(92);
+			this.hudCrateVoid = AEResourceManager.getImage(93);
+			this.hudVortex = AEResourceManager.getImage(94);
+			this.menuMapJumpgate = AEResourceManager.getImage(95);
+			this.hudScanprocessAnim = AEResourceManager.getImage(96);
+			this.hudMeteorClass = AEResourceManager.getImage(97);
+			this.menuMapSidemission = AEResourceManager.getImage(98);
+			this.menuMapMainmission = AEResourceManager.getImage(99);
+			this.hudBarYellowEmpty = AEResourceManager.getImage(139);
+			this.hudBarYellowFull = AEResourceManager.getImage(140);
+			this.hudBarRedEmpty = AEResourceManager.getImage(141);
+			this.hudBarRedFull = AEResourceManager.getImage(142);
+			this.hudBarBlueEmpty = AEResourceManager.getImage(143);
+			this.hudBarWhiteFull = AEResourceManager.getImage(144);
+			this.hudBarGreenEmpty = AEResourceManager.getImage(145);
+			this.hudBarGreenFull = AEResourceManager.getImage(146);
+			this.hudBarBlueFull = AEResourceManager.getImage(147);
+			this.hudBarWhiteEmpty = AEResourceManager.getImage(148);
+			this.hudBarOrangeFull = AEResourceManager.getImage(149);
+			
+			this.logos_small_sprite = new Sprite(this.logosSmall, this.logosSmall.getHeight(), this.logosSmall.getHeight());
+			this.logos_small_sprite.defineReferencePixel(this.logosSmall.getHeight(), this.logosSmall.getHeight());
+			this.scanprocessSprite = new Sprite(this.hudScanprocessAnim, this.hudScanprocessAnim.getHeight(), this.hudScanprocessAnim.getHeight());
+			this.scanprocessSprite.defineReferencePixel(this.hudScanprocessAnim.getHeight() / 2, this.hudScanprocessAnim.getHeight() / 2);
+			this.hud_meteor_class_sprite = new Sprite(this.hudMeteorClass, 11, 11);
 			this.hud_meteor_class_sprite.defineReferencePixel(11, 11);
 			
 			Item drillItem = Status.getShip().getFirstEquipmentOfSort(19);
@@ -224,10 +295,10 @@ public final class Radar {
             this.elipsoidIntersect(var2, this.playerRoute.getDockingTarget_());
             this.closestStatPlayerDistanceVisible = this.calcDistance(this.playerRoute.getDockingTarget_().x, this.playerRoute.getDockingTarget_().y, this.playerRoute.getDockingTarget_().z, var1);
             if(this.inViewFrustum) {
-               GlobalStatus.graphics.drawImage(Globals.hudLockonWaypoint, this.screenProjectionX, this.screenProjectionY, 3);
+               GlobalStatus.graphics.drawImage(this.hudLockonWaypoint, this.screenProjectionX, this.screenProjectionY, 3);
                Font.sub_14d_CENTER(this.closestStatPlayerDistanceVisible, this.screenProjectionX, this.screenProjectionY + 12, 1);
             } else if(this.scanerPresent) {
-               GlobalStatus.graphics.drawImage(Globals.hudWaypoint, this.screenProjectionX, this.screenProjectionY, 3);
+               GlobalStatus.graphics.drawImage(this.hudWaypoint, this.screenProjectionX, this.screenProjectionY, 3);
             }
          }
 
@@ -256,7 +327,7 @@ public final class Radar {
                      this.playerPos = var1.getPosition(this.playerPos);
                      this.tempContextPosition = this.landmarks[var11].player.getPosition(this.tempContextPosition);
                      if(var11 != 3) {
-                        GlobalStatus.graphics.drawImage(Globals.bracketBox, this.screenProjectionX, this.screenProjectionY, 3);
+                        GlobalStatus.graphics.drawImage(this.bracketBox, this.screenProjectionX, this.screenProjectionY, 3);
                      }
 
                      Font.drawString(this.stationaryPlayersNames[var11], var11 == 0?this.screenProjectionX + 25:this.screenProjectionX + 15, this.screenProjectionY - 15, 0);
@@ -271,7 +342,7 @@ public final class Radar {
                         }
                      }
                   } else if(var11 == 3) {
-                     GlobalStatus.graphics.drawImage(Globals.hudVortex, this.screenProjectionX, this.screenProjectionY, 3);
+                     GlobalStatus.graphics.drawImage(this.hudVortex, this.screenProjectionX, this.screenProjectionY, 3);
                   }
                }
             }
@@ -326,7 +397,7 @@ public final class Radar {
                   var8 = (var30 = Status.getSystem().getStations())[var12 - 1] == Status.getStation().getId();
                   var14 = false;
                   if(Status.getSystem().getJumpGateEnumIndex() == var12 - 1 && !var8) {
-                     GlobalStatus.graphics.drawImage(Globals.menuMapJumpgate, this.screenProjectionX + 10, this.screenProjectionY - 10, 0);
+                     GlobalStatus.graphics.drawImage(this.menuMapJumpgate, this.screenProjectionX + 10, this.screenProjectionY - 10, 0);
                      var14 = true;
                   }
 
@@ -334,12 +405,12 @@ public final class Radar {
                   Mission var16 = Status.getCampaignMission();
                   Mission var17 = Status.getFreelanceMission();
                   if(var16 != null && !var16.isEmpty() && var30[var12 - 1] == var16.getTargetStation() && !var8) {
-					  GlobalStatus.graphics.drawImage(Globals.menuMapMainmission, this.screenProjectionX + 10 + (var14?14:0), this.screenProjectionY - 10, 0);
+					  GlobalStatus.graphics.drawImage(this.menuMapMainmission, this.screenProjectionX + 10 + (var14?14:0), this.screenProjectionY - 10, 0);
 					  var15 = true;
                   }
 
                   if(var17 != null && !var17.isEmpty() && var30[var12 - 1] == var17.getTargetStation() && !var8) {
-					  GlobalStatus.graphics.drawImage(Globals.menuMapSidemission, this.screenProjectionX + 10 + (var14?14:0), this.screenProjectionY - 10, 0);
+					  GlobalStatus.graphics.drawImage(this.menuMapSidemission, this.screenProjectionX + 10 + (var14?14:0), this.screenProjectionY - 10, 0);
 					  var15 = true;
 				  }
 
@@ -470,67 +541,46 @@ public final class Radar {
                               var25.withinRenderDistance = true;
                               Image var10001;
                               if(var14) {
-                                 var10001 = Globals.bracketBox;
+                                 var10001 = this.bracketBox;
                               } else {
 								 
-								 int hullBarPercent = (int)((var25.player.getDamageRate() / 100.0f) * Globals.hudBarYellowFull.getWidth());
-								 int empBarPercent = (int)((float)var25.player.getEmpDamageRate() / 100.0F * Globals.hudBarWhiteFull.getWidth());
-								 int armorBarPercent = (int)((float)var25.player.getArmorDamageRate() / 100.0F * Globals.hudBarWhiteFull.getWidth());
-								 int sheldBarPercent = (int)((float)var25.player.getShieldDamageRate() / 100.0F * Globals.hudBarWhiteFull.getWidth());
+								 int hullBarPercent = (int)((var25.player.getDamageRate() / 100.0f) * this.hudBarYellowFull.getWidth());
+								 int empBarPercent = (int)((float)var25.player.getEmpDamageRate() / 100.0F * this.hudBarWhiteFull.getWidth());
+								 int armorBarPercent = (int)((float)var25.player.getArmorDamageRate() / 100.0F * this.hudBarWhiteFull.getWidth());
+								 int sheldBarPercent = (int)((float)var25.player.getShieldDamageRate() / 100.0F * this.hudBarWhiteFull.getWidth());
 								 
-								 Image barBackground = var25.player.enemy ? Globals.hudBarRedEmpty : (var25.player.friend ? Globals.hudBarGreenEmpty : Globals.hudBarYellowEmpty);
-								 Image barFull = var25.player.enemy ? Globals.hudBarRedFull : (var25.player.friend ? Globals.hudBarGreenFull : Globals.hudBarYellowFull);
+								 Image barBackground = var25.player.enemy ? this.hudBarRedEmpty : (var25.player.friend ? this.hudBarGreenEmpty : this.hudBarYellowEmpty);
+								 Image barFull = var25.player.enemy ? this.hudBarRedFull : (var25.player.friend ? this.hudBarGreenFull : this.hudBarYellowFull);
 								 
 								 if(GlobalStatus.shields == 1) {
-									GlobalStatus.graphics.drawImage(Globals.hudBarBlueEmpty, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2), 0);
-									GlobalStatus.graphics.drawRegion(Globals.hudBarBlueFull, 0, 0, sheldBarPercent, Globals.hudBarBlueFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2), 0);
+									GlobalStatus.graphics.drawImage(this.hudBarBlueEmpty, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2), 0);
+									GlobalStatus.graphics.drawRegion(this.hudBarBlueFull, 0, 0, sheldBarPercent, this.hudBarBlueFull.getHeight(), 0, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2), 0);
 									
-									GlobalStatus.graphics.drawImage(Globals.hudBarRedEmpty, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarBlueEmpty.getHeight(), 0);
-									GlobalStatus.graphics.drawRegion(Globals.hudBarRedFull, 0, 0, hullBarPercent, Globals.hudBarYellowFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarBlueEmpty.getHeight(), 0);
+									GlobalStatus.graphics.drawImage(this.hudBarRedEmpty, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarBlueEmpty.getHeight(), 0);
+									GlobalStatus.graphics.drawRegion(this.hudBarRedFull, 0, 0, hullBarPercent, this.hudBarYellowFull.getHeight(), 0, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarBlueEmpty.getHeight(), 0);
 									
-									GlobalStatus.graphics.drawRegion(Globals.hudBarOrangeFull, 0, 0, armorBarPercent, Globals.hudBarOrangeFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarOrangeFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarBlueEmpty.getHeight(), 0);
+									GlobalStatus.graphics.drawRegion(this.hudBarOrangeFull, 0, 0, armorBarPercent, this.hudBarOrangeFull.getHeight(), 0, this.screenProjectionX - (this.hudBarOrangeFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarBlueEmpty.getHeight(), 0);
 									
-									GlobalStatus.graphics.drawImage(Globals.hudBarWhiteEmpty, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarWhiteEmpty.getHeight() * 2, 0);
-									GlobalStatus.graphics.drawRegion(Globals.hudBarWhiteFull, 0, 0, empBarPercent, Globals.hudBarWhiteFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarWhiteEmpty.getHeight() * 2, 0);
+									GlobalStatus.graphics.drawImage(this.hudBarWhiteEmpty, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarWhiteEmpty.getHeight() * 2, 0);
+									GlobalStatus.graphics.drawRegion(this.hudBarWhiteFull, 0, 0, empBarPercent, this.hudBarWhiteFull.getHeight(), 0, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarWhiteEmpty.getHeight() * 2, 0);
 								 } else {
-									GlobalStatus.graphics.drawImage(barBackground, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2), 0);
-									GlobalStatus.graphics.drawRegion(barFull, 0, 0, hullBarPercent, Globals.hudBarYellowFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2), 0);
+									GlobalStatus.graphics.drawImage(barBackground, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2), 0);
+									GlobalStatus.graphics.drawRegion(barFull, 0, 0, hullBarPercent, this.hudBarYellowFull.getHeight(), 0, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2), 0);
 									
-									GlobalStatus.graphics.drawImage(Globals.hudBarWhiteEmpty, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarWhiteEmpty.getHeight(), 0);
-									GlobalStatus.graphics.drawRegion(Globals.hudBarWhiteFull, 0, 0, empBarPercent, Globals.hudBarWhiteFull.getHeight(), 0, this.screenProjectionX - (Globals.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (Globals.hudLockonNeutral.getHeight() / 2) + Globals.hudBarWhiteEmpty.getHeight(), 0);
+									GlobalStatus.graphics.drawImage(this.hudBarWhiteEmpty, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarWhiteEmpty.getHeight(), 0);
+									GlobalStatus.graphics.drawRegion(this.hudBarWhiteFull, 0, 0, empBarPercent, this.hudBarWhiteFull.getHeight(), 0, this.screenProjectionX - (this.hudBarYellowFull.getWidth() / 2), this.screenProjectionY + (this.hudLockonNeutral.getHeight() / 2) + this.hudBarWhiteEmpty.getHeight(), 0);
 								 }
-								 
-								 /**
-                                 var38 = var25.var_1a9.var_8bc?0:(var25.var_1a9.var_8d3?6:4);
-                                 this.var_ddc = (int)((float)var25.var_1a9.getHullPointsPercent() / 100.0F * 16.0F);
-                                 this.hudBarsSprite.setFrame(var38 + 1);
-                                 this.hudBarsSprite.setPosition(this.var_a9a + 8 + 2, this.var_ab8 - 8);
-                                 this.hudBarsSprite.paint(SharedVariables.graphics);
-                                 this.hudBarsSprite.setFrame(var38);
-                                 SharedVariables.graphics.setClip(0, this.var_ab8 - 8 + 16 - this.var_ddc, SharedVariables.var_e75, this.var_ddc);
-                                 this.hudBarsSprite.paint(SharedVariables.graphics);
-								 SharedVariables.graphics.setClip(0, 0, SharedVariables.var_e75, SharedVariables.var_eb6);
-                                 
-								 this.var_ddc = (int)((float)var25.var_1a9.getEMPHealthPointPercent() / 100.0F * 16.0F);
-                                 this.hudBarsSprite.setFrame(3);
-                                 this.hudBarsSprite.setPosition(this.var_a9a + 8 + 7, this.var_ab8 - 8);
-                                 this.hudBarsSprite.paint(SharedVariables.graphics);
-                                 this.hudBarsSprite.setFrame(2);
-                                 SharedVariables.graphics.setClip(0, this.var_ab8 - 8 + 16 - this.var_ddc, SharedVariables.var_e75, this.var_ddc);
-                                 this.hudBarsSprite.paint(SharedVariables.graphics);
-                                 SharedVariables.graphics.setClip(0, 0, SharedVariables.var_e75, SharedVariables.var_eb6);
-								 **/
 								 
                                  if(!var15) {
                                     break label845;
                                  }
 
-                                 var10001 = var25.player.enemy ? Globals.hudLockonEnemy : (var25.player.friend ? Globals.hudLockonFriend : Globals.hudLockonNeutral);
+                                 var10001 = var25.player.enemy ? this.hudLockonEnemy : (var25.player.friend ? this.hudLockonFriend : this.hudLockonNeutral);
                               }
                               AEGraphics[1].drawImage(var10001, this.screenProjectionX, this.screenProjectionY, 3);
                            }
                         } else {
-                           var32 = var14?Globals.bracketBox:(var15?(var25.player.enemy?Globals.hudLockonEnemyFar:(var25.player.friend?Globals.hudLockonFriendFar:Globals.hudLockonNeutral)):(var25.player.enemy?Globals.hudRadarIconEnemy:(var25.player.friend?Globals.hudRadarIconFirend:Globals.hudRadarIconNeutral)));
+                           var32 = var14?this.bracketBox:(var15?(var25.player.enemy?this.hudLockonEnemyFar:(var25.player.friend?this.hudLockonFriendFar:this.hudLockonNeutral)):(var25.player.enemy?this.hudRadarIconEnemy:(var25.player.friend?this.hudRadarIconFirend:this.hudRadarIconNeutral)));
                            GlobalStatus.graphics.drawImage(var32, this.screenProjectionX, this.screenProjectionY, 3);
                            var25.withinRenderDistance = false;
                         }
@@ -554,10 +604,10 @@ public final class Radar {
                            }
                         }
                      } else if(var14) {
-                        GlobalStatus.graphics.drawImage(Globals.hudRadarIconNeutral, this.screenProjectionX, this.screenProjectionY, 3);
-                        GlobalStatus.graphics.drawImage(this.enemies[var13].junk?Globals.hudSpacejunk:(this.enemies[var13].race == 9?Globals.hudCrateVoid:Globals.hudCrate), this.screenProjectionX, this.screenProjectionY, 3);
+                        GlobalStatus.graphics.drawImage(this.hudRadarIconNeutral, this.screenProjectionX, this.screenProjectionY, 3);
+                        GlobalStatus.graphics.drawImage(this.enemies[var13].junk?this.hudSpacejunk:(this.enemies[var13].race == 9?this.hudCrateVoid:this.hudCrate), this.screenProjectionX, this.screenProjectionY, 3);
                      } else {
-                        var32 = var25.player.enemy?(var15?Globals.hudLockonEnemyFar:Globals.hudRadarIconEnemy):(var25.player.friend?(var15?Globals.hudLockonFriendFar:Globals.hudRadarIconFirend):(var15?Globals.hudLockonNeutralFar:Globals.hudRadarIconNeutral));
+                        var32 = var25.player.enemy?(var15?this.hudLockonEnemyFar:this.hudRadarIconEnemy):(var25.player.friend?(var15?this.hudLockonFriendFar:this.hudRadarIconFirend):(var15?this.hudLockonNeutralFar:this.hudRadarIconNeutral));
                         GlobalStatus.graphics.drawImage(var32, this.screenProjectionX, this.screenProjectionY, 3);
                      }
 					 
@@ -673,11 +723,11 @@ public final class Radar {
                      }
 
                      if(var40) {
-                        GlobalStatus.graphics.drawImage(Globals.bracketBox, this.screenProjectionX, this.screenProjectionY, 3);
+                        GlobalStatus.graphics.drawImage(this.bracketBox, this.screenProjectionX, this.screenProjectionY, 3);
                      }
                   } else if(var40) {
-                     GlobalStatus.graphics.drawImage(Globals.hudRadarIconNeutral, this.screenProjectionX, this.screenProjectionY, 3);
-                     GlobalStatus.graphics.drawImage(Globals.hudAsteroid, this.screenProjectionX, this.screenProjectionY, 3);
+                     GlobalStatus.graphics.drawImage(this.hudRadarIconNeutral, this.screenProjectionX, this.screenProjectionY, 3);
+                     GlobalStatus.graphics.drawImage(this.hudAsteroid, this.screenProjectionX, this.screenProjectionY, 3);
                   }
 				  if(!this.level.getPlayer().isAutoPilot() && (!var36.junk || var40) && (var40 && var36.isDead() || !var40)) {
                            if(var40 && this.tractorBeamTarget == null && (this.tractorBeam360 && this.tractorBeamAutomatic)) {
@@ -782,7 +832,7 @@ public final class Radar {
       if(this.draw) {
          boolean var2;
          if(var2 = this.targetedPlanet != null) {
-			AEGraphics[0].drawImage(Globals.panelInfoUpper, GlobalStatus.var_e75 / 2, AEGraphics[0].getImageHeight(), 3);
+			AEGraphics[0].drawImage(this.panelInfoUpper, GlobalStatus.var_e75 / 2, AEGraphics[0].getImageHeight(), 3);
             Font.sub_14d_CENTER(Status.getPlanetNames()[this.targetedPlanetLocalIndex], AEGraphics[0].getImageX(), AEGraphics[0].getImageY() - (AEGraphics[0].getImageHeight() / 4), 1); // ������� � �������
          } else {
             KIPlayer npc;
@@ -791,7 +841,7 @@ public final class Radar {
                boolean var4 = npc.equals(this.targetedLandmark);
                String var5 = this.targetedLandmark == this.landmarks[0]?this.stationaryPlayersNames[0]:(this.targetedLandmark == this.landmarks[3]?this.stationaryPlayersNames[3]:this.stationaryPlayersNames[1]);
 			   
-			   AEGraphics[0].drawImage(Globals.panelInfoUpper, GlobalStatus.var_e75 / 2, AEGraphics[0].getImageHeight(), 3);
+			   AEGraphics[0].drawImage(this.panelInfoUpper, GlobalStatus.var_e75 / 2, AEGraphics[0].getImageHeight(), 3);
 			   
                if(var3) {
                   this.hud_meteor_class_sprite.setFrame(((PlayerAsteroid)npc).getQualityFrameIndex());

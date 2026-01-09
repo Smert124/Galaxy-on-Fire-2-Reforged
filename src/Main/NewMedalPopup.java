@@ -1,7 +1,9 @@
 package Main;
 
 import javax.microedition.lcdui.game.Sprite;
+import javax.microedition.lcdui.Image;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.PaintCanvas.Font;
 import GoF2.Achievements;
@@ -20,6 +22,7 @@ public final class NewMedalPopup {
    private int okPosY;
    private int tier;
    private Sprite medalsSprite;
+   private Image medals;
 
 
    private NewMedalPopup(int var1, int var2, int var3) {
@@ -35,7 +38,8 @@ public final class NewMedalPopup {
 
    public final void set(int var1, int var2) {
       this.tier = var2;
-      this.medalsSprite = new Sprite(Globals.medals, 31, 15);
+	  this.medals = AEResourceManager.getImage(105);
+      this.medalsSprite = new Sprite(this.medals, 31, 15);
       this.name = Font.splitToLines(GlobalStatus.gameText.getText(var1 + 745), this.width - 14 - 31 - 4);
       this.description = Font.splitToLines(Status.replaceToken(GlobalStatus.gameText.getText(var1 + 782), Achievements.VALUES[var1][var2 - 1] + ""), this.width - 14);
       this.posY = (GlobalStatus.var_eb6 >> 1) - (Font.getTotalSpacingY(this.description) + 15 + 4 + 2 * Font.getFontSpacingY() >> 1);

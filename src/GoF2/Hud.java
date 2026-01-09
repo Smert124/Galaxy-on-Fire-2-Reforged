@@ -65,6 +65,19 @@ public final class Hud {
    public static boolean HUDTouchFlag = false;
    
    public static interface_loader[] AEGraphics;
+   
+   private Image hudHullBarFull;
+   private Image hudArmorFull;
+   private Image hudHullBarEmpty;
+   private Image hudStatusPanel;
+   private Image hudShieldNormalIcon;
+   private Image hudShieldBarEmpty;
+   private Image hudShieldBarFull;
+   private Image hudShipNormalIcon;
+   private Image panelInfoLower;
+   private Image quickmenuCrosshair;
+   private Image quickmenuIcons;
+   private Image cargoPanelImage;
 
    public Hud() {
       this.init();
@@ -89,9 +102,22 @@ public final class Hud {
 			AEGraphics[count] = new interface_loader();
 		}
 		
-         this.quickMenuCrosshairSprite = new Sprite(Globals.quickmenuCrosshair, Globals.quickmenuCrosshair.getHeight(), Globals.quickmenuCrosshair.getHeight());
+		this.hudHullBarFull = AEResourceManager.getImage(107);
+		this.hudArmorFull = AEResourceManager.getImage(108);
+		this.hudHullBarEmpty = AEResourceManager.getImage(109);
+		this.hudStatusPanel = AEResourceManager.getImage(110);
+		this.hudShieldNormalIcon = AEResourceManager.getImage(111);
+		this.hudShieldBarEmpty = AEResourceManager.getImage(112);
+		this.hudShieldBarFull = AEResourceManager.getImage(113);
+		this.hudShipNormalIcon = AEResourceManager.getImage(114);
+		this.panelInfoLower = AEResourceManager.getImage(115);
+		this.quickmenuCrosshair = AEResourceManager.getImage(116);
+		this.quickmenuIcons = AEResourceManager.getImage(117);
+		this.cargoPanelImage = AEResourceManager.getImage(138);
+		
+         this.quickMenuCrosshairSprite = new Sprite(this.quickmenuCrosshair, this.quickmenuCrosshair.getHeight(), this.quickmenuCrosshair.getHeight());
          this.quickMenuCrosshairSprite.defineReferencePixel(this.quickMenuCrosshairSprite.getWidth() >> 1, this.quickMenuCrosshairSprite.getHeight() >> 1);
-         this.quickMenuIconsSprite = new Sprite(Globals.quickmenuIcons, Globals.quickmenuIcons.getHeight(), Globals.quickmenuIcons.getHeight());
+         this.quickMenuIconsSprite = new Sprite(this.quickmenuIcons, this.quickmenuIcons.getHeight(), this.quickmenuIcons.getHeight());
          this.quickMenuIconsSprite.defineReferencePixel(this.quickMenuIconsSprite.getWidth() >> 1, this.quickMenuIconsSprite.getHeight() >> 1);
 		 
          this.hullAlertMSDx = GlobalStatus.var_e75 / 2 - 21;
@@ -412,12 +438,12 @@ public final class Hud {
 
    public final void draw(long var1, long var3, PlayerEgo var5, boolean var6) {
 	  pauseButton.drawStandartButton(Globals.pauseButtonNormal, Globals.pauseButtonPressed, GlobalStatus.var_e75 - (pauseButton.standartButtonWidth / 2) - (pauseButton.standartButtonWidth / 4), (pauseButton.standartButtonHeight / 2) + pauseButton.standartButtonHeight / 4);
-	  AEGraphics[9].drawImage(Globals.cargoPanelImage, pauseButton.standartButtonX - (43 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), pauseButton.standartButtonY - (8 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), 3);
+	  AEGraphics[9].drawImage(this.cargoPanelImage, pauseButton.standartButtonX - (43 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), pauseButton.standartButtonY - (8 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), 3);
       if(this.drawUI) {
          if(this.playerHit) {
             this.playerHit = false;
          }
-         int var7 = Globals.hudShieldBarFull.getWidth();
+         int var7 = this.hudShieldBarFull.getWidth();
          boolean var8 = false;
          int var12;
 		 
@@ -434,44 +460,44 @@ public final class Hud {
 			 quickmenuButton.drawStandartButton(Globals.quickmenuButtonNormal, Globals.quickmenuButtonPressed, AEGraphics[8].getImageX() - (44 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), AEGraphics[8].getImageY() - (99 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER));
 		 }
 		 
-		 int hullWidth = (int)((this.var_d17 / 100.0f) * Globals.hudHullBarFull.getWidth());
+		 int hullWidth = (int)((this.var_d17 / 100.0f) * this.hudHullBarFull.getWidth());
 		 
          if(this.hasArmor) { // armor hud
 				var12 = (int)((float)var5.player.getArmorDamageRate() / 100.0F * (float)var7);
 				if(!this.hasShield) {
-					AEGraphics[4].drawImage(Globals.hudShipNormalIcon, Globals.hudShipNormalIcon.getWidth(), Globals.hudShipNormalIcon.getHeight(), 3);
-					AEGraphics[1].drawImage(Globals.hudStatusPanel, AEGraphics[4].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[2].drawImage(Globals.hudHullBarEmpty, AEGraphics[4].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[5].drawRegion(Globals.hudHullBarFull, 0, 0, hullWidth, Globals.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudHullBarFull.getHeight() / 2), 0);
-					AEGraphics[6].drawRegion(Globals.hudArmorFull, 0, 0, var12, Globals.hudArmorFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudArmorFull.getHeight() / 2), 0);
+					AEGraphics[4].drawImage(this.hudShipNormalIcon, this.hudShipNormalIcon.getWidth(), this.hudShipNormalIcon.getHeight(), 3);
+					AEGraphics[1].drawImage(this.hudStatusPanel, AEGraphics[4].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[2].drawImage(this.hudHullBarEmpty, AEGraphics[4].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[5].drawRegion(this.hudHullBarFull, 0, 0, hullWidth, this.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudHullBarFull.getHeight() / 2), 0);
+					AEGraphics[6].drawRegion(this.hudArmorFull, 0, 0, var12, this.hudArmorFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudArmorFull.getHeight() / 2), 0);
 				} else {
-					AEGraphics[4].drawImage(Globals.hudShipNormalIcon, Globals.hudShipNormalIcon.getWidth(), AEGraphics[0].getImageHeight() + Globals.hudShipNormalIcon.getHeight(), 3);
-					AEGraphics[1].drawImage(Globals.hudStatusPanel, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[2].drawImage(Globals.hudHullBarEmpty, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[5].drawRegion(Globals.hudHullBarFull, 0, 0, hullWidth, Globals.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudHullBarFull.getHeight() / 2), 0);
-					AEGraphics[6].drawRegion(Globals.hudArmorFull, 0, 0, var12, Globals.hudArmorFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudArmorFull.getHeight() / 2), 0);
+					AEGraphics[4].drawImage(this.hudShipNormalIcon, this.hudShipNormalIcon.getWidth(), AEGraphics[0].getImageHeight() + this.hudShipNormalIcon.getHeight(), 3);
+					AEGraphics[1].drawImage(this.hudStatusPanel, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[2].drawImage(this.hudHullBarEmpty, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[5].drawRegion(this.hudHullBarFull, 0, 0, hullWidth, this.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudHullBarFull.getHeight() / 2), 0);
+					AEGraphics[6].drawRegion(this.hudArmorFull, 0, 0, var12, this.hudArmorFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudArmorFull.getHeight() / 2), 0);
 				}
          }
 
          if(this.hasShield) { // shield hud
 				var12 = (int)((float)var5.player.getShieldDamageRate() / 100.0F * (float)var7);
-				AEGraphics[0].drawImage(Globals.hudShieldNormalIcon, Globals.hudShieldNormalIcon.getWidth(), Globals.hudShieldNormalIcon.getHeight(), 3);
-				AEGraphics[1].drawImage(Globals.hudStatusPanel, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudStatusPanel.getWidth() / 2), AEGraphics[0].getImageY(), 3);
-				AEGraphics[2].drawImage(Globals.hudShieldBarEmpty, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudShieldBarEmpty.getWidth() / 2), AEGraphics[0].getImageY(), 3);
-				AEGraphics[3].drawRegion(Globals.hudShieldBarFull, 0, 0, var12, Globals.hudShieldBarFull.getHeight(), 0, AEGraphics[0].getImageX() + (AEGraphics[0].getImageWidth() / 2), AEGraphics[0].getImageY() - (Globals.hudShieldBarFull.getHeight() / 2), 0);
+				AEGraphics[0].drawImage(this.hudShieldNormalIcon, this.hudShieldNormalIcon.getWidth(), this.hudShieldNormalIcon.getHeight(), 3);
+				AEGraphics[1].drawImage(this.hudStatusPanel, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudStatusPanel.getWidth() / 2), AEGraphics[0].getImageY(), 3);
+				AEGraphics[2].drawImage(this.hudShieldBarEmpty, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudShieldBarEmpty.getWidth() / 2), AEGraphics[0].getImageY(), 3);
+				AEGraphics[3].drawRegion(this.hudShieldBarFull, 0, 0, var12, this.hudShieldBarFull.getHeight(), 0, AEGraphics[0].getImageX() + (AEGraphics[0].getImageWidth() / 2), AEGraphics[0].getImageY() - (this.hudShieldBarFull.getHeight() / 2), 0);
 				if(!this.hasArmor) {
-					AEGraphics[4].drawImage(Globals.hudShipNormalIcon, Globals.hudShipNormalIcon.getWidth(), AEGraphics[0].getImageHeight() + Globals.hudShipNormalIcon.getHeight(), 3);
-					AEGraphics[1].drawImage(Globals.hudStatusPanel, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[2].drawImage(Globals.hudHullBarEmpty, AEGraphics[0].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-					AEGraphics[5].drawRegion(Globals.hudHullBarFull, 0, 0, hullWidth, Globals.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudHullBarFull.getHeight() / 2), 0);
+					AEGraphics[4].drawImage(this.hudShipNormalIcon, this.hudShipNormalIcon.getWidth(), AEGraphics[0].getImageHeight() + this.hudShipNormalIcon.getHeight(), 3);
+					AEGraphics[1].drawImage(this.hudStatusPanel, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[2].drawImage(this.hudHullBarEmpty, AEGraphics[0].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+					AEGraphics[5].drawRegion(this.hudHullBarFull, 0, 0, hullWidth, this.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudHullBarFull.getHeight() / 2), 0);
 				}
          }
 		 
 		 if(!this.hasShield && !this.hasArmor) {
-			AEGraphics[4].drawImage(Globals.hudShipNormalIcon, Globals.hudShipNormalIcon.getWidth(), Globals.hudShipNormalIcon.getHeight(), 3);
-			AEGraphics[1].drawImage(Globals.hudStatusPanel, AEGraphics[4].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-			AEGraphics[2].drawImage(Globals.hudHullBarEmpty, AEGraphics[4].getImageX() + (Globals.hudShieldNormalIcon.getWidth() / 2) + (Globals.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
-			AEGraphics[5].drawRegion(Globals.hudHullBarFull, 0, 0, hullWidth, Globals.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (Globals.hudHullBarFull.getHeight() / 2), 0);
+			AEGraphics[4].drawImage(this.hudShipNormalIcon, this.hudShipNormalIcon.getWidth(), this.hudShipNormalIcon.getHeight(), 3);
+			AEGraphics[1].drawImage(this.hudStatusPanel, AEGraphics[4].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudStatusPanel.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+			AEGraphics[2].drawImage(this.hudHullBarEmpty, AEGraphics[4].getImageX() + (this.hudShieldNormalIcon.getWidth() / 2) + (this.hudHullBarEmpty.getWidth() / 2), AEGraphics[4].getImageY(), 3);
+			AEGraphics[5].drawRegion(this.hudHullBarFull, 0, 0, hullWidth, this.hudHullBarFull.getHeight(), 0, AEGraphics[4].getImageX() + (AEGraphics[4].getImageWidth() / 2), AEGraphics[4].getImageY() - (this.hudHullBarFull.getHeight() / 2), 0);
 		 }
 		 
 		 if(this.hasArmor || this.hasShield)
@@ -481,7 +507,7 @@ public final class Hud {
 		 }
 
          if(!this.settingSecondaryWeapon && drawSecondaryIcon > 0 && (var7 = var5.getCurrentSecondaryWeaponIndex()) >= 0 && this.secondaries[drawSecondaryIcon - 1] != null) {
-			AEGraphics[7].drawImage(Globals.panelInfoLower, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 - AEGraphics[7].getImageHeight() + 9, 3);
+			AEGraphics[7].drawImage(this.panelInfoLower, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 - AEGraphics[7].getImageHeight() + 9, 3);
 			rocketButton.drawStandartButton(Globals.rocketButtonNormal, Globals.rocketButtonPressed, AEGraphics[8].getImageX() - (99 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER), AEGraphics[8].getImageY() - (33 * GlobalStatus.INTERFACE_SCALE_MULTIPLIER));
             Font.sub_14d_CENTER(GlobalStatus.gameText.getNamedParameterItems(var7) + " (" + this.secondaries[drawSecondaryIcon - 1].getAmount() + ")", AEGraphics[7].getImageX(), AEGraphics[7].getImageY() - 7, 1); // количество ракет
          }

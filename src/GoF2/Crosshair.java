@@ -3,6 +3,7 @@ package GoF2;
 import javax.microedition.lcdui.Image;
 
 import AE.AECamera;
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.Math.AEVector3D;
 import AE.Math.Matrix;
@@ -21,7 +22,7 @@ public final class Crosshair {
 
       try {
 	   if(this.image == null) {
-         this.image = Globals.hudCrosshair;
+         this.image = AEResourceManager.getImage(118);
 	   }
       } catch (Exception var2) {
          var2.printStackTrace();

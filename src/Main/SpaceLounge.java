@@ -5,6 +5,7 @@ import HardEngine.*;
 
 import AE.AbstractMesh;
 import AE.AECamera;
+import AE.AEResourceManager;
 import AE.EaseInOut;
 import AE.GlobalStatus;
 import AE.Math.AEMath;
@@ -53,11 +54,14 @@ public final class SpaceLounge {
    private AEVector3D cameraPos = new AEVector3D();
    private boolean[] mentionedOres;
    private boolean var_67e = false;
+   private Image itemTypesImage;
 
 
    public SpaceLounge() {
       this.init();
       int var1 = -1;
+	  
+	  this.itemTypesImage = AEResourceManager.getImage(135);
 
       for(int var2 = 0; var2 < this.agents.length; ++var2) {
          Agent var3;
@@ -548,11 +552,11 @@ public final class SpaceLounge {
                      }
 
                      if(this.agents[this.selectedAgent].sub_8f() == 2) {
-                        this.intemInfoWindow.setup(new ListItem(Globals.getItems()[this.agents[this.selectedAgent].getSellItemIndex()]), Globals.itemsImage, Globals.itemTypesImage, (Image)null, (Image)null, false);
+                        this.intemInfoWindow.setup(new ListItem(Globals.getItems()[this.agents[this.selectedAgent].getSellItemIndex()]), Globals.itemsImage, this.itemTypesImage, (Image)null, (Image)null, false);
                      } else {
                         for(var3 = 0; var3 < Status.getBluePrints().length; ++var3) {
                            if(Status.getBluePrints()[var3].getIndex() == this.agents[this.selectedAgent].getSellBlueprintIndex()) {
-                              this.intemInfoWindow.setup(new ListItem(Globals.getItems()[Status.getBluePrints()[var3].getIndex()]), Globals.itemsImage, Globals.itemTypesImage, (Image)null, (Image)null, false);
+                              this.intemInfoWindow.setup(new ListItem(Globals.getItems()[Status.getBluePrints()[var3].getIndex()]), Globals.itemsImage, this.itemTypesImage, (Image)null, (Image)null, false);
                               break;
                            }
                         }

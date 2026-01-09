@@ -104,6 +104,15 @@ public final class StarMap {
    private boolean var_12ac = false;
    private Class_1991 var_1300;
    private int var_2c0;
+   private Image logosSmall;
+   private Image menuMapJumpgate;
+   private Image menuMapSidemission;
+   private Image menuMapMainmission;
+   private Image menuMapBlueprint;
+   private Image menuMapVisited;
+   private Image menuMapDirection;
+   private Image mapSunGlow;
+   private Image menuMapPlayerHome;
 
    public StarMap(boolean var1, Mission var2, boolean var3, int var4) {
       this.tmpMapInnerHeight = GlobalStatus.var_eb6 - 14;
@@ -121,8 +130,19 @@ public final class StarMap {
 	  {
 		this.fog_galaxy_image = AEResourceManager.getImage(61);
 	  }
-      this.map_direction_sprite = new Sprite(Globals.menuMapDirection);
-      this.logos_small_sprite = new Sprite(Globals.logosSmall, Globals.logosSmall.getHeight(), Globals.logosSmall.getHeight());
+	  
+	  this.logosSmall = AEResourceManager.getImage(88);
+	  this.menuMapJumpgate = AEResourceManager.getImage(95);
+	  this.menuMapSidemission = AEResourceManager.getImage(98);
+	  this.menuMapMainmission = AEResourceManager.getImage(99);
+	  this.menuMapBlueprint = AEResourceManager.getImage(100);
+	  this.menuMapVisited = AEResourceManager.getImage(101);
+	  this.menuMapDirection = AEResourceManager.getImage(102);
+	  this.mapSunGlow = AEResourceManager.getImage(103);
+	  this.menuMapPlayerHome = AEResourceManager.getImage(151);
+	  
+      this.map_direction_sprite = new Sprite(this.menuMapDirection);
+      this.logos_small_sprite = new Sprite(this.logosSmall, this.logosSmall.getHeight(), this.logosSmall.getHeight());
       this.backGroundTileX = this.fog_galaxy_image.getWidth() << 1;
       this.backGroundTileY = this.fog_galaxy_image.getHeight() << 1;
       new FileRead();
@@ -1037,19 +1057,19 @@ public final class StarMap {
       if(this.legendOpen && (this.state == 0 || this.state == 3)) {
          Layout.drawMenuWindow(GlobalStatus.gameText.getText(223), 1, GlobalStatus.var_eb6 - 16 - 90 - 4, this.legendWindowWidth, 94);
          int var9 = GlobalStatus.var_eb6 - 3 - 16 - 13;
-         GlobalStatus.graphics.drawImage(Globals.menuMapBlueprint, 10, var9, 20);
+         GlobalStatus.graphics.drawImage(this.menuMapBlueprint, 10, var9, 20);
          Font.drawString(GlobalStatus.gameText.getText(132), 25, var9, 1, 17);
          var9 -= 15;
-         GlobalStatus.graphics.drawImage(Globals.menuMapVisited, 10, var9, 20);
+         GlobalStatus.graphics.drawImage(this.menuMapVisited, 10, var9, 20);
          Font.drawString(GlobalStatus.gameText.getText(224), 25, var9, 1, 17);
          var9 -= 15;
-         GlobalStatus.graphics.drawImage(Globals.menuMapJumpgate, 10, var9, 20);
+         GlobalStatus.graphics.drawImage(this.menuMapJumpgate, 10, var9, 20);
          Font.drawString(GlobalStatus.gameText.getText(271), 25, var9, 1, 17);
          var9 -= 15;
-         GlobalStatus.graphics.drawImage(Globals.menuMapSidemission, 10, var9, 20);
+         GlobalStatus.graphics.drawImage(this.menuMapSidemission, 10, var9, 20);
          Font.drawString(GlobalStatus.gameText.getText(279), 25, var9, 1, 17);
          var9 -= 15;
-         GlobalStatus.graphics.drawImage(Globals.menuMapMainmission, 10, var9, 20);
+         GlobalStatus.graphics.drawImage(this.menuMapMainmission, 10, var9, 20);
          Font.drawString(GlobalStatus.gameText.getText(278), 25, var9, 1, 17);
       }
 
@@ -1066,21 +1086,21 @@ public final class StarMap {
       }
 
       if(var2 && this.selectedSystemStations[var1].isDiscovered() || !var2 && this.systems[var1].sub_3a9()) {
-         this.var_10c3[0] = Globals.menuMapVisited;
+         this.var_10c3[0] = this.menuMapVisited;
       }
 
       Mission var7 = Status.getCampaignMission();
       Mission var4 = Status.getFreelanceMission();
       if(var7 != null && !var7.isEmpty() && (var2 && this.selectedSystemStations[var1].getId() == var7.getTargetStation() || !var2 && this.systems[var1].getStationEnumIndex(var7.getTargetStation()) >= 0 || Status.getCurrentCampaignMission() > 32 && (var2 && this.selectedSystemStations[var1].getId() == Status.wormholeStation && var7.getTargetStation() == -1 || !var2 && this.systems[var1].getStationEnumIndex(Status.wormholeStation) >= 0 && var7.getTargetStation() == -1))) {
-         this.var_10c3[1] = Globals.menuMapMainmission;
+         this.var_10c3[1] = this.menuMapMainmission;
       }
 
       if(var4 != null && !var4.isEmpty() && (var2 && this.selectedSystemStations[var1].getId() == var4.getTargetStation() || !var2 && this.systems[var1].getStationEnumIndex(var4.getTargetStation()) >= 0)) {
-         this.var_10c3[2] = Globals.menuMapSidemission;
+         this.var_10c3[2] = this.menuMapSidemission;
       }
 
       if(var2 && this.systems[this.selectedSystem].getJumpgateStationIndex() == this.selectedSystemStations[var1].getId()) {
-         this.var_10c3[3] = Globals.menuMapJumpgate;
+         this.var_10c3[3] = this.menuMapJumpgate;
       }
 
       ProducedGood[] var8;
@@ -1088,14 +1108,14 @@ public final class StarMap {
       if((var8 = Status.getWaitingGoods()) != null) {
          for(var9 = 0; var9 < var8.length; ++var9) {
             if(var8[var9] != null && (var2 && var8[var9].stationId == this.selectedSystemStations[var1].getId() || !var2 && this.systems[var1].getStationEnumIndex(var8[var9].stationId) >= 0)) {
-               this.var_10c3[4] = Globals.menuMapBlueprint;
+               this.var_10c3[4] = this.menuMapBlueprint;
                break;
             }
          }
       }
 	  
 	  if(var2 && this.selectedSystemStations[var1].getId() == 108) {
-		  this.var_10c3[5] = Globals.menuMapPlayerHome;
+		  this.var_10c3[5] = this.menuMapPlayerHome;
 	  }
 
       if(var2) {
@@ -1210,7 +1230,7 @@ public final class StarMap {
 			   
                GlobalStatus.renderer.sub_85().getScreenPosition(this.stars[var1].getLocalPos(this.tmpStarScreenPos2));
                if(this.tmpStarScreenPos2.z < 0) {
-				//   SharedVariables.graphics.drawImage(AEAssetsManager.mapSunGlow, this.var_a53.x, this.var_a53.y, 3);
+				//   SharedVariables.graphics.drawImage(this.mapSunGlow, this.var_a53.x, this.var_a53.y, 3);
                }
             }
          }

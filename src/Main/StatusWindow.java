@@ -1,7 +1,9 @@
 package Main;
 
 import javax.microedition.lcdui.game.Sprite;
+import javax.microedition.lcdui.Image;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.PaintCanvas.Font;
 import GoF2.Achievements;
@@ -12,11 +14,13 @@ import GoF2.ListItem;
 public final class StatusWindow extends HangarList {
 
    private Sprite medalsSprite;
+   private Image medals;
 
 
    public StatusWindow(String[] var1, String var2) {
       super(var1, var2);
-      this.medalsSprite = new Sprite(Globals.medals, 31, 15);
+	  this.medals = AEResourceManager.getImage(105);
+      this.medalsSprite = new Sprite(this.medals, 31, 15);
       this.setRowHeight(17);
       int[] var7 = Achievements.getMedals();
       int var8 = 0;

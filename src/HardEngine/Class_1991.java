@@ -64,6 +64,8 @@ public final class Class_1991 {
    private Sprite medalsOnSprite;
    private static boolean var_1145;
    private boolean var_11a8;
+   private Image medalsOn;
+   private Image flaggen;
 
    public Class_1991() {
       var_99b = new TextBox(10, 20, GlobalStatus.var_e75 - 20, GlobalStatus.var_eb6 - 25 - 16, (String)null);
@@ -90,6 +92,9 @@ public final class Class_1991 {
       if(this.var_fe9 == null) {
          this.var_fe9 = AEResourceManager.getImage(14);
       }
+	  
+	  this.medalsOn = AEResourceManager.getImage(104);
+	  this.flaggen = AEResourceManager.getImage(106);
 
       this.var_8d0 = new Class_8b7(this);
       this.var_8e5 = new Class_f73(this);
@@ -588,8 +593,8 @@ public final class Class_1991 {
          this.var_1047 = null;
          var_1088 = null;
          var_10e6 = -1;
-         this.medalsOnSprite = new Sprite(Globals.medalsOn, Globals.medalsOn.getHeight(), Globals.medalsOn.getHeight());
-         this.flaggenSprite = new Sprite(Globals.flaggen, 16, 11);
+         this.medalsOnSprite = new Sprite(this.medalsOn, this.medalsOn.getHeight(), this.medalsOn.getHeight());
+         this.flaggenSprite = new Sprite(this.flaggen, 16, 11);
          GlobalStatus.var_1132.sub_170(0);
          this.var_925.sub_ba(0);
          this.var_925.sub_93(0);

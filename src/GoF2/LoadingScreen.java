@@ -1,16 +1,11 @@
-/**
-** ���������� ������� GF2.
-** + ����� ������������ ��� ����������� �������� �� ����� ��������. ����: img in load
-**/
-
 package GoF2;
 
 import HardEngine.Class_3e;
 import Main.GF2;
 
-//import HardEngine.interface_loader;
 import javax.microedition.lcdui.Image;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.PaintCanvas.Font;
 
@@ -24,15 +19,33 @@ public final class LoadingScreen implements Runnable {
    private static String textOverStateIndicator = "";
    private long endTime;
    private long startTime;
-//   private static interface_loader IL;
+   private static Image gof2LogoImage;
+   private String appProperty;
+   private String appVersion;
+   private int maxSystems;
+   private int maxStations;
+   private int maxShips;
+   private int maxItems;
+   private boolean colTest;
+   private boolean neuralTest;
+   private boolean devMode;
 
    public LoadingScreen() {
-	//  IL = new interface_loader();
+	   gof2LogoImage = AEResourceManager.getImage(134);
+	   appProperty = GF2.GF2.getAppProperty("MIDlet-Name");
+	   appVersion = GF2.GF2.getAppProperty("MIDlet-Version");
+	   maxSystems = GlobalStatus.max_systems;
+	   maxStations = GlobalStatus.max_stations;
+	   maxShips = GlobalStatus.max_ships;
+	   maxItems = GlobalStatus.max_items;
+	   colTest = GlobalStatus.STATION_COLLISION_BOX_VISIBLE;
+	   neuralTest = GlobalStatus.NEURAL_NPC;
+	   devMode = GlobalStatus.developer_mode;
    }
 
    public static Image getGameLogo()
    {
-	return Globals.gof2LogoImage;
+	return gof2LogoImage;
    }
 
    public final void sub_9d(Class_3e var1) {
@@ -46,7 +59,7 @@ public final class LoadingScreen implements Runnable {
          String var2 = this.stateIndicator;
          Font.drawString(this.stateIndicator, var10001 - Font.getTextWidth(this.stateIndicator, 0) / 2, GlobalStatus.var_eb6 / 2 - Font.getFontSpacingY() / 2 - 10, 0);
          Font.drawString(textOverStateIndicator, GlobalStatus.var_e75 / 2 - Font.getTextWidth(this.stateIndicator, 0) / 2, GlobalStatus.var_eb6 / 2 - (Font.getFontSpacingY() << 1) - 10, 0);
-         GlobalStatus.graphics.drawImage(Globals.gof2LogoImage, GlobalStatus.var_e75 >> 1, 10, 17);
+         GlobalStatus.graphics.drawImage(this.gof2LogoImage, GlobalStatus.var_e75 >> 1, 10, 17);
 		 
 		 if(GlobalStatus.screen_keyboard == true)
 		 {
@@ -55,16 +68,16 @@ public final class LoadingScreen implements Runnable {
 		 }
 		 
 		 if(GlobalStatus.developer_mode == true) {
-			 Font.drawString(GF2.GF2.getAppProperty("MIDlet-Name"), 5, 20, 6);
-			 Font.drawString("BUILD " + GF2.GF2.getAppProperty("MIDlet-Version"), 5, 40, 4);
-			 Font.drawString("SYSTEMS: " + GlobalStatus.max_systems, 5, 60, 6);
-			 Font.drawString("STATIONS: " + GlobalStatus.max_stations, 5, 80, 6);
-			 Font.drawString("SHIPS: " + GlobalStatus.max_ships, 5, 100, 6);
-			 Font.drawString("ITEMS: " + GlobalStatus.max_items, 5, 120, 6);
-			 Font.drawString("COLLISION TEST: " + GlobalStatus.STATION_COLLISION_BOX_VISIBLE, 5, 140, 6);
-			 Font.drawString("NEURAL TEST: " + GlobalStatus.NEURAL_NPC, 5, 160, 6);
+			 Font.drawString(appProperty, 5, 20, 6);
+			 Font.drawString("BUILD " + appVersion, 5, 40, 4);
+			 Font.drawString("SYSTEMS: " + maxSystems, 5, 60, 6);
+			 Font.drawString("STATIONS: " + maxStations, 5, 80, 6);
+			 Font.drawString("SHIPS: " + maxShips, 5, 100, 6);
+			 Font.drawString("ITEMS: " + maxItems, 5, 120, 6);
+			 Font.drawString("COLLISION TEST: " + colTest, 5, 140, 6);
+			 Font.drawString("NEURAL TEST: " + neuralTest, 5, 160, 6);
 		 }
-		 Font.drawString("DEVELOPER: " + GlobalStatus.developer_mode, 5, 0, 6);
+		 Font.drawString("DEVELOPER: " + devMode, 5, 0, 6);
 		 Font.sub_14d_CENTER(GlobalStatus.CATCHED_ERROR, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 / 2, 4); // BLYAT
 		 
 		// Class_ba6.sub_14d("(", 86, 5, 1);

@@ -55,6 +55,9 @@ public final class StatusPanel {
    private static int var_897;
    private static int var_4d;
    private TextBox var_476;
+   private Image logosSmall;
+   private Image medalsOn;
+   private Image flaggen;
 
 
    public StatusPanel() {
@@ -74,6 +77,11 @@ public final class StatusPanel {
 	  var_2a = GlobalStatus.var_e75 - var_5e >> 1;
 	  var_4d = this.var_f3.getHeight() + 25;
 	  this.var_897 = var_4d + 16;
+	  
+	  this.logosSmall = AEResourceManager.getImage(88);
+	  this.medalsOn = AEResourceManager.getImage(104);
+	  this.flaggen = AEResourceManager.getImage(106);
+	  
       if(this.height > this.scrollRows) {
          this.scrollThumbSize = (int)((float)this.scrollRows / (float)this.height * (float)this.scrollRows);
          this.width -= 5;
@@ -89,10 +97,10 @@ public final class StatusPanel {
       }
 
       this.var_5ef = this.var_555;
-      this.medalsOnSprite = new Sprite(Globals.medalsOn, Globals.medalsOn.getHeight(), Globals.medalsOn.getHeight());
+      this.medalsOnSprite = new Sprite(this.medalsOn, this.medalsOn.getHeight(), this.medalsOn.getHeight());
       Image var2;
-      this.flaggenSprite = new Sprite(Globals.flaggen, 16, 11);
-      this.standingLogos = new Sprite(Globals.logosSmall, Globals.logosSmall.getHeight(), Globals.logosSmall.getHeight());
+      this.flaggenSprite = new Sprite(this.flaggen, 16, 11);
+      this.standingLogos = new Sprite(this.logosSmall, this.logosSmall.getHeight(), this.logosSmall.getHeight());
       if(GlobalStatus.var_e75 < 240) {
          var2 = AEResourceManager.getImage(68);
       } else {

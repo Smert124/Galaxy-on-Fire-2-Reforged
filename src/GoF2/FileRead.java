@@ -1,48 +1,25 @@
 package GoF2;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Vector;
-
 import AE.AEResourceManager;
 import AE.GlobalStatus;
+import HardEngine.TextParser;
 
 public final class FileRead {
 	
-	private static Class varClass;
-	private static InputStream input_stream;
-	private static byte[] byte_1;
-	private static StringBuffer string_buffer;
-	private static char char_1;
-	private static char char_2;
-	private static byte[] byte_2;
-	private static String string_1;
-	
 	public final Station loadStation(int var1) {
 		return loadStationsBinary(new short[]{(short)var1})[0];
-	}
-	
-	private static void GET_TEXT_FILE(String var0) throws IOException {
-		if(string_1 != var0 || byte_1 == null) {
-			input_stream = (varClass == null?(varClass = getClassForName("java.lang.Class")):varClass).getResourceAsStream(var0);
-			byte_1 = new byte[input_stream.available()];
-			input_stream.read(byte_1, 0, input_stream.available());
-			input_stream.close();
-			string_1 = var0;
-		}
 	}
 	
 	public static void MASTER_CONFIG() {
 		try {
 			String all_text = AEResourceManager.getText(1);
 			for(int i = 0; i < 7; ++i) {
-				String[] data = split(all_text, ";");
+				String[] data = TextParser.split(all_text, ";");
 				if(data.length < i) {
 					data = null;
 				}
 				
-				String[] parts = split(data[i].trim(), ",");
+				String[] parts = TextParser.split(data[i].trim(), ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -115,11 +92,11 @@ public final class FileRead {
 			var1 = new Station[var0.length];
 			int var8 = 0;
 			for(int var9 = 0; var9 < GlobalStatus.max_stations; ++var9) {
-				String[] data = split(all_text, ";");
+				String[] data = TextParser.split(all_text, ";");
 				if(data.length < var9) {
 					data = null;
 				}
-				String[] parts = split(data[var9], ",");
+				String[] parts = TextParser.split(data[var9], ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -152,11 +129,11 @@ public final class FileRead {
 		try {
 			String all_text = AEResourceManager.getText(5);
 			for(int i = 0; i < GlobalStatus.max_ships; ++i) {
-				String[] data = split(all_text, ";");
+				String[] data = TextParser.split(all_text, ";");
 				if(data.length < i) {
 					return null;
 				}
-				String[] parts = split(data[i], ",");
+				String[] parts = TextParser.split(data[i], ",");
 				if(parts.length == 0) {
 					return null;
 				}
@@ -193,12 +170,12 @@ public final class FileRead {
 		short[] wepon_projectile = new short[GlobalStatus.max_items];
 		try {
 			String all_text = AEResourceManager.getText(4);
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			for(int i = 0; i < wepon_projectile.length; ++i) {
 				if(data.length < i) {
 					data = null;
 				}
-				String[] parts = split(data[i], ",");
+				String[] parts = TextParser.split(data[i], ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -217,12 +194,12 @@ public final class FileRead {
 		short[] viewport_offset = new short[GlobalStatus.max_ships];
 		try {
 			String all_text = AEResourceManager.getText(8);
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			for(int i = 0; i < GlobalStatus.max_ships; ++i) {
 				if(data.length < i) {
 					data = null;
 				}
-				String[] parts = split(data[i], ",");
+				String[] parts = TextParser.split(data[i], ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -241,12 +218,12 @@ public final class FileRead {
 		int[] stationpart_parameter = null;
 		try {
 			String all_text = AEResourceManager.getText(9);
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			for(int i = 0; i < GlobalStatus.max_stations; ++i) {
 				if(data.length < i) {
 					return null;
 				}
-				String[] parts = split(data[i], ",");
+				String[] parts = TextParser.split(data[i], ",");
 				if(parts.length == 0) {
 					return null;
 				}
@@ -256,7 +233,7 @@ public final class FileRead {
 				stationpart_parameter = new int[Byte.parseByte(parts[1].trim()) * 7];
 				
 				for(int var5 = 0; var5 < stationpart_parameter.length; var5 += 7) {
-					stationpart_parameter[var5] = Short.parseShort(parts[var5 + 2].trim()); // модель
+					stationpart_parameter[var5] = Short.parseShort(parts[var5 + 2].trim());
 					stationpart_parameter[var5 + 1] = Integer.parseInt(parts[var5 + 3].trim());
 					stationpart_parameter[var5 + 2] = Integer.parseInt(parts[var5 + 4].trim());
 					stationpart_parameter[var5 + 3] = Integer.parseInt(parts[var5 + 5].trim());
@@ -279,14 +256,14 @@ public final class FileRead {
 		int[] collision_parameter = null;
 		try {
 			String all_text = AEResourceManager.getText(13);
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			
 			for(int i = 0; i < data.length; ++i) {
 				if(data[i] == null || data[i].trim().length() == 0) {
 					continue;
 				}
 				
-				String[] parts = split(data[i].trim(), ",");
+				String[] parts = TextParser.split(data[i].trim(), ",");
 				if(parts.length < 7) {
 					continue;
 				}
@@ -346,11 +323,11 @@ public final class FileRead {
 			var1 = new Station[var12.length];
 			int var8 = 0;
 			for(int var9 = 0; var9 < GlobalStatus.max_stations; ++var9) {
-				String[] data = split(all_text, ";");
+				String[] data = TextParser.split(all_text, ";");
 				if(data.length < var9) {
 					data = null;
 				}
-				String[] parts = split(data[var9], ",");
+				String[] parts = TextParser.split(data[var9], ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -384,14 +361,14 @@ public final class FileRead {
 		Agent[] var0 = null;
 		try {
 			String all_text = AEResourceManager.getText(2);
-			String[] lines = split(all_text, ";");
+			String[] lines = TextParser.split(all_text, ";");
 			var0 = new Agent[GlobalStatus.max_agents];
 			for(int var12 = 0; var12 < var0.length; ++var12) {
 				String line = lines[var12].trim();
 				if(line.length() == 0) {
 					continue;
 				}
-				String[] parts = split(line, ",");
+				String[] parts = TextParser.split(line, ",");
 				if(parts.length < 9) {
 					continue;
 				}
@@ -437,13 +414,13 @@ public final class FileRead {
 		int parameter[][] = null;
 		try {
 			String all_text = AEResourceManager.getText(7);
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			parameter = new int[data.length - 1][4];
 			for(int x = 0; x < data.length - 1; ++x) {
 				if(data.length - 1 < x) {
 					return null;
 				}
-				String[] parts = split(data[x].trim(), ",");
+				String[] parts = TextParser.split(data[x].trim(), ",");
 				if(parts.length == 0) {
 				   return null;
 				}
@@ -466,12 +443,12 @@ public final class FileRead {
 	public static int loadInterface(int lineNumber, int paramIndex) {
 		try {
 			String allText = AEResourceManager.getText(12);
-			String[] lines = split(allText, ";");
+			String[] lines = TextParser.split(allText, ";");
 			if(lineNumber >= lines.length) {
 				return 0;
 			}
 			String line = lines[lineNumber].trim();
-			String[] parts = split(line, ",");
+			String[] parts = TextParser.split(line, ",");
 			if(paramIndex >= 1 && paramIndex < parts.length) {
 				return Integer.parseInt(parts[paramIndex].trim());
 			}
@@ -491,11 +468,11 @@ public final class FileRead {
 			String all_text = AEResourceManager.getText(11);
 			var0 = new SolarSystem[GlobalStatus.max_systems];
 			for(int system_number = 0; system_number < GlobalStatus.max_systems; ++system_number) {
-				String[] data = split(all_text, ";");
+				String[] data = TextParser.split(all_text, ";");
 				if(data.length < system_number) {
 					data = null;
 				}
-				String[] parts = split(data[system_number].trim(), ",");
+				String[] parts = TextParser.split(data[system_number].trim(), ",");
 				if(parts.length == 0) {
 					parts = null;
 				}
@@ -550,14 +527,14 @@ public final class FileRead {
 		Item[] var0 = null;
 		try {
 			String all_text = AEResourceManager.getText(3);
-			String[] lines = split(all_text, ";");
+			String[] lines = TextParser.split(all_text, ";");
 			var0 = new Item[GlobalStatus.max_items];
 			for(int var6 = 0; var6 < GlobalStatus.max_items; ++var6) {
 				String line = lines[var6].trim();
 				if(line.length() == 0) {
 					return null;
 				}
-				String[] parts = split(line, ",");
+				String[] parts = TextParser.split(line, ",");
 				int[] var3 = null;
 				int[] var4 = null;
 				int[] var5 = null;
@@ -615,15 +592,15 @@ public final class FileRead {
 		Ship[] var0 = null;
 		try {
 			String all_text = AEResourceManager.getText(6);
-			all_text = removeComments(all_text);
+			all_text = TextParser.removeComments(all_text);
 			var0 = new Ship[GlobalStatus.max_ships];
 			String[] ship_name = new String[GlobalStatus.max_ships];
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			for(int i = 0; i < Math.min(data.length, GlobalStatus.max_ships); ++i) {
 				if(data[i] == null || data[i].trim().length() == 0) {
 					continue;
 				}
-				String[] parts = split(data[i].trim(), ",");
+				String[] parts = TextParser.split(data[i].trim(), ",");
 				if(parts.length < 10) {
 					GlobalStatus.CATCHED_ERROR = "Invalid ship data at line " + i + ": " + data[i];
 					System.out.println(GlobalStatus.CATCHED_ERROR);
@@ -740,7 +717,7 @@ public final class FileRead {
 				System.out.println(GlobalStatus.CATCHED_ERROR);
 				return null;
 			}
-			String[] data = split(all_text, ";");
+			String[] data = TextParser.split(all_text, ";");
 			int names_length = data.length - 1;
 			names = new String[names_length];
 			for(int count = 0; count < names_length; ++count) {
@@ -751,118 +728,5 @@ public final class FileRead {
 			System.out.println(GlobalStatus.CATCHED_ERROR);
 		}
 		return names;
-	}
-	
-	private static Class getClassForName(String var0) {
-		try {
-			return Class.forName(var0);
-		} catch (ClassNotFoundException var1) {
-			throw new NoClassDefFoundError(var1.getMessage());
-		}
-	}
-	
-	private static String getText(String path) {
-		InputStream file = (varClass == null?(varClass = getClassForName("java.lang.Class")):varClass).getResourceAsStream(path);
-		DataInputStream dis = new DataInputStream(file);
-        StringBuffer strBuff = new StringBuffer();
-        int ch = 0;
-		try {
-			while((ch = dis.read()) != -1) {
-				strBuff.append((char ) ((ch >= 0xc0 && ch <= 0xFF) ? (ch + 0x350) : ch));
-            }
-            dis.close();
-        } catch(Exception e) {
-			GlobalStatus.CATCHED_ERROR = "getTextError: " + e;
-            System.err.println(GlobalStatus.CATCHED_ERROR);
-        }
-        return strBuff.toString();
-	}
-	
-	public static String[] split(String original, String separator) {
-		Vector nodes = new Vector();
-		int index = original.indexOf(separator);
-		while(index >= 0) {
-			nodes.addElement(original.substring(0, index));
-			original = original.substring(index + separator.length());
-			index = original.indexOf(separator);
-		}
-		nodes.addElement(original);
-		String[] result = new String[nodes.size()];
-		for(int i = 0; i < nodes.size(); i++) {
-			result[i] = (String)nodes.elementAt(i);
-		}
-		return result;
-	}
-	
-	public static int indexOf(StringBuffer sb, String str, int start) {
-		int index = -1;
-		if((start>=sb.length() || start<-1) || str.length()<=0) return index;
-		char[] tofind = str.toCharArray();
-		outer: for(;start<sb.length(); start++){
-			char c = sb.charAt(start);
-			if(c==tofind[0]){
-				if(1==tofind.length) return start;
-				inner: for(int i = 1; i<tofind.length;i++) {
-					char find = tofind[i];
-					int currentSourceIndex = start+i;
-					if(currentSourceIndex<sb.length()) {
-						char source = sb.charAt(start+i);
-						if(find==source) {
-							if(i==tofind.length-1) {
-								return start;
-							}
-							continue inner;
-						} else {
-							start++;
-							continue outer;
-						}
-					} else {
-						return -1;
-					}
-				}
-			}
-		}
-		return index;
-	}
-	
-	private static String arrayToString(int[] array) {
-		if(array == null) {
-			return "null";
-		}
-		StringBuffer sb = new StringBuffer();
-		sb.append("[");
-		for(int i = 0; i < array.length; i++) {
-			sb.append(array[i]);
-			if(i < array.length - 1) {
-				sb.append(", ");
-			}
-		}
-		sb.append("]");
-		return sb.toString();
-	}
-	
-	private static String removeComments(String text) {
-		if(text == null) {
-			return "";
-		}
-		
-		StringBuffer result = new StringBuffer();
-		boolean inComment = false;
-		
-		for(int i = 0; i < text.length(); i++) {
-			char currentChar = text.charAt(i);
-			if(inComment) {
-				if(currentChar == '#' && i > 0 && text.charAt(i-1) != '\\') {
-					inComment = false;
-				}
-			} else {
-				if(currentChar == '#' && (i == 0 || text.charAt(i-1) != '\\')) {
-					inComment = true;
-				} else {
-					result.append(currentChar);
-				}
-			}
-		}
-		return result.toString();
 	}
 }

@@ -2,6 +2,7 @@ package Main;
 
 import javax.microedition.lcdui.Image;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.Math.AEMath;
 import AE.PaintCanvas.Font;
@@ -39,6 +40,8 @@ public final class MissionsWindow {
    private Image[] clientsFace;
    private int campainMissionActions;
    private boolean alienShipMission;
+   private Image menuMapSidemission;
+   private Image menuMapMainmission;
 
 
    public MissionsWindow() {
@@ -50,6 +53,10 @@ public final class MissionsWindow {
       this.innerWindowOffsetY = 20;
       this.alienShipMission = false;
       String var1;
+	  
+	  this.menuMapSidemission = AEResourceManager.getImage(98);
+	  this.menuMapMainmission = AEResourceManager.getImage(99);
+	  
       if(!Status.gameWon()) {
          var1 = Status.replaceTokens(GlobalStatus.gameText.getText(GameText.CAMPAIGN_MISSION_DESC[Status.getCurrentCampaignMission()]), Status.getCampaignMission().getTargetStationName(), "#");
          this.storyMissionRows = Font.splitToLines(var1, GlobalStatus.var_e75 - 2 * this.innerWindowOffsetX - 4);
@@ -262,13 +269,13 @@ public final class MissionsWindow {
          GlobalStatus.graphics.setClip(this.innerWindowOffsetX, this.innerWindowOffsetY, this.innerWindowWidth, this.innerWindowsHeight);
          var2 = this.scrollPos;
          if(!Status.gameWon() || this.alienShipMission) {
-            this.drawMissionSubsection(var2, GlobalStatus.gameText.getText(278), Globals.menuMapMainmission);
+            this.drawMissionSubsection(var2, GlobalStatus.gameText.getText(278), this.menuMapSidemission);
             var2 += 20;
             Font.drawLines(this.storyMissionRows, this.innerWindowOffsetX + 4, var2, 1);
             var2 += Font.getTotalSpacingY(this.storyMissionRows) + 4;
          }
 
-         this.drawMissionSubsection(var2, GlobalStatus.gameText.getText(279), Globals.menuMapSidemission);
+         this.drawMissionSubsection(var2, GlobalStatus.gameText.getText(279), this.menuMapSidemission);
          Mission var3;
          if((var3 = Status.getFreelanceMission()).isEmpty()) {
             var2 += 20;

@@ -8,6 +8,7 @@ package GoF2;
 import javax.microedition.lcdui.Image;
 //import HardEngine.interface_loader;
 
+import AE.AEResourceManager;
 import AE.GlobalStatus;
 import AE.PaintCanvas.Font;
 import HardEngine.AEButtonManager;
@@ -42,6 +43,16 @@ public final class Layout {
    public static boolean departButtonTouchFlag = false;
    public static boolean dialogueButtonsTouchFlag = false;
    private static interface_loader AEGraphics;
+   
+   private static Image lockImage;
+   private static Image menuSkipImage;
+   private static Image menuBackgroundImage;
+   public static Image menuMainCornerImage;
+   private static Image menuMainPanelUpperImage;
+   private static Image menuMainPanelLowerImage;
+   private static Image menuPanelCornerLeftImage;
+   private static Image menuLowerPanelSolidImage;
+   private static Image menuBackgroundTextBox;
 
    public static void OnRelease() {
       backgroundDimmColors = null;
@@ -63,8 +74,19 @@ public final class Layout {
 				  AENavigationButton[countButton] = new AEButtonManager();
 			  }
 		  }
-		menuHeaderPattern = Globals.menuMainPanelUpperImage;
-		menu_panel_bar = Globals.menuMainPanelUpperImage;
+		  
+		  lockImage = AEResourceManager.getImage(119);
+		  menuSkipImage = AEResourceManager.getImage(125);
+		  menuBackgroundImage = AEResourceManager.getImage(126);
+		  menuMainCornerImage = AEResourceManager.getImage(127);
+		  menuMainPanelUpperImage = AEResourceManager.getImage(128);
+		  menuMainPanelLowerImage = AEResourceManager.getImage(129);
+		  menuPanelCornerLeftImage = AEResourceManager.getImage(130);
+		  menuLowerPanelSolidImage = AEResourceManager.getImage(131);
+		  menuBackgroundTextBox = AEResourceManager.getImage(150);
+		  
+		  menuHeaderPattern = menuMainPanelUpperImage;
+		  menu_panel_bar = menuMainPanelUpperImage;
 
       if(backgroundDimmColors == null) {
          backgroundDimmColors = new int[1024];
@@ -78,7 +100,7 @@ public final class Layout {
 
    public static Image sub_8b() {
       if(lock == null) {
-         lock = Globals.lockImage;
+         lock = lockImage;
       }
 
       return lock;
@@ -140,7 +162,7 @@ public final class Layout {
       Font.drawString(var0, var5?var1 + (var3 >> 1):var1 + 12, var2 + 1, var4?2:1, var5?24:17);
       if(var6) {
          if(lock == null) {
-            lock = Globals.lockImage;
+            lock = lockImage;
          }
 
          if(Status.getCurrentCampaignMission() < 13 && (var0.equals(GlobalStatus.gameText.getText(218)) || var0.equals(GlobalStatus.gameText.getText(33))) || Status.getCurrentCampaignMission() < 9 && var0.equals(GlobalStatus.gameText.getText(72)) || Status.getCurrentCampaignMission() < 5 && var0.equals(GlobalStatus.gameText.getText(62)) || (Status.getStation().getId() == 100 && var0.equals(GlobalStatus.gameText.getText(218)) || Status.getStation().getId() == 101 && var0.equals(GlobalStatus.gameText.getText(218)))) {
@@ -157,7 +179,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
 
    if(var6) {
       if(lock == null) {
-         lock = Globals.lockImage;
+         lock = lockImage;
       }
 
       if(Status.getCurrentCampaignMission() < 13 && (var0.equals(GlobalStatus.gameText.getText(218)) || var0.equals(GlobalStatus.gameText.getText(33))) ||
@@ -184,7 +206,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
    }
 
    public static void drawBG() {
-      drawBGPattern(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6, Globals.menuBackgroundImage);
+      drawBGPattern(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6, menuBackgroundImage);
    }
 
    public static void drawBGPattern(int var0, int var1, int var2, int var3, Image var4) {
@@ -235,34 +257,34 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
    }
 
    public static void drawMenuWindow(String var0, int var1, int var2, int var3, int var4) {
-	  drawBGPattern(var1, var2, var3, Globals.menuMainPanelUpperImage.getHeight(), Globals.menuMainPanelUpperImage);
+	  drawBGPattern(var1, var2, var3, menuMainPanelUpperImage.getHeight(), menuMainPanelUpperImage);
       drawTextBox(var0, var1, var2, var3, var4, true);
    }
 
    public static void drawTextBox(String var0, int var1, int var2, int var3, int var4, boolean var5) {
       if(var5) {
-         drawBGPattern(var1, var2 + Globals.menuMainCornerImage.getHeight(), var3, var4, Globals.menuBackgroundImage);
+         drawBGPattern(var1, var2 + menuMainCornerImage.getHeight(), var3, var4, menuBackgroundImage);
       }
       if(var0 != null) {
-         AEGraphics.drawImage(Globals.menuMainCornerImage, var1 + (Globals.menuMainCornerImage.getWidth() / 2), var2 + (Globals.menuMainCornerImage.getHeight() / 2), 3);
+         AEGraphics.drawImage(menuMainCornerImage, var1 + (menuMainCornerImage.getWidth() / 2), var2 + (menuMainCornerImage.getHeight() / 2), 3);
       }
 
       if(var0 != null && !var0.equals("")) {
-         Font.drawString(var0, AEGraphics.getImageX() - (Globals.menuMainCornerImage.getWidth() / 2) + 7, AEGraphics.getImageY() - 7, 0);
+         Font.drawString(var0, AEGraphics.getImageX() - (menuMainCornerImage.getWidth() / 2) + 7, AEGraphics.getImageY() - 7, 0);
       }
 
    }
    
    public static void drawTextBoxDialogue(String var0, int var1, int var2, int var3, int var4, boolean var5) {
       if(var5) {
-         drawBGPattern(var1, var2 + Globals.menuMainCornerImage.getHeight(), var3, var4, Globals.menuBackgroundTextBox);
+         drawBGPattern(var1, var2 + menuMainCornerImage.getHeight(), var3, var4, menuBackgroundTextBox);
       }
       if(var0 != null) {
-         AEGraphics.drawImage(Globals.menuMainCornerImage, var1 + (Globals.menuMainCornerImage.getWidth() / 2), var2 + (Globals.menuMainCornerImage.getHeight() / 2), 3);
+         AEGraphics.drawImage(menuMainCornerImage, var1 + (menuMainCornerImage.getWidth() / 2), var2 + (menuMainCornerImage.getHeight() / 2), 3);
       }
 
       if(var0 != null && !var0.equals("")) {
-         Font.drawString(var0, AEGraphics.getImageX() - (Globals.menuMainCornerImage.getWidth() / 2) + 7, AEGraphics.getImageY() - 7, 0);
+         Font.drawString(var0, AEGraphics.getImageX() - (menuMainCornerImage.getWidth() / 2) + 7, AEGraphics.getImageY() - 7, 0);
       }
 
    }
@@ -312,9 +334,9 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
    }
    
    public static void drawPanelWithCorner() {
-	   GlobalStatus.graphics.drawImage(Globals.menuMainPanelLowerImage, 65, GlobalStatus.var_eb6 - (Globals.menuMainPanelLowerImage.getHeight() / 2), 3);
-	   GlobalStatus.graphics.drawImage(Globals.menuPanelCornerLeftImage, 151, GlobalStatus.var_eb6 - (Globals.menuPanelCornerLeftImage.getHeight() / 2), 3);
-	   drawBGPattern(158, GlobalStatus.var_eb6 - (Globals.menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, Globals.menuLowerPanelSolidImage);
+	   GlobalStatus.graphics.drawImage(menuMainPanelLowerImage, 65, GlobalStatus.var_eb6 - (menuMainPanelLowerImage.getHeight() / 2), 3);
+	   GlobalStatus.graphics.drawImage(menuPanelCornerLeftImage, 151, GlobalStatus.var_eb6 - (menuPanelCornerLeftImage.getHeight() / 2), 3);
+	   drawBGPattern(158, GlobalStatus.var_eb6 - (menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, menuLowerPanelSolidImage);
    }
    
    public static void drawPanelWithoutCorner(String navigationButton) {
@@ -323,7 +345,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
 	   if(navigationButton.equals("")) {
 		   navigationButtonTouchFlag = false;
 	   } else {
-		   drawBGPattern(0, GlobalStatus.var_eb6 - (Globals.menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, Globals.menuLowerPanelSolidImage);
+		   drawBGPattern(0, GlobalStatus.var_eb6 - (menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, menuLowerPanelSolidImage);
 		   AENavigationButton[0].drawStandartButton(Globals.rectRoundedSmallButtonNormal, Globals.rectRoundedSmallButtonPressed, AENavigationButton[0].standartButtonWidth / 2, GlobalStatus.var_eb6 - (AENavigationButton[0].standartButtonHeight / 2));
 		   Font.drawString(navigationButton, AENavigationButton[0].standartButtonX + 20, AENavigationButton[0].standartButtonY, var4?4:1, 34);
 		   navigationButtonTouchFlag = true;
@@ -336,7 +358,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
 	   if(navigationButton.equals("")) {
 		   departButtonTouchFlag = false;
 	   } else {
-		   drawBGPattern(0, GlobalStatus.var_eb6 - (Globals.menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, Globals.menuLowerPanelSolidImage);
+		   drawBGPattern(0, GlobalStatus.var_eb6 - (menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, menuLowerPanelSolidImage);
 		   AENavigationButton[1].drawStandartButton(Globals.departButtonNormal, Globals.departButtonPressed, GlobalStatus.var_e75 - (AENavigationButton[1].standartButtonWidth / 2), GlobalStatus.var_eb6 - (AENavigationButton[1].standartButtonHeight / 2));
 		   Font.drawString(navigationButton, AENavigationButton[1].standartButtonX + 20, AENavigationButton[1].standartButtonY, var4?4:1, 34);
 		   departButtonTouchFlag = true;
@@ -348,7 +370,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
 		departButtonTouchFlag = false;
 		boolean var3 = leftButtonSelected && naviDelay > 0 && !actionButton.equals("") || tickHighlight;
 		boolean var4 = !leftButtonSelected && naviDelay > 0 && !backButton.equals("");
-		drawBGPattern(0, GlobalStatus.var_eb6 - (Globals.menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, Globals.menuLowerPanelSolidImage);
+		drawBGPattern(0, GlobalStatus.var_eb6 - (menuLowerPanelSolidImage.getHeight()), GlobalStatus.var_e75, GlobalStatus.var_eb6, menuLowerPanelSolidImage);
 		
 		if(!actionButton.equals("")) {
 			dialogueButtonNext.drawStandartButton(Globals.rectRoundedSmallButtonNormal, Globals.rectRoundedSmallButtonPressed, dialogueButtonNext.standartButtonWidth / 2, GlobalStatus.var_eb6 - (dialogueButtonNext.standartButtonHeight / 2));
@@ -362,7 +384,7 @@ public static void sub_24e_CENTER(String var0, int var1, int var2, int var3, boo
 		
 		if(skip) {
 			dialogueButtonSkip.drawStandartButton(Globals.rectRoundedSmallButtonNormal, Globals.rectRoundedSmallButtonPressed, GlobalStatus.var_e75 / 2, GlobalStatus.var_eb6 - (dialogueButtonSkip.standartButtonHeight / 2));
-			GlobalStatus.graphics.drawImage(Globals.menuSkipImage,dialogueButtonSkip.standartButtonX, dialogueButtonSkip.standartButtonY, 3);
+			GlobalStatus.graphics.drawImage(menuSkipImage,dialogueButtonSkip.standartButtonX, dialogueButtonSkip.standartButtonY, 3);
 		}
 	}
    
