@@ -825,7 +825,7 @@ public final class PlayerEgo {
                      this.vecUp.set(this.shipGrandGroup_.getDirection(this.vecUp));
                      var4.subtract(this.vecUp);
                      var8 = var4.getLength();
-                     var4.scale((int)((float)(this.frameTime >> 2) * (float)(var8 >> 7)));
+                     var4.scale((int)((float)(this.frameTime >> 8) * (float)(var8 >> 8)));
                      /* this.vecRight = this.vecUp.add(var4, this.vecRight);
                      this.vecRight.normalize();
                      this.shipGrandGroup_.getToParentTransform().setOrientation(this.vecRight);

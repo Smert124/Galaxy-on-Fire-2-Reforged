@@ -83,7 +83,8 @@ public final class OptionsWindow {
       if(this.webAccessAvailable) {
          menuItemCounts[0] = 7;
       }
-	  
+	  Image lowerPanel = AEResourceManager.getImage(131);
+	  int lowerPanelHeight = lowerPanel.getHeight();
       this.gameLogo = LoadingScreen.getGameLogo();
       headerHeight = this.gameLogo.getHeight() + 25;
       this.optionsListPosY = headerHeight + 16;
@@ -95,7 +96,7 @@ public final class OptionsWindow {
       this.confirmPopup = new Popup(20, GlobalStatus.var_eb6 / 2, GlobalStatus.var_e75 - 40);
       this.confirmPopupOpen = false;
       this.forcePauseMenu_ = false;
-      this.credits = new TextBox(posX / 2 + 8, this.optionsListPosY, windowWidth + posX - 16, GlobalStatus.var_eb6 - headerHeight - 48, GlobalStatus.gameText.getText(23) + "\n\n" + GlobalStatus.gameText.getText(25));
+      this.credits = new TextBox(posX / 2 + 8, this.optionsListPosY, windowWidth + posX - 16, GlobalStatus.var_eb6 - headerHeight - 64, GlobalStatus.gameText.getText(23) + "\n\n" + GlobalStatus.gameText.getText(25));
       this.instructions = new TextBox(posX / 2 + 8, this.optionsListPosY, windowWidth + posX - 16, GlobalStatus.var_eb6 - headerHeight - 48, "");
       this.controls = new TextBox(posX / 2 + 8, this.optionsListPosY, windowWidth + posX - 16, GlobalStatus.var_eb6 - headerHeight - 48, GlobalStatus.gameText.getText(22));
       this.hidden__ = new TextBox(posX + 8, this.optionsListPosY, windowWidth - 16, GlobalStatus.var_eb6 - headerHeight - 48, "");

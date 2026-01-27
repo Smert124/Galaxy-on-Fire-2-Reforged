@@ -124,6 +124,8 @@ public abstract class GOF2Canvas extends GameCanvas {
    public void pointerDragged(int x, int y) {
 	   GlobalStatus.screen_keyboard = true;
 	   Hud.pointerDragged(x, y);
+	   GoF2.TextBox.pointerDragged(x, y);
+	   ListItemWindow.pointerDragged(x, y);
     /** if(follow == true) {
 		SharedVariables.cur_x = x;
 		SharedVariables.cur_y = y;
@@ -185,6 +187,8 @@ public abstract class GOF2Canvas extends GameCanvas {
 	   ModStation.pointerPressed(x, y);
 	   Hud.pointerPressed(x, y);
 	   HangarList.hangarListPointerPressed(x, y);
+	   GoF2.TextBox.pointerPressed(x, y);
+	   ListItemWindow.pointerPressed(x, y);
 	   if(AutoPilotList.autopilotListButton != null) {
 		   AutoPilotList.pointerPressed(x, y);
 	   }
@@ -274,6 +278,8 @@ public abstract class GOF2Canvas extends GameCanvas {
 	   ModStation.pointerReleased(var1, var2);
 	   Hud.pointerReleased(var1, var2);
 	   HangarList.hangarListPointerReleased(var1, var2);
+	   GoF2.TextBox.pointerReleased(var1, var2);
+	   ListItemWindow.pointerReleased(var1, var2);
 	   if(AutoPilotList.autopilotListButton != null) {
 		   AutoPilotList.pointerReleased(var1, var2);
 	   }

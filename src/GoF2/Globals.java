@@ -590,6 +590,9 @@ public final class Globals {
 	   AEResourceManager.setImage(182, PATH_INTERFACE + "buttons/beveled_button_normal.png");
 	   AEResourceManager.setImage(183, PATH_INTERFACE + "buttons/beveled_button_pressed.png");
 	   
+	   AEResourceManager.setImage(184, PATH_INTERFACE + "buttons/starmap_button_normal.png");
+	   AEResourceManager.setImage(185, PATH_INTERFACE + "buttons/starmap_button_pressed.png");
+	   
 	   itemsImage = AEResourceManager.getImage(3);
 	   
 	   rectRoundedButtonNormal = AEResourceManager.getImage(152);
@@ -599,8 +602,11 @@ public final class Globals {
 	   rectRoundedSmallButtonNormal = AEResourceManager.getImage(155);
 	   rectRoundedSmallButtonPressed = AEResourceManager.getImage(156);
 	   
-	   rectWideButtonNormal = AEResourceManager.getImage(157);
-	   rectWideButtonPressed = AEResourceManager.getImage(158);
+	   Image rectWideButton = AEResourceManager.getImage(157);
+	   int rectWideButtonHeight = rectWideButton.getHeight();
+	   
+	   rectWideButtonNormal = AEFile.resize_image(AEResourceManager.getImage(157), GlobalStatus.var_e75, rectWideButtonHeight);
+	   rectWideButtonPressed = AEFile.resize_image(AEResourceManager.getImage(158), GlobalStatus.var_e75, rectWideButtonHeight);
 	   
 	   departButtonNormal = AEResourceManager.getImage(159);
 	   departButtonPressed = AEResourceManager.getImage(160);

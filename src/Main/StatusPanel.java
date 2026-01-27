@@ -416,11 +416,12 @@ public final class StatusPanel {
          GlobalStatus.graphics.setClip(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
          this.sub_1ac();
       } else {
-         if(this.var_6a7 == null) {
+         if(this.var_476 == null) {
            // this.var_6a7 = Class_ba6.sub_550(Class_1017.sub_2b(55), SharedVariables.var_e75 - 20); // данные во вкладке "обновления".
-			this.var_476 = new TextBox(var_2a / 2 + 8, this.var_897, var_5e + var_2a - 16, GlobalStatus.var_eb6 - var_4d - 48, Class_1017.sub_2b(55));
-			this.var_476.draw();
+			this.var_476 = new TextBox(var_2a / 2 + 8, this.var_897, var_5e + var_2a - 16, GlobalStatus.var_eb6 - var_4d - 64, Class_1017.sub_2b(55));
          }
+		 
+		 this.var_476.draw();
 
        //  Class_ba6.sub_1d6(this.var_6a7, 10, 40, 1);
       }
