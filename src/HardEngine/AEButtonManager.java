@@ -48,6 +48,7 @@ public class AEButtonManager {
 	
 	public Image standartButtonNormal;
 	public Image standartButtonPressed;
+	private Image standartButtonPixelsSource;
 	public boolean standartButtonActive = false;
 	public int standartButtonWidth;
 	public int standartButtonHeight;
@@ -56,6 +57,8 @@ public class AEButtonManager {
 	public int standartButtonTouchXPosition;
 	public int standartButtonTouchYPosition;
 	public int[] standartButtonPixels;
+
+	private Image switchableButtonPixelsSource;
 
     public AEButtonManager() {
         if(joystickNormal == null) {
@@ -98,8 +101,7 @@ public class AEButtonManager {
 			standartButtonWidth = normal.getWidth();
 			standartButtonHeight = normal.getHeight();
 			
-			standartButtonPixels = new int[normal.getWidth() * normal.getHeight()];
-			normal.getRGB(standartButtonPixels, 0, normal.getWidth(), 0, 0, normal.getWidth(), normal.getHeight());
+			cacheStandartButtonPixels(normal);
 			
 			standartButtonX = buttonX;
 			standartButtonY = buttonY;
@@ -123,8 +125,7 @@ public class AEButtonManager {
 			switchableButtonWidth = normal.getWidth();
 			switchableButtonHeight = normal.getHeight();
 			
-			switchableButtonPixels = new int[normal.getWidth() * normal.getHeight()];
-			normal.getRGB(switchableButtonPixels, 0, normal.getWidth(), 0, 0, normal.getWidth(), normal.getHeight());
+			cacheSwitchableButtonPixels(normal);
 			
 			switchableButtonX = buttonX;
 			switchableButtonY = buttonY;
@@ -337,5 +338,21 @@ public class AEButtonManager {
 			}
 		}
 		return maxDistance;
+	}
+
+	private void cacheStandartButtonPixels(Image normal) {
+		if (standartButtonPixelsSource != normal || standartButtonPixels == null || standartButtonPixels.length != standartButtonWidth * standartButtonHeight) {
+			standartButtonPixels = new int[standartButtonWidth * standartButtonHeight];
+			normal.getRGB(standartButtonPixels, 0, standartButtonWidth, 0, 0, standartButtonWidth, standartButtonHeight);
+			standartButtonPixelsSource = normal;
+		}
+	}
+
+	private void cacheSwitchableButtonPixels(Image normal) {
+		if (switchableButtonPixelsSource != normal || switchableButtonPixels == null || switchableButtonPixels.length != switchableButtonWidth * switchableButtonHeight) {
+			switchableButtonPixels = new int[switchableButtonWidth * switchableButtonHeight];
+			normal.getRGB(switchableButtonPixels, 0, switchableButtonWidth, 0, 0, switchableButtonWidth, switchableButtonHeight);
+			switchableButtonPixelsSource = normal;
+		}
 	}
 }
