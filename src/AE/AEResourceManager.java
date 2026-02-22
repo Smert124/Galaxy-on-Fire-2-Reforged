@@ -130,7 +130,11 @@ public final class AEResourceManager {
                         var10000 = meshes;
                         var10001 = var1;
                         String var4 = meshPaths[var1];
-                        var10002 = new BackGroundMesh(var4);
+						if(var4.endsWith(".m3g")) {
+							var10002 = new BackGroundJSRMesh(var4);
+						} else {
+							var10002 = new BackGroundAEMesh(var4);
+						}
                     } else {
                         var10000 = meshes;
                         var10001 = var1;

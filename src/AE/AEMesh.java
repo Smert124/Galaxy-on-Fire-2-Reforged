@@ -21,6 +21,10 @@ public final class AEMesh extends AbstractMesh {
    private static float[] m_matrix = new float[16];
    private Node[] opaqueNodes;
    private Node[] transparentNodes;
+   
+   private int opaqueNodesCount = 0;
+   private int transparentNodesCount = 0;
+   
    private static PolygonMode opaquePmode;
    private static PolygonMode transparentPmode;
    private static CompositingMode additiveCompositing;
@@ -30,35 +34,35 @@ public final class AEMesh extends AbstractMesh {
    private boolean needsUvFix = false;
    private Texture2D texture = null;
 
-   // Публичное поле для обратной совместимости
    public Node node;
-
+   
+   static {
+       initializeMaterials();
+   }
 
    public AEMesh(int resourceId, String path, int radius) {
       this.resourceId = resourceId;
-      initializeMaterials();
 
       try {
          AEMeshLoader.MeshData meshData = AEMeshLoader.loadAEMesh(path);
-         if (meshData != null) {
-            // Создаем меш из данных
+         
+		 if(meshData != null) {
             Mesh mesh = new Mesh(meshData.vertexBuffer, meshData.triangleStripArray, null);
-            
-            // Для обратной совместимости
             this.node = mesh;
             
-            // Определяем тип материала на основе имени файла
             boolean isGlowing = path.endsWith("_add.aem");
             boolean isTransparent = path.endsWith("_alpha.aem") || isGlowing;
-            
-            // Настраиваем appearance
+			
             setupMeshAppearance(mesh, isGlowing, isTransparent);
             
-            // Добавляем ноду в соответствующий массив
-            if (isTransparent) {
-               this.transparentNodes = new Node[]{mesh};
+            if(isTransparent) {
+               this.transparentNodes = new Node[1];
+               this.transparentNodes[0] = mesh;
+               this.transparentNodesCount = 1;
             } else {
-               this.opaqueNodes = new Node[]{mesh};
+               this.opaqueNodes = new Node[1];
+               this.opaqueNodes[0] = mesh;
+               this.opaqueNodesCount = 1;
             }
          }
       } catch (Exception e) {
@@ -74,10 +78,11 @@ public final class AEMesh extends AbstractMesh {
 
    private AEMesh(AEMesh source) {
       super(source);
-      initializeMaterials();
       this.radius = source.radius;
       this.opaqueNodes = source.opaqueNodes;
       this.transparentNodes = source.transparentNodes;
+      this.opaqueNodesCount = source.opaqueNodesCount;
+      this.transparentNodesCount = source.transparentNodesCount;
       this.renderLayer = source.renderLayer;
       this.draw = source.draw;
       this.resourceId = source.resourceId;
@@ -133,11 +138,8 @@ public final class AEMesh extends AbstractMesh {
          Appearance appearance = new Appearance();
          
          if (isGlowing) {
-            // ВАЖНО: для ADD-мешей не используем материал вообще
-            // чтобы они не реагировали на освещение
             appearance.setCompositingMode(additiveCompositing);
             appearance.setPolygonMode(transparentPmode);
-            // Явно устанавливаем материал в null
             appearance.setMaterial(null);
          } else if (isTransparent) {
             appearance.setCompositingMode(transparentCompositing);
@@ -154,23 +156,25 @@ public final class AEMesh extends AbstractMesh {
    }
 
    public final void render() {
-      if (this.opaqueNodes != null) {
+      if(this.opaqueNodes != null && this.opaqueNodesCount > 0) {
          this.matrix.toFloatArray(m_matrix);
          localToWorldTransform.set(m_matrix);
          
-         for (int i = 0; i < this.opaqueNodes.length; i++) {
-            AEGraphics3D.graphics3D.render(this.opaqueNodes[i], localToWorldTransform);
+         Node[] nodes = this.opaqueNodes;
+         for(int i = 0; i < this.opaqueNodesCount; i++) {
+            AEGraphics3D.graphics3D.render(nodes[i], localToWorldTransform);
          }
       }
    }
 
    public final void renderTransparent() {
-      if (this.transparentNodes != null) {
+      if(this.transparentNodes != null && this.transparentNodesCount > 0) {
          this.matrix.toFloatArray(m_matrix);
          localToWorldTransform.set(m_matrix);
          
-         for (int i = 0; i < this.transparentNodes.length; i++) {
-            AEGraphics3D.graphics3D.render(this.transparentNodes[i], localToWorldTransform);
+         Node[] nodes = this.transparentNodes;
+         for(int i = 0; i < this.transparentNodesCount; i++) {
+            AEGraphics3D.graphics3D.render(nodes[i], localToWorldTransform);
          }
       }
    }
@@ -187,13 +191,13 @@ public final class AEMesh extends AbstractMesh {
       if (textures == null || textures.length == 0) return;
 
       if (this.opaqueNodes != null) {
-         for (int i = 0; i < this.opaqueNodes.length; i++) {
+         for (int i = 0; i < this.opaqueNodesCount; i++) {
             applyTextureToNode(this.opaqueNodes[i], textures[0], false);
          }
       }
       
       if (this.transparentNodes != null) {
-         for (int i = 0; i < this.transparentNodes.length; i++) {
+         for (int i = 0; i < this.transparentNodesCount; i++) {
             applyTextureToNode(this.transparentNodes[i], textures[0], true);
          }
       }

@@ -18,6 +18,8 @@ public abstract class AECamera extends AEGeometry {
    protected int var_702;
    private int verticalProjectionFactor;
    private int horizontalProjectionFactor;
+   private int screenWidth = GlobalStatus.var_e75;
+   private int screenHeight = GlobalStatus.var_eb6;
 
 
    protected AECamera(int var1, int var2, int var3, int var4, int var5) {
@@ -65,18 +67,27 @@ public abstract class AECamera extends AEGeometry {
 
    }
 
-   public void setPerspective(int var1, int var2, int var3) {
-      this.nearPlane = var2;
-      this.farPlane = var3;
-      var2 = AEMath.sin(var1 >> 1);
-      var1 = AEMath.cos(var1 >> 1);
-      this.vfPlaneNormals[2].set(var1, 0, -var2);
-      this.vfPlaneNormals[3].set(-var1, 0, -var2);
-      this.vfPlaneNormals[4].set(0, -var1, -var2);
-      this.vfPlaneNormals[5].set(0, var1, -var2);
-      this.verticalProjectionFactor = (var2 << 12) / var1;
-      this.horizontalProjectionFactor = this.verticalProjectionFactor * ((this.var_680 << 12) / this.var_702) >> 12;
-   }
+       public void setPerspective(int fov, int near, final int far) {
+        this.nearPlane = near;
+        this.farPlane = far;
+        int sin = AEMath.sin(fov >> 1);
+        int cos = AEMath.cos(fov >> 1);
+        int wh = ((this.screenWidth << AEMath.Q) / this.screenHeight);
+        int coshw = cos * AEMath.sqrt((int)(this.screenHeight << AEMath.Q) / this.screenWidth) >> AEMath.Q;
+        int coswh = cos * AEMath.sqrt(wh) >> AEMath.Q;
+        this.vfPlaneNormals[2].set(coshw, 0, -sin);
+        this.vfPlaneNormals[3].set(-coshw, 0, -sin);
+        this.vfPlaneNormals[4].set(0, -coswh, -sin);
+        this.vfPlaneNormals[5].set(0, coswh, -sin);
+//        this.vfPlaneNormals[2].set(cos, 0, -sin);
+//        this.vfPlaneNormals[3].set(-cos, 0, -sin);
+//        this.vfPlaneNormals[4].set(0, -cos, -sin);
+//        this.vfPlaneNormals[5].set(0, cos, -sin);
+        this.verticalProjectionFactor = (sin << AEMath.Q) / cos;
+        this.horizontalProjectionFactor = this.verticalProjectionFactor * wh >> AEMath.Q;
+        
+    }
+
 
    public final void setFoV(int var1) {
       this.setPerspective(var1, this.nearPlane, this.farPlane);

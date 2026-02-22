@@ -10,6 +10,7 @@ import AE.LookAtCamera;
 import AE.Math.AEMath;
 import AE.Math.AEVector3D;
 import AE.Math.Matrix;
+import AE.PaintCanvas.Font;
 import AE.TargetFollowCamera;
 
 /**
@@ -1263,6 +1264,12 @@ public final class PlayerEgo {
    }
 
    public final void draw(boolean var1, AECamera var2) {
+	  
+	  if(GlobalStatus.developer_mode) {
+		  int fps = 1000 / (int)this.frameTime;
+		  Font.drawString("" + fps, GlobalStatus.var_e75 - 50, 70, 6);
+	  }
+	  
       if(this.miningGame != null) {
          this.miningGame.render2D(); // ������ �������
       } else {

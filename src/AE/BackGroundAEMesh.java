@@ -11,16 +11,16 @@ import javax.microedition.m3g.Transform;
 
 import AE.PaintCanvas.AEGraphics3D;
 
-public final class BackGroundMesh extends AbstractMesh {
+public final class BackGroundAEMesh extends AbstractMesh {
 
    private static Transform transform = new Transform();
    private static float[] tranformFloatArr = new float[16];
    private Node mesh;
    private static CompositingMode compositing;
 
-   public BackGroundMesh(String path) {
+   public BackGroundAEMesh(String path) {
       String var2 = path;
-      BackGroundMesh var5 = this;
+      BackGroundAEMesh var5 = this;
 
       try {
          AEMesh aeMeshLoader = new AEMesh(0, var2, 0);
@@ -38,7 +38,7 @@ public final class BackGroundMesh extends AbstractMesh {
       }
    }
 
-   private BackGroundMesh(BackGroundMesh var1) {
+   private BackGroundAEMesh(BackGroundAEMesh var1) {
       this.radius = 0;
       this.mesh = var1.mesh;
       this.renderLayer = var1.renderLayer;
@@ -65,7 +65,7 @@ public final class BackGroundMesh extends AbstractMesh {
    }
 
    public final GraphNode clone() {
-      return new BackGroundMesh(this);
+      return new BackGroundAEMesh(this);
    }
 
    public final void setTexture(ITexture var1) {
