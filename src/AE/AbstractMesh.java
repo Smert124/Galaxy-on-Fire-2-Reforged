@@ -30,6 +30,10 @@ public abstract class AbstractMesh extends AEGeometry {
     public final void setRenderLayer(int var1) {
         this.renderLayer = var1;
     }
+	
+	public boolean hasTransparency() {
+		return false;
+	}
     
     public void appendToRender(AECamera var1, Renderer var2) {
         if(this.draw && var1.isInViewFrustum(this.boundingSphere) != 0) {

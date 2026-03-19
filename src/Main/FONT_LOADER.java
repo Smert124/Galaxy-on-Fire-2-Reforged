@@ -79,9 +79,6 @@ public final class FONT_LOADER extends Class_3e {
          GlobalStatus.var_eb6 = this.getHeight();
          this.setFullScreenMode(true);
          this.flushGraphics();
-         GlobalStatus.var_e75 = this.getWidth();
-         GlobalStatus.var_eb6 = this.getHeight();
-         this.setFullScreenMode(true);
       } else if(!this.var_2c1) {
 		 Globals.loadImages();
          this.var_2c1 = true;
@@ -90,9 +87,6 @@ public final class FONT_LOADER extends Class_3e {
          GlobalStatus.var_eb6 = this.getHeight();
          (GlobalStatus.gameText = new GameText()).setLanguage(GlobalStatus.language);
          (GlobalStatus.var_1119 = new Class_1017()).sub_f(GlobalStatus.language);
-         GlobalStatus.var_e75 = this.getWidth();
-         GlobalStatus.var_eb6 = this.getHeight();
-         this.setFullScreenMode(true);
 		 /** ����������� ������ **/
          Font.setGraphics(GlobalStatus.graphics);
          Font.addCharMap("/Resource/Fonts/font_w.png", 0, 15, 16);
@@ -224,7 +218,7 @@ public final class FONT_LOADER extends Class_3e {
       this.var_1fc = null;
    }
 
-   public final void sub_8d() {
+   public final void sub_8d() { // idle mode
       Layout.drawBG();
       Font.drawLinesAligned(Font.splitToLines(GlobalStatus.gameText.getText(81), GlobalStatus.var_e75 - 20), GlobalStatus.var_e75 >> 1, GlobalStatus.var_eb6 >> 1, 1, 24);
       if(this.var_32a == 0L) {

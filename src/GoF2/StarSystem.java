@@ -119,7 +119,7 @@ public final class StarSystem {
       return this.localPlanets;
    }
 
-   public final void render_() { // вот тут можно добавить освещение
+   public final void render_() {
       this.cameraControler.moveTo(GlobalStatus.renderer.sub_85().getLocalPos(this.tempVec));
       this.cameraControler.updateTransform(true);
       int var1;

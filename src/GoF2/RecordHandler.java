@@ -117,8 +117,7 @@ public final class RecordHandler {
          GlobalStatus.invertedControlsOn = var2.readBoolean();
 		 GlobalStatus.texture_type[GlobalStatus.textures] = var2.readInt();
 		 GlobalStatus.textures = var2.readInt();
-		 GlobalStatus.planet_size[GlobalStatus.planets] = var2.readInt();
-		 GlobalStatus.planets = var2.readInt();
+		 GlobalStatus.MODELS_QUALITY = var2.readBoolean();
 		 GlobalStatus.nebula_size[GlobalStatus.nebulas] = var2.readInt();
 		 GlobalStatus.nebulas = var2.readInt();
 		 GlobalStatus.asteroids[GlobalStatus.asteroid] = var2.readInt();
@@ -164,8 +163,7 @@ public final class RecordHandler {
          var2.writeBoolean(GlobalStatus.invertedControlsOn);
 		 var2.writeInt(GlobalStatus.texture_type[GlobalStatus.textures]);
 		 var2.writeInt(GlobalStatus.textures);
-		 var2.writeInt(GlobalStatus.planet_size[GlobalStatus.planets]);
-		 var2.writeInt(GlobalStatus.planets);
+		 var2.writeBoolean(GlobalStatus.MODELS_QUALITY);
 		 var2.writeInt(GlobalStatus.nebula_size[GlobalStatus.nebulas]);
 		 var2.writeInt(GlobalStatus.nebulas);
 		 var2.writeInt(GlobalStatus.asteroids[GlobalStatus.asteroid]);

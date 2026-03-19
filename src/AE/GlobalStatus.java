@@ -113,7 +113,7 @@ public final class GlobalStatus {
    public static int cur_y = height - 64;
    public static int textures = 0;
    public static int nebulas = 0;
-   public static int planets = 0;
+   public static boolean MODELS_QUALITY = false;
    public static String[] texture_size = {"Low", "Medium", "High", "Ultra"};
    public static boolean bigInterface = false;
    public static int asteroid = 1;

@@ -1041,7 +1041,7 @@ public final class OptionsWindow {
 					this.updateMusicLevel();
 				return;
 				case 5:
-					--GlobalStatus.planets;
+					GlobalStatus.MODELS_QUALITY = !GlobalStatus.MODELS_QUALITY;
 					this.updateMusicLevel();
 				return;
 				case 6:
@@ -1147,26 +1147,6 @@ public final class OptionsWindow {
 		  GlobalStatus.texture_type[GlobalStatus.textures] = 256;
 	  }
 	  
-	  if(GlobalStatus.planets == 0)
-	  {
-		  GlobalStatus.planet_size[GlobalStatus.planets] = 64;
-	  }
-	  
-	  if(GlobalStatus.nebulas == 0)
-	  {
-		  GlobalStatus.nebula_size[GlobalStatus.nebulas] = 64;
-	  }
-	  
-	  if(GlobalStatus.planets < 0)
-	  {
-		GlobalStatus.planets = 3;
-	  }
-	  
-	  if(GlobalStatus.planets > 3)
-	  {
-		GlobalStatus.planets = 0;
-	  }
-	  
 	  if(GlobalStatus.nebulas < 0)
 	  {
 		GlobalStatus.nebulas = 3;
@@ -1252,7 +1232,7 @@ public final class OptionsWindow {
 					this.updateMusicLevel();
 				return;
 				case 5:
-					++GlobalStatus.planets;
+					GlobalStatus.MODELS_QUALITY = !GlobalStatus.MODELS_QUALITY;
 					this.updateMusicLevel();
 				return;
 				case 6:
@@ -1497,7 +1477,7 @@ public final class OptionsWindow {
 			Layout.drawTextItem(GlobalStatus.gameText.getText(537) + " " + GlobalStatus.texture_size[GlobalStatus.textures], AEButtonSettings[2].standartButtonX, AEButtonSettings[2].standartButtonY, windowWidth, this.selectedRow == 4); // textures
 			
 			AEButtonSettings[3].drawStandartButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, AEButtonSettings[2].standartButtonX - AEButtonSettings[2].standartButtonWidth - 2, AEButtonSettings[2].standartButtonY);
-			Layout.drawTextItem(GlobalStatus.gameText.getText(538) + " " + GlobalStatus.texture_size[GlobalStatus.planets], AEButtonSettings[3].standartButtonX, AEButtonSettings[3].standartButtonY, windowWidth, this.selectedRow == 5); // planets
+			Layout.drawTextItem(GlobalStatus.gameText.getText(538) + " " + GlobalStatus.gameText.getText(GlobalStatus.MODELS_QUALITY?551:550), AEButtonSettings[3].standartButtonX, AEButtonSettings[3].standartButtonY, windowWidth, this.selectedRow == 5); // models quality
 			
 			AEButtonSettings[4].drawStandartButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, AEButtonSettings[2].standartButtonX + AEButtonSettings[2].standartButtonWidth + 2, AEButtonSettings[2].standartButtonY);
 			Layout.drawTextItem(GlobalStatus.gameText.getText(539) + " " + GlobalStatus.texture_size[GlobalStatus.nebulas], AEButtonSettings[4].standartButtonX, AEButtonSettings[4].standartButtonY, windowWidth, this.selectedRow == 6); // fogs
@@ -1543,7 +1523,7 @@ public final class OptionsWindow {
 				GlobalStatus.language_flag_y = 0;
 				language_flag_image_x = 50;
 			}
-			if(this.selectedRow == 4 || this.selectedRow == 8 || this.selectedRow == 9 || this.selectedRow == 12) // save & restart
+			if(this.selectedRow == 4 || this.selectedRow == 5 || this.selectedRow == 8 || this.selectedRow == 9 || this.selectedRow == 12) // save & restart
 			{
 				Font.sub_14d_CENTER(GlobalStatus.gameText.getText(546), AEButtonCheckBoxSettings[7].switchableButtonX, AEButtonCheckBoxSettings[7].switchableButtonY + AEButtonCheckBoxSettings[7].switchableButtonHeight, 4);
 			}

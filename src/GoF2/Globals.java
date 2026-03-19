@@ -17,6 +17,9 @@ public final class Globals {
    private static String PATH_CONFIG = "/Configs/";
    private static String dlc_valkyrie = "/Resource/Mesh/Valkyrie/";
    private static String dlc_supernova = "/Resource/Mesh/Supernova/";
+   
+   private static String PATH_MESHES_SET;
+   
    public static final short[] BAR_MESHES = new short[]{14025, 14029, 14027, 14329}; // bar
    public static final short[] space_lounge_model_alpha = new short[]{15025, 15029, 15027, 14429}; // bar ALPHA
    public static final short[] space_lounge_model_add = new short[]{15125, 15129, 15127, 14529}; // bar ALPHA_ADD
@@ -727,6 +730,12 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_beams, "/Resource/textures/beams");
 	   AEResourceManager.addTextureResource(tex_station_terran, "/Resource/textures/tex_station_terran");
 	   
+	   if(!GlobalStatus.MODELS_QUALITY) {
+		   PATH_MESHES_SET = "/assets/meshes/low/";
+	   } else {
+		   PATH_MESHES_SET = "/assets/meshes/high/";
+	   }
+	   
 	   if(GlobalStatus.texture_type[GlobalStatus.textures] == 256) {
 		   AEResourceManager.addTextureResource(tex_deepscience, PATH_TEXTURES + "low/v_tex_deepscience_low");
 		   AEResourceManager.addTextureResource(tex_vossk, PATH_TEXTURES + "low/tex_vossk_low");
@@ -919,10 +928,12 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 10000, tex_station_deescience);
 		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 10000, tex_station_deescience);
 		
-		AEResourceManager.addGeometryResource(13001, PATH_MESHES + "ship_betty_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13001, PATH_MESHES_SET + "ships/ship_betty_body.aem", 2000, tex_midorian);
 		AEResourceManager.addGeometryResource(13101, PATH_MESHES + "ship_betty_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13002, PATH_MESHES + "ship_teneta_body.aem", 2000, tex_terran);
+		
+		AEResourceManager.addGeometryResource(13002, PATH_MESHES_SET + "ships/ship_teneta_body.aem", 2000, tex_terran);
 		AEResourceManager.addGeometryResource(13102, PATH_MESHES + "ship_teneta_light_add.aem", 2000, tex_fx);
+		
 		AEResourceManager.addGeometryResource(13003, PATH_MESHES + "ship_hiro_body.aem", 2000, tex_pirates);
 		AEResourceManager.addGeometryResource(13103, PATH_MESHES + "ship_hiro_light_add.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(13004, PATH_MESHES + "ship_badger_body.aem", 2000, tex_midorian);
@@ -1158,13 +1169,13 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(14009, PATH_MESHES + "null.m3g", 15000, 0); // h1s3_
 		AEResourceManager.addGeometryResource(14010, PATH_MESHES + "null.m3g", 15000, 0); // h1s4_
 		AEResourceManager.addGeometryResource(14011, PATH_MESHES + "null.m3g", 15000, 0); // h1s5_
-		AEResourceManager.addGeometryResource(14012, PATH_MESHES + "hangar_terran.m3g", 2000, tex_hangar_terran); // h1s6_
+		AEResourceManager.addGeometryResource(14012, PATH_MESHES + "hangar_terran.m3g", 15000, tex_hangar_terran); // h1s6_
 		AEResourceManager.addGeometryResource(14013, PATH_MESHES + "null.m3g", 15000, 0); // h1s7_
 		AEResourceManager.addGeometryResource(14014, PATH_MESHES + "null.m3g", 15000, 0); // h2s1_
 		AEResourceManager.addGeometryResource(14015, PATH_MESHES + "null.m3g", 15000, 0); // h2s2_
 		AEResourceManager.addGeometryResource(14016, PATH_MESHES + "null.m3g", 15000, 0); // h2s3_
 		AEResourceManager.addGeometryResource(14017, PATH_MESHES + "null.m3g", 15000, 0); // h2s4_
-		AEResourceManager.addGeometryResource(14018, PATH_MESHES + "hangar_nivelian.m3g", 2000, tex_hangar_nivelian); // h2s5
+		AEResourceManager.addGeometryResource(14018, PATH_MESHES + "hangar_nivelian.m3g", 15000, tex_hangar_nivelian); // h2s5
 		AEResourceManager.addGeometryResource(14019, PATH_MESHES + "null.m3g", 15000, 0); // h2s6_
 		AEResourceManager.addGeometryResource(14020, PATH_MESHES + "h3s1_.m3g", 15000, 0); // h3s1_
 		AEResourceManager.addGeometryResource(14021, PATH_MESHES + "h3s2_.m3g", 15000, 0); // h3s2_
