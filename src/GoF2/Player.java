@@ -9,7 +9,7 @@ public final class Player {
 
    public Gun[][] guns;
    private Player[] var_1d0;
-   float var_21b;
+   float radius;
    private int empPoints;
    private int maxEmpPoints;
    private int hp;
@@ -51,7 +51,7 @@ public final class Player {
 
 
    public Player(float var1, int var2, int var3, int var4, int var5) {
-      this.var_21b = var1;
+      this.radius = var1;
       this.hp = var2;
       this.maxHp = var2;
       this.updateDamageRate();
@@ -114,7 +114,7 @@ public final class Player {
    }
 
    public final void sub_28a(int var1) {
-      this.var_21b = (float)var1;
+      this.radius = (float)var1;
    }
 
    public final void setKIPlayer(KIPlayer var1) {
@@ -358,6 +358,7 @@ public final class Player {
          }
 
          this.empPoints -= var1;
+		 this.shield -= var1;
          if(this.empPoints <= 0) {
             if(!var2 && this.kiPlayer != null) {
                if(!this.tempEnemy_ && this.kiPlayer.race != 9 && Status.getSystem() != null && this.kiPlayer.race == Status.getSystem().getRace()) {
@@ -373,6 +374,7 @@ public final class Player {
             this.empForce = var3;
             this.var_bfe = true;
             this.empPoints = 0;
+			this.shield = 0.0F;
             this.var_bbb = 0;
          }
 

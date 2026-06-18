@@ -75,6 +75,7 @@ public abstract class GOF2Canvas extends GameCanvas {
 
    protected void keyPressed(int var1) {
 	   GlobalStatus.screen_keyboard = false;
+	   GlobalStatus.KEY_CODE = var1;
       this.sub_c3(this.sub_81(var1));
 	  switch(var1) {
 	   case 50: right=true; break; 
@@ -86,6 +87,7 @@ public abstract class GOF2Canvas extends GameCanvas {
 
    protected void keyReleased(int var1) {
       this.sub_e1(this.sub_81(var1));
+	  GlobalStatus.KEY_CODE = 0;
 	  switch(var1) {
 	   case 50: right=false; break; 
        case 56: left=false; break;

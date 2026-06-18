@@ -197,7 +197,7 @@ public final class PlayerStation extends PlayerStaticFar {
 	}
 	
 	public final boolean outerCollide(int var1, int var2, int var3) {
-		return (float)var1 < this.player.var_21b && (float)var1 > -this.player.var_21b && (float)var2 < this.player.var_21b && (float)var2 > -this.player.var_21b && (float)var3 < this.player.var_21b && (float)var3 > -this.player.var_21b;
+		return (float)var1 < this.player.radius && (float)var1 > -this.player.radius && (float)var2 < this.player.radius && (float)var2 > -this.player.radius && (float)var3 < this.player.radius && (float)var3 > -this.player.radius;
 	}
 	
 	public final boolean outerCollide(AEVector3D var1) {

@@ -240,7 +240,7 @@ public final class AEFile {
 			} catch (Exception var7) {
 				GlobalStatus.CATCHED_ERROR = "BLYAT! CHECK IMAGE! <" + var0 + ">";
 				try {
-					var2 = Image.createImage("/Resource/error.png");
+					var2 = Image.createImage("/assets/textures/error.png");
 				} catch (Exception ex) {
 					;
 				}
@@ -251,7 +251,7 @@ public final class AEFile {
 			} catch (IOException var6) {
 				GlobalStatus.CATCHED_ERROR = "BLYAT! CHECK IMAGE! <" + var0 + ">";
 				try {
-					var2 = Image.createImage("/Resource/error.png");
+					var2 = Image.createImage("/assets/textures/error.png");
 				} catch (Exception ex) {
 					;
 				}

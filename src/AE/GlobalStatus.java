@@ -159,6 +159,8 @@ public final class GlobalStatus {
    public static boolean STATION_COLLISION_BOX_VISIBLE = false;
    public static boolean NEURAL_NPC = false;
    
+   public static int KEY_CODE;
+   
    public static void vibrate(int var0) {
       if(vibrationOn) {
        display.vibrate(var0);

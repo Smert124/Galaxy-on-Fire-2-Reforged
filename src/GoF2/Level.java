@@ -474,47 +474,48 @@ public final class Level {
    }
 
    private Gun createGun(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      Gun var9 = null;
+      Gun gun = null;
       Object var10 = null;
       var10 = null;
       Sparks var11 = this.gunSparks;
       AbstractMesh var14;
-      switch(var3) { // что-то про типы оружия, которые установлены и их смещение. Возможность добавления wepons.txt
+      switch(var3) {
       case 0:
       case 1:
       case 3: // термо
          if(Globals.TYPE_WEAPONS[var1] >= 0) {
-            int var16 = var3 == 0?800:400; // разброс?
-            var9 = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, var16), new AEVector3D()); // значение после var5 - максимальное количество выпущенных снарядов
+            int var16 = var3 == 0?800:400;
+            gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, var16), new AEVector3D());
             var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]);
             if(var3 == 3) {
                var3 = 300 + 70 * (var1 - 28);
                var14.setScale(var3, var3, var3);
                var14.setAnimationRangeInTime(var1 - 28 + 10, var1 - 28 + 10);
                var14.setAnimationMode((byte)1);
-               (var9 = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D())).setSpread(20);
+               gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+			   gun.setSpread(20);
             }
 
-            var10 = new ObjectGun(var9, var14);
+            var10 = new GuidedGun(gun, var14);
          } else {
-            var9 = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D());
-            var10 = new LaserGun(var9, var1, this);
+            gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D());
+            var10 = new LaserGun(gun, var1, this);
          }
          break;
       case 2: // пулеметы
-         var9 = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
-         var10 = new ObjectGun(var9, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
+         gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+         var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
          break;
       case 4:
       case 5: // самонаводящиеся ракеты
-         var9 = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(), new AEVector3D());
+         gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(), new AEVector3D());
          (var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1])).setRenderLayer(2);
-         var10 = new RocketGun(var9, var14, var3 == 5);
+         var10 = new RocketGun(gun, var14, var3 == 5);
          var11 = this.missilesSparks;
          break;
       case 6:
       case 7: // ядерное/EMP
-         var9 = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, -200, 400), new AEVector3D());
+         gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, -200, 400), new AEVector3D());
          AbstractMesh var12 = null;
          int var13;
          if(var3 == 7) {
@@ -528,16 +529,16 @@ public final class Level {
          }
 
          var12.setRenderLayer(2);
-         var10 = new RocketGun(var9, var12, false);
+         var10 = new RocketGun(gun, var12, false);
          var11 = this.missilesSparks;
          break;
       case 8: // турели
-         var9 = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 0), new AEVector3D());
-         var10 = new ObjectGun(var9, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
+         gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 0), new AEVector3D());
+         var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
       }
 
-      var9.setLevel(this);
-      var9.setSparks(var11);
+      gun.setLevel(this);
+      gun.setSparks(var11);
       if(this.egoGuns == null) {
          this.egoGuns = new AbstractMesh[]{(AbstractMesh)var10};
       } else {
@@ -547,7 +548,7 @@ public final class Level {
          this.egoGuns = var15;
       }
 
-      return var9;
+      return gun;
    }
 
    private void createWingmen() {
@@ -600,7 +601,7 @@ public final class Level {
          int var2;
          int var3;
          if(Status.inAlienOrbit()) {
-            var2 = 1 + GlobalStatus.random.nextInt(3);
+            var2 = 1 + GlobalStatus.random.nextInt(5);
             this.npc_class_1 = new KIPlayer[var2];
 
             for(var3 = 0; var3 < var2; ++var3) {
@@ -796,7 +797,9 @@ public final class Level {
                   this.npc_class_1 = new KIPlayer[var6 + var2];
 
                   for(var7 = 0; var7 < this.npc_class_1.length - var2; ++var7) {
-                     this.npc_class_1[var7] = this.createJunk(var12.getWaypoint(0), 9996);
+					 int[] junkID = {9996, 9997, 9998};
+					 int randomJunkModel = junkID[GlobalStatus.random.nextInt(3)];
+                     this.npc_class_1[var7] = this.createJunk(var12.getWaypoint(0), randomJunkModel);
                      this.npc_class_1[var7].player.setAlwaysEnemy(true);
                   }
 
@@ -914,6 +917,9 @@ public final class Level {
             this.npc_class_1[0] = this.createShip(8, 0, 62, (Waypoint)null); // FACTION, int, ID SHIP | 10 = default
 			this.npc_class_1[1] = this.createShip(8, 0, 62, (Waypoint)null); // капитан пиратов
 			this.npc_class_1[2] = this.createShip(8, 0, 63, (Waypoint)null); // тупой пират
+			((PlayerFighter)this.npc_class_1[0]).setExhaustVisible(false);
+			((PlayerFighter)this.npc_class_1[1]).setExhaustVisible(false);
+			((PlayerFighter)this.npc_class_1[2]).setExhaustVisible(true);
             this.npc_class_1[var2].setToSleep();
             this.npc_class_1[var2].player.setAlwaysEnemy(true);
             var1 = this.var_3c7[this.var_3c7.length - 1 - var2].getPosition(var1);
@@ -921,9 +927,9 @@ public final class Level {
             this.npc_class_1[var2].hasCargo = false;
             this.npc_class_1[var2].cargo = null;
             this.npc_class_1[var2].player.setHitPoints(150);
-            if(var2 < 3) {
+            /* if(var2 <= 3) {
                ((PlayerFighter)this.npc_class_1[var2]).setExhaustVisible(false);
-            }
+            } */
          }
 
          this.npc_class_1[2].setPosition(0, 0, -40000); // расстояние пирата 2 до игрока?
@@ -1339,7 +1345,7 @@ public final class Level {
          var3 = 0;
 
          for(var2 = 0; var2 < this.npc_class_1.length; ++var2) {
-            Gun var6;
+            Gun gun;
             if(this.npc_class_1[var2] != null && this.npc_class_1[var2].armed) {
                int var4 = var1 + 2;
                if(Status.getMission().getType() == 12 && this.npc_class_1[var2].player.isAlwaysFriend()) {
@@ -1347,29 +1353,35 @@ public final class Level {
                } else if(Status.getCurrentCampaignMission() == 4) {
                   var4 = 1;
                }
-
-               (var6 = new Gun(0, var4, 4, -1, 3000, 600 - (Status.getCurrentCampaignMission() << 1), 16.0F, (AEVector3D)null, (AEVector3D)null)).setFriendGun(true);
-               var6.setLevel(this);
-               var6.setSparks(this.gunSparks);
+			   
+			   int reload = 600 - (Status.getCurrentCampaignMission() << 1) - (int)(Status.getLevel() * 7.5);
+			   reload = Math.max(100, reload);
+			   
+               gun = new Gun(0, var4, 10, -1, 3000, reload, 16.0F + Status.getLevel() * 3.2F, (AEVector3D)null, (AEVector3D)null);
+			   gun.setFriendGun(true);
+               gun.setLevel(this);
+               gun.setSparks(this.gunSparks);
                int[] weaponTypes = {2, 3, 5, 1, 8, 8, 8, 12, 8, 7}; // ID оружия для каждой расы
 			   int var5 = weaponTypes[this.npc_class_1[var2].race];
-
-               this.enemyGuns[var3] = new ObjectGun(var6, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var5])); // какое оружие используют NPC
+               this.enemyGuns[var3] = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var5])); // какое оружие используют NPC
                this.enemyGuns[var3].setRenderLayer(2);
                ++var3;
-               this.npc_class_1[var2].addGun(var6, 0);
+               this.npc_class_1[var2].addGun(gun, 0);
             }
 
             if(this.npc_class_1[var2].isWingman() && this.npc_class_1[var2].armed) {
-               (var6 = new Gun(18, 0, 4, -1, 3000, 400, 16.0F, (AEVector3D)null, (AEVector3D)null)).setFriendGun(true);
-               var6.setLevel(this);
-               var6.setSparks(this.gunSparks);
-               var6.index = 18;
-               var6.subType = 1;
-               this.enemyGuns[var3] = new ObjectGun(var6, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[18])); // если используется EMP оружие
+			   int reload = 600 - (Status.getCurrentCampaignMission() << 1) - (int)(Status.getLevel() * 7.5);
+			   reload = Math.max(100, reload);
+               gun = new Gun(18, 0, 4, -1, 3000, reload, 16.0F + Status.getLevel() * 3.2F, (AEVector3D)null, (AEVector3D)null);
+			   gun.setFriendGun(true);
+               gun.setLevel(this);
+               gun.setSparks(this.gunSparks);
+               gun.index = 18;
+               gun.subType = 1;
+               this.enemyGuns[var3] = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[18])); // если используется EMP оружие
                this.enemyGuns[var3].setRenderLayer(2);
                ++var3;
-               this.npc_class_1[var2].addGun(var6, 1);
+               this.npc_class_1[var2].addGun(gun, 1);
             }
          }
       }
@@ -1454,11 +1466,13 @@ public final class Level {
       var2 = var1 != null?var1.x:0;
       int var3 = var1 != null?var1.y:0;
       int var6 = var1 != null?var1.z:0;
+	  int[] junkID = {9996, 9997, 9998};
+	  int randomJunkModel = junkID[GlobalStatus.random.nextInt(3)];
       var2 = var2 + GlobalStatus.random.nextInt(20000) - 10000;
       var3 = var3 + GlobalStatus.random.nextInt(20000) - 10000;
       var6 = var6 + GlobalStatus.random.nextInt(20000) - 10000;
       AbstractMesh var4;
-      (var4 = AEResourceManager.getGeometryResource(9996)).setRenderLayer(2); // spacejunk
+      (var4 = AEResourceManager.getGeometryResource(randomJunkModel)).setRenderLayer(2); // spacejunk
       Player var5 = null;
       var5 = null;
       var5 = new Player(1000.0F, 1, 0, 0, 0);
@@ -1469,59 +1483,74 @@ public final class Level {
       return var7;
    }
 
-   private KIPlayer createShip(int shipPaint, int var2, int shipID, Waypoint var4) { // что-то про спавн NPC
-      int var5 = var4 != null?var4.x:0;
-      int var6 = var4 != null?var4.y:0;
-      int var12 = var4 != null?var4.z:0;
-      int var7 = GlobalStatus.random.nextInt('\u9c40') - 20000;
-      int var8 = GlobalStatus.random.nextInt('\u9c40') - 20000;
-      int var9 = GlobalStatus.random.nextInt('\u9c40') - 20000;
-      var5 += var7;
-      var6 += var8;
-      var12 += var9;
-      Object var14 = null;
-      Explosion var15 = null;
-      Player var13 = null;
-      var7 = 20 + AEMath.min(Status.getLevel(), 20) * 15 + (Status.getCurrentCampaignMission() << 2);
-      int var10 = 40 + AEMath.min(Status.getLevel(), 20) * 5;
+   private KIPlayer createShip(int shipPaint, int type, int shipID, Waypoint var4) {
+      int spawnX = var4 != null?var4.x:0;
+      int spawnY = var4 != null?var4.y:0;
+      int spawnZ = var4 != null?var4.z:0;
+      spawnX += GlobalStatus.random.nextInt(40000) - 20000;
+      spawnY += GlobalStatus.random.nextInt(40000) - 20000;
+      spawnZ += GlobalStatus.random.nextInt(40000) - 20000;
+      KIPlayer ship = null;
+      Explosion explosion = null;
+      Player player = null;
+	  int hull;
+	  int armor;
+	  int shield;
+	  int emp;
+      
+	  hull = 20 + AEMath.min(Status.getLevel(), 20) * 15 + (Status.getCurrentCampaignMission() << 2);
+	  
+	  armor = 20 + AEMath.min(Status.getLevel(), 20) * 15 + (Status.getCurrentCampaignMission() << 2);
+	  armor = (int)(armor * (0.5 + GlobalStatus.random.nextDouble()));
+	  armor = Math.max(1, armor);
+	  
+	  shield = 20 + AEMath.min(Status.getLevel(), 20) * 15 + (Status.getCurrentCampaignMission() << 2);
+	  shield = (int)(shield * (0.6 + GlobalStatus.random.nextDouble() * 0.8));
+	  shield = Math.max(1, shield);
+      
+	  emp = 40 + AEMath.min(Status.getLevel(), 20) * 5;
+	  
       int var11 = 15000;
-      if(var2 == 1) {
-         var7 <<= 2;
-         var10 *= 3;
+      if(type == 1) {
+         hull <<= 2;
+		 armor *= 2;
+		 shield *= 2;
+         emp *= 3;
          var11 = 15000 * 3;
          if(shipID == 14) {
-            var7 *= 5;
+            hull *= 5;
          }
       }
 
-      (var13 = new Player(2000.0F, var7, 1, 1, 0)).setEmpData(var10, var11);
+      player = new Player(2000.0F, hull, 1, 1, 0);
+	  player.setEmpData(emp, var11);
 	  
-	  // щиты и броня для NPC
+	  // shields and armor for npc test
 	  if(GlobalStatus.shields == 1) {
-		  var13.setMaxArmorHP(var7);
-		  var13.setArmorHP(var7);
-		  var13.setMaxShieldHP(var7);
-		  var13.setShieldHP(var7);
+		  player.setMaxArmorHP(armor);
+		  player.setArmorHP(armor);
+		  player.setMaxShieldHP(shield);
+		  player.setShieldHP(shield);
 	  }
 	  
-      switch(var2) {
-      case 0:
-         var14 = new PlayerFighter(shipID, shipPaint, var13, (AbstractMesh)null, var5, var6, var12);
-         var15 = new Explosion(1);
-         ((KIPlayer)var14).setGroup(Globals.getShipGroup(shipID, shipPaint), shipID);
+      switch(type) {
+      case 0: // small ship
+         ship = new PlayerFighter(shipID, shipPaint, player, (AbstractMesh)null, spawnX, spawnY, spawnZ);
+         explosion = new Explosion(1);
+         ((KIPlayer)ship).setGroup(Globals.getShipGroup(shipID, shipPaint), shipID);
          break;
-      case 1:
-         var14 = new PlayerFixedObject(shipID, shipPaint, var13, (AbstractMesh)null, var5, var6, var12);
+      case 1: // big ship
+         ship = new PlayerFixedObject(shipID, shipPaint, player, (AbstractMesh)null, spawnX, spawnY, spawnZ);
          BoundingVolume[] var16;
-         (var16 = new BoundingVolume[1])[0] = new BoundingAAB(var5, var6, var12, 0, 300, 0, 4000, 4000, 15000);
-         ((PlayerFixedObject)((PlayerFixedObject)var14)).setBounds(var16);
-         (var15 = new Explosion(1)).setBig();
-         ((KIPlayer)var14).setGroup(Globals.getShipGroup(shipID, shipPaint), shipID);
+         (var16 = new BoundingVolume[1])[0] = new BoundingAAB(spawnX, spawnY, spawnZ, 0, 300, 0, 4000, 4000, 15000);
+         ((PlayerFixedObject)((PlayerFixedObject)ship)).setBounds(var16);
+         (explosion = new Explosion(1)).setBig();
+         ((KIPlayer)ship).setGroup(Globals.getShipGroup(shipID, shipPaint), shipID);
       }
 
-      ((KIPlayer)var14).setLevel(this);
-      ((KIPlayer)var14).setExplosion(var15);
-      return (KIPlayer)var14;
+      ((KIPlayer)ship).setLevel(this);
+      ((KIPlayer)ship).setExplosion(explosion);
+      return (KIPlayer)ship;
    }
 
    private static Route createRoute(int var0) {
@@ -1806,7 +1835,7 @@ public final class Level {
          GlobalStatus.graphics.setColor(bgR, bgG, bgB);
       }
 
-      GlobalStatus.graphics.fillRect(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
+    //  GlobalStatus.graphics.fillRect(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
       this.starSystem.render_();
       GlobalStatus.renderer.drawNodeInVF(this.skybox); // рендер скайбокса в космосе
 	  GlobalStatus.renderer.drawNodeInVF(this.spaceLoungeModel_NL);
@@ -1855,7 +1884,7 @@ public final class Level {
 
    public final void render2(long var1) { // рендер пространства при игре от третьего лица
       GlobalStatus.graphics.setColor(bgR, bgG, bgB);
-      GlobalStatus.graphics.fillRect(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
+    //  GlobalStatus.graphics.fillRect(0, 0, GlobalStatus.var_e75, GlobalStatus.var_eb6);
       this.starSystem.render_();
       GlobalStatus.renderer.drawNodeInVF(this.skybox); // рендер от третьего лица
       int var3;

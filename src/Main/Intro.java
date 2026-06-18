@@ -90,7 +90,7 @@ public final class Intro extends IApplicationModule {
 
    public final void renderScene(int var1) {
       Layout.drawBG();
-      if(this.introState == 0) {
+      if(this.introState == 0 && !GlobalStatus.developer_mode) {
          GlobalStatus.graphics.drawImage(LoadingScreen.getGameLogo(), GlobalStatus.var_e75 >> 1, 10, 17);
 		 
 		 AEButton[0].drawStandartButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, GlobalStatus.var_e75 >> 1, GlobalStatus.var_eb6 + 15 >> 1);

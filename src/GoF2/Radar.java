@@ -127,12 +127,14 @@ public final class Radar {
 		}
 		
 		if((var5 = var1.getPlayerGuns_()) != null) {
-			for(int var2 = 0; var2 < var5.length; ++var2) {
-				if(var5[var2] instanceof RocketGun) {
-					((RocketGun)var5[var2]).setRadar(this);
-				}
-			}
-		}
+    for(int var2 = 0; var2 < var5.length; ++var2) {
+        if(var5[var2] instanceof RocketGun) {
+            ((RocketGun)var5[var2]).setRadar(this);
+        } else if(var5[var2] instanceof GuidedGun) {
+            ((GuidedGun)var5[var2]).setRadar(this);
+        }
+    }
+}
 		
 		try {
 			

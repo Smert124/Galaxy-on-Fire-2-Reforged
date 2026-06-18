@@ -250,7 +250,7 @@ public final class PlayerAsteroid extends KIPlayer {
    }
 
    public final boolean outerCollide(int var1, int var2, int var3) {
-      return (float)(var1 - this.posX) < this.player.var_21b && (float)(var1 - this.posX) > -this.player.var_21b && (float)(var2 - this.posY) < this.player.var_21b && (float)(var2 - this.posY) > -this.player.var_21b && (float)(var3 - this.posZ) < this.player.var_21b && (float)(var3 - this.posZ) > -this.player.var_21b;
+      return (float)(var1 - this.posX) < this.player.radius && (float)(var1 - this.posX) > -this.player.radius && (float)(var2 - this.posY) < this.player.radius && (float)(var2 - this.posY) > -this.player.radius && (float)(var3 - this.posZ) < this.player.radius && (float)(var3 - this.posZ) > -this.player.radius;
    }
 
 }

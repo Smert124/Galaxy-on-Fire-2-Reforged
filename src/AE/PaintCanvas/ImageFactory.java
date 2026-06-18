@@ -60,7 +60,7 @@ public final class ImageFactory {
                int var10003 = var3 - 1;
                byte var6 = var0[var3];
                int var5 = var10003;
-               var1[var10001] = AEFile.loadImage("/Resource/interface/faces/" + var2 + "_" + var5 + "_" + var6 + ".png", false);
+               var1[var10001] = AEFile.loadImage("/assets/interface/faces/" + var2 + "_" + var5 + "_" + var6 + ".png", false);
 			   /**
 			   System.out.println("FACE 1 : " + var2); // первое значение лица
 			   System.out.println("FACE 2 : " + var5); // второе значение лица

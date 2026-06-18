@@ -8,34 +8,37 @@ import javax.microedition.media.PlayerListener;
 import javax.microedition.media.control.VolumeControl;
 
 public final class SoundManager implements PlayerListener {
+	
+	private static String SFX_PATH = "/sound/sfx/";
+	private static String MUSIC_PATH = "/sound/music/";
 
     private static final String[] MUSIC_FILES_PATHS = new String[]{
-        "/Resource/sound/music/gof2_theme.mid",
-        "/Resource/sound/music/gof2_hangar.mid",
-        "/Resource/sound/music/gof2_bar.mid",
-        "/Resource/sound/music/gof2_gaction.mid",
-        "/Resource/sound/music/gof2_gneutral.mid"
+        MUSIC_PATH + "gof2_theme.mid",
+        MUSIC_PATH + "gof2_hangar.mid",
+        MUSIC_PATH + "gof2_bar.mid",
+        MUSIC_PATH + "gof2_gaction.mid",
+        MUSIC_PATH + "gof2_gneutral.mid"
     };
 
     private static final String[] SFX_FILES_PATHS = new String[]{
-        "/Resource/sound/effects/booster_linear.wav",
-        "/Resource/sound/effects/fx_explosion_01.wav",
-        "/Resource/sound/effects/fx_message_03.wav",
-        "/Resource/sound/effects/fx_message_02.wav",
-        "/Resource/sound/effects/fx_menu_04.wav",
-        "/Resource/sound/effects/fx_explosion_03.wav",
-        "/Resource/sound/effects/fx_mining_05.wav",
-        "/Resource/sound/effects/fx_boost_02.wav",
-        "/Resource/sound/effects/wpn_rocket_02.wav",
-        "/Resource/sound/effects/wpn_rocket_03.wav",
-        "/Resource/sound/effects/wpn_rocket_04.wav",
-        "/Resource/sound/effects/fx_thunder_01.wav",
-        "/Resource/sound/effects/wpn_nuke_02.wav",
-        "/Resource/sound/effects/fx_message_05.wav",
-        "/Resource/sound/effects/fx_hit_metal_01.wav",
-        "/Resource/sound/effects/booster_cyclotron.wav",
-        "/Resource/sound/effects/booster_synchrotron.wav",
-        "/Resource/sound/effects/booster_meal.wav"
+        SFX_PATH + "booster_linear.wav",
+        SFX_PATH + "fx_explosion_01.wav",
+        SFX_PATH + "fx_message_03.wav",
+        SFX_PATH + "fx_message_02.wav",
+        SFX_PATH + "fx_menu_04.wav",
+        SFX_PATH + "fx_explosion_03.wav",
+        SFX_PATH + "fx_mining_05.wav",
+        SFX_PATH + "fx_boost_02.wav",
+        SFX_PATH + "wpn_rocket_02.wav",
+        SFX_PATH + "wpn_rocket_03.wav",
+        SFX_PATH + "wpn_rocket_04.wav",
+        SFX_PATH + "fx_thunder_01.wav",
+        SFX_PATH + "wpn_nuke_02.wav",
+        SFX_PATH + "fx_message_05.wav",
+        SFX_PATH + "fx_hit_metal_01.wav",
+        SFX_PATH + "booster_cyclotron.wav",
+        SFX_PATH + "booster_synchrotron.wav",
+        SFX_PATH + "booster_meal.wav"
     };
 
     private static int lastSfxIndex;

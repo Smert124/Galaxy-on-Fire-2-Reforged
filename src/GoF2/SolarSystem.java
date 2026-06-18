@@ -1,9 +1,5 @@
 package GoF2;
 
-/**
-class SYSTEM
-**/
-
 public final class SolarSystem {
 
    private String name;

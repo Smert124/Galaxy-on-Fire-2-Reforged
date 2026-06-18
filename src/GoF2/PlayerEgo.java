@@ -259,8 +259,8 @@ public final class PlayerEgo {
       if(!this.boostActive && this.boostingEnabled && this.boostTime >= 0) {
          GlobalStatus.soundManager.playSfx(0);
          this.boostTime = 0;
-         this.speed = boostSpeed; // ���� ����� 0, �� ������� �����������
-         this.boostActive = true; // ���� �������������, ���� �������� ����������
+         this.speed = boostSpeed;
+         this.boostActive = true;
       }
    }
    

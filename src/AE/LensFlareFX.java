@@ -14,14 +14,14 @@ public final class LensFlareFX {
    public LensFlareFX() {
       for(int var1 = 0; var1 < this.flares.length; ++var1) {
 		 if(this.flares[var1] == null) {
-			 this.flares[var1] = AEFile.loadImage("/Resource/interface/lens" + var1 + ".png", false);
+			 this.flares[var1] = AEFile.loadImage("/assets/interface/lens" + var1 + ".png", false);
 		 }
       }
 	  
       int var3 = flares[1].getHeight() / 4;
       int var2 = flares[1].getWidth() / 4;
 	  if(this.mainFlare == null) {
-		  this.mainFlare = AEFile.resizeImage(AEFile.loadImage("/Resource/interface/lens1.png", false), var2, var3);
+		  this.mainFlare = AEFile.resizeImage(AEFile.loadImage("/assets/interface/lens1.png", false), var2, var3);
 	  }
    }
 

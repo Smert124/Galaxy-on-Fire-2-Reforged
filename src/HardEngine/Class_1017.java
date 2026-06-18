@@ -22,7 +22,7 @@ public final class Class_1017 {
             var5 = null;
             break;
          case 1:
-            var5 = this.getClass().getResourceAsStream("/Resource/lang/en/ENInfo.lang");
+            var5 = this.getClass().getResourceAsStream("/lang/en/ENInfo.lang");
             break;
          case 2:
             var5 = null;
@@ -37,7 +37,7 @@ public final class Class_1017 {
             var5 = null;
             break;
          case 6: /** ���������� ����� �� ������� "����������" **/
-            var5 = this.getClass().getResourceAsStream("/Resource/lang/ru/RUInfo.lang");
+            var5 = this.getClass().getResourceAsStream("/lang/ru/RUInfo.lang");
             break;
          case 7:
             var5 = null;

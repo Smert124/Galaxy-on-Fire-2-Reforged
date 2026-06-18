@@ -1362,6 +1362,9 @@ public final class OptionsWindow {
 			  Font.drawString(GlobalStatus.gameText.getText(41) + ": " + Status.getSystem().getName(), 10, 10, 5);
 			  Font.drawString(GlobalStatus.gameText.getText(40) + ": " + Status.getStation().getName(), 10, 25, 5);
 			  Font.drawString(GlobalStatus.gameText.getText(219) + ": " + GlobalStatus.gameText.getText(229 + Status.getSystem().getRace()), 10, 40, 5);
+			  if(GlobalStatus.developer_mode) {
+				  Font.drawString("KEY_CODE: " + GlobalStatus.KEY_CODE, 10, 55, 6);
+			  }
 		  }
          switch(this.subMenu) {
          case 0:

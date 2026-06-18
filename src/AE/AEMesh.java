@@ -93,7 +93,7 @@ public final class AEMesh extends AbstractMesh {
 
    private static void initializeMaterials() {
       if (opaquePmode == null) {
-         (opaquePmode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK);
+         (opaquePmode = new PolygonMode()).setCulling(PolygonMode.CULL_NONE);
          opaquePmode.setShading(PolygonMode.SHADE_SMOOTH);
          opaquePmode.setPerspectiveCorrectionEnable(true);
          opaquePmode.setLocalCameraLightingEnable(true);
@@ -102,7 +102,7 @@ public final class AEMesh extends AbstractMesh {
       }
 
       if (transparentPmode == null) {
-         (transparentPmode = new PolygonMode()).setCulling(PolygonMode.CULL_BACK);
+         (transparentPmode = new PolygonMode()).setCulling(PolygonMode.CULL_NONE);
          transparentPmode.setShading(PolygonMode.SHADE_FLAT);
          transparentPmode.setPerspectiveCorrectionEnable(true);
       }

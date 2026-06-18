@@ -37,29 +37,29 @@ public final class Gun {
    private int spread;
 
 
-   public Gun(int var1, int var2, int var3, int var4, int var5, int var6, float var7, AEVector3D var8, AEVector3D var9) {
-      this.damage = var2;
-      this.projectileSpeed = var7;
-      this.equipmentId = var1;
-      this.muzzleOffset = var8;
-      this.range = var5;
-      this.reloadTimeMilis = var6;
+   public Gun(int id, int damage, int var3, int ammo, int range, int reload, float speed, AEVector3D muzzle, AEVector3D var9) {
+      this.damage = damage;
+      this.projectileSpeed = speed;
+      this.equipmentId = id;
+      this.muzzleOffset = muzzle;
+      this.range = range;
+      this.reloadTimeMilis = reload;
       this.timeSinceLastShot = 0;
-      if(var4 < 0) {
-         var4 = Integer.MAX_VALUE;
+      if(ammo < 0) {
+         ammo = Integer.MAX_VALUE;
       }
 
-      this.ammo = var4;
+      this.ammo = ammo;
       this.projectilesTimeLeft = new int[var3];
       this.projectilesPos = new AEVector3D[var3];
       this.projectilesDir = new AEVector3D[var3];
       this.tempPos = new AEVector3D();
       this.tempDir = new AEVector3D();
 
-      for(var1 = 0; var1 < var3; ++var1) {
-         this.projectilesPos[var1] = new AEVector3D('\uc350', 0, 0);
-         this.projectilesDir[var1] = new AEVector3D();
-         this.projectilesTimeLeft[var1] = -1;
+      for(id = 0; id < var3; ++id) {
+         this.projectilesPos[id] = new AEVector3D('\uc350', 0, 0);
+         this.projectilesDir[id] = new AEVector3D();
+         this.projectilesTimeLeft[id] = -1;
       }
 
       this.unused547_ = true;
@@ -264,7 +264,7 @@ public final class Gun {
                         var13 = var3.tempTarget.transform.getPositionZ() - var3.tempPos.z + var3.tempDir.z;
                      }
 
-                     int var11 = (int)var3.tempTarget.var_21b;
+                     int var11 = (int)var3.tempTarget.radius;
                      if(var4 < var11 && var4 > -var11 && var5 < var11 && var5 > -var11 && var13 < var11 && var13 > -var11) {
                         if(var8 && var3.tempTarget.isAsteroid()) {
                            var3.tempTarget.damageHP(9999, false);

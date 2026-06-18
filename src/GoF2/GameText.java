@@ -1,8 +1,3 @@
-/**
-**		@class language
-**		
-**/
-
 package GoF2;
 
 import java.io.DataInputStream;
@@ -36,7 +31,7 @@ public final class GameText {
 	
 	public final void setLanguage(int var1) {
 		
-		langPath = "/Resource/lang/";
+		langPath = "/lang/";
 		language = var1;
 		switch(var1) {
 			case 0: langPath = langPath + "de/"; break;

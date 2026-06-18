@@ -19,7 +19,7 @@ public class PlayerStaticFar extends PlayerStatic {
       if(var2 != null) {
          short var7 = 7500;
          Player var6 = this.player;
-         this.player.var_21b = (float)var7;
+         this.player.radius = (float)var7;
          this.mainMesh_.setRenderLayer(2);
       }
    }
@@ -49,7 +49,7 @@ public class PlayerStaticFar extends PlayerStatic {
    }
 
    public boolean outerCollide(int var1, int var2, int var3) {
-      return (float)(var1 - this.var_249) < this.player.var_21b && (float)(var1 - this.var_249) > -this.player.var_21b && (float)(var2 - this.var_352) < this.player.var_21b && (float)(var2 - this.var_352) > -this.player.var_21b && (float)(var3 - this.var_3c2) < this.player.var_21b && (float)(var3 - this.var_3c2) > -this.player.var_21b;
+      return (float)(var1 - this.var_249) < this.player.radius && (float)(var1 - this.var_249) > -this.player.radius && (float)(var2 - this.var_352) < this.player.radius && (float)(var2 - this.var_352) > -this.player.radius && (float)(var3 - this.var_3c2) < this.player.radius && (float)(var3 - this.var_3c2) > -this.player.radius;
    }
 
    public final AEVector3D getTargetPos_(AEVector3D var1) {

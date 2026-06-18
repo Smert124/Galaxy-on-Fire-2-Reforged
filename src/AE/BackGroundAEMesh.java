@@ -32,7 +32,7 @@ public final class BackGroundAEMesh extends AbstractMesh {
 
       this.radius = 0;
       if(compositing == null) {
-         (compositing = new CompositingMode()).setBlending(CompositingMode.ALPHA_ADD);
+         (compositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
          compositing.setDepthTestEnable(true);
          compositing.setDepthWriteEnable(false);
       }
@@ -50,11 +50,7 @@ public final class BackGroundAEMesh extends AbstractMesh {
       tranformFloatArr[3] = tranformFloatArr[7] = tranformFloatArr[11] = 0.0F;
       tranformFloatArr[7] = 0.0F;
       transform.set(tranformFloatArr);
-      if (this.mesh != null && AEGraphics3D.graphics3D != null) {
-         AEGraphics3D.graphics3D.render(this.mesh, transform);
-      } else {
-         //System.out.println("Node or Graphics3D is null");
-      }
+	  AEGraphics3D.graphics3D.render(this.mesh, transform);
    }
 
    public final void appendToRender(AECamera var1, Renderer var2) {
@@ -69,11 +65,7 @@ public final class BackGroundAEMesh extends AbstractMesh {
    }
 
    public final void setTexture(ITexture var1) {
-      if (this.mesh instanceof Mesh) {
-         this.setTexture((Mesh)this.mesh, ((JSRTexture)var1).getTexturesArray());
-      } else {
-         //System.out.println("Node is not a Mesh");
-      }
+	   this.setTexture((Mesh)this.mesh, ((JSRTexture)var1).getTexturesArray());
    }
 
    private void setTexture(Mesh var1, Texture2D[] var2) {
@@ -109,6 +101,5 @@ public final class BackGroundAEMesh extends AbstractMesh {
    }
 
    public final void OnRelease() {
-      this.mesh = null;
    }
 }

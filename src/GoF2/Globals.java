@@ -11,14 +11,12 @@ import AE.Group;
 
 public final class Globals {
 
-   private static String PATH_MESHES = "/Resource/Mesh/";
-   private static String PATH_TEXTURES = "/Resource/textures/";
-   private static String PATH_INTERFACE = "/Resource/interface/";
-   private static String PATH_CONFIG = "/Configs/";
-   private static String dlc_valkyrie = "/Resource/Mesh/Valkyrie/";
-   private static String dlc_supernova = "/Resource/Mesh/Supernova/";
+   private static String PATH_TEXTURES = "/assets/textures/";
+   private static String PATH_INTERFACE = "/assets/interface/";
+   private static String PATH_CONFIG = "/configs/";
    
-   private static String PATH_MESHES_SET;
+   private static String MESHES_QUALITY;
+   private static String PATH_MESHES = "/assets/meshes/";
    
    public static final short[] BAR_MESHES = new short[]{14025, 14029, 14027, 14329}; // bar
    public static final short[] space_lounge_model_alpha = new short[]{15025, 15029, 15027, 14429}; // bar ALPHA
@@ -205,6 +203,7 @@ public final class Globals {
    private static int tex_beams = 1095;
    private static int tex_station_terran = 1096;
    private static int tex_col_test = 1097;
+   private static int tex_spacejunk = 1098;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -698,42 +697,43 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_sn_galaxymap_planets, PATH_TEXTURES + "sn_galaxymap_planets");
 	   AEResourceManager.addTextureResource(tex_sn_sun_011, PATH_TEXTURES + "sn_sun_011");
 	   AEResourceManager.addTextureResource(tex_gof1, PATH_TEXTURES + "tex_gof1");
-	   AEResourceManager.addTextureResource(tex_col_test, "/Resource/col_test");
+	   AEResourceManager.addTextureResource(tex_col_test, PATH_TEXTURES + "col_test");
 	   
-	   AEResourceManager.addTextureResource(tex_planet_0, "/Resource/textures/planets/planet_0");
-	   AEResourceManager.addTextureResource(tex_planet_1, "/Resource/textures/planets/planet_1");
-	   AEResourceManager.addTextureResource(tex_planet_2, "/Resource/textures/planets/planet_2");
-	   AEResourceManager.addTextureResource(tex_planet_3, "/Resource/textures/planets/planet_3");
-	   AEResourceManager.addTextureResource(tex_planet_4, "/Resource/textures/planets/planet_4");
-	   AEResourceManager.addTextureResource(tex_planet_5, "/Resource/textures/planets/planet_5");
-	   AEResourceManager.addTextureResource(tex_planet_6, "/Resource/textures/planets/planet_6");
-	   AEResourceManager.addTextureResource(tex_planet_7, "/Resource/textures/planets/planet_7");
-	   AEResourceManager.addTextureResource(tex_planet_8, "/Resource/textures/planets/planet_8");
-	   AEResourceManager.addTextureResource(tex_planet_9, "/Resource/textures/planets/planet_9");
-	   AEResourceManager.addTextureResource(tex_planet_10, "/Resource/textures/planets/planet_10");
-	   AEResourceManager.addTextureResource(tex_planet_11, "/Resource/textures/planets/planet_11");
-	   AEResourceManager.addTextureResource(tex_planet_12, "/Resource/textures/planets/planet_12");
-	   AEResourceManager.addTextureResource(tex_planet_13, "/Resource/textures/planets/planet_13");
-	   AEResourceManager.addTextureResource(tex_planet_14, "/Resource/textures/planets/planet_14");
-	   AEResourceManager.addTextureResource(tex_planet_15, "/Resource/textures/planets/planet_15");
-	   AEResourceManager.addTextureResource(tex_planet_16, "/Resource/textures/planets/planet_16");
-	   AEResourceManager.addTextureResource(tex_planet_17, "/Resource/textures/planets/planet_17");
-	   AEResourceManager.addTextureResource(tex_planet_18, "/Resource/textures/planets/planet_18");
-	   AEResourceManager.addTextureResource(tex_planet_19, "/Resource/textures/planets/planet_19");
-	   AEResourceManager.addTextureResource(tex_planet_20, "/Resource/textures/planets/planet_20");
-	   AEResourceManager.addTextureResource(tex_planet_21, "/Resource/textures/planets/planet_21");
-	   AEResourceManager.addTextureResource(tex_planet_22, "/Resource/textures/planets/planet_22");
-	   AEResourceManager.addTextureResource(tex_planet_23, "/Resource/textures/planets/planet_void");
-	   AEResourceManager.addTextureResource(tex_planet_24, "/Resource/textures/planets/planet_24");
-	   AEResourceManager.addTextureResource(tex_planet_25, "/Resource/textures/planets/planet_25");
-	   AEResourceManager.addTextureResource(tex_planet_26, "/Resource/textures/planets/planet_26");
-	   AEResourceManager.addTextureResource(tex_beams, "/Resource/textures/beams");
-	   AEResourceManager.addTextureResource(tex_station_terran, "/Resource/textures/tex_station_terran");
+	   AEResourceManager.addTextureResource(tex_planet_0, PATH_TEXTURES + "planets/planet_0");
+	   AEResourceManager.addTextureResource(tex_planet_1, PATH_TEXTURES + "planets/planet_1");
+	   AEResourceManager.addTextureResource(tex_planet_2, PATH_TEXTURES + "planets/planet_2");
+	   AEResourceManager.addTextureResource(tex_planet_3, PATH_TEXTURES + "planets/planet_3");
+	   AEResourceManager.addTextureResource(tex_planet_4, PATH_TEXTURES + "planets/planet_4");
+	   AEResourceManager.addTextureResource(tex_planet_5, PATH_TEXTURES + "planets/planet_5");
+	   AEResourceManager.addTextureResource(tex_planet_6, PATH_TEXTURES + "planets/planet_6");
+	   AEResourceManager.addTextureResource(tex_planet_7, PATH_TEXTURES + "planets/planet_7");
+	   AEResourceManager.addTextureResource(tex_planet_8, PATH_TEXTURES + "planets/planet_8");
+	   AEResourceManager.addTextureResource(tex_planet_9, PATH_TEXTURES + "planets/planet_9");
+	   AEResourceManager.addTextureResource(tex_planet_10, PATH_TEXTURES + "planets/planet_10");
+	   AEResourceManager.addTextureResource(tex_planet_11, PATH_TEXTURES + "planets/planet_11");
+	   AEResourceManager.addTextureResource(tex_planet_12, PATH_TEXTURES + "planets/planet_12");
+	   AEResourceManager.addTextureResource(tex_planet_13, PATH_TEXTURES + "planets/planet_13");
+	   AEResourceManager.addTextureResource(tex_planet_14, PATH_TEXTURES + "planets/planet_14");
+	   AEResourceManager.addTextureResource(tex_planet_15, PATH_TEXTURES + "planets/planet_15");
+	   AEResourceManager.addTextureResource(tex_planet_16, PATH_TEXTURES + "planets/planet_16");
+	   AEResourceManager.addTextureResource(tex_planet_17, PATH_TEXTURES + "planets/planet_17");
+	   AEResourceManager.addTextureResource(tex_planet_18, PATH_TEXTURES + "planets/planet_18");
+	   AEResourceManager.addTextureResource(tex_planet_19, PATH_TEXTURES + "planets/planet_19");
+	   AEResourceManager.addTextureResource(tex_planet_20, PATH_TEXTURES + "planets/planet_20");
+	   AEResourceManager.addTextureResource(tex_planet_21, PATH_TEXTURES + "planets/planet_21");
+	   AEResourceManager.addTextureResource(tex_planet_22, PATH_TEXTURES + "planets/planet_22");
+	   AEResourceManager.addTextureResource(tex_planet_23, PATH_TEXTURES + "planets/planet_void");
+	   AEResourceManager.addTextureResource(tex_planet_24, PATH_TEXTURES + "planets/planet_24");
+	   AEResourceManager.addTextureResource(tex_planet_25, PATH_TEXTURES + "planets/planet_25");
+	   AEResourceManager.addTextureResource(tex_planet_26, PATH_TEXTURES + "planets/planet_26");
+	   AEResourceManager.addTextureResource(tex_beams, PATH_TEXTURES + "beams");
+	   AEResourceManager.addTextureResource(tex_spacejunk, PATH_TEXTURES + "junk");
+	   AEResourceManager.addTextureResource(tex_station_terran, PATH_TEXTURES + "tex_station_terran");
 	   
 	   if(!GlobalStatus.MODELS_QUALITY) {
-		   PATH_MESHES_SET = "/assets/meshes/low/";
+		   MESHES_QUALITY = "/low/";
 	   } else {
-		   PATH_MESHES_SET = "/assets/meshes/high/";
+		   MESHES_QUALITY = "/high/";
 	   }
 	   
 	   if(GlobalStatus.texture_type[GlobalStatus.textures] == 256) {
@@ -810,410 +810,408 @@ public final class Globals {
 			AEResourceManager.addTextureResource(tex_ntirrk, PATH_TEXTURES + "high/tex_ntirrk_high");
 		}
 		
-		AEResourceManager.addGeometryResource(0, PATH_MESHES + "error.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(2509, PATH_MESHES + "cross_xyz.m3g", 15000, 0);
-		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "col_box_add.aem", 500000, tex_col_test);
-		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "col_sphere_add.aem", 15000, tex_col_test);
+		AEResourceManager.addGeometryResource(0, PATH_MESHES + "debug/error.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(2509, PATH_MESHES + "debug/cross_xyz.m3g", 15000, 0);
+		AEResourceManager.addGeometryResource(2510, PATH_MESHES + "debug/col_box_add.aem", 500000, tex_col_test);
+		AEResourceManager.addGeometryResource(2511, PATH_MESHES + "debug/col_sphere_add.aem", 15000, tex_col_test);
 		
-		AEResourceManager.addSkyboxResource(9991, PATH_MESHES + "skybox.m3g", 1);
-		AEResourceManager.addSkyboxResource(10000, PATH_MESHES + "skybox_add.aem", skybox00);
-		AEResourceManager.addSkyboxResource(10001, PATH_MESHES + "skybox_add.aem", skybox01);
-		AEResourceManager.addSkyboxResource(10002, PATH_MESHES + "skybox_add.aem", skybox02);
-		AEResourceManager.addSkyboxResource(10003, PATH_MESHES + "skybox_add.aem", skybox03);
-		AEResourceManager.addSkyboxResource(10004, PATH_MESHES + "skybox_add.aem", skybox04);
-		AEResourceManager.addSkyboxResource(10005, PATH_MESHES + "skybox_add.aem", skybox05);
-		AEResourceManager.addSkyboxResource(10006, PATH_MESHES + "skybox_add.aem", skybox06);
-		AEResourceManager.addSkyboxResource(10007, PATH_MESHES + "skybox_add.aem", skybox07);
-		AEResourceManager.addSkyboxResource(10008, PATH_MESHES + "skybox_add.aem", skybox08);
-		AEResourceManager.addSkyboxResource(10009, PATH_MESHES + "skybox_add.aem", skybox09);
-		AEResourceManager.addSkyboxResource(10010, PATH_MESHES + "skybox_add.aem", skybox10);
+		AEResourceManager.addSkyboxResource(9991, PATH_MESHES + "skyboxes/skybox.m3g", 1);
+		AEResourceManager.addSkyboxResource(10000, PATH_MESHES + "skyboxes/skybox.aem", skybox00);
+		AEResourceManager.addSkyboxResource(10001, PATH_MESHES + "skyboxes/skybox.aem", skybox01);
+		AEResourceManager.addSkyboxResource(10002, PATH_MESHES + "skyboxes/skybox.aem", skybox02);
+		AEResourceManager.addSkyboxResource(10003, PATH_MESHES + "skyboxes/skybox.aem", skybox03);
+		AEResourceManager.addSkyboxResource(10004, PATH_MESHES + "skyboxes/skybox.aem", skybox04);
+		AEResourceManager.addSkyboxResource(10005, PATH_MESHES + "skyboxes/skybox.aem", skybox05);
+		AEResourceManager.addSkyboxResource(10006, PATH_MESHES + "skyboxes/skybox.aem", skybox06);
+		AEResourceManager.addSkyboxResource(10007, PATH_MESHES + "skyboxes/skybox.aem", skybox07);
+		AEResourceManager.addSkyboxResource(10008, PATH_MESHES + "skyboxes/skybox.aem", skybox08);
+		AEResourceManager.addSkyboxResource(10009, PATH_MESHES + "skyboxes/skybox.aem", skybox09);
+		AEResourceManager.addSkyboxResource(10010, PATH_MESHES + "skyboxes/skybox.aem", skybox10);
 		
-		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgate_terran.m3g", 5000, 0);
-		AEResourceManager.addGeometryResource(16, PATH_MESHES + "emp.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(17, PATH_MESHES + "box.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(18, PATH_MESHES + "nuke.m3g", 2000, 0);
-		
-		
-		
-		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "station/midorian/stat_arm0.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "station/midorian/stat_arm0_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "station/midorian/stat_arm0_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "station/midorian/stat_hangar2.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "station/midorian/stat_hangar2_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "station/midorian/stat_hangar2_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "station/midorian/stat_bottom0.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "station/midorian/stat_bottom0_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "station/midorian/stat_bottom0_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "station/midorian/stat_top10.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "station/midorian/stat_top10_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "station/midorian/stat_top10_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "station/midorian/stat_hangar4.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "station/midorian/stat_top7.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "station/midorian/stat_top7_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "station/midorian/stat_top7_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "station/midorian/stat_bottom7.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "station/midorian/stat_bottom7_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "station/midorian/stat_bottom7_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "station/midorian/stat_hangar0.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "station/midorian/stat_hangar0_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "station/midorian/stat_hangar0_nl_add.aem", 10000, tex_station_midorian);
-		
-		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "station/midorian/stat_bottom2.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "station/midorian/stat_bottom2_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "station/midorian/stat_bottom2_nl_add.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran.m3g", 5000, 0);
+		AEResourceManager.addGeometryResource(16, PATH_MESHES + "projectiles/emp.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(17, PATH_MESHES + "misc/box.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(18, PATH_MESHES + "projectiles/nuke.m3g", 2000, 0);
 		
 		
 		
+		AEResourceManager.addGeometryResource(3500, PATH_MESHES + "stations/midorian/stat_arm0.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3510, PATH_MESHES + "stations/midorian/stat_arm0_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3520, PATH_MESHES + "stations/midorian/stat_arm0_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stat_arm0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stat_arm1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stat_bottom0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stat_bottom1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stat_bottom2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stat_bottom3.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stat_bottom4.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stat_bottom5.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stat_bridge0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stat_bridge1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stat_bridge2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stat_connector0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stat_hangar0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stat_hangar1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stat_hangar2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stat_hangar3.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stat_hangar4.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stat_middle0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stat_middle1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stat_middle2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stat_middle3.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stat_top0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stat_top1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stat_top10.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stat_top2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stat_top3.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stat_top4.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stat_top5.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stat_top6.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stat_top7.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stat_top8.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stat_top9.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stat_bridge3.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stat_light0.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stat_light1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "null.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "void_station.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stat_vossk_arm1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stat_vossk_bottom2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stat_vossk_bottom1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stat_vossk_middle1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stat_vossk_middle2.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stat_vossk_top1.m3g", 10000, 0);
-		AEResourceManager.addGeometryResource(3344, dlc_valkyrie + "battlestation.aem", 10000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3345, dlc_valkyrie + "battlestation_add.aem", 10000, tex_fx);
-		AEResourceManager.addGeometryResource(3346, dlc_valkyrie + "battlestation_nl.aem", 10000, tex_valkyrie_station);
-		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stat_player.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stat_player_nl.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stat_player_nl_add.aem", 10000, tex_station_midorian);
-		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stat_player_add.aem", 10000, tex_station_player_add);
+		AEResourceManager.addGeometryResource(3501, PATH_MESHES + "stations/midorian/stat_hangar2.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3511, PATH_MESHES + "stations/midorian/stat_hangar2_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3521, PATH_MESHES + "stations/midorian/stat_hangar2_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(4544, dlc_valkyrie + "station_deep_science.aem", 10000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4545, dlc_valkyrie + "station_deep_science_add.aem", 10000, tex_station_deescience_add);
-		AEResourceManager.addGeometryResource(4546, dlc_valkyrie + "station_deep_science_nl.aem", 10000, tex_station_deescience);
-		AEResourceManager.addGeometryResource(4547, dlc_valkyrie + "station_deep_science_nl_add.aem", 10000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(3502, PATH_MESHES + "stations/midorian/stat_bottom0.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3512, PATH_MESHES + "stations/midorian/stat_bottom0_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3522, PATH_MESHES + "stations/midorian/stat_bottom0_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(13001, PATH_MESHES_SET + "ships/ship_betty_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13101, PATH_MESHES + "ship_betty_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(3503, PATH_MESHES + "stations/midorian/stat_top10.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3513, PATH_MESHES + "stations/midorian/stat_top10_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3523, PATH_MESHES + "stations/midorian/stat_top10_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(13002, PATH_MESHES_SET + "ships/ship_teneta_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13102, PATH_MESHES + "ship_teneta_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(3504, PATH_MESHES + "stations/midorian/stat_hangar4.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(13003, PATH_MESHES + "ship_hiro_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13103, PATH_MESHES + "ship_hiro_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13004, PATH_MESHES + "ship_badger_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13104, PATH_MESHES + "ship_badger_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13005, PATH_MESHES + "ship_dace_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13105, PATH_MESHES + "ship_dace_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13006, PATH_MESHES + "ship_inflict_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13106, PATH_MESHES + "ship_inflict_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13007, PATH_MESHES + "ship_hector_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13107, PATH_MESHES + "ship_hector_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13008, PATH_MESHES + "ship_anaan_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13108, PATH_MESHES + "ship_anaan_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13061, PATH_MESHES + "void_fighter.aem", 2000, tex_void);
-		AEResourceManager.addGeometryResource(13161, PATH_MESHES + "void_fighter_nl.aem", 2000, tex_void);
-		AEResourceManager.addGeometryResource(13261, PATH_MESHES + "void_fighter_nl_add.aem", 2000, tex_void);
-		AEResourceManager.addGeometryResource(13162, PATH_MESHES + "ship_hsoc_body.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13262, PATH_MESHES + "ship_hsoc_nl_add.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13063, PATH_MESHES + "ship_phantom_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13163, PATH_MESHES + "ship_phantom_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13009, PATH_MESHES + "ship_hernstein_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13109, PATH_MESHES + "ship_hernstein_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13010, PATH_MESHES + "ship_type43_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13110, PATH_MESHES + "ship_type43_nl.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13210, PATH_MESHES + "ship_type43_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13011, PATH_MESHES + "ship_kinzer_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13111, PATH_MESHES + "ship_kinzer_nl.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13211, PATH_MESHES + "ship_kinzer_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13012, PATH_MESHES + "ship_ward_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13112, PATH_MESHES + "ship_ward_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13013, PATH_MESHES + "ship_hatsuyuki_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13113, PATH_MESHES + "ship_hatsuyuki_nl.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13213, PATH_MESHES + "ship_hatsuyuki_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13014, PATH_MESHES + "ship_nuyangII_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13114, PATH_MESHES + "ship_nuyangII_body.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13015, PATH_MESHES + "ship_cicero_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13115, PATH_MESHES + "ship_cicero_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13016, PATH_MESHES + "ship_aegir_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13116, PATH_MESHES + "ship_aegir_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13017, PATH_MESHES + "ship_groza_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13117, PATH_MESHES + "ship_groza_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13018, PATH_MESHES + "ship_azov_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13118, PATH_MESHES + "ship_azov_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13019, PATH_MESHES + "ship_velasco_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13119, PATH_MESHES + "ship_velasco_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13020, PATH_MESHES + "ship_tyrion_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13120, PATH_MESHES + "ship_tyrion_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13021, PATH_MESHES + "ship_hera_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13121, PATH_MESHES + "ship_hera_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13022, PATH_MESHES + "ship_taipan_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13122, PATH_MESHES + "ship_taipan_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13023, PATH_MESHES + "ship_veteran_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13123, PATH_MESHES + "ship_veteran_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13024, PATH_MESHES + "ship_mantis_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13124, PATH_MESHES + "ship_mantis_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13025, PATH_MESHES + "ship_bergrercrossxt_body.aem", 2000, tex_midorian);
-		AEResourceManager.addGeometryResource(13125, PATH_MESHES + "ship_bergrercrossxt_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13026, PATH_MESHES + "ship_salvehn_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13126, PATH_MESHES + "ship_salvehn_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13027, PATH_MESHES + "ship_wasp_body.aem", 2000, tex_pirates);
-		AEResourceManager.addGeometryResource(13127, PATH_MESHES + "ship_wasp_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13028, PATH_MESHES + "ship_furious_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13128, PATH_MESHES + "ship_furious_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13029, PATH_MESHES + "ship_razor6_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13129, PATH_MESHES + "ship_razor6_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13030, PATH_MESHES + "ship_nightowl_body.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13130, PATH_MESHES + "ship_nightowl_nl_add.aem", 2000, tex_nivelian);
-		AEResourceManager.addGeometryResource(13031, PATH_MESHES + "ship_cormorant_body.aem", 2000, tex_terran);
-		AEResourceManager.addGeometryResource(13131, PATH_MESHES + "ship_cormorant_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13037, dlc_valkyrie + "ship_cronus_body.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13137, dlc_valkyrie + "ship_cronus_add.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13038, dlc_valkyrie + "ship_typhon_body.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13138, dlc_valkyrie + "ship_typhon_light_add.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13039, dlc_valkyrie + "ship_skanarr_body.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13139, dlc_valkyrie + "ship_skanarr_nl.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13239, dlc_valkyrie + "ship_skanarr_nl_add.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13040, dlc_valkyrie + "ship_nemesis_body.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13140, dlc_valkyrie + "ship_nemesis_add.aem", 2000, tex_deepscience);
-		AEResourceManager.addGeometryResource(13041, dlc_valkyrie + "ship_ksuukk_body.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13141, dlc_valkyrie + "ship_ksuukk_nl_add.aem", 2000, tex_vossk);
-		AEResourceManager.addGeometryResource(13042, PATH_MESHES + "ship_volnoor_body.aem", 2000, tex_grey);
-		AEResourceManager.addGeometryResource(13142, PATH_MESHES + "ship_volnoor_nl_add.aem", 2000, tex_grey);
-		AEResourceManager.addGeometryResource(13242, PATH_MESHES + "ship_volnoor_light_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(13043, PATH_MESHES + "ship_wraith_body.aem", 2000, tex_wraith);
-		AEResourceManager.addGeometryResource(13143, PATH_MESHES + "ship_wraith_nl_add.aem", 2000, tex_wraith);
-		AEResourceManager.addGeometryResource(13044, dlc_supernova + "ship_specter_body.aem", 2000, tex_elite);
-		AEResourceManager.addGeometryResource(13144, dlc_supernova + "ship_specter_light_add.aem", 2000, tex_elite);
-		AEResourceManager.addGeometryResource(13045, dlc_supernova + "ship_bloodstar_body.aem", 2000, tex_bloodstar);
-		AEResourceManager.addGeometryResource(13145, dlc_supernova + "ship_bloodstar_light_add.aem", 2000, tex_bloodstar);
-		AEResourceManager.addGeometryResource(13245, dlc_supernova + "ship_bloodstar_engine_glow_add.aem", 2000, tex_bloodstar);
-		AEResourceManager.addGeometryResource(13046, dlc_supernova + "ship_bluefyre_body.aem", 2000, tex_bluefyre);
-		AEResourceManager.addGeometryResource(13146, dlc_supernova + "ship_bluefyre_light_add.aem", 2000, tex_bluefyre);
-		AEResourceManager.addGeometryResource(13047, dlc_supernova + "ship_gatorcustom_body.aem", 2000, tex_gatorcustom);
-		AEResourceManager.addGeometryResource(13147, dlc_supernova + "ship_gatorcustom_light_add.aem", 2000, tex_gatorcustom);
-		AEResourceManager.addGeometryResource(13048, dlc_supernova + "ship_amboss_body.aem", 2000, tex_amboss);
-		AEResourceManager.addGeometryResource(13148, dlc_supernova + "ship_amboss_light_add.aem", 2000, tex_amboss);
-		AEResourceManager.addGeometryResource(13049, dlc_supernova + "ship_scimitar_body.aem", 2000, tex_scimitar);
-		AEResourceManager.addGeometryResource(13149, dlc_supernova + "ship_scimitar_light_add.aem", 2000, tex_scimitar);
-		AEResourceManager.addGeometryResource(13249, dlc_supernova + "ship_scimitar_emissive.aem", 2000, tex_scimitar);
-		AEResourceManager.addGeometryResource(13349, dlc_supernova + "ship_scimitar_emissive_add.aem", 2000, tex_scimitar);
-		AEResourceManager.addGeometryResource(13050, dlc_supernova + "ship_rhino_body.aem", 2000, tex_rhino);
-		AEResourceManager.addGeometryResource(13150, dlc_supernova + "ship_rhino_light_add.aem", 2000, tex_rhino);
-		AEResourceManager.addGeometryResource(13051, dlc_supernova + "ship_gryphon_body.aem", 2000, tex_gryphon);
-		AEResourceManager.addGeometryResource(13151, dlc_supernova + "ship_gryphon_light_add.aem", 2000, tex_gryphon);
-		AEResourceManager.addGeometryResource(13052, dlc_supernova + "ship_nasrrk_body.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(13152, dlc_supernova + "ship_nasrrk_emissive.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(13252, dlc_supernova + "ship_nasrrk_emissive_add.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(13352, dlc_supernova + "ship_nasrrk_light_add.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(13053, dlc_supernova + "ship_grozamkii_body.aem", 2000, tex_grozamkii);
-		AEResourceManager.addGeometryResource(13153, dlc_supernova + "ship_grozamkii_light_add.aem", 2000, tex_grozamkii);
-		AEResourceManager.addGeometryResource(13054, dlc_supernova + "ship_berger_special_body.aem", 2000, tex_berger_special);
-		AEResourceManager.addGeometryResource(13154, dlc_supernova + "ship_berger_special_light_add.aem", 2000, tex_berger_special);
-		AEResourceManager.addGeometryResource(13055, dlc_supernova + "ship_kinzer_rs_body.aem", 2000, tex_kinzer_rs);
-		AEResourceManager.addGeometryResource(13155, dlc_supernova + "ship_kinzer_rs_light_add.aem", 2000, tex_kinzer_rs);
-		AEResourceManager.addGeometryResource(13056, dlc_supernova + "ship_phantomxt_body.aem", 2000, tex_phantom_xt);
-		AEResourceManager.addGeometryResource(13156, dlc_supernova + "ship_phantomxt_light_add.aem", 2000, tex_phantom_xt);
-		AEResourceManager.addGeometryResource(13057, dlc_supernova + "ship_tenetared_body.aem", 2000, tex_tenetared);
-		AEResourceManager.addGeometryResource(13157, dlc_supernova + "ship_tenetared_light_add.aem", 2000, tex_tenetared);
-		AEResourceManager.addGeometryResource(13058, dlc_supernova + "ship_darkzov_body.aem", 2000, tex_darkzov);
-		AEResourceManager.addGeometryResource(13158, dlc_supernova + "ship_darkzov_light_add.aem", 2000, tex_darkzov);
-		AEResourceManager.addGeometryResource(13059, dlc_supernova + "ship_ghost_body.aem", 2000, tex_ghost);
-		AEResourceManager.addGeometryResource(13159, dlc_supernova + "ship_ghost_light_add.aem", 2000, tex_ghost);
-		AEResourceManager.addGeometryResource(13060, dlc_supernova + "ship_darkangel_body.aem", 2000, tex_darkangel);
-		AEResourceManager.addGeometryResource(13160, dlc_supernova + "ship_darkangel_light_add.aem", 2000, tex_darkangel);
-		AEResourceManager.addGeometryResource(19061, dlc_supernova + "ship_ntirrk_body.aem", 2000, tex_ntirrk);
-		AEResourceManager.addGeometryResource(19161, dlc_supernova + "ship_ntirrk_light_add.aem", 2000, tex_ntirrk);
-		AEResourceManager.addGeometryResource(19261, dlc_supernova + "ship_ntirrk_nl.aem", 2000, tex_ntirrk);
-		AEResourceManager.addGeometryResource(19361, dlc_supernova + "ship_ntirrk_nl_add.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(3505, PATH_MESHES + "stations/midorian/stat_top7.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3515, PATH_MESHES + "stations/midorian/stat_top7_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3525, PATH_MESHES + "stations/midorian/stat_top7_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(19062, PATH_MESHES + "ship_hawk_body.aem", 2000, tex_gof1);
-		AEResourceManager.addGeometryResource(19063, PATH_MESHES + "ship_icarus_body.aem", 2000, tex_gof1);
-		AEResourceManager.addGeometryResource(19064, PATH_MESHES + "ship_draaken_body.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(3506, PATH_MESHES + "stations/midorian/stat_bottom7.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3516, PATH_MESHES + "stations/midorian/stat_bottom7_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3526, PATH_MESHES + "stations/midorian/stat_bottom7_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(20000, PATH_MESHES + "ship_betty_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20001, PATH_MESHES + "ship_teneta_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20002, PATH_MESHES + "ship_hiro_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20003, PATH_MESHES + "ship_badger_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20004, PATH_MESHES + "ship_dace_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20005, PATH_MESHES + "ship_inflict_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20006, PATH_MESHES + "ship_hector_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20007, PATH_MESHES + "ship_anaan_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20008, PATH_MESHES + "void_fighter_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20009, PATH_MESHES + "ship_hsoc_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20010, PATH_MESHES + "ship_phantom_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20011, PATH_MESHES + "ship_hernstein_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20012, PATH_MESHES + "ship_type43_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20013, PATH_MESHES + "ship_ksarr_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20014, PATH_MESHES + "ship_tcruiser_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20015, PATH_MESHES + "ship_ttanker_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20016, PATH_MESHES + "ship_kinzer_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20017, PATH_MESHES + "ship_ward_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20018, PATH_MESHES + "ship_hatsuyuki_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20019, PATH_MESHES + "ship_nuyangII_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20020, PATH_MESHES + "ship_cicero_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20021, PATH_MESHES + "ship_aegir_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20022, PATH_MESHES + "ship_groza_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20023, PATH_MESHES + "ship_azov_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20024, PATH_MESHES + "ship_velasco_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20025, PATH_MESHES + "ship_tyrion_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20026, PATH_MESHES + "ship_hera_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20027, PATH_MESHES + "ship_taipan_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20028, PATH_MESHES + "ship_veteran_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20029, PATH_MESHES + "ship_mantis_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20030, PATH_MESHES + "ship_bergrercrossxt_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20031, PATH_MESHES + "ship_salvehn_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20032, PATH_MESHES + "ship_wasp_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20033, PATH_MESHES + "ship_furious_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20034, PATH_MESHES + "ship_razor6_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20035, PATH_MESHES + "ship_nightowl_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20036, PATH_MESHES + "ship_cormorant_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20037, dlc_valkyrie + "ship_cronus_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20038, dlc_valkyrie + "ship_typhon_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20039, dlc_valkyrie + "ship_skanarr_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20040, dlc_valkyrie + "ship_nemesis_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20041, dlc_valkyrie + "ship_ksukk_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(21042, dlc_valkyrie + "ship_volnoor_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(21043, dlc_valkyrie + "ship_wraith_engine_add.aem", 2000, tex_fx);
-		AEResourceManager.addGeometryResource(20044, dlc_supernova + "ship_specter_engine_add.aem", 2000, tex_elite);
-		AEResourceManager.addGeometryResource(21045, dlc_supernova + "ship_bloodstar_engine_add.aem", 2000, tex_bloodstar);
-		AEResourceManager.addGeometryResource(20046, dlc_supernova + "ship_bluefyre_engine_add.aem", 2000, tex_bluefyre);
-		AEResourceManager.addGeometryResource(21047, dlc_supernova + "ship_gatorcustom_engine_add.aem", 2000, tex_gatorcustom);
-		AEResourceManager.addGeometryResource(20048, dlc_supernova + "ship_amboss_engine_add.aem", 2000, tex_amboss);
-		AEResourceManager.addGeometryResource(20049, dlc_supernova + "ship_scimitar_engine_add.aem", 2000, tex_scimitar);
-		AEResourceManager.addGeometryResource(20050, dlc_supernova + "ship_rhino_engine_add.aem", 2000, tex_rhino);
-		AEResourceManager.addGeometryResource(21050, dlc_supernova + "ship_rhino_engine_glow_add.aem", 2000, tex_rhino);
-		AEResourceManager.addGeometryResource(20051, dlc_supernova + "ship_gryphon_engine_add.aem", 2000, tex_gryphon);
-		AEResourceManager.addGeometryResource(20052, dlc_supernova + "ship_nasrrk_engine_add.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(21052, dlc_supernova + "ship_nasrrk_engine_glow_add.aem", 2000, tex_nasrrk);
-		AEResourceManager.addGeometryResource(21053, dlc_supernova + "ship_ghost_engine_glow_add.aem", 2000, tex_ghost);
-		AEResourceManager.addGeometryResource(21054, dlc_supernova + "ship_darkangel_engine_glow_add.aem", 2000, tex_darkangel);
-		AEResourceManager.addGeometryResource(21055, dlc_supernova + "ship_ntirrk_engine_glow_add.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(3507, PATH_MESHES + "stations/midorian/stat_hangar0.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3517, PATH_MESHES + "stations/midorian/stat_hangar0_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3527, PATH_MESHES + "stations/midorian/stat_hangar0_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(13064, PATH_MESHES + "boost_red.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(13065, PATH_MESHES + "boost_violet.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(13067, PATH_MESHES + "boost_cyan_add.aem", 2000, tex_gof1);
-		AEResourceManager.addGeometryResource(13068, PATH_MESHES + "boost_green.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(13070, PATH_MESHES + "boost_orange.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(13071, PATH_MESHES + "boost_yellow_add.aem", 2000, tex_gof1);
-		AEResourceManager.addGeometryResource(14072, PATH_MESHES + "boost_blue.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(3508, PATH_MESHES + "stations/midorian/stat_bottom2.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3518, PATH_MESHES + "stations/midorian/stat_bottom2_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3528, PATH_MESHES + "stations/midorian/stat_bottom2_nl_add.aem", 10000, tex_station_midorian);
 		
-		AEResourceManager.addGeometryResource(13072, PATH_MESHES + "ship_vt_00.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13073, PATH_MESHES + "ship_vt_01.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13074, PATH_MESHES + "ship_vt_02.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13075, PATH_MESHES + "ship_vt_03.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13076, PATH_MESHES + "ship_vt_04.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13077, PATH_MESHES + "ship_vt_05.aem", 2000, 0);
 		
-		AEResourceManager.addGeometryResource(13078, PATH_MESHES + "ship_tb_00.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13079, PATH_MESHES + "ship_tb_01.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13080, PATH_MESHES + "ship_tb_02.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13081, PATH_MESHES + "ship_tb_03.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13082, PATH_MESHES + "ship_tb_04.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13083, PATH_MESHES + "ship_tb_05.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13084, PATH_MESHES + "ship_tb_06.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13085, PATH_MESHES + "ship_tb_07.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13086, PATH_MESHES + "ship_tb_08.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13087, PATH_MESHES + "ship_tb_09.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13088, PATH_MESHES + "ship_tb_10.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13089, PATH_MESHES + "ship_tb_11.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13090, PATH_MESHES + "ship_tb_12.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13091, PATH_MESHES + "ship_tb_13.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13092, PATH_MESHES + "ship_tb_14.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13093, PATH_MESHES + "ship_tb_15.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13094, PATH_MESHES + "ship_tb_16.aem", 2000, 0);
 		
-		AEResourceManager.addGeometryResource(13095, PATH_MESHES + "ship_tt_00.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13096, PATH_MESHES + "ship_tt_01.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13097, PATH_MESHES + "ship_tt_02.aem", 2000, 0);
-		AEResourceManager.addGeometryResource(13098, PATH_MESHES + "ship_tt_03.aem", 2000, 0);
 		
-		AEResourceManager.addGeometryResource(13999, PATH_MESHES + "arrow.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14007, PATH_MESHES + "null.m3g", 15000, 0); // h1s1_
-		AEResourceManager.addGeometryResource(14008, PATH_MESHES + "null.m3g", 15000, 0); // h1s2_
-		AEResourceManager.addGeometryResource(14009, PATH_MESHES + "null.m3g", 15000, 0); // h1s3_
-		AEResourceManager.addGeometryResource(14010, PATH_MESHES + "null.m3g", 15000, 0); // h1s4_
-		AEResourceManager.addGeometryResource(14011, PATH_MESHES + "null.m3g", 15000, 0); // h1s5_
-		AEResourceManager.addGeometryResource(14012, PATH_MESHES + "hangar_terran.m3g", 15000, tex_hangar_terran); // h1s6_
-		AEResourceManager.addGeometryResource(14013, PATH_MESHES + "null.m3g", 15000, 0); // h1s7_
-		AEResourceManager.addGeometryResource(14014, PATH_MESHES + "null.m3g", 15000, 0); // h2s1_
-		AEResourceManager.addGeometryResource(14015, PATH_MESHES + "null.m3g", 15000, 0); // h2s2_
-		AEResourceManager.addGeometryResource(14016, PATH_MESHES + "null.m3g", 15000, 0); // h2s3_
-		AEResourceManager.addGeometryResource(14017, PATH_MESHES + "null.m3g", 15000, 0); // h2s4_
-		AEResourceManager.addGeometryResource(14018, PATH_MESHES + "hangar_nivelian.m3g", 15000, tex_hangar_nivelian); // h2s5
-		AEResourceManager.addGeometryResource(14019, PATH_MESHES + "null.m3g", 15000, 0); // h2s6_
-		AEResourceManager.addGeometryResource(14020, PATH_MESHES + "h3s1_.m3g", 15000, 0); // h3s1_
-		AEResourceManager.addGeometryResource(14021, PATH_MESHES + "h3s2_.m3g", 15000, 0); // h3s2_
-		AEResourceManager.addGeometryResource(14022, PATH_MESHES + "h3s3_.m3g", 15000, 0); // h3s3_
-		AEResourceManager.addGeometryResource(14023, PATH_MESHES + "h3s4_.m3g", 15000, 0); // h3s4_
-		AEResourceManager.addGeometryResource(14024, PATH_MESHES + "h3s5_.m3g", 15000, 0); // h3s5_
+		AEResourceManager.addGeometryResource(3301, PATH_MESHES + "stations/stat_arm0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3302, PATH_MESHES + "stations/stat_arm1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3303, PATH_MESHES + "stations/stat_bottom0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3304, PATH_MESHES + "stations/stat_bottom1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3305, PATH_MESHES + "stations/stat_bottom2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3306, PATH_MESHES + "stations/stat_bottom3.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3307, PATH_MESHES + "stations/stat_bottom4.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3308, PATH_MESHES + "stations/stat_bottom5.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3309, PATH_MESHES + "stations/stat_bridge0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3310, PATH_MESHES + "stations/stat_bridge1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3311, PATH_MESHES + "stations/stat_bridge2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3312, PATH_MESHES + "stations/stat_connector0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3313, PATH_MESHES + "stations/stat_hangar0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3314, PATH_MESHES + "stations/stat_hangar1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3315, PATH_MESHES + "stations/stat_hangar2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3316, PATH_MESHES + "stations/stat_hangar3.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3317, PATH_MESHES + "stations/stat_hangar4.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3318, PATH_MESHES + "stations/stat_middle0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3319, PATH_MESHES + "stations/stat_middle1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3320, PATH_MESHES + "stations/stat_middle2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3321, PATH_MESHES + "stations/stat_middle3.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3322, PATH_MESHES + "stations/stat_top0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3323, PATH_MESHES + "stations/stat_top1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3324, PATH_MESHES + "stations/stat_top10.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3325, PATH_MESHES + "stations/stat_top2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3326, PATH_MESHES + "stations/stat_top3.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3327, PATH_MESHES + "stations/stat_top4.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3328, PATH_MESHES + "stations/stat_top5.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3329, PATH_MESHES + "stations/stat_top6.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3330, PATH_MESHES + "stations/stat_top7.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3331, PATH_MESHES + "stations/stat_top8.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3332, PATH_MESHES + "stations/stat_top9.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3333, PATH_MESHES + "stations/stat_bridge3.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3334, PATH_MESHES + "stations/stat_light0.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3335, PATH_MESHES + "stations/stat_light1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3336, PATH_MESHES + "stations/null.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3337, PATH_MESHES + "stations/void_station.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3338, PATH_MESHES + "stations/stat_vossk_arm1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3339, PATH_MESHES + "stations/stat_vossk_bottom2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3340, PATH_MESHES + "stations/stat_vossk_bottom1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3341, PATH_MESHES + "stations/stat_vossk_middle1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3342, PATH_MESHES + "stations/stat_vossk_middle2.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3343, PATH_MESHES + "stations/stat_vossk_top1.m3g", 10000, 0);
+		AEResourceManager.addGeometryResource(3344, PATH_MESHES + "stations/battlestation.aem", 10000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3345, PATH_MESHES + "stations/battlestation_add.aem", 10000, tex_fx);
+		AEResourceManager.addGeometryResource(3346, PATH_MESHES + "stations/battlestation_nl.aem", 10000, tex_valkyrie_station);
+		AEResourceManager.addGeometryResource(3348, PATH_MESHES + "stations/stat_player.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3349, PATH_MESHES + "stations/stat_player_nl.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3350, PATH_MESHES + "stations/stat_player_nl_add.aem", 10000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(3351, PATH_MESHES + "stations/stat_player_add.aem", 10000, tex_station_player_add);
 		
-		AEResourceManager.addGeometryResource(14025, PATH_MESHES + "bar/bar_terran_nl.aem", 2000, tex_bar_terran); // b1s1_
-		AEResourceManager.addGeometryResource(15025, PATH_MESHES + "bar/bar_terran_alpha.aem", 2000, tex_bar_terran); // b1s1_
-		AEResourceManager.addGeometryResource(15125, PATH_MESHES + "bar/bar_terran_add.aem", 2000, tex_bar_terran); // b1s1_
+		AEResourceManager.addGeometryResource(4544, PATH_MESHES + "stations/station_deep_science.aem", 10000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4545, PATH_MESHES + "stations/station_deep_science_add.aem", 10000, tex_station_deescience_add);
+		AEResourceManager.addGeometryResource(4546, PATH_MESHES + "stations/station_deep_science_nl.aem", 10000, tex_station_deescience);
+		AEResourceManager.addGeometryResource(4547, PATH_MESHES + "stations/station_deep_science_nl_add.aem", 10000, tex_station_deescience);
 		
-		AEResourceManager.addGeometryResource(14027, PATH_MESHES + "bar/bar_nivelian_nl.aem", 2000, tex_bar_nivelian); // b2s1_
-		AEResourceManager.addGeometryResource(15027, PATH_MESHES + "bar/bar_nivelian_alpha.aem", 2000, tex_bar_nivelian); // b2s1_
-		AEResourceManager.addGeometryResource(15127, PATH_MESHES + "bar/bar_nivelian_add.aem", 2000, tex_bar_nivelian); // b2s1_
+		AEResourceManager.addGeometryResource(13001, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_betty_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13101, PATH_MESHES + "ships/fx/ship_betty_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13002, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_teneta_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13102, PATH_MESHES + "ships/fx/ship_teneta_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13003, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hiro_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13103, PATH_MESHES + "ships/fx/ship_hiro_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13004, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_badger_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13104, PATH_MESHES + "ships/fx/ship_badger_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13005, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_dace_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13105, PATH_MESHES + "ships/fx/ship_dace_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13006, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_inflict_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13106, PATH_MESHES + "ships/fx/ship_inflict_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13007, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hector_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13107, PATH_MESHES + "ships/fx/ship_hector_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13008, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_anaan_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13108, PATH_MESHES + "ships/fx/ship_anaan_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13061, PATH_MESHES + "ships" + MESHES_QUALITY + "void_fighter.aem", 2000, tex_void);
+		AEResourceManager.addGeometryResource(13161, PATH_MESHES + "ships" + MESHES_QUALITY + "void_fighter_nl.aem", 2000, tex_void);
+		AEResourceManager.addGeometryResource(13261, PATH_MESHES + "ships" + MESHES_QUALITY + "void_fighter_nl_add.aem", 2000, tex_void);
+		AEResourceManager.addGeometryResource(13162, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hsoc_body.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13262, PATH_MESHES + "ships/fx/ship_hsoc_nl_add.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13063, PATH_MESHES + "ships/ship_phantom_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13163, PATH_MESHES + "ships/fx/ship_phantom_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13009, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hernstein_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13109, PATH_MESHES + "ships/fx/ship_hernstein_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13010, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_type43_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13110, PATH_MESHES + "ships/fx/ship_type43_nl.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13210, PATH_MESHES + "ships/fx/ship_type43_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13011, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_kinzer_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13111, PATH_MESHES + "ships/fx/ship_kinzer_nl.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13211, PATH_MESHES + "ships/fx/ship_kinzer_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13012, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_ward_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13112, PATH_MESHES + "ships/fx/ship_ward_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13013, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hatsuyuki_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13113, PATH_MESHES + "ships/fx/ship_hatsuyuki_nl.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13213, PATH_MESHES + "ships/fx/ship_hatsuyuki_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13014, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_nuyangII_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13114, PATH_MESHES + "ships/fx/ship_nuyangII_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13015, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_cicero_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13115, PATH_MESHES + "ships/fx/ship_cicero_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13016, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_aegir_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13116, PATH_MESHES + "ships/fx/ship_aegir_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13017, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_groza_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13117, PATH_MESHES + "ships/fx/ship_groza_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13018, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_azov_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13118, PATH_MESHES + "ships/fx/ship_azov_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13019, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_velasco_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13119, PATH_MESHES + "ships/fx/ship_velasco_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13020, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_tyrion_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13120, PATH_MESHES + "ships/fx/ship_tyrion_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13021, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_hera_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13121, PATH_MESHES + "ships/fx/ship_hera_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13022, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_taipan_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13122, PATH_MESHES + "ships/fx/ship_taipan_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13023, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_veteran_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13123, PATH_MESHES + "ships/fx/ship_veteran_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13024, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_mantis_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13124, PATH_MESHES + "ships/fx/ship_mantis_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13025, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_bergrercrossxt_body.aem", 2000, tex_midorian);
+		AEResourceManager.addGeometryResource(13125, PATH_MESHES + "ships/fx/ship_bergrercrossxt_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13026, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_salvehn_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13126, PATH_MESHES + "ships/fx/ship_salvehn_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13027, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_wasp_body.aem", 2000, tex_pirates);
+		AEResourceManager.addGeometryResource(13127, PATH_MESHES + "ships/fx/ship_wasp_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13028, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_furious_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13128, PATH_MESHES + "ships/fx/ship_furious_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13029, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_razor6_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13129, PATH_MESHES + "ships/fx/ship_razor6_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13030, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_nightowl_body.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13130, PATH_MESHES + "ships/fx/ship_nightowl_nl_add.aem", 2000, tex_nivelian);
+		AEResourceManager.addGeometryResource(13031, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_cormorant_body.aem", 2000, tex_terran);
+		AEResourceManager.addGeometryResource(13131, PATH_MESHES + "ships/fx/ship_cormorant_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13037, PATH_MESHES + "ships/ship_cronus_body.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13137, PATH_MESHES + "ships/fx/ship_cronus_add.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13038, PATH_MESHES + "ships/ship_typhon_body.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13138, PATH_MESHES + "ships/fx/ship_typhon_light_add.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13039, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_skanarr_body.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13139, PATH_MESHES + "ships/fx/ship_skanarr_nl.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13239, PATH_MESHES + "ships/fx/ship_skanarr_nl_add.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13040, PATH_MESHES + "ships/ship_nemesis_body.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13140, PATH_MESHES + "ships/fx/ship_nemesis_add.aem", 2000, tex_deepscience);
+		AEResourceManager.addGeometryResource(13041, PATH_MESHES + "ships" + MESHES_QUALITY + "ship_ksuukk_body.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13141, PATH_MESHES + "ships/fx/ship_ksuukk_nl_add.aem", 2000, tex_vossk);
+		AEResourceManager.addGeometryResource(13042, PATH_MESHES + "ships/ship_volnoor_body.aem", 2000, tex_grey);
+		AEResourceManager.addGeometryResource(13142, PATH_MESHES + "ships/fx/ship_volnoor_nl_add.aem", 2000, tex_grey);
+		AEResourceManager.addGeometryResource(13242, PATH_MESHES + "ships/fx/ship_volnoor_light_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(13043, PATH_MESHES + "ships/ship_wraith_body.aem", 2000, tex_wraith);
+		AEResourceManager.addGeometryResource(13143, PATH_MESHES + "ships/fx/ship_wraith_nl_add.aem", 2000, tex_wraith);
+		AEResourceManager.addGeometryResource(13044, PATH_MESHES + "ships/ship_specter_body.aem", 2000, tex_elite);
+		AEResourceManager.addGeometryResource(13144, PATH_MESHES + "ships/fx/ship_specter_light_add.aem", 2000, tex_elite);
+		AEResourceManager.addGeometryResource(13045, PATH_MESHES + "ships/ship_bloodstar_body.aem", 2000, tex_bloodstar);
+		AEResourceManager.addGeometryResource(13145, PATH_MESHES + "ships/fx/ship_bloodstar_light_add.aem", 2000, tex_bloodstar);
+		AEResourceManager.addGeometryResource(13245, PATH_MESHES + "ships/fx/ship_bloodstar_engine_glow_add.aem", 2000, tex_bloodstar);
+		AEResourceManager.addGeometryResource(13046, PATH_MESHES + "ships/ship_bluefyre_body.aem", 2000, tex_bluefyre);
+		AEResourceManager.addGeometryResource(13146, PATH_MESHES + "ships/fx/ship_bluefyre_light_add.aem", 2000, tex_bluefyre);
+		AEResourceManager.addGeometryResource(13047, PATH_MESHES + "ships/ship_gatorcustom_body.aem", 2000, tex_gatorcustom);
+		AEResourceManager.addGeometryResource(13147, PATH_MESHES + "ships/fx/ship_gatorcustom_light_add.aem", 2000, tex_gatorcustom);
+		AEResourceManager.addGeometryResource(13048, PATH_MESHES + "ships/ship_amboss_body.aem", 2000, tex_amboss);
+		AEResourceManager.addGeometryResource(13148, PATH_MESHES + "ships/fx/ship_amboss_light_add.aem", 2000, tex_amboss);
+		AEResourceManager.addGeometryResource(13049, PATH_MESHES + "ships/ship_scimitar_body.aem", 2000, tex_scimitar);
+		AEResourceManager.addGeometryResource(13149, PATH_MESHES + "ships/fx/ship_scimitar_light_add.aem", 2000, tex_scimitar);
+		AEResourceManager.addGeometryResource(13249, PATH_MESHES + "ships/fx/ship_scimitar_emissive.aem", 2000, tex_scimitar);
+		AEResourceManager.addGeometryResource(13349, PATH_MESHES + "ships/fx/ship_scimitar_emissive_add.aem", 2000, tex_scimitar);
+		AEResourceManager.addGeometryResource(13050, PATH_MESHES + "ships/ship_rhino_body.aem", 2000, tex_rhino);
+		AEResourceManager.addGeometryResource(13150, PATH_MESHES + "ships/fx/ship_rhino_light_add.aem", 2000, tex_rhino);
+		AEResourceManager.addGeometryResource(13051, PATH_MESHES + "ships/ship_gryphon_body.aem", 2000, tex_gryphon);
+		AEResourceManager.addGeometryResource(13151, PATH_MESHES + "ships/fx/ship_gryphon_light_add.aem", 2000, tex_gryphon);
+		AEResourceManager.addGeometryResource(13052, PATH_MESHES + "ships/ship_nasrrk_body.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(13152, PATH_MESHES + "ships/fx/ship_nasrrk_emissive.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(13252, PATH_MESHES + "ships/fx/ship_nasrrk_emissive_add.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(13352, PATH_MESHES + "ships/fx/ship_nasrrk_light_add.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(13053, PATH_MESHES + "ships/ship_grozamkii_body.aem", 2000, tex_grozamkii);
+		AEResourceManager.addGeometryResource(13153, PATH_MESHES + "ships/fx/ship_grozamkii_light_add.aem", 2000, tex_grozamkii);
+		AEResourceManager.addGeometryResource(13054, PATH_MESHES + "ships/ship_berger_special_body.aem", 2000, tex_berger_special);
+		AEResourceManager.addGeometryResource(13154, PATH_MESHES + "ships/fx/ship_berger_special_light_add.aem", 2000, tex_berger_special);
+		AEResourceManager.addGeometryResource(13055, PATH_MESHES + "ships/ship_kinzer_rs_body.aem", 2000, tex_kinzer_rs);
+		AEResourceManager.addGeometryResource(13155, PATH_MESHES + "ships/fx/ship_kinzer_rs_light_add.aem", 2000, tex_kinzer_rs);
+		AEResourceManager.addGeometryResource(13056, PATH_MESHES + "ships/ship_phantomxt_body.aem", 2000, tex_phantom_xt);
+		AEResourceManager.addGeometryResource(13156, PATH_MESHES + "ships/fx/ship_phantomxt_light_add.aem", 2000, tex_phantom_xt);
+		AEResourceManager.addGeometryResource(13057, PATH_MESHES + "ships/ship_tenetared_body.aem", 2000, tex_tenetared);
+		AEResourceManager.addGeometryResource(13157, PATH_MESHES + "ships/fx/ship_tenetared_light_add.aem", 2000, tex_tenetared);
+		AEResourceManager.addGeometryResource(13058, PATH_MESHES + "ships/ship_darkzov_body.aem", 2000, tex_darkzov);
+		AEResourceManager.addGeometryResource(13158, PATH_MESHES + "ships/fx/ship_darkzov_light_add.aem", 2000, tex_darkzov);
+		AEResourceManager.addGeometryResource(13059, PATH_MESHES + "ships/ship_ghost_body.aem", 2000, tex_ghost);
+		AEResourceManager.addGeometryResource(13159, PATH_MESHES + "ships/fx/ship_ghost_light_add.aem", 2000, tex_ghost);
+		AEResourceManager.addGeometryResource(13060, PATH_MESHES + "ships/ship_darkangel_body.aem", 2000, tex_darkangel);
+		AEResourceManager.addGeometryResource(13160, PATH_MESHES + "ships/fx/ship_darkangel_light_add.aem", 2000, tex_darkangel);
+		AEResourceManager.addGeometryResource(19061, PATH_MESHES + "ships/ship_ntirrk_body.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(19161, PATH_MESHES + "ships/fx/ship_ntirrk_light_add.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(19261, PATH_MESHES + "ships/fx/ship_ntirrk_nl.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(19361, PATH_MESHES + "ships/fx/ship_ntirrk_nl_add.aem", 2000, tex_ntirrk);
+		AEResourceManager.addGeometryResource(19062, PATH_MESHES + "ships/ship_hawk_body.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(19063, PATH_MESHES + "ships/ship_icarus_body.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(19064, PATH_MESHES + "ships/ship_draaken_body.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(20000, PATH_MESHES + "ships/fx/ship_betty_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20001, PATH_MESHES + "ships/fx/ship_teneta_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20002, PATH_MESHES + "ships/fx/ship_hiro_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20003, PATH_MESHES + "ships/fx/ship_badger_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20004, PATH_MESHES + "ships/fx/ship_dace_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20005, PATH_MESHES + "ships/fx/ship_inflict_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20006, PATH_MESHES + "ships/fx/ship_hector_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20007, PATH_MESHES + "ships/fx/ship_anaan_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20008, PATH_MESHES + "ships/fx/void_fighter_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20009, PATH_MESHES + "ships/fx/ship_hsoc_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20010, PATH_MESHES + "ships/fx/ship_phantom_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20011, PATH_MESHES + "ships/fx/ship_hernstein_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20012, PATH_MESHES + "ships/fx/ship_type43_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20013, PATH_MESHES + "ships/fx/ship_ksarr_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20014, PATH_MESHES + "ships/fx/ship_tcruiser_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20015, PATH_MESHES + "ships/fx/ship_ttanker_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20016, PATH_MESHES + "ships/fx/ship_kinzer_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20017, PATH_MESHES + "ships/fx/ship_ward_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20018, PATH_MESHES + "ships/fx/ship_hatsuyuki_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20019, PATH_MESHES + "ships/fx/ship_nuyangII_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20020, PATH_MESHES + "ships/fx/ship_cicero_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20021, PATH_MESHES + "ships/fx/ship_aegir_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20022, PATH_MESHES + "ships/fx/ship_groza_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20023, PATH_MESHES + "ships/fx/ship_azov_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20024, PATH_MESHES + "ships/fx/ship_velasco_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20025, PATH_MESHES + "ships/fx/ship_tyrion_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20026, PATH_MESHES + "ships/fx/ship_hera_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20027, PATH_MESHES + "ships/fx/ship_taipan_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20028, PATH_MESHES + "ships/fx/ship_veteran_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20029, PATH_MESHES + "ships/fx/ship_mantis_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20030, PATH_MESHES + "ships/fx/ship_bergrercrossxt_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20031, PATH_MESHES + "ships/fx/ship_salvehn_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20032, PATH_MESHES + "ships/fx/ship_wasp_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20033, PATH_MESHES + "ships/fx/ship_furious_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20034, PATH_MESHES + "ships/fx/ship_razor6_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20035, PATH_MESHES + "ships/fx/ship_nightowl_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20036, PATH_MESHES + "ships/fx/ship_cormorant_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20037, PATH_MESHES + "ships/fx/ship_cronus_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20038, PATH_MESHES + "ships/fx/ship_typhon_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20039, PATH_MESHES + "ships/fx/ship_skanarr_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20040, PATH_MESHES + "ships/fx/ship_nemesis_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20041, PATH_MESHES + "ships/fx/ship_ksukk_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(21042, PATH_MESHES + "ships/fx/ship_volnoor_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(21043, PATH_MESHES + "ships/fx/ship_wraith_engine_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(20044, PATH_MESHES + "ships/fx/ship_specter_engine_add.aem", 2000, tex_elite);
+		AEResourceManager.addGeometryResource(21045, PATH_MESHES + "ships/fx/ship_bloodstar_engine_add.aem", 2000, tex_bloodstar);
+		AEResourceManager.addGeometryResource(20046, PATH_MESHES + "ships/fx/ship_bluefyre_engine_add.aem", 2000, tex_bluefyre);
+		AEResourceManager.addGeometryResource(21047, PATH_MESHES + "ships/fx/ship_gatorcustom_engine_add.aem", 2000, tex_gatorcustom);
+		AEResourceManager.addGeometryResource(20048, PATH_MESHES + "ships/fx/ship_amboss_engine_add.aem", 2000, tex_amboss);
+		AEResourceManager.addGeometryResource(20049, PATH_MESHES + "ships/fx/ship_scimitar_engine_add.aem", 2000, tex_scimitar);
+		AEResourceManager.addGeometryResource(20050, PATH_MESHES + "ships/fx/ship_rhino_engine_add.aem", 2000, tex_rhino);
+		AEResourceManager.addGeometryResource(21050, PATH_MESHES + "ships/fx/ship_rhino_engine_glow_add.aem", 2000, tex_rhino);
+		AEResourceManager.addGeometryResource(20051, PATH_MESHES + "ships/fx/ship_gryphon_engine_add.aem", 2000, tex_gryphon);
+		AEResourceManager.addGeometryResource(20052, PATH_MESHES + "ships/fx/ship_nasrrk_engine_add.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(21052, PATH_MESHES + "ships/fx/ship_nasrrk_engine_glow_add.aem", 2000, tex_nasrrk);
+		AEResourceManager.addGeometryResource(21053, PATH_MESHES + "ships/fx/ship_ghost_engine_glow_add.aem", 2000, tex_ghost);
+		AEResourceManager.addGeometryResource(21054, PATH_MESHES + "ships/fx/ship_darkangel_engine_glow_add.aem", 2000, tex_darkangel);
+		AEResourceManager.addGeometryResource(21055, PATH_MESHES + "ships/fx/ship_ntirrk_engine_glow_add.aem", 2000, tex_ntirrk);
 		
-		AEResourceManager.addGeometryResource(14029, PATH_MESHES + "bar/bar_vossk_nl.aem", 2000, tex_bar_vossk); // b3s1_
-		AEResourceManager.addGeometryResource(15029, PATH_MESHES + "bar/bar_vossk_alpha.aem", 2000, tex_bar_vossk); // b3s1_
-		AEResourceManager.addGeometryResource(15129, PATH_MESHES + "bar/bar_vossk_add.aem", 2000, tex_bar_vossk); // b3s1_
+		AEResourceManager.addGeometryResource(13064, PATH_MESHES + "fx/boost_red.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(13065, PATH_MESHES + "fx/boost_violet.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(13067, PATH_MESHES + "fx/boost_cyan_add.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(13068, PATH_MESHES + "fx/boost_green.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(13070, PATH_MESHES + "fx/boost_orange.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(13071, PATH_MESHES + "fx/boost_yellow_add.aem", 2000, tex_gof1);
+		AEResourceManager.addGeometryResource(14072, PATH_MESHES + "fx/boost_blue.m3g", 2000, 1);
 		
-		AEResourceManager.addGeometryResource(14329, PATH_MESHES + "bar/bar_midorian_nl.aem", 2000, tex_bar_midorian);
-		AEResourceManager.addGeometryResource(14429, PATH_MESHES + "bar/bar_midorian_alpha.aem", 2000, tex_bar_midorian);
-		AEResourceManager.addGeometryResource(14529, PATH_MESHES + "bar/bar_midorian_add.aem", 2000, tex_bar_midorian);
+		AEResourceManager.addGeometryResource(13072, PATH_MESHES + "ships/vossk_cargo/ship_vt_00.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13073, PATH_MESHES + "ships/vossk_cargo/ship_vt_01.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13074, PATH_MESHES + "ships/vossk_cargo/ship_vt_02.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13075, PATH_MESHES + "ships/vossk_cargo/ship_vt_03.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13076, PATH_MESHES + "ships/vossk_cargo/ship_vt_04.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13077, PATH_MESHES + "ships/vossk_cargo/ship_vt_05.aem", 2000, 0);
 		
-		AEResourceManager.addGeometryResource(14223, PATH_MESHES + "fig_terran_m.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14224, PATH_MESHES + "fig_terran_f.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14225, PATH_MESHES + "fig_vossk.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14226, PATH_MESHES + "fig_nivelian.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14227, PATH_MESHES + "fig_multipod.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14228, PATH_MESHES + "fig_bobolan.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(14229, PATH_MESHES + "fig_grey.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(9992, PATH_MESHES + "explo_small.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(9993, PATH_MESHES + "explo_big.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(9996, PATH_MESHES + "spacejunk.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(6767, PATH_MESHES + "void_waste.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(6769, PATH_MESHES + "asteroid/asteroid.aem", 2000, tex_asteroid);
-		AEResourceManager.addGeometryResource(6804, PATH_MESHES + "asteroid/asteroid_void.aem", 2000, tex_asteroid_void);
-		AEResourceManager.addGeometryResource(6807, PATH_MESHES + "asteroid/asteroid_ice.aem", 2000, tex_asteroid_ice);
-		AEResourceManager.addGeometryResource(6808, PATH_MESHES + "asteroid/asteroid_magma.m3g", 2000, tex_asteroid);
+		AEResourceManager.addGeometryResource(13078, PATH_MESHES + "ships/terran_battleship/ship_tb_00.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13079, PATH_MESHES + "ships/terran_battleship/ship_tb_01.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13080, PATH_MESHES + "ships/terran_battleship/ship_tb_02.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13081, PATH_MESHES + "ships/terran_battleship/ship_tb_03.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13082, PATH_MESHES + "ships/terran_battleship/ship_tb_04.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13083, PATH_MESHES + "ships/terran_battleship/ship_tb_05.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13084, PATH_MESHES + "ships/terran_battleship/ship_tb_06.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13085, PATH_MESHES + "ships/terran_battleship/ship_tb_07.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13086, PATH_MESHES + "ships/terran_battleship/ship_tb_08.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13087, PATH_MESHES + "ships/terran_battleship/ship_tb_09.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13088, PATH_MESHES + "ships/terran_battleship/ship_tb_10.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13089, PATH_MESHES + "ships/terran_battleship/ship_tb_11.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13090, PATH_MESHES + "ships/terran_battleship/ship_tb_12.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13091, PATH_MESHES + "ships/terran_battleship/ship_tb_13.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13092, PATH_MESHES + "ships/terran_battleship/ship_tb_14.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13093, PATH_MESHES + "ships/terran_battleship/ship_tb_15.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13094, PATH_MESHES + "ships/terran_battleship/ship_tb_16.aem", 2000, 0);
+		
+		AEResourceManager.addGeometryResource(13095, PATH_MESHES + "ships/terran_cargo/ship_tt_00.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13096, PATH_MESHES + "ships/terran_cargo/ship_tt_01.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13097, PATH_MESHES + "ships/terran_cargo/ship_tt_02.aem", 2000, 0);
+		AEResourceManager.addGeometryResource(13098, PATH_MESHES + "ships/terran_cargo/ship_tt_03.aem", 2000, 0);
+		
+		AEResourceManager.addGeometryResource(13999, PATH_MESHES + "galaxymap/arrow.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14007, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s1_
+		AEResourceManager.addGeometryResource(14008, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s2_
+		AEResourceManager.addGeometryResource(14009, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s3_
+		AEResourceManager.addGeometryResource(14010, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s4_
+		AEResourceManager.addGeometryResource(14011, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s5_
+		AEResourceManager.addGeometryResource(14012, PATH_MESHES + "hangars/hangar_terran.m3g", 15000, tex_hangar_terran); // h1s6_
+		AEResourceManager.addGeometryResource(14013, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h1s7_
+		AEResourceManager.addGeometryResource(14014, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h2s1_
+		AEResourceManager.addGeometryResource(14015, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h2s2_
+		AEResourceManager.addGeometryResource(14016, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h2s3_
+		AEResourceManager.addGeometryResource(14017, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h2s4_
+		AEResourceManager.addGeometryResource(14018, PATH_MESHES + "hangars/hangar_nivelian.m3g", 15000, tex_hangar_nivelian); // h2s5
+		AEResourceManager.addGeometryResource(14019, PATH_MESHES + "hangars/null.m3g", 15000, 0); // h2s6_
+		AEResourceManager.addGeometryResource(14020, PATH_MESHES + "hangars/h3s1_.m3g", 15000, 0); // h3s1_
+		AEResourceManager.addGeometryResource(14021, PATH_MESHES + "hangars/h3s2_.m3g", 15000, 0); // h3s2_
+		AEResourceManager.addGeometryResource(14022, PATH_MESHES + "hangars/h3s3_.m3g", 15000, 0); // h3s3_
+		AEResourceManager.addGeometryResource(14023, PATH_MESHES + "hangars/h3s4_.m3g", 15000, 0); // h3s4_
+		AEResourceManager.addGeometryResource(14024, PATH_MESHES + "hangars/h3s5_.m3g", 15000, 0); // h3s5_
+		
+		AEResourceManager.addGeometryResource(14025, PATH_MESHES + "bars/bar_terran_nl.aem", 2000, tex_bar_terran); // b1s1_
+		AEResourceManager.addGeometryResource(15025, PATH_MESHES + "bars/bar_terran_alpha.aem", 2000, tex_bar_terran); // b1s1_
+		AEResourceManager.addGeometryResource(15125, PATH_MESHES + "bars/bar_terran_add.aem", 2000, tex_bar_terran); // b1s1_
+		
+		AEResourceManager.addGeometryResource(14027, PATH_MESHES + "bars/bar_nivelian_nl.aem", 2000, tex_bar_nivelian); // b2s1_
+		AEResourceManager.addGeometryResource(15027, PATH_MESHES + "bars/bar_nivelian_alpha.aem", 2000, tex_bar_nivelian); // b2s1_
+		AEResourceManager.addGeometryResource(15127, PATH_MESHES + "bars/bar_nivelian_add.aem", 2000, tex_bar_nivelian); // b2s1_
+		
+		AEResourceManager.addGeometryResource(14029, PATH_MESHES + "bars/bar_vossk_nl.aem", 2000, tex_bar_vossk); // b3s1_
+		AEResourceManager.addGeometryResource(15029, PATH_MESHES + "bars/bar_vossk_alpha.aem", 2000, tex_bar_vossk); // b3s1_
+		AEResourceManager.addGeometryResource(15129, PATH_MESHES + "bars/bar_vossk_add.aem", 2000, tex_bar_vossk); // b3s1_
+		
+		AEResourceManager.addGeometryResource(14329, PATH_MESHES + "bars/bar_midorian_nl.aem", 2000, tex_bar_midorian);
+		AEResourceManager.addGeometryResource(14429, PATH_MESHES + "bars/bar_midorian_alpha.aem", 2000, tex_bar_midorian);
+		AEResourceManager.addGeometryResource(14529, PATH_MESHES + "bars/bar_midorian_add.aem", 2000, tex_bar_midorian);
+		
+		AEResourceManager.addGeometryResource(14223, PATH_MESHES + "bars/fig_terran_m.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14224, PATH_MESHES + "bars/fig_terran_f.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14225, PATH_MESHES + "bars/fig_vossk.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14226, PATH_MESHES + "bars/fig_nivelian.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14227, PATH_MESHES + "bars/fig_multipod.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14228, PATH_MESHES + "bars/fig_bobolan.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(14229, PATH_MESHES + "bars/fig_grey.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(9992, PATH_MESHES + "fx/explo_small.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(9993, PATH_MESHES + "fx/explo_big.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(9996, PATH_MESHES + "misc/junk_a.aem", 2000, tex_spacejunk);
+		AEResourceManager.addGeometryResource(9997, PATH_MESHES + "misc/junk_b.aem", 2000, tex_spacejunk);
+		AEResourceManager.addGeometryResource(9998, PATH_MESHES + "misc/junk_c.aem", 2000, tex_spacejunk);
+		AEResourceManager.addGeometryResource(6767, PATH_MESHES + "misc/container_void.aem", 2000, tex_void);
+		AEResourceManager.addGeometryResource(6769, PATH_MESHES + "asteroids/asteroid.aem", 2000, tex_asteroid);
+		AEResourceManager.addGeometryResource(6804, PATH_MESHES + "asteroids/asteroid_void.aem", 2000, tex_asteroid_void);
+		AEResourceManager.addGeometryResource(6807, PATH_MESHES + "asteroids/asteroid_ice.aem", 2000, tex_asteroid_ice);
+		AEResourceManager.addGeometryResource(6808, PATH_MESHES + "asteroids/asteroid_magma.m3g", 2000, tex_asteroid);
 		
 		AEResourceManager.addGeometryResource(6770, PATH_MESHES + "turrets/turret_47.aem", 2000, tex_turrets);
 		AEResourceManager.addGeometryResource(6771, PATH_MESHES + "turrets/turret_47_gun.aem", 2000, tex_turrets);
@@ -1229,15 +1227,15 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(5005, PATH_MESHES + "turrets/autoturret_03.aem", 2000, tex_turrets);
 		AEResourceManager.addGeometryResource(5006, PATH_MESHES + "turrets/autoturret_03_gun.aem", 2000, tex_turrets);
 		
-		AEResourceManager.addGeometryResource(6779, PATH_MESHES + "orbit.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(6781, PATH_MESHES + "map_sun.m3g", 15000, 1);
-		AEResourceManager.addGeometryResource(6782, PATH_MESHES + "asteroid_explo.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "Khador_jump.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(6779, PATH_MESHES + "galaxymap/orbit.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(6781, PATH_MESHES + "galaxymap/map_sun.m3g", 15000, 1);
+		AEResourceManager.addGeometryResource(6782, PATH_MESHES + "asteroids/asteroid_explo.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "fx/Khador_jump.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6784, PATH_MESHES + "projectiles/gunshot_0.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6785, PATH_MESHES + "projectiles/gunshot_1.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6786, PATH_MESHES + "projectiles/gunshot_2.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(6805, PATH_MESHES + "vortex.m3g", 15000, 1);
-		AEResourceManager.addGeometryResource(6806, PATH_MESHES + "vortex_dust.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(6805, PATH_MESHES + "misc/vortex.m3g", 15000, 1);
+		AEResourceManager.addGeometryResource(6806, PATH_MESHES + "misc/vortex_dust.m3g", 2000, 1);
 		
 		AEResourceManager.addGeometryResource(3000, PATH_MESHES + "galaxymap/map_planet_000.aem", 2000, tex_map_planets);
 		AEResourceManager.addGeometryResource(3001, PATH_MESHES + "galaxymap/map_planet_001.aem", 2000, tex_map_planets);
@@ -1281,36 +1279,36 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(3111, PATH_MESHES + "galaxymap/sd_sn_map_sun_011_add.aem", 2000, tex_sn_galaxymap_planets);
 		
 		int planetBoundingSphere = 2000;
-		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_0);
-		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_1);
-		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_2);
-		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_3);
-		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_4);
-		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_5);
-		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_6);
-		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_7);
-		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_8);
-		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_9);
-		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_10);
-		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_11);
-		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_12);
-		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_13);
-		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_14);
-		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_15);
-		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_16);
-		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_17);
-		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_18);
-		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_19);
-		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_20);
-		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_21);
-		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_22);
-		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_23);
-		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_24);
-		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_25);
-		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_26);
-		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_27);
-		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_28);
-		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "plane_alpha.aem", planetBoundingSphere, tex_planet_29);
+		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_0);
+		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_1);
+		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_2);
+		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_3);
+		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_4);
+		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_5);
+		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_6);
+		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_7);
+		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_8);
+		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_9);
+		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_10);
+		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_11);
+		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_12);
+		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_13);
+		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_14);
+		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_15);
+		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_16);
+		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_17);
+		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_18);
+		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_19);
+		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_20);
+		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_21);
+		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_22);
+		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_23);
+		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_24);
+		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_25);
+		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_26);
+		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_27);
+		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_28);
+		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_29);
 		
 		AEResourceManager.addGeometryResource(6754, PATH_MESHES + "projectiles/laser_orange_add.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "projectiles/laser_yellow_add.aem", 2000, tex_fx);
@@ -1370,16 +1368,16 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6834, PATH_MESHES + "projectiles/v_projectile_183_anim_add.aem", 2000, tex_v_projectiles);
 		AEResourceManager.addGeometryResource(6844, PATH_MESHES + "projectiles/v_projectile_193_anim_add.aem", 2000, tex_v_projectiles);
 		
-		AEResourceManager.addGeometryResource(5555, PATH_MESHES + "test_1.m3g", 5000, 1);
-		AEResourceManager.addGeometryResource(5655, PATH_MESHES + "test_2.m3g", 5000, 1);
-		AEResourceManager.addGeometryResource(5755, PATH_MESHES + "test_3.m3g", 5000, 1);
+		AEResourceManager.addGeometryResource(5555, PATH_MESHES + "debug/test_1.m3g", 5000, 1);
+		AEResourceManager.addGeometryResource(5655, PATH_MESHES + "debug/test_2.m3g", 5000, 1);
+		AEResourceManager.addGeometryResource(5755, PATH_MESHES + "debug/test_3.m3g", 5000, 1);
 		
-		AEResourceManager.addGeometryResource(6555, PATH_MESHES + "test_1.aem", 5000, 1);
-		AEResourceManager.addGeometryResource(6655, PATH_MESHES + "test_2.aem", 5000, 1);
-		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "test_3.aem", 5000, 1);
-		AEResourceManager.addGeometryResource(6855, PATH_MESHES + "test_1_add.aem", 5000, tex_fx);
-		AEResourceManager.addGeometryResource(6955, PATH_MESHES + "test_2_add.aem", 5000, tex_fx);
-		AEResourceManager.addGeometryResource(6965, PATH_MESHES + "test_3_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(6555, PATH_MESHES + "debug/test_1.aem", 5000, 1);
+		AEResourceManager.addGeometryResource(6655, PATH_MESHES + "debug/test_2.aem", 5000, 1);
+		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "debug/test_3.aem", 5000, 1);
+		AEResourceManager.addGeometryResource(6855, PATH_MESHES + "debug/test_1_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(6955, PATH_MESHES + "debug/test_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(6965, PATH_MESHES + "debug/test_3_add.aem", 5000, tex_fx);
 		
 	}
 

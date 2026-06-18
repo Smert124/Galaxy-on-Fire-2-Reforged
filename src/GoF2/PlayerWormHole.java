@@ -31,7 +31,7 @@ public final class PlayerWormHole extends PlayerStaticFar {
       this.geometry.moveTo(var3, var4, var5);
       char var8 = '\u9c40';
       Player var7 = this.player;
-      this.player.var_21b = (float)var8;
+      this.player.radius = (float)var8;
 
       for(var1 = 0; var1 < 10; ++var1) { // Default: 10
          (var2 = AEResourceManager.getGeometryResource(6806)).setTransform(this.mainMesh_.getToParentTransform());

@@ -243,7 +243,7 @@ public final class AEResourceManager {
 			e.printStackTrace();
 			try {
 				GlobalStatus.CATCHED_ERROR = "BLYAT! CHECK IMAGE <" + filePath + "> BLYAT! SUKA!";
-				return Image.createImage("/Resource/error.png");
+				return Image.createImage("/assets/textures/error.png");
 			} catch (IOException ex) {
 				;
 			}
