@@ -1,7 +1,3 @@
-/**
-* @class Vortex generator
-*/
-
 package GoF2;
 
 import AE.AEResourceManager;
@@ -9,6 +5,7 @@ import AE.AbstractMesh;
 import AE.GlobalStatus;
 import AE.Group;
 import AE.Math.AEVector3D;
+import AE.PaintCanvas.AEGraphics3D;
 
 public final class PlayerWormHole extends PlayerStaticFar {
 
@@ -111,14 +108,15 @@ public final class PlayerWormHole extends PlayerStaticFar {
          this.tempVector_ = GlobalStatus.renderer.sub_85().getLocalPos(this.tempVector_);
          this.position.set(this.var_249, this.var_352, this.var_3c2);
          this.position.subtract(this.tempVector_, virtDistToCam_);
-         if((var5 = virtDistToCam_.getLength()) > 28000) {
-            virtDistToCam_.normalize();
-            virtDistToCam_.scale(28000);
-            virtDistToCam_.add(this.tempVector_);
-            this.geometry.moveTo(virtDistToCam_);
-            var2 = (int)(28000.0F / (float)var5 * (float)this.scale);
-            this.geometry.setScale(var2, var2, var2);
-         } else {
+         var5 = virtDistToCam_.getLength();
+            if (var5 > AEGraphics3D.CLAMP_MID) {
+                virtDistToCam_.normalize();
+                virtDistToCam_.scale(AEGraphics3D.CLAMP_MID);
+                virtDistToCam_.add(this.tempVector_);
+                this.geometry.moveTo(virtDistToCam_);
+                var2 = (int)((float)AEGraphics3D.CLAMP_MID / var5 * this.scale);
+                this.geometry.setScale(var2, var2, var2);
+            } else {
             this.geometry.setScale(this.scale, this.scale, this.scale);
             this.geometry.moveTo(this.var_249, this.var_352, this.var_3c2);
          }

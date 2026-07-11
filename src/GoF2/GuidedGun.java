@@ -1,3 +1,11 @@
+/**
+
+
+AUTO-AIM GUNS. NEED FOR THERMAL WEAPONS.
+
+
+**/
+
 package GoF2;
 
 import AE.AbstractMesh;
@@ -12,19 +20,23 @@ public final class GuidedGun extends ObjectGun {
     private AEVector3D direction = new AEVector3D();
     private Radar radar;
     private boolean hasRadar = false;
-    
     private Trail[] trails;
     private static AEVector3D tempPos = new AEVector3D();
 
     public GuidedGun(Gun var1, AbstractMesh var2) {
         super(var1, var2);
-        
-        this.trails = new Trail[var1.projectilesPos.length];
-        for (int i = 0; i < this.trails.length; i++) {
-            this.trails[i] = new Trail(1);
-            this.trails[i].setWidth(100);
-        }
-    }
+		
+		if(GlobalStatus.EFFECTS_QUALITY) {
+			this.trails = new Trail[var1.projectilesPos.length];
+			
+			for(int i = 0; i < this.trails.length; i++) {
+				this.trails[i] = new Trail(5, 16);
+				this.trails[i].setWidth(80);
+			}
+			
+		}
+		
+	}
 
     public final void setRadar(Radar var1) {
         this.radar = var1;
@@ -37,21 +49,21 @@ public final class GuidedGun extends ObjectGun {
         if(this.gun.inAir) {
             int dt = (int)var1;
             Player lockedTarget = null;
-            if (this.hasRadar && this.radar != null) {
+            if(this.hasRadar && this.radar != null) {
                 KIPlayer lockedEnemy = this.radar.getLockedEnemy();
-                if (lockedEnemy != null && lockedEnemy.player.isActive() && 
+                if(lockedEnemy != null && lockedEnemy.player.isActive() && 
                     !lockedEnemy.player.isDead() && !lockedEnemy.player.isAsteroid()) {
                     lockedTarget = lockedEnemy.player;
                 }
             }
             
             for(int i = 0; i < this.gun.projectilesPos.length; i++) {
-                if(this.gun.fired && this.gun.projectilesTimeLeft[i] > 0) {
-                    this.trails[i].reset(this.gun.projectilesPos[i]);
-                }
+                if(GlobalStatus.EFFECTS_QUALITY && this.gun.fired && this.gun.projectilesTimeLeft[i] > 0) {
+					this.trails[i].reset(this.gun.projectilesPos[i]);
+				}
                 
                 if(this.gun.projectilesTimeLeft[i] > 0) {
-                    if(lockedTarget != null && this.gun.projectilesTimeLeft[i] < this.gun.range - 80) {
+                    if(lockedTarget != null && this.gun.projectilesTimeLeft[i] < this.gun.range) {
                         lockedTarget.getPosition(targetPos);
                         dirToTarget.x = targetPos.x - this.gun.projectilesPos[i].x;
                         dirToTarget.y = targetPos.y - this.gun.projectilesPos[i].y;
@@ -87,8 +99,12 @@ public final class GuidedGun extends ObjectGun {
                     }
                     
                     tempPos.set(this.gun.projectilesPos[i]);
-                    this.trails[i].update(tempPos);
-                }
+					
+					if(GlobalStatus.EFFECTS_QUALITY) {
+						this.trails[i].update(tempPos);
+					}
+					
+				}
             }
             
             this.gun.fired = false;
@@ -96,7 +112,7 @@ public final class GuidedGun extends ObjectGun {
     }
     
     public void render() {
-        if(this.gun.inAir && this.trails != null) {
+        if(GlobalStatus.EFFECTS_QUALITY && this.gun.inAir && this.trails != null) {
             for(int i = 0; i < this.trails.length; i++) {
                 if(this.gun.projectilesTimeLeft[i] > 0) {
                     this.trails[i].render();
@@ -109,7 +125,7 @@ public final class GuidedGun extends ObjectGun {
     
     public void OnRelease() {
         super.OnRelease();
-        if(this.trails != null) {
+        if(GlobalStatus.EFFECTS_QUALITY && this.trails != null) {
             for(int i = 0; i < this.trails.length; i++) {
                 if(this.trails[i] != null) {
                     this.trails[i].OnRelease();

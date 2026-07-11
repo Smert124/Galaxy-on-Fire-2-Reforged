@@ -1271,10 +1271,10 @@ public final class PlayerEgo {
 	  }
 	  
       if(this.miningGame != null) {
-         this.miningGame.render2D(); // ������ �������
+         this.miningGame.render2D();
       } else {
          if(!this.autoDriven && !this.isDead() && !this.freeze && var1 && !this.lockedOnAsteroid && !this.jumpingToNeighbourPlanet && !this.jumpGating && !this.autopilotActive) {
-            this.crosshair.draw(); // ����� �� �������
+            this.crosshair.draw();
          }
 
       }

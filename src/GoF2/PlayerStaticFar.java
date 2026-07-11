@@ -3,7 +3,9 @@ package GoF2;
 import AE.AbstractMesh;
 import AE.BoundingVolume;
 import AE.GlobalStatus;
+import AE.Math.AEMath;
 import AE.Math.AEVector3D;
+import AE.PaintCanvas.AEGraphics3D;
 
 
 public class PlayerStaticFar extends PlayerStatic {
@@ -33,15 +35,15 @@ public class PlayerStaticFar extends PlayerStatic {
          this.tempVector_ = GlobalStatus.renderer.sub_85().getLocalPos(this.tempVector_);
          this.position.set(this.var_249, this.var_352, this.var_3c2);
          this.position.subtract(this.tempVector_, virtDistToCam_);
-         int var3;
-         if((var3 = virtDistToCam_.getLength()) > 28000) {
-            virtDistToCam_.normalize();
-            virtDistToCam_.scale(28000);
-            virtDistToCam_.add(this.tempVector_);
-            this.mainMesh_.moveTo(virtDistToCam_);
-            var3 = (int)(28000.0F / (float)var3 * 4096.0F);
-            this.mainMesh_.setScale(var3, var3, var3);
-         } else {
+         int var3 = virtDistToCam_.getLength();
+		 if(var3 > AEGraphics3D.CLAMP_MID) {
+			 virtDistToCam_.normalize();
+			 virtDistToCam_.scale(AEGraphics3D.CLAMP_MID);
+			 virtDistToCam_.add(this.tempVector_);
+			 this.mainMesh_.moveTo(virtDistToCam_);
+			 var3 = (int)((float)AEGraphics3D.CLAMP_MID / var3 * AEMath.TO_Q);
+			 this.mainMesh_.setScale(var3, var3, var3);
+		 } else {
             this.mainMesh_.setScale(4096, 4096, 4096);
             this.mainMesh_.moveTo(this.var_249, this.var_352, this.var_3c2);
          }

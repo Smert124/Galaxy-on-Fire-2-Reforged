@@ -480,59 +480,59 @@ public final class Level {
       Sparks var11 = this.gunSparks;
       AbstractMesh var14;
       switch(var3) {
-      case 0:
-      case 1:
-      case 3: // термо
+      case 0: // LASER
+			gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+			var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
+	  break;
+      case 1: // BLASTER
+			gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+			var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
+	  break;
+      case 3: // THERMO
          if(Globals.TYPE_WEAPONS[var1] >= 0) {
             int var16 = var3 == 0?800:400;
-            gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, var16), new AEVector3D());
             var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]);
-            if(var3 == 3) {
-               var3 = 300 + 70 * (var1 - 28);
-               var14.setScale(var3, var3, var3);
-               var14.setAnimationRangeInTime(var1 - 28 + 10, var1 - 28 + 10);
-               var14.setAnimationMode((byte)1);
-               gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
-			   gun.setSpread(20);
-            }
-
+			var3 = 300 + 70 * (var1 - 28);
+			var14.setScale(var3, var3, var3);
+			var14.setAnimationRangeInTime(var1 - 28 + 10, var1 - 28 + 10);
+			var14.setAnimationMode((byte)1);
+			gun = new Gun(var2, var5, 200, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+			int spread = gun.calculateSpread(3, var7, var8, var6);
+			gun.setSpread(spread);
             var10 = new GuidedGun(gun, var14);
          } else {
-            gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D());
+            gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D()); // BEAM LASER
             var10 = new LaserGun(gun, var1, this);
          }
          break;
-      case 2: // пулеметы
+      case 2: // MACHINE GUN
          gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+		 int spread = gun.calculateSpread(2, var7, var8, var6);
+		 gun.setSpread(spread);
          var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
          break;
       case 4:
-      case 5: // самонаводящиеся ракеты
+      case 5: // GUIDED MISSLE
          gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(), new AEVector3D());
          (var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1])).setRenderLayer(2);
          var10 = new RocketGun(gun, var14, var3 == 5);
          var11 = this.missilesSparks;
          break;
       case 6:
-      case 7: // ядерное/EMP
+      case 7: // BOMB
          gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, -200, 400), new AEVector3D());
          AbstractMesh var12 = null;
-         int var13;
          if(var3 == 7) {
             var12 = AEResourceManager.getGeometryResource(18);
-            var13 = var1 - 44 + 1 << 9;
-            var12.setScale(var13, var13, var13);
          } else {
             var12 = AEResourceManager.getGeometryResource(16);
-            var13 = var1 - 41 + 1 << 9;
-            var12.setScale(var13, var13, var13);
          }
 
          var12.setRenderLayer(2);
          var10 = new RocketGun(gun, var12, false);
          var11 = this.missilesSparks;
          break;
-      case 8: // турели
+      case 8: // TURRET
          gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 0), new AEVector3D());
          var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
       }

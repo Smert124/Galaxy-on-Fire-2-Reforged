@@ -4,7 +4,9 @@ import AE.AbstractMesh;
 import AE.BoundingVolume;
 import AE.GlobalStatus;
 import AE.GraphNode;
+import AE.Math.AEMath;
 import AE.Math.AEVector3D;
+import AE.PaintCanvas.AEGraphics3D;
 
 
 public final class PlayerFixedObject extends KIPlayer {
@@ -156,15 +158,17 @@ public final class PlayerFixedObject extends KIPlayer {
       this.position.subtract(this.tempVector_, this.distToCamera);
       int var6;
       int var8;
-      if((var6 = this.distToCamera.getLength()) > 28000) {
-         this.geometry.setTransform(this.geometry.getToParentTransform());
-         this.distToCamera.normalize();
-         this.distToCamera.scale(28000);
-         this.distToCamera.add(this.tempVector_);
-         this.geometry.moveTo(this.distToCamera);
-         var8 = (int)(28000.0F / (float)var6 * 4096.0F);
-         this.geometry.setScale(var8, var8, var8);
-      } else {
+	  int var9_;
+      var6 = this.distToCamera.getLength();
+        if (var6 > AEGraphics3D.CLAMP_MID) {
+            this.geometry.setTransform(this.geometry.getToParentTransform());
+            this.distToCamera.normalize();
+            this.distToCamera.scale(AEGraphics3D.CLAMP_MID);
+            this.distToCamera.add(this.tempVector_);
+            this.geometry.moveTo(this.distToCamera);
+            var9_ = (int)((float)AEGraphics3D.CLAMP_MID / var6 * AEMath.TO_Q);
+            this.geometry.setScale(var9_, var9_, var9_);
+        } else {
          this.geometry.setScale(4096, 4096, 4096);
          this.geometry.moveTo(this.posX, this.posY, this.posZ);
       }

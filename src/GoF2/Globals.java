@@ -828,10 +828,10 @@ public final class Globals {
 		AEResourceManager.addSkyboxResource(10009, PATH_MESHES + "skyboxes/skybox.aem", skybox09);
 		AEResourceManager.addSkyboxResource(10010, PATH_MESHES + "skyboxes/skybox.aem", skybox10);
 		
-		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran.m3g", 5000, 0);
-		AEResourceManager.addGeometryResource(16, PATH_MESHES + "projectiles/emp.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(16, PATH_MESHES + "projectiles/scanner_probe.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "misc/box.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(18, PATH_MESHES + "projectiles/nuke.m3g", 2000, 0);
+		AEResourceManager.addGeometryResource(18, PATH_MESHES + "projectiles/bomb_normal.aem", 2000, tex_fx);
 		
 		
 		
@@ -1230,7 +1230,7 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6779, PATH_MESHES + "galaxymap/orbit.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6781, PATH_MESHES + "galaxymap/map_sun.m3g", 15000, 1);
 		AEResourceManager.addGeometryResource(6782, PATH_MESHES + "asteroids/asteroid_explo.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "fx/Khador_jump.m3g", 2000, 1);
+		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "fx/hyperdrive_add.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(6784, PATH_MESHES + "projectiles/gunshot_0.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6785, PATH_MESHES + "projectiles/gunshot_1.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6786, PATH_MESHES + "projectiles/gunshot_2.m3g", 2000, 1);
@@ -1279,36 +1279,36 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(3111, PATH_MESHES + "galaxymap/sd_sn_map_sun_011_add.aem", 2000, tex_sn_galaxymap_planets);
 		
 		int planetBoundingSphere = 2000;
-		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_0);
-		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_1);
-		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_2);
-		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_3);
-		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_4);
-		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_5);
-		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_6);
-		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_7);
-		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_8);
-		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_9);
-		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_10);
-		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_11);
-		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_12);
-		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_13);
-		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_14);
-		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_15);
-		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_16);
-		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_17);
-		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_18);
-		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_19);
-		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_20);
-		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_21);
-		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_22);
-		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_23);
-		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_24);
-		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_25);
-		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_26);
-		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_27);
-		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_28);
-		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "misc/plane_alpha.aem", planetBoundingSphere, tex_planet_29);
+		AEResourceManager.addGeometryResource(3200, PATH_MESHES + "misc/planets/planet_0_alpha.aem", planetBoundingSphere, tex_planet_0);
+		AEResourceManager.addGeometryResource(3201, PATH_MESHES + "misc/planets/planet_1_alpha.aem", planetBoundingSphere, tex_planet_1);
+		AEResourceManager.addGeometryResource(3202, PATH_MESHES + "misc/planets/planet_2_alpha.aem", planetBoundingSphere, tex_planet_2);
+		AEResourceManager.addGeometryResource(3203, PATH_MESHES + "misc/planets/planet_3_alpha.aem", planetBoundingSphere, tex_planet_3);
+		AEResourceManager.addGeometryResource(3204, PATH_MESHES + "misc/planets/planet_4_alpha.aem", planetBoundingSphere, tex_planet_4);
+		AEResourceManager.addGeometryResource(3205, PATH_MESHES + "misc/planets/planet_5_alpha.aem", planetBoundingSphere, tex_planet_5);
+		AEResourceManager.addGeometryResource(3206, PATH_MESHES + "misc/planets/planet_6_alpha.aem", planetBoundingSphere, tex_planet_6);
+		AEResourceManager.addGeometryResource(3207, PATH_MESHES + "misc/planets/planet_7_alpha.aem", planetBoundingSphere, tex_planet_7);
+		AEResourceManager.addGeometryResource(3208, PATH_MESHES + "misc/planets/planet_8_alpha.aem", planetBoundingSphere, tex_planet_8);
+		AEResourceManager.addGeometryResource(3209, PATH_MESHES + "misc/planets/planet_9_alpha.aem", planetBoundingSphere, tex_planet_9);
+		AEResourceManager.addGeometryResource(3210, PATH_MESHES + "misc/planets/planet_10_alpha.aem", planetBoundingSphere, tex_planet_10);
+		AEResourceManager.addGeometryResource(3211, PATH_MESHES + "misc/planets/planet_11_alpha.aem", planetBoundingSphere, tex_planet_11);
+		AEResourceManager.addGeometryResource(3212, PATH_MESHES + "misc/planets/planet_12_alpha.aem", planetBoundingSphere, tex_planet_12);
+		AEResourceManager.addGeometryResource(3213, PATH_MESHES + "misc/planets/planet_13_alpha.aem", planetBoundingSphere, tex_planet_13);
+		AEResourceManager.addGeometryResource(3214, PATH_MESHES + "misc/planets/planet_14_alpha.aem", planetBoundingSphere, tex_planet_14);
+		AEResourceManager.addGeometryResource(3215, PATH_MESHES + "misc/planets/planet_15_alpha.aem", planetBoundingSphere, tex_planet_15);
+		AEResourceManager.addGeometryResource(3216, PATH_MESHES + "misc/planets/planet_16_alpha.aem", planetBoundingSphere, tex_planet_16);
+		AEResourceManager.addGeometryResource(3217, PATH_MESHES + "misc/planets/planet_17_alpha.aem", planetBoundingSphere, tex_planet_17);
+		AEResourceManager.addGeometryResource(3218, PATH_MESHES + "misc/planets/planet_18_alpha.aem", planetBoundingSphere, tex_planet_18);
+		AEResourceManager.addGeometryResource(3219, PATH_MESHES + "misc/planets/planet_19_alpha.aem", planetBoundingSphere, tex_planet_19);
+		AEResourceManager.addGeometryResource(3220, PATH_MESHES + "misc/planets/planet_20_alpha.aem", planetBoundingSphere, tex_planet_20);
+		AEResourceManager.addGeometryResource(3221, PATH_MESHES + "misc/planets/planet_21_alpha.aem", planetBoundingSphere, tex_planet_21);
+		AEResourceManager.addGeometryResource(3222, PATH_MESHES + "misc/planets/planet_22_alpha.aem", planetBoundingSphere, tex_planet_22);
+		AEResourceManager.addGeometryResource(3223, PATH_MESHES + "misc/planets/planet_23_alpha.aem", planetBoundingSphere, tex_planet_23);
+		AEResourceManager.addGeometryResource(3224, PATH_MESHES + "misc/planets/planet_24_alpha.aem", planetBoundingSphere, tex_planet_24);
+		AEResourceManager.addGeometryResource(3225, PATH_MESHES + "misc/planets/planet_25_alpha.aem", planetBoundingSphere, tex_planet_25);
+		AEResourceManager.addGeometryResource(3226, PATH_MESHES + "misc/planets/planet_26_alpha.aem", planetBoundingSphere, tex_planet_26);
+		AEResourceManager.addGeometryResource(3227, PATH_MESHES + "misc/planets/planet_27_alpha.aem", planetBoundingSphere, tex_planet_27);
+		AEResourceManager.addGeometryResource(3228, PATH_MESHES + "misc/planets/planet_28_alpha.aem", planetBoundingSphere, tex_planet_28);
+		AEResourceManager.addGeometryResource(3229, PATH_MESHES + "misc/planets/planet_29_alpha.aem", planetBoundingSphere, tex_planet_29);
 		
 		AEResourceManager.addGeometryResource(6754, PATH_MESHES + "projectiles/laser_orange_add.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "projectiles/laser_yellow_add.aem", 2000, tex_fx);
@@ -1375,8 +1375,8 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6555, PATH_MESHES + "debug/test_1.aem", 5000, 1);
 		AEResourceManager.addGeometryResource(6655, PATH_MESHES + "debug/test_2.aem", 5000, 1);
 		AEResourceManager.addGeometryResource(6755, PATH_MESHES + "debug/test_3.aem", 5000, 1);
-		AEResourceManager.addGeometryResource(6855, PATH_MESHES + "debug/test_1_add.aem", 5000, tex_fx);
-		AEResourceManager.addGeometryResource(6955, PATH_MESHES + "debug/test_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(6855, PATH_MESHES + "debug/submesh_test_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(6955, PATH_MESHES + "debug/submesh_test_ship.aem", 5000, tex_pirates);
 		AEResourceManager.addGeometryResource(6965, PATH_MESHES + "debug/test_3_add.aem", 5000, tex_fx);
 		
 	}

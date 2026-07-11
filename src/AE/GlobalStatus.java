@@ -114,6 +114,7 @@ public final class GlobalStatus {
    public static int textures = 0;
    public static int nebulas = 0;
    public static boolean MODELS_QUALITY = false;
+   public static boolean EFFECTS_QUALITY = false;
    public static String[] texture_size = {"Low", "Medium", "High", "Ultra"};
    public static boolean bigInterface = false;
    public static int asteroid = 1;

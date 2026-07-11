@@ -793,7 +793,7 @@ public final class MGame extends IApplicationModule {
          this.camera.translate((int)this.frameTime * 3, 0, 0);
          this.camera.translate(0, 0, -((int)this.frameTime) << 1);
          var1 = (int)this.frameTime << 2;
-         this.jumpFlash.rotateEuler(var1, var1, var1);
+         this.jumpFlash.rotateEuler(0, 0, 0);
       } else {
          this.egoJumpPos = ((PlayerJumpgate)this.level.getLandmarks()[1]).getTargetPos_(this.egoJumpPos);
          this.camera.translate((int)this.frameTime * 5, 0, 0);

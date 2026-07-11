@@ -10,6 +10,7 @@ import AE.GlobalStatus;
 import AE.Math.AEMath;
 import AE.Math.AEVector3D;
 import AE.Math.Matrix;
+import AE.PaintCanvas.AEGraphics3D;
 
 
 public final class PlayerStation extends PlayerStaticFar {
@@ -164,15 +165,15 @@ public final class PlayerStation extends PlayerStaticFar {
 				this.tempVector_ = GlobalStatus.renderer.sub_85().getLocalPos(this.tempVector_);
 				this.position.set(this.partPositions[var3 * 3], this.partPositions[var3 * 3 + 1], this.partPositions[var3 * 3 + 2]);
 				this.position.subtract(this.tempVector_, virtDistToCam_);
-				int var2;
-				if((var2 = virtDistToCam_.getLength()) > 28000) {
-					virtDistToCam_.normalize();
-					virtDistToCam_.scale(28000);
-					virtDistToCam_.add(this.tempVector_);
-					this.stationParts[var3].moveTo(virtDistToCam_);
-					var2 = (int)(28000.0F / (float)var2 * 4096.0F);
-					this.stationParts[var3].setScale(var2, var2, var2);
-				} else {
+				int var2 = virtDistToCam_.getLength();
+				if (var2 > AEGraphics3D.CLAMP_TOP) {
+                    virtDistToCam_.normalize();
+                    virtDistToCam_.scale(AEGraphics3D.CLAMP_TOP);
+                    virtDistToCam_.add(this.tempVector_);
+                    this.stationParts[var3].moveTo(virtDistToCam_);
+                    var2 = (int)((float)AEGraphics3D.CLAMP_TOP / var2 * AEMath.TO_Q);
+                    this.stationParts[var3].setScale(var2, var2, var2);
+                } else {
 					this.stationParts[var3].setScale(4096, 4096, 4096);
 					this.stationParts[var3].moveTo(this.partPositions[var3 * 3], this.partPositions[var3 * 3 + 1], this.partPositions[var3 * 3 + 2]);
 				}

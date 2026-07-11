@@ -10,6 +10,7 @@ import AE.IApplicationModule;
 import AE.LookAtCamera;
 import AE.Math.AEMath;
 import AE.Math.Matrix;
+import AE.PaintCanvas.AEGraphics3D;
 import AE.TargetFollowCamera;
 import GoF2.Globals;
 import GoF2.KIPlayer;
@@ -69,7 +70,7 @@ public final class CutScene extends IApplicationModule {
       switch(this.sceneId) {
       case 4:
          if(this.gameCam_ == null) {
-            this.gameCam_ = AECamera.create(GlobalStatus.var_e75, GlobalStatus.var_eb6, 700, 100, 32000);
+            this.gameCam_ = AECamera.create(GlobalStatus.var_e75, GlobalStatus.var_eb6, 1024, 200, AEGraphics3D.CLAMP_MID);
             this.gameCam_.setRotationOrder((short)2);
          }
 

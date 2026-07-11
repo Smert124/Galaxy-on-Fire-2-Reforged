@@ -1045,7 +1045,7 @@ public final class OptionsWindow {
 					this.updateMusicLevel();
 				return;
 				case 6:
-					--GlobalStatus.nebulas;
+					GlobalStatus.EFFECTS_QUALITY = !GlobalStatus.EFFECTS_QUALITY;
 					this.updateMusicLevel();
 				return;
 				case 7:
@@ -1147,16 +1147,6 @@ public final class OptionsWindow {
 		  GlobalStatus.texture_type[GlobalStatus.textures] = 256;
 	  }
 	  
-	  if(GlobalStatus.nebulas < 0)
-	  {
-		GlobalStatus.nebulas = 3;
-      }
-	  
-	  if(GlobalStatus.nebulas > 3)
-	  {
-		GlobalStatus.nebulas = 0;
-	  }
-	  
 	  if(GlobalStatus.asteroid < 0)
 	  {
 		GlobalStatus.asteroid = 5;
@@ -1236,7 +1226,7 @@ public final class OptionsWindow {
 					this.updateMusicLevel();
 				return;
 				case 6:
-					++GlobalStatus.nebulas;
+					GlobalStatus.EFFECTS_QUALITY = !GlobalStatus.EFFECTS_QUALITY;
 					this.updateMusicLevel();
 				return;
 				case 7:
@@ -1483,7 +1473,7 @@ public final class OptionsWindow {
 			Layout.drawTextItem(GlobalStatus.gameText.getText(538) + " " + GlobalStatus.gameText.getText(GlobalStatus.MODELS_QUALITY?551:550), AEButtonSettings[3].standartButtonX, AEButtonSettings[3].standartButtonY, windowWidth, this.selectedRow == 5); // models quality
 			
 			AEButtonSettings[4].drawStandartButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, AEButtonSettings[2].standartButtonX + AEButtonSettings[2].standartButtonWidth + 2, AEButtonSettings[2].standartButtonY);
-			Layout.drawTextItem(GlobalStatus.gameText.getText(539) + " " + GlobalStatus.texture_size[GlobalStatus.nebulas], AEButtonSettings[4].standartButtonX, AEButtonSettings[4].standartButtonY, windowWidth, this.selectedRow == 6); // fogs
+			Layout.drawTextItem(GlobalStatus.gameText.getText(539) + " " + GlobalStatus.gameText.getText(GlobalStatus.EFFECTS_QUALITY?551:550), AEButtonSettings[4].standartButtonX, AEButtonSettings[4].standartButtonY, windowWidth, this.selectedRow == 6); // fogs
 			
 			
 			AEButtonCheckBoxSettings[2].drawswitchableButton(Globals.rectRoundedButtonNormal, Globals.rectRoundedButtonPressed, Globals.rectRoundedButtonInactive, AEButtonSettings[2].standartButtonX, AEButtonSettings[2].standartButtonY + AEButtonSettings[2].standartButtonHeight + 2, asteroids);

@@ -21,7 +21,7 @@ public final class PlayerJumpgate extends PlayerStaticFar {
          this.mainMesh_.setAnimationMode((byte)2);
       }
 
-      var2.setRotation(-1024, 0, 0);
+      var2.setRotation(0, 0, 0);
       this.animationInit = false;
    }
 

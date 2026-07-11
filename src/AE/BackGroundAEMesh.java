@@ -5,7 +5,7 @@ import javax.microedition.m3g.CompositingMode;
 import javax.microedition.m3g.Material;
 import javax.microedition.m3g.Mesh;
 import javax.microedition.m3g.Node;
-import javax.microedition.m3g.PolygonMode;
+import javax.microedition.m3g.Object3D;
 import javax.microedition.m3g.Texture2D;
 import javax.microedition.m3g.Transform;
 
@@ -19,19 +19,24 @@ public final class BackGroundAEMesh extends AbstractMesh {
    private static CompositingMode compositing;
 
    public BackGroundAEMesh(String path) {
-      String var2 = path;
-      BackGroundAEMesh var5 = this;
-
       try {
-         AEMesh aeMeshLoader = new AEMesh(0, var2, 0);
-         var5.mesh = aeMeshLoader.node;
-      } catch (Exception var4) {
+         Object3D[] objects = AEMeshLoader.loadAEMesh(path);
+         
+         if (objects != null && objects.length > 0) {
+            for (int i = 0; i < objects.length; i++) {
+               if (objects[i] instanceof javax.microedition.m3g.Group) {
+                  this.mesh = (Node) objects[i];
+                  break;
+               }
+            }
+         }
+      } catch (Exception e) {
          this.mesh = null;
-         var4.printStackTrace();
+         e.printStackTrace();
       }
 
       this.radius = 0;
-      if(compositing == null) {
+      if (compositing == null) {
          (compositing = new CompositingMode()).setBlending(CompositingMode.ALPHA);
          compositing.setDepthTestEnable(true);
          compositing.setDepthWriteEnable(false);
@@ -46,15 +51,16 @@ public final class BackGroundAEMesh extends AbstractMesh {
    }
 
    public final void render() {
-      this.matrix.toFloatArray(tranformFloatArr);
-      tranformFloatArr[3] = tranformFloatArr[7] = tranformFloatArr[11] = 0.0F;
-      tranformFloatArr[7] = 0.0F;
-      transform.set(tranformFloatArr);
-	  AEGraphics3D.graphics3D.render(this.mesh, transform);
+      if (this.mesh != null) {
+         this.matrix.toFloatArray(tranformFloatArr);
+         tranformFloatArr[3] = tranformFloatArr[7] = tranformFloatArr[11] = 0.0F;
+         transform.set(tranformFloatArr);
+         AEGraphics3D.graphics3D.render(this.mesh, transform);
+      }
    }
 
    public final void appendToRender(AECamera var1, Renderer var2) {
-      if(this.draw) {
+      if (this.draw) {
          this.matrix = var1.tempTransform.getInverse(this.matrix);
          var2.drawNode(this.renderLayer, this);
       }
@@ -65,41 +71,56 @@ public final class BackGroundAEMesh extends AbstractMesh {
    }
 
    public final void setTexture(ITexture var1) {
-	   this.setTexture((Mesh)this.mesh, ((JSRTexture)var1).getTexturesArray());
+      if (this.mesh == null || var1 == null) {
+         return;
+      }
+      
+      Texture2D[] textures = ((JSRTexture) var1).getTexturesArray();
+      
+      if (textures == null || textures.length == 0) {
+         return;
+      }
+      
+      if (this.mesh instanceof javax.microedition.m3g.Group) {
+         this.setTexture((javax.microedition.m3g.Group) this.mesh, textures);
+      }
    }
 
-   private void setTexture(Mesh var1, Texture2D[] var2) {
-      if (var1 != null) {
-         for(int var3 = 0; var3 < var1.getSubmeshCount(); ++var3) {
-            Appearance var4 = var1.getAppearance(var3);
-            if (var4 == null) {
-               var4 = new Appearance();
-               var1.setAppearance(var3, var4);
-               //System.out.println("Created new Appearance for submesh: " + var3);
-            }
-            var4.setMaterial((Material)null);
-			PolygonMode polygonMode = new PolygonMode();
-            polygonMode.setPerspectiveCorrectionEnable(true);
-            var4.setPolygonMode(polygonMode);
-            var4.setCompositingMode(compositing);
-            if(var2 != null && var2.length > 0) {
-               int var5 = var1.getUserID();
-               if(var5 < var2.length) {
-                  var4.setTexture(0, var2[var5]);
-                  //System.out.println("Set texture for submesh: " + var3 + " to " + var2[var5]);
-               } else {
-                  var4.setTexture(0, var2[0]);
-                  //System.out.println("Set default texture for submesh: " + var3 + " to " + var2[0]);
+   private void setTexture(javax.microedition.m3g.Group group, Texture2D[] textures) {
+      if (group == null || textures == null) {
+         return;
+      }
+      
+      for (int i = 0; i < group.getChildCount(); ++i) {
+         Node node;
+         if ((node = group.getChild(i)) instanceof Mesh) {
+            final int uid = ((Mesh) node).getUserID();
+
+            for (int j = 0; j < ((Mesh) node).getSubmeshCount(); ++j) {
+               Appearance appearance = ((Mesh) node).getAppearance(j);
+               if (appearance == null) {
+                  appearance = new Appearance();
+                  ((Mesh) node).setAppearance(j, appearance);
                }
-            } else {
-               //System.out.println("No textures available for submesh: " + var3);
+               
+               appearance.setMaterial((Material) null);
+               appearance.setCompositingMode(compositing);
+               
+               // Убираем проверку appearance.getTexture(0) != null
+               // Применяем текстуру всегда
+               if (uid < textures.length) {
+                  appearance.setTexture(0, textures[uid]);
+               } else {
+                  appearance.setTexture(0, textures[0]);
+               }
             }
+         } else if (node instanceof javax.microedition.m3g.Group) {
+            this.setTexture((javax.microedition.m3g.Group) node, textures);
          }
-      } else {
-         //System.out.println("Mesh is null");
       }
    }
 
    public final void OnRelease() {
+      this.mesh = null;
    }
 }

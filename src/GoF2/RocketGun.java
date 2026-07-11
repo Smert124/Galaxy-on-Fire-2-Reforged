@@ -7,7 +7,7 @@ import AE.Math.AEVector3D;
 
 public final class RocketGun extends ObjectGun {
 
-   private Trail trail = new Trail(1);
+   private Trail trail;
    private static AEVector3D tempPos;
    private static AEVector3D postion;
    private static AEVector3D direction = new AEVector3D();
@@ -20,7 +20,12 @@ public final class RocketGun extends ObjectGun {
 
    public RocketGun(Gun var1, AbstractMesh var2, boolean var3) {
       super(var1, (AbstractMesh)null);
-      this.trail.setWidth(100);
+	  
+	  if(GlobalStatus.EFFECTS_QUALITY) {
+		  this.trail = new Trail(1, this.gun.range / 100);
+		  this.trail.setWidth(80);
+	  }
+	  
       this.rocketMesh_ = var2;
       this.guided = var3;
       tempPos = new AEVector3D();
@@ -28,7 +33,7 @@ public final class RocketGun extends ObjectGun {
 
    public final void OnRelease() {
       super.OnRelease();
-      if(this.trail != null) {
+      if(GlobalStatus.EFFECTS_QUALITY && this.trail != null) {
          this.trail.OnRelease();
       }
 
@@ -38,7 +43,11 @@ public final class RocketGun extends ObjectGun {
    public final void render() {
       this.gun.renderSparks();
       if(this.gun.inAir) {
-         this.trail.render();
+		 
+		 if(GlobalStatus.EFFECTS_QUALITY) {
+			 this.trail.render();
+		 }
+		 
          this.rocketMesh_.updateTransform(true);
          GlobalStatus.renderer.drawNodeInVF(this.rocketMesh_);
       }
@@ -60,7 +69,11 @@ public final class RocketGun extends ObjectGun {
       this.gun.calcCharacterCollision(var1);
       tempPos.set(this.gun.projectilesPos[0]);
       if(this.gun.fired) {
-         this.trail.reset(tempPos);
+		 
+		 if(GlobalStatus.EFFECTS_QUALITY) {
+			 this.trail.reset(tempPos);
+		 }
+		 
          this.gun.fired = false;
       }
 
@@ -120,7 +133,11 @@ public final class RocketGun extends ObjectGun {
          }
 
          tempPos.set(this.gun.projectilesPos[0]);
-         this.trail.update(tempPos);
+		 
+		 if(GlobalStatus.EFFECTS_QUALITY) {
+			 this.trail.update(tempPos);
+		 }
+		 
          if(tempPos.z == '\uc350') {
             this.gun.inAir = false;
          }

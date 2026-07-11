@@ -65,9 +65,13 @@ public final class PlayerFighter extends KIPlayer {
       this.race = var2;
       this.initPos.set(var5, var6, var7);
       this.hasCargo = true;
-      this.trail = new Trail(var2 != 9 && var2 != 8?0:1);
-      this.trail.setWidth(80);
-      this.trail.reset(this.initPos);
+	  
+	  if(GlobalStatus.EFFECTS_QUALITY) {
+		  this.trail = new Trail(var2 != 9 && var2 != 8?7:5, 16); // for all trail color = 7 (dark blue), for voids and pirates color = 5 (red)
+		  this.trail.setWidth(100);
+		  this.trail.reset(this.initPos);
+	  }
+	  
       this.canBoost = true;
       this.speed = this.defaultSpeed;
       this.handling = this.defaultHandling;
@@ -93,7 +97,7 @@ public final class PlayerFighter extends KIPlayer {
 
    public final void OnRelease() {
       super.OnRelease();
-      if(this.trail != null) {
+      if(GlobalStatus.EFFECTS_QUALITY && this.trail != null) {
          this.trail.OnRelease();
       }
 
@@ -135,7 +139,7 @@ public final class PlayerFighter extends KIPlayer {
       this.var_521 = var3;
       this.geometry.moveTo(var1, var2, var3);
       this.initPos.set(var1, var2, var3);
-      if(this.trail != null) {
+      if(GlobalStatus.EFFECTS_QUALITY && this.trail != null) {
          this.trail.reset(this.initPos);
       }
 
@@ -231,7 +235,7 @@ public final class PlayerFighter extends KIPlayer {
 
          this.trailTick = (int)((long)this.trailTick + var1);
          if(this.trailTick > 200) {
-            if(this.trail != null) {
+            if(GlobalStatus.EFFECTS_QUALITY && this.trail != null) {
                this.trail.update(this.pos);
             }
 
@@ -708,7 +712,7 @@ public final class PlayerFighter extends KIPlayer {
          if(this.state != 4 && this.state != 3) {
             if(this.withinRenderDistance) {
                GlobalStatus.renderer.drawNodeInVF(this.geometry);
-               if(this.trail != null) {
+               if(GlobalStatus.EFFECTS_QUALITY && this.trail != null) {
                   this.trail.render();
                }
             } else {

@@ -152,7 +152,7 @@ public final class StarMap {
 
       for(int count = 0; count < this.stars.length; ++count) {
          int system_sun = this.systems[count].getStarTextureIndex();
-         this.stars[count] = AEResourceManager.getGeometryResource(3100 + system_sun); // сама звезда на карте
+         this.stars[count] = AEResourceManager.getGeometryResource(3100 + system_sun);
          this.stars[count].setAnimationRangeInTime(system_sun, system_sun);
          this.stars[count].setAnimationMode((byte)1);
          this.stars[count].setRenderLayer(2);
@@ -163,7 +163,7 @@ public final class StarMap {
       }
 
       if(Status.getCurrentCampaignMission() >= 32 && Status.wormholeSystem >= 0) {
-         this.wormhole = AEResourceManager.getGeometryResource(6805); // отображение червоточин на карте. Указана модель 6805, что соответствует червоточине.
+         this.wormhole = AEResourceManager.getGeometryResource(6805);
          this.wormhole.setDraw(true);
          this.wormhole.setAnimationSpeed(30);
          this.wormhole.setScale(512, 512, 512);
@@ -194,7 +194,7 @@ public final class StarMap {
 		 for(int i = 0; i < this.stars.length; ++i) {
 			 this.stars[i].rotateEuler(0, -1024, 0); // поворот звезды на карте галактики
 		 }
-         this.starNetCamera_ = AECamera.create(this.mapInnerWidth, this.mapInnerHeight + 20, 1000, 10, 31768);
+         this.starNetCamera_ = AECamera.create(this.mapInnerWidth, this.mapInnerHeight + 20, 1200, 10, 31768);
          this.starNetCamera_.translate(0, 0, -2500); // как-то искажает карту галактики
          this.starNetCamera_.rotateEuler(0, 2048, 0); // поворот всей карты галактики
          this.starNetCamera_.moveTo((int)this.scrollX * 20, (int)this.scrollY * 20, 0);
@@ -207,7 +207,7 @@ public final class StarMap {
       this.selectedSystem = Status.getSystem().getId();
       if(this.state == 3) {
          this.initStarSysMap();
-         this.starNetCamera_.setFoV(500);
+         this.starNetCamera_.setFoV(700);
          this.galaxyMapView = false;
          this.selectedPlanet = 0;
 
@@ -590,7 +590,7 @@ public final class StarMap {
             } else {
                if(this.galaxyMapView) {
                   this.initStarSysMap();
-                  this.starNetCamera_.setFoV(500);
+                  this.starNetCamera_.setFoV(700);
                } else {
                   for(var2 = 0; var2 < this.localStarAndPlanetsMeshes.length; ++var2) {
                      this.localStarAndPlanetsMeshes[var2] = null;
@@ -608,7 +608,7 @@ public final class StarMap {
                   }
 
                   this.localOrbits = null;
-                  this.starNetCamera_.setFoV(1000);
+                  this.starNetCamera_.setFoV(1200);
                   this.starNetCamera_.setRotation(0, 2048, 0);
                   this.starNetCamera_.moveTo((int)this.scrollX * 20, (int)this.scrollY * 20, this.starNetCamera_.getPosZ());
                   if(this.wormhole != null && this.galaxyMapGroup != null) {
@@ -991,7 +991,7 @@ public final class StarMap {
 		if(this.map_logo_image[this.systems[this.selectedSystem].getRace()] == null) {
 			this.map_logo_image[this.systems[this.selectedSystem].getRace()] = AEResourceManager.getImage(14 + this.systems[this.selectedSystem].getRace());
 		}
-		GlobalStatus.graphics.drawImage(this.map_logo_image[this.systems[this.selectedSystem].getRace()], 5, 18, 20); // Отображение логотипов на карте. Без них нет лагов
+		GlobalStatus.graphics.drawImage(this.map_logo_image[this.systems[this.selectedSystem].getRace()], 5, 18, 20);
 		Font.drawString(GlobalStatus.gameText.getText(219) + ": ", this.map_logo_image[this.systems[this.selectedSystem].getRace()].getWidth() + 10, 20, 0);
 		Font.drawString(GlobalStatus.gameText.getText(229 + this.systems[this.selectedSystem].getRace()), this.map_logo_image[this.systems[this.selectedSystem].getRace()].getWidth() + 10, 30, 1);
 		Font.drawString(GlobalStatus.gameText.getText(220) + ": ", this.map_logo_image[this.systems[this.selectedSystem].getRace()].getWidth() + 10, 40, 0);
@@ -1079,7 +1079,7 @@ public final class StarMap {
 
    }
 
-   private void drawOnScreenInfo(int var1, boolean var2) { // что-то про выбор текущей системы на карте и вид внутри системы
+   private void drawOnScreenInfo(int var1, boolean var2) {
       int var3;
       for(var3 = 0; var3 < this.var_10c3.length; ++var3) {
          this.var_10c3[var3] = null;
@@ -1245,6 +1245,6 @@ public final class StarMap {
       }
 
       this.popup.set(GlobalStatus.gameText.getText(243), true);
-      this.destinationConfirmPopupOpen = true; // хз зачем, вроде бы включается возможность перемещения в пространство войдов.
+      this.destinationConfirmPopupOpen = true;
    }
 }

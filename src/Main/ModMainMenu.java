@@ -99,7 +99,7 @@ public final class ModMainMenu extends IApplicationModule {
 
             if(var1 == 262144) {
                this.optionsWindow.update1_();
-			   System.out.println("3ed 262144");
+			   System.out.println("262144");
             }
 
             if(var1 == 16384) {

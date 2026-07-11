@@ -128,6 +128,7 @@ public final class RecordHandler {
          GlobalStatus.musicVolume = var2.readInt();
          GlobalStatus.sfxVolume = var2.readInt();
          GlobalStatus.sfxOn = var2.readBoolean();
+		 GlobalStatus.EFFECTS_QUALITY = var2.readBoolean();
 		// SharedVariables.cheat_mode = var2.readBoolean();
          var2.close();
          var6.close();
@@ -174,6 +175,7 @@ public final class RecordHandler {
          var2.writeInt(GlobalStatus.musicVolume);
          var2.writeInt(GlobalStatus.sfxVolume);
          var2.writeBoolean(GlobalStatus.sfxOn);
+		 var2.writeBoolean(GlobalStatus.EFFECTS_QUALITY);
 		// var2.writeBoolean(SharedVariables.cheat_mode);
          var2.close();
          var1.close();

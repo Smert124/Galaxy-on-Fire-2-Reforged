@@ -1,5 +1,3 @@
-// blueprints
-
 package GoF2;
 
 

@@ -12,10 +12,19 @@ public class AEButtonManager {
     public final boolean debug = false;
     public interface_loader[] AEGraphics;
     
-    private int[] joystickPixels = null;
-    private int[] joystickBackgroundPixels = null;
-    private int[] switchableButtonPixels = null;
-    private int[] standartButtonPixels = null;
+    private boolean[] joystickPixelsOpaque = null;
+    private boolean[] joystickBackgroundPixelsOpaque = null;
+    private boolean[] switchableButtonPixelsOpaque = null;
+    private boolean[] standartButtonPixelsOpaque = null;
+    
+    private Image cachedJoystickNormal = null;
+    private Image cachedJoystickPressed = null;
+    private Image cachedJoystickBackground = null;
+    private Image cachedSwitchableNormal = null;
+    private Image cachedSwitchablePressed = null;
+    private Image cachedSwitchableInactive = null;
+    private Image cachedStandartNormal = null;
+    private Image cachedStandartPressed = null;
     
     private boolean joystickCacheInitialized = false;
     private boolean switchableCacheInitialized = false;
@@ -95,32 +104,68 @@ public class AEButtonManager {
         }
     }
     
+    /**
+     * Кеширует пиксельные данные изображений с оптимизацией по альфа-каналу.
+     */
     public void cachePixelData() {
-        if(!joystickCacheInitialized && joystickNormal != null) {
-            joystickPixels = new int[joystickWidth * joystickHeight];
-            joystickNormal.getRGB(joystickPixels, 0, joystickWidth, 
-                                  0, 0, joystickWidth, joystickHeight);
+        if(!joystickCacheInitialized || 
+           cachedJoystickNormal != joystickNormal || 
+           cachedJoystickPressed != joystickPressed ||
+           cachedJoystickBackground != joystickBackground) {
             
-            if(joystickBackground != null) {
-                joystickBackgroundPixels = new int[joystickBackgroundWidth * joystickBackgroundHeight];
-                joystickBackground.getRGB(joystickBackgroundPixels, 0, joystickBackgroundWidth,
-                                         0, 0, joystickBackgroundWidth, joystickBackgroundHeight);
+            if(joystickNormal != null) {
+                int[] tempPixels = new int[joystickWidth * joystickHeight];
+                joystickNormal.getRGB(tempPixels, 0, joystickWidth, 
+                                      0, 0, joystickWidth, joystickHeight);
+                
+                joystickPixelsOpaque = new boolean[joystickWidth * joystickHeight];
+                for(int i = 0; i < tempPixels.length; i++) {
+                    joystickPixelsOpaque[i] = (tempPixels[i] & 0xFF000000) != 0;
+                }
+                
+                cachedJoystickNormal = joystickNormal;
+                cachedJoystickPressed = joystickPressed;
+                
+                if(joystickBackground != null) {
+                    tempPixels = new int[joystickBackgroundWidth * joystickBackgroundHeight];
+                    joystickBackground.getRGB(tempPixels, 0, joystickBackgroundWidth,
+                                             0, 0, joystickBackgroundWidth, joystickBackgroundHeight);
+                    
+                    joystickBackgroundPixelsOpaque = new boolean[joystickBackgroundWidth * joystickBackgroundHeight];
+                    for(int i = 0; i < tempPixels.length; i++) {
+                        joystickBackgroundPixelsOpaque[i] = (tempPixels[i] & 0xFF000000) != 0;
+                    }
+                    
+                    cachedJoystickBackground = joystickBackground;
+                }
+                
+                joystickCacheInitialized = true;
             }
-            joystickCacheInitialized = true;
         }
     }
     
     public void drawStandartButton(Image normal, Image pressed, int buttonX, int buttonY) {
         if(normal != null && pressed != null) {
-            if(!standartCacheInitialized) {
+            if(!standartCacheInitialized || 
+               cachedStandartNormal != normal || 
+               cachedStandartPressed != pressed) {
+                
                 standartButtonNormal = normal;
                 standartButtonPressed = pressed;
                 standartButtonWidth = normal.getWidth();
                 standartButtonHeight = normal.getHeight();
                 
-                standartButtonPixels = new int[standartButtonWidth * standartButtonHeight];
-                normal.getRGB(standartButtonPixels, 0, standartButtonWidth,
+                int[] tempPixels = new int[standartButtonWidth * standartButtonHeight];
+                normal.getRGB(tempPixels, 0, standartButtonWidth,
                              0, 0, standartButtonWidth, standartButtonHeight);
+                
+                standartButtonPixelsOpaque = new boolean[standartButtonWidth * standartButtonHeight];
+                for(int i = 0; i < tempPixels.length; i++) {
+                    standartButtonPixelsOpaque[i] = (tempPixels[i] & 0xFF000000) != 0;
+                }
+                
+                cachedStandartNormal = normal;
+                cachedStandartPressed = pressed;
                 standartCacheInitialized = true;
             }
             
@@ -143,16 +188,29 @@ public class AEButtonManager {
     public void drawswitchableButton(Image normal, Image pressed, Image inactive, 
                                     int buttonX, int buttonY, boolean activity) {
         if(normal != null && pressed != null && inactive != null) {
-            if (!switchableCacheInitialized) {
+            if(!switchableCacheInitialized || 
+               cachedSwitchableNormal != normal || 
+               cachedSwitchablePressed != pressed ||
+               cachedSwitchableInactive != inactive) {
+                
                 switchableButtonNormal = normal;
                 switchableButtonPressed = pressed;
                 switchableButtonInactive = inactive;
                 switchableButtonWidth = normal.getWidth();
                 switchableButtonHeight = normal.getHeight();
                 
-                switchableButtonPixels = new int[switchableButtonWidth * switchableButtonHeight];
-                normal.getRGB(switchableButtonPixels, 0, switchableButtonWidth,
+                int[] tempPixels = new int[switchableButtonWidth * switchableButtonHeight];
+                normal.getRGB(tempPixels, 0, switchableButtonWidth,
                              0, 0, switchableButtonWidth, switchableButtonHeight);
+                
+                switchableButtonPixelsOpaque = new boolean[switchableButtonWidth * switchableButtonHeight];
+                for(int i = 0; i < tempPixels.length; i++) {
+                    switchableButtonPixelsOpaque[i] = (tempPixels[i] & 0xFF000000) != 0;
+                }
+                
+                cachedSwitchableNormal = normal;
+                cachedSwitchablePressed = pressed;
+                cachedSwitchableInactive = inactive;
                 switchableCacheInitialized = true;
             }
             
@@ -190,31 +248,28 @@ public class AEButtonManager {
                 joystickMoveCenterX = buttonX;
                 joystickMoveCenterY = buttonY;
             }
-			
+            
             if(AEGraphics[0] != null) {
                 AEGraphics[0].drawImage(joystickBackground, joystickXDefaultPosition, 
                                        joystickYDefaultPosition, 3);
             }
             
-            // Рисуем джойстик по центру его текущей позиции
             GlobalStatus.graphics.drawImage(joystickActive ? joystickPressed : joystickNormal,
                                            joystickX, joystickY, 3);
             
             if(debug) {
                 GlobalStatus.graphics.setColor(240, 0, 255);
-                // Показываем область касания (округ)
                 GlobalStatus.graphics.drawArc(joystickTouchCenterX - joystickTouchRadius,
                                             joystickTouchCenterY - joystickTouchRadius,
                                             joystickTouchRadius * 2, joystickTouchRadius * 2,
                                             0, 360);
-                // Показываем границы движения (округ)
                 GlobalStatus.graphics.drawArc(joystickMoveCenterX - joystickMoveMaxRadius,
                                             joystickMoveCenterY - joystickMoveMaxRadius,
                                             joystickMoveMaxRadius * 2, joystickMoveMaxRadius * 2,
                                             0, 360);
                 
                 GlobalStatus.graphics.setColor(255, 0, 0);
-                GlobalStatus.graphics.drawRect(joystickX - 1, joystickY - 1, 3, 3); // Центр джойстика
+                GlobalStatus.graphics.drawRect(joystickX - 1, joystickY - 1, 3, 3);
                 
                 Font.sub_14d_CENTER("X: " + getJoystickX() + ", Y: " + getJoystickY(),
                                    joystickX + (joystickWidth / 2), 
@@ -238,7 +293,7 @@ public class AEButtonManager {
             int relativeX = touchX - standartTouchBoundLeft;
             int relativeY = touchY - standartTouchBoundTop;
             
-            if(isPixelOpaqueOptimized(standartButtonPixels, standartButtonWidth, 
+            if(isPixelOpaque(standartButtonPixelsOpaque, standartButtonWidth, 
                                       relativeX, relativeY)) {
                 standartButtonActive = true;
             }
@@ -257,7 +312,7 @@ public class AEButtonManager {
             int relativeX = touchX - switchableTouchBoundLeft;
             int relativeY = touchY - switchableTouchBoundTop;
             
-            if(isPixelOpaqueOptimized(switchableButtonPixels, switchableButtonWidth,
+            if(isPixelOpaque(switchableButtonPixelsOpaque, switchableButtonWidth,
                                       relativeX, relativeY)) {
                 switchableButtonActive = true;
             }
@@ -280,7 +335,7 @@ public class AEButtonManager {
                 
                 if(relativeX >= 0 && relativeX < joystickWidth &&
                     relativeY >= 0 && relativeY < joystickHeight &&
-                    isPixelOpaqueOptimized(joystickPixels, joystickWidth, relativeX, relativeY)) {
+                    isPixelOpaque(joystickPixelsOpaque, joystickWidth, relativeX, relativeY)) {
                     joystickActive = true;
                 } else {
                     joystickActive = false;
@@ -291,7 +346,7 @@ public class AEButtonManager {
     }
     
     public void joystickDrag(int touchX, int touchY) {
-        if(!joystickActive || joystickBackgroundPixels == null) {
+        if(!joystickActive || joystickBackgroundPixelsOpaque == null) {
             return;
         }
         
@@ -315,7 +370,7 @@ public class AEButtonManager {
         
         joystickX = joystickMoveCenterX + deltaX;
         joystickY = joystickMoveCenterY + deltaY;
-		
+        
         joystickXFloat = -((float)deltaX / joystickMoveMaxRadius);
         
         if(GlobalStatus.invertedControlsOn) {
@@ -326,7 +381,7 @@ public class AEButtonManager {
         
         if(Math.abs(joystickXFloat) < deadZone) joystickXFloat = 0.0f;
         if(Math.abs(joystickYFloat) < deadZone) joystickYFloat = 0.0f;
-		
+        
         shipTilt = joystickXFloat * 384.0f;
     }
     
@@ -345,7 +400,26 @@ public class AEButtonManager {
         standartButtonActive = false;
     }
     
-    public boolean isPixelOpaqueOptimized(int[] pixelData, int width, int x, int y) {
+    /**
+     * Оптимизированная проверка пикселя на непрозрачность.
+     * 
+     * @param pixelData массив boolean с информацией о непрозрачности
+     * @return true если пиксель непрозрачный
+     */
+    public boolean isPixelOpaque(boolean[] pixelData, int width, int x, int y) {
+        if(x < 0 || y < 0 || x >= width) {
+            return false;
+        }
+        
+        int index = y * width + x;
+        if(index < 0 || index >= pixelData.length) {
+            return false;
+        }
+        
+        return pixelData[index];
+    }
+    
+    /* public boolean isPixelOpaqueOld(int[] pixelData, int width, int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= pixelData.length / width) {
             return false;
         }
@@ -354,40 +428,9 @@ public class AEButtonManager {
         if(index < 0 || index >= pixelData.length) {
             return false;
         }
-		
-        return (pixelData[index] & 0xFF000000) != 0;
-    }
-    
-    private float findMaxDistanceInDirection(int centerX, int centerY, int deltaX, int deltaY) {
-        if(deltaX == 0 && deltaY == 0) return 0;
-        float maxDistance = 0;
-        float length = (float)Math.sqrt(deltaX*deltaX + deltaY*deltaY);
-        float stepX = deltaX / length;
-        float stepY = deltaY / length;
         
-        for(float distance = 0; distance < length; distance += 1f) {
-            int x = centerX + (int)(stepX * distance);
-            int y = centerY + (int)(stepY * distance);
-            
-            int bgX = x - (centerX - joystickBackgroundWidth / 2);
-            int bgY = y - (centerY - joystickBackgroundHeight / 2);
-            
-            if(bgX < 0 || bgY < 0 || bgX >= joystickBackgroundWidth || bgY >= joystickBackgroundHeight) {
-                break;
-            }
-            
-            if(isPixelOpaqueOptimized(joystickBackgroundPixels, joystickBackgroundWidth, bgX, bgY)) {
-                maxDistance = distance;
-            } else {
-                break;
-            }
-        }
-        return maxDistance;
-    }
-    
-    public boolean isPixelOpaque(int[] pixelData, int width, int x, int y) {
-        return isPixelOpaqueOptimized(pixelData, width, x, y);
-    }
+        return (pixelData[index] & 0xFF000000) != 0;
+    } */
     
     public final boolean getStandartButtonPressed() {
         return standartButtonActive;
