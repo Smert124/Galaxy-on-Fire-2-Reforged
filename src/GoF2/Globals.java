@@ -204,6 +204,7 @@ public final class Globals {
    private static int tex_station_terran = 1096;
    private static int tex_col_test = 1097;
    private static int tex_spacejunk = 1098;
+   private static int tex_wormhole = 1099;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -729,6 +730,7 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_beams, PATH_TEXTURES + "beams");
 	   AEResourceManager.addTextureResource(tex_spacejunk, PATH_TEXTURES + "junk");
 	   AEResourceManager.addTextureResource(tex_station_terran, PATH_TEXTURES + "tex_station_terran");
+	   AEResourceManager.addTextureResource(tex_wormhole, PATH_TEXTURES + "wormhole");
 	   
 	   if(!GlobalStatus.MODELS_QUALITY) {
 		   MESHES_QUALITY = "/low/";
@@ -828,7 +830,8 @@ public final class Globals {
 		AEResourceManager.addSkyboxResource(10009, PATH_MESHES + "skyboxes/skybox.aem", skybox09);
 		AEResourceManager.addSkyboxResource(10010, PATH_MESHES + "skyboxes/skybox.aem", skybox10);
 		
-		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran.aem", 5000, tex_station_terran);
+		AEResourceManager.addGeometryResource(151, PATH_MESHES + "jumpgates/jumpgate_terran_nl.aem", 5000, tex_station_terran);
 		AEResourceManager.addGeometryResource(16, PATH_MESHES + "projectiles/scanner_probe.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "misc/box.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(18, PATH_MESHES + "projectiles/bomb_normal.aem", 2000, tex_fx);
@@ -1230,7 +1233,7 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6779, PATH_MESHES + "galaxymap/orbit.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6781, PATH_MESHES + "galaxymap/map_sun.m3g", 15000, 1);
 		AEResourceManager.addGeometryResource(6782, PATH_MESHES + "asteroids/asteroid_explo.m3g", 2000, 0);
-		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "fx/hyperdrive_add.aem", 2000, tex_fx);
+		AEResourceManager.addGeometryResource(6783, PATH_MESHES + "fx/khador_jump_add.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(6784, PATH_MESHES + "projectiles/gunshot_0.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6785, PATH_MESHES + "projectiles/gunshot_1.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6786, PATH_MESHES + "projectiles/gunshot_2.m3g", 2000, 1);

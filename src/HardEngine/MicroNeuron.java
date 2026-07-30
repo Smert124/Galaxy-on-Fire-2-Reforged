@@ -23,4 +23,14 @@ public class MicroNeuron {
             weights[i] += error * inputs[i] * learningRate;
         }
     }
+    
+    public float[] getWeights() {
+        return weights;
+    }
+    
+    public void setWeights(float[] newWeights) {
+        if(newWeights != null && newWeights.length == weights.length) {
+            System.arraycopy(newWeights, 0, weights, 0, newWeights.length);
+        }
+    }
 }

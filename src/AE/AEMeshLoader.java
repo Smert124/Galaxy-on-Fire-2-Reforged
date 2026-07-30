@@ -3,6 +3,7 @@ package AE;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.EOFException;
+import java.util.Hashtable;
 import javax.microedition.m3g.Group;
 import javax.microedition.m3g.Mesh;
 import javax.microedition.m3g.Object3D;
@@ -12,7 +13,7 @@ import javax.microedition.m3g.VertexBuffer;
 
 public class AEMeshLoader {
     
-    private static final java.util.Hashtable meshCache = new java.util.Hashtable();
+    private static final Hashtable meshCache = new Hashtable();
     private static short[] tempShortArray = null;
     private static int[] tempIntArray = null;
     private static float[] tempFloatArray = null;

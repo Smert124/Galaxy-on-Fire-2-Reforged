@@ -481,30 +481,32 @@ public final class Level {
       AbstractMesh var14;
       switch(var3) {
       case 0: // LASER
+		if(Globals.TYPE_WEAPONS[var1] >= 0) {
 			gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
 			var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
+		} else {
+			gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D()); // BEAM LASER
+            var10 = new LaserGun(gun, var1, this);
+		}
 	  break;
       case 1: // BLASTER
 			gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
 			var10 = new ObjectGun(gun, AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]));
 	  break;
       case 3: // THERMO
-         if(Globals.TYPE_WEAPONS[var1] >= 0) {
-            int var16 = var3 == 0?800:400;
-            var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]);
-			var3 = 300 + 70 * (var1 - 28);
-			var14.setScale(var3, var3, var3);
-			var14.setAnimationRangeInTime(var1 - 28 + 10, var1 - 28 + 10);
-			var14.setAnimationMode((byte)1);
-			gun = new Gun(var2, var5, 200, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
-			int spread = gun.calculateSpread(3, var7, var8, var6);
-			gun.setSpread(spread);
-            var10 = new GuidedGun(gun, var14);
-         } else {
-            gun = new Gun(var2, var5, 1, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 400), new AEVector3D()); // BEAM LASER
-            var10 = new LaserGun(gun, var1, this);
-         }
-         break;
+		int var16 = var3 == 0?800:400;
+		var14 = AEResourceManager.getGeometryResource(Globals.TYPE_WEAPONS[var1]);
+		var3 = 300 + 70 * (var1 - 28);
+		var14.setScale(var3, var3, var3);
+		var14.setAnimationRangeInTime(var1 - 28 + 10, var1 - 28 + 10);
+		var14.setAnimationMode((byte)1);
+		
+		gun = new Gun(var2, var5, 200, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
+		
+		int spread_thermo = gun.calculateSpread(3, var7, var8, var6);
+		gun.setSpread(spread_thermo);
+		var10 = new GuidedGun(gun, var14);
+		break;
       case 2: // MACHINE GUN
          gun = new Gun(var2, var5, 30, var4, var7, var6, (float)var8, new AEVector3D(0, 0, 200), new AEVector3D());
 		 int spread = gun.calculateSpread(2, var7, var8, var6);
