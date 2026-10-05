@@ -869,7 +869,7 @@ public final class MGame extends IApplicationModule {
          this.egoJumpPos.add(this.playerEgo.shipGrandGroup_.getDirection());
          this.jumpFlash.moveTo(this.egoJumpPos);
          this.jumpFlash.setAnimationMode((byte)1);
-         this.jumpFlash.setAnimationSpeed(30); // Unknown. Default: 30.
+         this.jumpFlash.setAnimationSpeed(50);
       } else {
          this.egoJumpPos = ((PlayerJumpgate)this.level.getLandmarks()[1]).getTargetPos_(this.egoJumpPos);
       }
