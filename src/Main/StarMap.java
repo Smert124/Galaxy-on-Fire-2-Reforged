@@ -154,7 +154,7 @@ public final class StarMap {
          int system_sun = this.systems[count].getStarTextureIndex();
          this.stars[count] = AEResourceManager.getGeometryResource(3100 + system_sun);
          this.stars[count].setAnimationRangeInTime(system_sun, system_sun);
-         this.stars[count].setAnimationMode((byte)1);
+         this.stars[count].setAnimationMode((byte)2);
          this.stars[count].setRenderLayer(2);
          this.stars[count].setRadius(5000);
          this.stars[count].setScale(128, 128, 128);
@@ -165,8 +165,9 @@ public final class StarMap {
       if(Status.getCurrentCampaignMission() >= 32 && Status.wormholeSystem >= 0) {
          this.wormhole = AEResourceManager.getGeometryResource(6805);
          this.wormhole.setDraw(true);
-         this.wormhole.setAnimationSpeed(30);
-         this.wormhole.setScale(512, 512, 512);
+         this.wormhole.setAnimationSpeed(50);
+         this.wormhole.setScale(128, 128, 128);
+         this.wormhole.setRotation(0, 2048, 0);
          this.wormhole.setAnimationMode((byte)2);
          this.wormhole.moveTo(this.stars[Status.wormholeSystem].getPostition());
          this.galaxyMapGroup.uniqueAppend_(this.wormhole);
@@ -192,10 +193,10 @@ public final class StarMap {
       this.lastCamera = GlobalStatus.renderer.sub_85();
       if(this.starNetCamera_ == null) {
 		 for(int i = 0; i < this.stars.length; ++i) {
-			 this.stars[i].rotateEuler(0, -1024, 0); // поворот звезды на карте галактики
+			 this.stars[i].setRotation(0, -1024, 0); // поворот звезды на карте галактики
 		 }
          this.starNetCamera_ = AECamera.create(this.mapInnerWidth, this.mapInnerHeight + 20, 1200, 10, 31768);
-         this.starNetCamera_.translate(0, 0, -2500); // как-то искажает карту галактики
+         this.starNetCamera_.translate(0, 0, -2500);
          this.starNetCamera_.rotateEuler(0, 2048, 0); // поворот всей карты галактики
          this.starNetCamera_.moveTo((int)this.scrollX * 20, (int)this.scrollY * 20, 0);
          this.starNetCamera_.updateTransform(true);
@@ -614,7 +615,8 @@ public final class StarMap {
                   if(this.wormhole != null && this.galaxyMapGroup != null) {
                      this.galaxyMapGroup.uniqueAppend_(this.wormhole);
                      this.wormhole.getToParentTransform().identity();
-                     this.wormhole.setScale(512, 512, 512);
+                     this.wormhole.setScale(128, 128, 128);
+                     this.wormhole.setRotation(0, 2048, 0);
                      this.wormhole.moveTo(this.stars[Status.wormholeSystem].getPostition());
                   }
                }
@@ -689,6 +691,7 @@ public final class StarMap {
                      var11 = 2048 + (AEMath.sin(var10.newSysAnimTimer + (var2 << 8)) >> 5);
                   }
                   var10.stars[var2].setScale(128, 128, 128); // размер солнца на карте галактики
+                  var10.stars[var2].setRotation(0, -1024, 0);
                }
 
                GlobalStatus.renderer.forceRenderModel(var10.galaxyMapGroup);
@@ -797,7 +800,8 @@ public final class StarMap {
             this.galaxyMapGroup.removeNode(this.wormhole);
          }
 
-         this.wormhole.setScale(256, 256, 256);
+         this.wormhole.setScale(128, 128, 128);
+         this.wormhole.setRotation(0, 2048, 0);
          this.wormhole.moveTo(this.localStarAndPlanetsMeshes[this.systems[this.selectedSystem].getStationEnumIndex(Status.wormholeStation) + 2].getPostition());
          this.localSystem.uniqueAppend_(this.wormhole);
       }

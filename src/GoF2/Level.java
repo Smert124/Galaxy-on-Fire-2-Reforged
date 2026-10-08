@@ -202,8 +202,9 @@ public final class Level {
                      (var5 = new Matrix()).setEulerY(var1.mgameIntroCamRotY);
                      (var3 = var5.transformVectorNoScale(var1.tempVec, var3)).y = 0;
                   }
-
-                  var1.var_3fd[var4] = new PlayerJumpgate(15, AEResourceManager.getGeometryResource(15), var3.x, var3.y, var3.z, var4 != 2); // jumpgate
+				  
+				  int gateRace = Status.getSystem() != null ? Status.getSystem().getRace() : 0;
+				  var1.var_3fd[var4] = new PlayerJumpgate(gateRace, var3.x, var3.y, var3.z, var4 != 2);
                }
             }
 

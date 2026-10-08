@@ -427,7 +427,7 @@ public final class MGame extends IApplicationModule {
             }
 
             if(this.playerEgo.boosting() && !this.playerEgo.isDockingToPlanet()) {
-               this.fov = 750 + (int)(this.playerEgo.getBoostPercentage() * 150.0F);
+               this.fov = 750 + (int)(this.playerEgo.getBoostPercentage() * 300.0F);
                this.camera.setFoV(this.fov);
             }
 
@@ -813,13 +813,13 @@ public final class MGame extends IApplicationModule {
 
       if(this.usingJumpDrive?this.playerEgo.shipGrandGroup_.getPosZ() > this.egoJumpPos.z - 1000:this.level.getLandmarks()[1].mainMesh_.getCurrentAnimFrame() > 60 && this.level.getLandmarks()[1].mainMesh_.getCurrentAnimFrame() < 79) {
          if(!this.jumpDriveAnimStarted && this.usingJumpDrive) {
-            this.jumpFlash.setAnimationMode((byte)3);
+            this.jumpFlash.setAnimationMode((byte)2);
             this.jumpFlash.setAnimationSpeed(50);
             this.jumpDriveAnimStarted = true;
          }
 
          if(this.playerEgo.speed < 200) {
-            this.playerEgo.speed += 20; // набор скорости при прыжке
+            this.playerEgo.speed += 20;
          }
 
          this.lookAtCamera.setLookAt(false);
@@ -853,17 +853,17 @@ public final class MGame extends IApplicationModule {
       }
    }
 
-   private void startJumpScene() { // Двигатель кадора\Khador's Engine. Похоже, это касается и Jumpgate...
-      this.paused = false; // Если поставить "true" - игра крашится.
-      this.shootingDisabled = true; // Корабль после входа в прыжок обретает эффекты, и больше движений, но вы не телепортируетесь.
-      this.cinematicBreak_ = false; // Unknown
-      this.playerEgo.setCollide(false); // Телепортация не работает, если "true".
-      this.targetFollowCamera.setLookAtCam(false); // Следовать ли за кораблем игрока после входа в прыжок? | Плохо работает телепортация.
-      this.lookAtCamera.setLookAt(true); // Переводить ли камеру на модель прыжка\Jupmgate?
-      if(this.usingJumpDrive) { // Сам двигатель Кадора.
-	     this.targetFollowCamera.setLookAtCam(false); // Камера следует за кораблем после прыжка.
-		 this.lookAtCamera.setLookAt(true); // Камера не поворачивается на модель прыжка.
-         this.jumpFlash = AEResourceManager.getGeometryResource(6783); // Модель прыжка (цифры);
+   private void startJumpScene() {
+      this.paused = false;
+      this.shootingDisabled = true;
+      this.cinematicBreak_ = false;
+      this.playerEgo.setCollide(false);
+      this.targetFollowCamera.setLookAtCam(false);
+      this.lookAtCamera.setLookAt(true);
+      if(this.usingJumpDrive) {
+	     this.targetFollowCamera.setLookAtCam(false);
+		 this.lookAtCamera.setLookAt(true);
+         this.jumpFlash = AEResourceManager.getGeometryResource(6783);
          this.jumpFlash.setRenderLayer(2); // Unknown
          this.egoJumpPos = this.playerEgo.shipGrandGroup_.getPosition(this.egoJumpPos);
          this.egoJumpPos.add(this.playerEgo.shipGrandGroup_.getDirection());

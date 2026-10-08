@@ -22,6 +22,12 @@ public final class Globals {
    public static final short[] space_lounge_model_alpha = new short[]{15025, 15029, 15027, 14429}; // bar ALPHA
    public static final short[] space_lounge_model_add = new short[]{15125, 15129, 15127, 14529}; // bar ALPHA_ADD
    public static final short[] BAR_FIGURES = new short[]{14223, 14225, 14226, 14223, 14227, 14223, 14228, 14229, 14223}; // figure
+   
+   public static final short[] JUMPGATE_MAIN_MESH = new short[]{18000, 18004, 18008, 18012};
+   public static final short[] JUMPGATE_GLOW_MESH = new short[]{18001, 18005, 18009, 18013};
+   public static final short[] JUMPGATE_ACTIVATE_MESH = new short[]{18002, 18006, 18010, 18014};
+   public static final short[] JUMPGATE_NL_MESH = new short[]{18003, 18007, 18011, 18015};
+   
    public static final short[][] HANGAR_MESHES = new short[][]{{14007, 14008, 14009, 14010, 14011, 14012, 14013}, {14014, 14015, 14016, 14017, 14018, 14019}, {14020, 14021, 14022, 14023, 14024}}; // hangar
    public static short[] TYPE_WEAPONS; // weapons
    
@@ -144,7 +150,6 @@ public final class Globals {
    private static int tex_kinzer_rs = 1038;
    private static int tex_map_planets = 1039;
    private static int tex_suns = 1040;
-   
    private static int tex_planet_0 = 1041;
    private static int tex_planet_1 = 1042;
    private static int tex_planet_2 = 1043;
@@ -189,7 +194,6 @@ public final class Globals {
    private static int tex_ghost = 1082;
    private static int tex_darkangel = 1083;
    private static int tex_ntirrk = 1084;
-   
    private static int skybox01 = 1085;
    private static int skybox02 = 1086;
    private static int skybox03 = 1087;
@@ -204,7 +208,9 @@ public final class Globals {
    private static int tex_station_terran = 1096;
    private static int tex_col_test = 1097;
    private static int tex_spacejunk = 1098;
-   private static int tex_wormhole = 1099;
+   private static int tex_station_vossk = 1099;
+   private static int tex_station_nivelian = 1100;
+   private static int tex_wormhole = 1101;
    
    public static void sub_39(byte[] var0) {
       new FileRead();
@@ -684,10 +690,6 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(skybox09, PATH_TEXTURES + "skybox/skybox09");
 	   AEResourceManager.addTextureResource(skybox10, PATH_TEXTURES + "skybox/skybox10");
 	   
-	   AEResourceManager.addTextureResource(tex_station_midorian, PATH_TEXTURES + "tex_station_midorian_high");
-	   AEResourceManager.addTextureResource(tex_station_player_add, PATH_TEXTURES + "tex_player_station_add");
-	   AEResourceManager.addTextureResource(tex_station_deescience, PATH_TEXTURES + "tex_station_deescience_high");
-	   AEResourceManager.addTextureResource(tex_station_deescience_add, PATH_TEXTURES + "tex_station_deescience_add");
 	   AEResourceManager.addTextureResource(tex_map_planets, PATH_TEXTURES + "map_planets");
 	   AEResourceManager.addTextureResource(tex_suns, PATH_TEXTURES + "sun/suns");
 	   AEResourceManager.addTextureResource(tex_bar_terran, PATH_TEXTURES + "tex_bar_terran");
@@ -729,8 +731,16 @@ public final class Globals {
 	   AEResourceManager.addTextureResource(tex_planet_26, PATH_TEXTURES + "planets/planet_26");
 	   AEResourceManager.addTextureResource(tex_beams, PATH_TEXTURES + "beams");
 	   AEResourceManager.addTextureResource(tex_spacejunk, PATH_TEXTURES + "junk");
-	   AEResourceManager.addTextureResource(tex_station_terran, PATH_TEXTURES + "tex_station_terran");
+	   
+	   AEResourceManager.addTextureResource(tex_station_terran, PATH_TEXTURES + "stations/tex_station_terran");
+	   AEResourceManager.addTextureResource(tex_station_midorian, PATH_TEXTURES + "stations/tex_station_midorian");
+	   AEResourceManager.addTextureResource(tex_station_vossk, PATH_TEXTURES + "stations/tex_station_vossk");
+	   AEResourceManager.addTextureResource(tex_station_nivelian, PATH_TEXTURES + "stations/tex_station_nivelian");
 	   AEResourceManager.addTextureResource(tex_wormhole, PATH_TEXTURES + "wormhole");
+	   
+	   AEResourceManager.addTextureResource(tex_station_player_add, PATH_TEXTURES + "stations/tex_player_station_add");
+	   AEResourceManager.addTextureResource(tex_station_deescience, PATH_TEXTURES + "stations/tex_station_deescience_high");
+	   AEResourceManager.addTextureResource(tex_station_deescience_add, PATH_TEXTURES + "stations/tex_station_deescience_add");
 	   
 	   if(!GlobalStatus.MODELS_QUALITY) {
 		   MESHES_QUALITY = "/low/";
@@ -830,9 +840,26 @@ public final class Globals {
 		AEResourceManager.addSkyboxResource(10009, PATH_MESHES + "skyboxes/skybox.aem", skybox09);
 		AEResourceManager.addSkyboxResource(10010, PATH_MESHES + "skyboxes/skybox.aem", skybox10);
 		
-		AEResourceManager.addGeometryResource(15, PATH_MESHES + "jumpgates/jumpgate_terran_add.aem", 5000, tex_fx);
-		AEResourceManager.addGeometryResource(151, PATH_MESHES + "jumpgates/jumpgate_terran.aem", 5000, tex_station_terran);
-		AEResourceManager.addGeometryResource(152, PATH_MESHES + "jumpgates/jumpgate_terran_nl.aem", 5000, tex_station_terran);
+		AEResourceManager.addGeometryResource(18000, PATH_MESHES + "jumpgates/jumpgate_terran.aem", 5000, tex_station_terran);
+		AEResourceManager.addGeometryResource(18001, PATH_MESHES + "jumpgates/jumpgate_terran_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18002, PATH_MESHES + "jumpgates/jumpgate_terran_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18003, PATH_MESHES + "jumpgates/jumpgate_terran_nl.aem", 5000, tex_station_terran);
+		
+		AEResourceManager.addGeometryResource(18004, PATH_MESHES + "jumpgates/jumpgate_vossk.aem", 5000, tex_station_vossk);
+		AEResourceManager.addGeometryResource(18005, PATH_MESHES + "jumpgates/jumpgate_vossk_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18006, PATH_MESHES + "jumpgates/jumpgate_vossk_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18007, PATH_MESHES + "jumpgates/jumpgate_vossk_nl.aem", 5000, tex_station_vossk);
+		
+		AEResourceManager.addGeometryResource(18008, PATH_MESHES + "jumpgates/jumpgate_nivelian.aem", 5000, tex_station_nivelian);
+		AEResourceManager.addGeometryResource(18009, PATH_MESHES + "jumpgates/jumpgate_nivelian_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18010, PATH_MESHES + "jumpgates/jumpgate_nivelian_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18011, PATH_MESHES + "jumpgates/jumpgate_nivelian_nl.aem", 5000, tex_station_nivelian);
+		
+		AEResourceManager.addGeometryResource(18012, PATH_MESHES + "jumpgates/jumpgate_midorian.aem", 5000, tex_station_midorian);
+		AEResourceManager.addGeometryResource(18013, PATH_MESHES + "jumpgates/jumpgate_midorian_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18014, PATH_MESHES + "jumpgates/jumpgate_midorian_2_add.aem", 5000, tex_fx);
+		AEResourceManager.addGeometryResource(18015, PATH_MESHES + "jumpgates/jumpgate_midorian_nl.aem", 5000, tex_station_midorian);
+		
 		AEResourceManager.addGeometryResource(16, PATH_MESHES + "projectiles/scanner_probe.aem", 2000, tex_fx);
 		AEResourceManager.addGeometryResource(17, PATH_MESHES + "misc/box.m3g", 2000, 0);
 		AEResourceManager.addGeometryResource(18, PATH_MESHES + "projectiles/bomb_normal.aem", 2000, tex_fx);
@@ -1238,7 +1265,7 @@ public final class Globals {
 		AEResourceManager.addGeometryResource(6784, PATH_MESHES + "projectiles/gunshot_0.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6785, PATH_MESHES + "projectiles/gunshot_1.m3g", 2000, 1);
 		AEResourceManager.addGeometryResource(6786, PATH_MESHES + "projectiles/gunshot_2.m3g", 2000, 1);
-		AEResourceManager.addGeometryResource(6805, PATH_MESHES + "misc/vortex.m3g", 15000, 1);
+		AEResourceManager.addGeometryResource(6805, PATH_MESHES + "misc/wormhole_add.aem", 15000, tex_wormhole);
 		AEResourceManager.addGeometryResource(6806, PATH_MESHES + "misc/vortex_dust.m3g", 2000, 1);
 		
 		AEResourceManager.addGeometryResource(3000, PATH_MESHES + "galaxymap/map_planet_000.aem", 2000, tex_map_planets);

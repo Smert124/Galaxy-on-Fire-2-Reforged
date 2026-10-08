@@ -18,8 +18,8 @@ public final class PlayerWormHole extends PlayerStaticFar {
       this.setVisible(var6);
       this.geometry = new Group();
       if(var6) {
-         this.mainMesh_.setAnimationSpeed(25); // Default: 30
-         this.mainMesh_.setRotation(-128, -256, 10);
+         this.mainMesh_.setAnimationSpeed(50);
+         this.mainMesh_.setRotation(0, 2048, 0);
          this.mainMesh_.setAnimationMode((byte)2);
       }
 

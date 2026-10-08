@@ -470,7 +470,7 @@ public final class LevelScript {
       if(var1.getPlayer() != null) {
          var0.setTarget(var1.getPlayer().shipGrandGroup_);
          var0.setTargetOffset(new AEVector3D(0, 850, 0));
-         var0.setCamOffset(new AEVector3D(0, 700, -2000));
+         var0.setCamOffset(new AEVector3D(0, 700, -2500));
          var0.followTargetPosition();
       }
 

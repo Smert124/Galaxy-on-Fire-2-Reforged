@@ -1547,14 +1547,14 @@ public final class PlayerEgo {
 			
 			if(var2 < 0) {
 				
-				this.shipGrandGroup_.roll(var1 >> 1);
+				this.shipGrandGroup_.roll(var1);
 				return;
 				
 			}
 			
 		}
 		
-		this.shipGrandGroup_.roll(-var1 >> 1);
+		this.shipGrandGroup_.roll(-var1);
 		
 	}
 	

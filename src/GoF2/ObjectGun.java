@@ -31,7 +31,7 @@ public class ObjectGun extends AbstractMesh implements AbstractGun {
             this.projectiles[var3].setRenderLayer(2);
 			
 			this.projectiles[var3].setAnimationSpeed(50);
-			this.projectiles[var3].setAnimationRangeInTime(0, 51);
+			this.projectiles[var3].setAnimationRangeInTime(0, 533);
 			this.projectiles[var3].setAnimationMode((byte)2);
          }
 
@@ -70,7 +70,7 @@ public class ObjectGun extends AbstractMesh implements AbstractGun {
    public void update(long var1) {
 	  for(int var3 = 0; var3 < this.projectiles.length; ++var3) {
 			this.projectiles[var3].setAnimationSpeed(50);
-			this.projectiles[var3].setAnimationRangeInTime(0, 51);
+			this.projectiles[var3].setAnimationRangeInTime(0, 533);
 			this.projectiles[var3].setAnimationMode((byte)2);
 	  }
       this.gun.calcCharacterCollision(var1);
